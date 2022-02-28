@@ -25,11 +25,12 @@
 
   
 
-<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/tags/">
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/">
 
 
 
-  <title>AllTag |
+  <title>
+Android IPC 之 AIDL - _tv子系统 |
 Yume Shoka = 迩彧博客</title>
 <meta name="generator" content="Hexo 6.0.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -57,8 +58,19 @@ Yume Shoka = 迩彧博客</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">AllTag
+  <h1 itemprop="name headline">Android IPC 之 AIDL
   </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-02-28 21:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-02-28T21:04:32+08:00">2022-02-28</time>
+  </span>
+</div>
+
 
           </div>
         </div>
@@ -88,12 +100,12 @@ Yume Shoka = 迩彧博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -114,12 +126,115 @@ Yume Shoka = 迩彧博客</title>
       <div class="inner">
         <div id="main" class="pjax">
           
-  <div class="collapse wrap">
-      <h2 class="item title"><a href="/">Home</a> <small>/</small> No tags</h2>
-      <div class="tag cloud">
-        
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _tv子系统"><span itemprop="name">_tv子系统</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>AIDL(Android Interface Definition Language 即Android接口定义语言)，</p>
+<p>AIDL 意思即 Android Interface Definition Language，翻译过来就是Android接口定义语言，是用于定义服务器和客户端通信接口的一种描述语言，可以拿来生成用于IPC的代码。从某种意义上说AIDL其实是一个模板，因为在使用过程中，实际起作用的并不是AIDL文件，而是据此而生成的一个IInterface的实例代码，AIDL其实是为了避免我们重复编写代码而出现的一个模板</p>
+<p>设计AIDL这门语言的目的就是为了实现进程间通信。在Android系统中，每个进程都运行在一块独立的内存中，在其中完成自己的各项活动，与其他进程都分隔开来。可是有时候我们又有应用间进行互动的需求，比较传递数据或者任务委托等，AIDL就是为了满足这种需求而诞生的。通过AIDL，可以在一个进程中获取另一个进程的数据和调用其暴露出来的方法，从而满足进程间通信的需求</p>
+<p>通常，暴露方法给其他应用进行调用的应用称为服务端，调用其他应用的方法的应用称为客户端，客户端通过绑定服务端的Service来进行交互</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-02-28 21:04:44" itemprop="dateModified" datetime="2022-02-28T21:04:44+08:00">2022-02-28</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="迩彧 PayPal">
+        <p>PayPal</p>
       </div>
   </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">https://muxiaoximuxiaoxi.github.io/2022/02/28/Android IPC 之 AIDL/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit31ffoj20zk0m8naf.jpg" title="GN编译">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _tv子系统</span>
+  <h3>GN编译</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
 
         </div>
         <div id="sidebar">
@@ -130,8 +245,12 @@ Yume Shoka = 迩彧博客</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/02/20/JAVA-native%E5%85%B3%E9%94%AE%E5%AD%97/" rel="bookmark" title="JAVA native关键字">JAVA native关键字</a></li><li><a href="/2022/02/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" rel="bookmark" title="动态链接库（Dynamic Link Library）">动态链接库（Dynamic Link Library）</a></li><li><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" rel="bookmark" title="GN编译">GN编译</a></li><li class="active"><a href="/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" rel="bookmark" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -203,7 +322,7 @@ Yume Shoka = 迩彧博客</title>
 <a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
 </div>
 
-    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
+    <span><a href="/2022/02/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" title="动态链接库（Dynamic Link Library）">动态链接库（Dynamic Link Library）</a></span>
   </li>
 
       
@@ -223,7 +342,7 @@ Yume Shoka = 迩彧博客</title>
 <a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
 </div>
 
-    <span><a href="/2022/02/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" title="动态链接库（Dynamic Link Library）">动态链接库（Dynamic Link Library）</a></span>
+    <span><a href="/2022/02/20/JAVA-native%E5%85%B3%E9%94%AE%E5%AD%97/" title="JAVA native关键字">JAVA native关键字</a></span>
   </li>
 
       
@@ -233,7 +352,7 @@ Yume Shoka = 迩彧博客</title>
 <a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
 </div>
 
-    <span><a href="/2022/02/20/JAVA-native%E5%85%B3%E9%94%AE%E5%AD%97/" title="JAVA native关键字">JAVA native关键字</a></span>
+    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
   </li>
 
   </ul>
@@ -264,7 +383,7 @@ Yume Shoka = 迩彧博客</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'tags/',
+    path: '2022/02/28/Android IPC 之 AIDL/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
