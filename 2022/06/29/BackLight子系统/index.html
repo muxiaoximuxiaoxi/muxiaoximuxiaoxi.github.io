@@ -1,0 +1,665 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+
+
+
+  <title>
+BackLight子系统 - _开源鸿蒙驱动子系统 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">BackLight子系统
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-06-29 20:42:13">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-29T20:42:13+08:00">2022-06-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _开源鸿蒙驱动子系统"><span itemprop="name">_开源鸿蒙驱动子系统</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="液晶显示器"><a href="#液晶显示器" class="headerlink" title="液晶显示器"></a>液晶显示器</h3><p>液晶显示器 是一种借助薄膜晶体管驱动的有源矩阵 液晶显示器，它主要是以电流刺激液晶分子产生点、线、面配合背部灯管构成画面。IPS、TFT、SLCD、都属于LCD的子类。<br>工作原理：在电场的作用下，利用液晶分子的排列方向发生变化，使外光源透光率改变(调制)，完成电 &lt;-&gt; 光 转换，再利用R、G、B三基色信号的不同激励，通过红、绿、蓝三基色光膜，完成时域和空间域的彩色重显</p>
+<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><h4 id="液晶面板"><a href="#液晶面板" class="headerlink" title="液晶面板"></a>液晶面板</h4><p>液晶面板包括偏振膜、玻璃基板、黑色矩阵、彩色滤光片、保护膜、普通电极、校准层、液晶层(液晶、间隔、密封剂)、电容、显示电极、棱镜层、散光层<br><img data-src="https://img-blog.csdnimg.cn/a54b8612c7cc478e8877e958f91caee5.png#pic_center" alt="在这里插入图片描述"><br>偏振膜(偏光片) ： 偏光片分为上偏光片和下偏光片，上下两偏光片的偏振功能相互垂直，其作用就像是栅栏一样，按照要求阻隔光波分量，例如阻隔掉与偏光片栏栅垂直的光波分量，而只准许与栏栅平行的光波分量通过</p>
+<p>玻璃基板 ：再液晶显示器中可分为上基板和下基板，其主要 作用在于两基板之间的间隔空间夹持液晶材料。玻璃基板的材料一般采用机械性能优良、耐热与耐化学腐蚀的无碱硼硅玻璃。对于TFT-LCD而言，一层玻璃基板分布有TFT，另一层玻璃基板则沉积彩色滤光片</p>
+<p>黑色矩阵 借助于高度遮光性能的材料，用以分隔彩色滤光片中红、绿、蓝三原色(防止色混淆)、防止漏光，从而有利于提高各个色块的对比度。此外，在TFT-LCD中，黑色矩阵还能遮掩内部电极走线或者薄膜晶体管</p>
+<p>彩色滤光片(滤色膜) ：产生红、绿、蓝三中基色光，实现液晶显示器的全彩色显示</p>
+<p>取向膜(配向膜或定向层) ： 让液晶分子能够在微观尺寸的层面上实现均匀的排列和取向</p>
+<p>透明电极 分为公共电极和像素电极，输入信号电压就是加载在像素电极和公共电极之间。透明电极通常是在玻璃基板上沉积氧化铟锡(ITO)材料构成透明导电层</p>
+<p>液晶材料 在LCD中起到一种类似广阀的作用，可以控制透射光的明暗，从而取得信息显示的效果</p>
+<p>驱动IC其实就是一套集成电路芯片装置，用来对透明电极上电位信号的相位、峰值、频率等进行调整与控制，建立起驱动电场，最终实现液晶的信息显示</p>
+<p>在液晶面板中，有源矩阵液晶显示屏是在两块玻璃基板之间封入扭曲向列(TN)型液晶材料构成的，其中，接近显示屏的上玻璃基板沉积有红、绿、蓝(RGB)三色彩色滤光片(或称彩色滤色膜)、黑色矩阵和公共透明电极。下玻璃基板(距离显示屏较远的基板)，则安装有薄膜晶体管(TF层)，使液晶分子定向排列。两玻璃基板之间灌注液晶材料，散布衬垫，以保证间隙的均匀性。四周借助于封框胶黏结，起到密封作用，借助于点银胶工艺上下两玻璃基板公共电极连接</p>
+<p>上下两玻璃基板的外侧，分别贴有偏光片(偏光膜)，当像素透明电极与公共透明电极之间加上电压时，液晶分子的排列状态会发生改变，此时，入射光透过液晶的强度也随之发送变化，液晶显示器正是根据液晶材料的旋光型，再配合上电场的控制，便能实现信息显示</p>
+<h4 id="背光模组"><a href="#背光模组" class="headerlink" title="背光模组"></a>背光模组</h4><p>LCD产品时一种非主动发光电子器件，本身并不具有发光特性，必须依赖背光模组中光源的发射才能获取显示性能，因此LCD的亮度要由其背光模组来决定。由此可见，背光模组的性能好坏直接影响到液晶面板的显示品质</p>
+<p>背光模组包括照明光源、反射板、导光板、扩散片、增亮膜(棱镜片)及框架等。LCD采用的背光模组主要可分为侧光式背光模组和直射式背光模组两大类。<br>侧光式背光模组光源 ： 手机、笔记本电脑、监视器<br>直射式背光模组光源 ： 液晶电视</p>
+<p>背光模组光源，主要以冷阴极荧光灯和发光二级管光源作为LCD的背光源</p>
+<p>反射板(反射罩)，主要作用是将光源发出的光线完全送入导光板，尽可能地减少无益的损耗</p>
+<p>导光板，主要作用将侧面光源发出的光线导向面板的正面</p>
+<p>棱镜片(增亮膜)，主要作用将各散射光线通过该膜片层的折射和全反射，集中于一定的角度再从背光源发射出去，起到屏幕增亮的显示效果</p>
+<p>扩散片，主要作用把背光模组的侧光式光线修正为均匀的面光源，以达到光学扩散的效果。扩散片有上扩散片和下扩散片<br>上扩散片，处于棱镜片和液晶组件之间，更接近显示面板<br>下扩散片，处于导光板和棱镜片之间，更接近于背光源<br><img data-src="https://img-blog.csdnimg.cn/7e8ed341ee6b44f9b6e84a272032dfd8.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="背光源—-gt-BackLight子系统"><a href="#背光源—-gt-BackLight子系统" class="headerlink" title="背光源—&gt;BackLight子系统"></a>背光源—&gt;BackLight子系统</h3><p>由上述可得，液晶本身并不发光，它显示图形或者字符均是它对光线调制的结果，所以每个液晶panel都需要背光，如果每个oanel都单独实现一个初始化相应背光的驱动，就会造成代码冗余，这是其一。其二，每个panel都需要维护背光驱动，造成代码不好维护，比如要修改驱动的一些参数或者逻辑，就会导致每个panel都需要修改，这样就会导致维护困难<br>故针对以上问题，我们抽象出了BackLigt子系统，BackLigt子系统对它的使用者(panel驱动)提供统一的接口，对下(具体的背光驱动，比如pwm类型的背光驱动)提供注册接口，BackLigt子系统自身处理事务的通用逻辑，从而解决如上问题</p>
+<h3 id="BackLight子系统对应的文件介绍"><a href="#BackLight子系统对应的文件介绍" class="headerlink" title="BackLight子系统对应的文件介绍"></a>BackLight子系统对应的文件介绍</h3><p>drivers\framework\model\display\driver\backlight<br>backlight<br>├── hdf_bl.h  &#x2F;&#x2F; hdf背光，抽象出hdf通用背光的通用逻辑<br>├── hdf_bl.c  &#x2F;&#x2F; hdf背光<br>└── pwm_bl.c  &#x2F;&#x2F; pwn类型背光驱动，主要调用hdf_bl.c中提供的注册接口，将pwm类型背光驱动注册到backlight子系统中</p>
+<h3 id="backlight子系统对下提供的注册接口以及相应的结构体"><a href="#backlight子系统对下提供的注册接口以及相应的结构体" class="headerlink" title="backlight子系统对下提供的注册接口以及相应的结构体"></a>backlight子系统对下提供的注册接口以及相应的结构体</h3><h4 id="hdf-bl-h"><a href="#hdf-bl-h" class="headerlink" title="hdf_bl.h"></a>hdf_bl.h</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">//背光亮度类型</span><br><span class="line"></span><br><span class="line">//Fb开关状态</span><br><span class="line">enum FbPowerStatus &#123;</span><br><span class="line">    FB_POWER_ON,        //打开状态</span><br><span class="line">    FB_POWER_STANDBY,   //待机状态</span><br><span class="line">    FB_POWER_SUSPEND,   //暂停状态</span><br><span class="line">    FB_POWER_OFF,       //关闭状态</span><br><span class="line">&#125;;</span><br><span class="line">//背光设备</span><br><span class="line">struct BacklightDev;</span><br><span class="line">//背光ops</span><br><span class="line">struct BacklightOps &#123;</span><br><span class="line">    int32_t (*updateBrightness)(struct BacklightDev *bl, uint32_t brightness);      //更新背光</span><br><span class="line">    uint32_t (*getBrightness)(struct BacklightDev *bl);                             //获取背光</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//背光属性</span><br><span class="line">struct BacklightProperties &#123;</span><br><span class="line">    uint32_t brightness;            //背光亮度</span><br><span class="line">    uint32_t maxBrightness;         //最大背光亮度</span><br><span class="line">    uint32_t minBrightness;         //最小背光亮度</span><br><span class="line">    uint32_t defBrightness;         //默认背光亮度</span><br><span class="line">    enum FbPowerStatus fbStatus;    //fb开关状态</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//背光注册</span><br><span class="line">struct BacklightDev *RegisterBlDev(const char *name, struct BacklightProperties *props,</span><br><span class="line">    struct BacklightOps *ops, void *priv);</span><br><span class="line">//背光反注册</span><br><span class="line">int32_t UnRegisterBlDev(struct BacklightDev *blDev);</span><br><span class="line">//获取背光设备指针</span><br><span class="line">void *ToBlDevPriv(struct BacklightDev *blDev);</span><br><span class="line">//获取背光设备</span><br><span class="line">struct BacklightDev *GetBacklightDev(const char *name);</span><br><span class="line">//更新背光状态</span><br><span class="line">int32_t UpdateBacklightState(struct BacklightDev *blDev, enum FbPowerStatus status);</span><br><span class="line">//更新背光亮度</span><br><span class="line">int32_t UpdateBrightness(struct BacklightDev *blDev, uint32_t brightness);</span><br><span class="line">//获取最小背光亮度</span><br><span class="line">int32_t GetMinBrightness(struct BacklightDev *blDev, uint32_t *brightness);</span><br><span class="line">//获取当前背光亮度</span><br><span class="line">int32_t GetCurrBrightness(struct BacklightDev *blDev, uint32_t *brightness);</span><br><span class="line">//获取默认背光亮度</span><br><span class="line">int32_t GetDefBrightness(struct BacklightDev *blDev, uint32_t *brightness);</span><br><span class="line">//获取最大背光亮度</span><br><span class="line">int32_t GetMaxBrightness(struct BacklightDev *blDev, uint32_t *brightness);</span><br><span class="line">#endif /* HDF_BL_H */</span><br></pre></td></tr></table></figure>
+
+<h4 id="hdf-bl-c"><a href="#hdf-bl-c" class="headerlink" title="hdf_bl.c"></a>hdf_bl.c</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//背光亮度类型</span><br><span class="line">enum BrightnessType &#123;</span><br><span class="line">    MIN_BRIGHTNESS,         // 最小亮度</span><br><span class="line">    CURRENT_BRIGHTNESS,     // 当前亮度</span><br><span class="line">    DEFAULT_BRIGHTNESS,     // 默认亮度</span><br><span class="line">    MAX_BRIGHTNESS,         // 最大亮度</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">typedef int32_t (*BlCmdHandle)(struct HdfDeviceObject *device,</span><br><span class="line">    struct HdfSBuf *reqData, struct HdfSBuf *rspData);</span><br><span class="line"></span><br><span class="line">//背光设备</span><br><span class="line">struct BacklightDev &#123;</span><br><span class="line">    char name[MAX_BL_NAME_LEN];         //设备名</span><br><span class="line">    struct BacklightProperties props;   //背光属性</span><br><span class="line">    struct BacklightOps *ops;           //设备名</span><br><span class="line">    struct OsalMutex mutex;             //互斥锁</span><br><span class="line">    bool isRegister;                    //该设备是否注册</span><br><span class="line">    struct HdfDeviceObject *hdfObj;     //Hdf设备对象</span><br><span class="line">    struct DListHead listNode;          //设备链表</span><br><span class="line">    int32_t devId;                      //设备ID</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>函数原型</th>
+<th>函数功能</th>
+<th>参数功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static struct BacklightDev *BlDevInstance(const char *devName,struct BacklightProperties *props, struct BacklightOps *ops)</td>
+<td>BlDev实例化</td>
+<td>背光名字 背光属性 背光Ops</td>
+</tr>
+<tr>
+<td>struct BacklightDev *RegisterBlDev(const char *name, struct BacklightProperties *props,struct BacklightOps *ops, struct HdfDeviceObject *object)</td>
+<td>背光注册</td>
+<td>背光名字 背光属性 背光Ops Hdf设备对象</td>
+</tr>
+<tr>
+<td>int32_t UnRegisterBlDev(struct BacklightDev *blDev)</td>
+<td>背光注销</td>
+<td>Hdf设备对象</td>
+</tr>
+<tr>
+<td>void *ToBlDevPriv(struct BacklightDev *blDev)</td>
+<td>获取背光PrivPriv</td>
+<td>背光设备</td>
+</tr>
+<tr>
+<td>struct BacklightDev *GetBacklightDev(const char *name)</td>
+<td>获取背光设备信息</td>
+<td>背光名字</td>
+</tr>
+<tr>
+<td>int32_t UpdateBacklightState(struct BacklightDev *blDev, enum FbPowerStatus status)</td>
+<td>更新背光状态</td>
+<td>背光设备 背光状态</td>
+</tr>
+<tr>
+<td>int32_t UpdateBrightness(struct BacklightDev *blDev, uint32_t brightness)</td>
+<td>更新背光等级</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>static uint32_t GetBlDevBrightness(struct BacklightDev *blDev, enum BrightnessType type)</td>
+<td>获取背光等级</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>int32_t GetMinBrightness(struct BacklightDev *blDev, uint32_t *brightness)</td>
+<td>获取Min背光</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>int32_t GetCurrBrightness(struct BacklightDev *blDev, uint32_t *brightness)</td>
+<td>获取Cur背光</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>int32_t GetDefBrightness(struct BacklightDev *blDev, uint32_t *brightness)</td>
+<td>获取Def背光</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>int32_t GetMaxBrightness(struct BacklightDev *blDev, uint32_t *brightness)</td>
+<td>获取Max背光</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>static int32_t HdfGetBrightness(enum BrightnessType type,struct HdfSBuf *reqData, struct HdfSBuf *rspData)</td>
+<td>获取Hdf背光等级</td>
+<td>背光等级 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t HdfGetMinBrightness(struct HdfDeviceObject *device,struct HdfSBuf *reqData, struct HdfSBuf *rspData)</td>
+<td>获取Hdg MIn背光</td>
+<td>Hdf设备对象 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t HdfGetCurrBrightness(struct HdfDeviceObject *device,struct HdfSBuf *reqData, struct HdfSBuf *rspData)</td>
+<td>获取Hdf Cur背光</td>
+<td>Hdf设备对象 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t HdfGetDefBrightness(struct HdfDeviceObject <em>device,struct HdfSBuf</em>reqData, struct HdfSBuf *rspData)</td>
+<td>获取Hdf Def背光</td>
+<td>Hdf设备对象 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t HdfGetMaxBrightness(struct HdfDeviceObject *device,struct HdfSBuf *reqData, struct HdfSBuf *rspData)</td>
+<td>获取Hdf Max背光</td>
+<td>Hdf设备对象 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t HdfSetBrightness(struct HdfDeviceObject *device,struct HdfSBuf *reqData, struct HdfSBuf *rspData)</td>
+<td>设置Hdf背光等级</td>
+<td>Hdf设备对象 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t HdfGetDListHead(struct HdfDeviceObject *device,struct HdfSBuf *reqData, struct HdfSBuf *rspData)</td>
+<td>获取Hdf 背光链表</td>
+<td>Hdf设备对象 HdfBuf发送数据 HdfBuf接受数据</td>
+</tr>
+<tr>
+<td>static int32_t BacklightDispatch(struct HdfDeviceIoClient *client, int cmd, struct HdfSBuf *data,struct HdfSBuf *reply)</td>
+<td>背光调度</td>
+<td>Hdf 设备io客户端对象 cmd HdfBuf数据 HdfBuf答复数据</td>
+</tr>
+<tr>
+<td>static int BacklightBind(struct HdfDeviceObject *dev)</td>
+<td>背光绑定</td>
+<td>Hdf设备对象</td>
+</tr>
+<tr>
+<td>static int32_t BacklightInit(struct HdfDeviceObject *object)</td>
+<td>背光初始化</td>
+<td>Hdf设备对象</td>
+</tr>
+</tbody></table>
+<h4 id="pwm-bl-c"><a href="#pwm-bl-c" class="headerlink" title="pwm_bl.c"></a>pwm_bl.c</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//背光pwm设备</span><br><span class="line">struct BlPwmDev &#123;</span><br><span class="line">    const char *name;                   //设备名</span><br><span class="line">    uint8_t pwmDevNum;                  //pwm设备数量</span><br><span class="line">    DevHandle pwmHandle;                //pwm句柄</span><br><span class="line">    struct PwmConfig config;            //pwm配置</span><br><span class="line">    struct BacklightProperties props;   //背光属性</span><br><span class="line">    struct BacklightDev *blDev;         //背光设备</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th>函数原型</th>
+<th>函数功能</th>
+<th>参数功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static int32_t BlPwmUpdateBrightness(struct BacklightDev *blDev, uint32_t brightness)</td>
+<td>BlPwm更新背光等级</td>
+<td>背光设备 背光等级</td>
+</tr>
+<tr>
+<td>static int32_t ParsePwmNum(const struct DeviceResourceNode *node, uint8_t *pwmNum)</td>
+<td>解析PwNum</td>
+<td>设备资源树节点 pwmNum</td>
+</tr>
+<tr>
+<td>static int32_t ParseBlPwmCfg(const struct DeviceResourceNode *node, struct BlPwmDev *blPwmDev)</td>
+<td>解析BlPwm配置</td>
+<td>设备资源树节点 BlPwm设备</td>
+</tr>
+<tr>
+<td>static int32_t BlPwmDevInit(struct HdfDeviceObject *object, struct BlPwmDev *blPwmDev)</td>
+<td>BlPwm设备初始化</td>
+<td>Hdf设备对象 BlPwm设备</td>
+</tr>
+<tr>
+<td>static int32_t BlPwmEntryInit(struct HdfDeviceObject *object)</td>
+<td>BlPwm初始化入口</td>
+<td>Hdf设备对象</td>
+</tr>
+<tr>
+<td>static void BlPwmEntryRelease(struct HdfDeviceObject *object)</td>
+<td>BlPwm注销入口</td>
+<td>Hdf设备对象</td>
+</tr>
+</tbody></table>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-08-11 23:17:39" itemprop="dateModified" datetime="2022-08-11T23:17:39+08:00">2022-08-11</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="BackLight子系统">https://muxiaoximuxiaoxi.github.io/2022/06/29/BackLight子系统/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="以HDF视角，分析背光模块">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>以HDF视角，分析背光模块</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm07ih54j20zk0m84qp.jpg" title="开发板测试">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>开发板测试</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%B2%E6%99%B6%E6%98%BE%E7%A4%BA%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">液晶显示器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%B2%E6%99%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">2.1.</span> <span class="toc-text">液晶面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E5%85%89%E6%A8%A1%E7%BB%84"><span class="toc-number">2.2.</span> <span class="toc-text">背光模组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E5%85%89%E6%BA%90%E2%80%94-gt-BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">背光源—&gt;BackLight子系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AF%B9%E5%BA%94%E7%9A%84%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">BackLight子系统对应的文件介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backlight%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AF%B9%E4%B8%8B%E6%8F%90%E4%BE%9B%E7%9A%84%E6%B3%A8%E5%86%8C%E6%8E%A5%E5%8F%A3%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%BA%94%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">5.</span> <span class="toc-text">backlight子系统对下提供的注册接口以及相应的结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hdf-bl-h"><span class="toc-number">5.1.</span> <span class="toc-text">hdf_bl.h</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hdf-bl-c"><span class="toc-number">5.2.</span> <span class="toc-text">hdf_bl.c</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pwm-bl-c"><span class="toc-number">5.3.</span> <span class="toc-text">pwm_bl.c</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="bookmark" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></li><li><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" rel="bookmark" title="蓝区上库">蓝区上库</a></li><li><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" rel="bookmark" title="开发板测试">开发板测试</a></li><li class="active"><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="bookmark" title="BackLight子系统">BackLight子系统</a></li><li><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" rel="bookmark" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></li><li><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="HDI-GEN使用指导">HDI-GEN使用指导</a></li><li><a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" rel="bookmark" title="display模块讲解">display模块讲解</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">11</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="HDI-GEN使用指导">HDI-GEN使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="蓝区上库">蓝区上库</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/20/JAVA-native%E5%85%B3%E9%94%AE%E5%AD%97/" title="JAVA native关键字">JAVA native关键字</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="display模块讲解">display模块讲解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="BackLight子系统">BackLight子系统</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" title="动态链接库（Dynamic Link Library）">动态链接库（Dynamic Link Library）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/29/BackLight子系统/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
