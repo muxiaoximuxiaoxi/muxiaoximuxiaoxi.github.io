@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/">
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/">
 
 
 
   <title>
- |
+Fuzz安全测试 - _开源鸿蒙驱动子系统 |
 Yume Shoka = 迩彧博客</title>
 <meta name="generator" content="Hexo 6.0.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ Yume Shoka = 迩彧博客</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">Fuzz安全测试
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2022-12-01 16:22:23">
+  <span class="item" title="Created: 2022-06-29 20:42:18">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2022-12-01T16:22:23+08:00">2022-12-01</time>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-29T20:42:18+08:00">2022-06-29</time>
   </span>
 </div>
 
@@ -100,12 +100,12 @@ Yume Shoka = 迩彧博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,11 +130,13 @@ Yume Shoka = 迩彧博客</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _开源鸿蒙驱动子系统"><span itemprop="name">_开源鸿蒙驱动子系统</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -149,13 +151,7 @@ Yume Shoka = 迩彧博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <hr>
-<p>layout: _开源鸿蒙驱动子系统<br>title: Fuzz安全测试<br>date: 2022-06-29 20:42:18<br>categories: </p>
-<ul>
-<li>_开源鸿蒙驱动子系统<br>tags:</li>
-</ul>
-<hr>
-<h3 id="Fuzz简介"><a href="#Fuzz简介" class="headerlink" title="Fuzz简介"></a>Fuzz简介</h3><p>模糊测试（fuzzing test）是一种软件测试技术，其核心思想是将自动或半自动生成的随机数据输入到一个程序中，并监视程序异常，如崩溃，断言（assertion）失败，以发现可能的程序错误，比如内存泄漏，访问越界等。<br>Fuzzing测试框架使用了LLVM编译器框架中的libFuzzer作为Fuzzing引擎进行构建，libFuzzer是一个基于LLVM编译时路径插桩，可以对被测库API进行路径引导测试的Fuzzing引擎。<br>使用Fuzzing测试框架，需要完成fuzzer测试用例初始化、fuzzer用例编写、fuzzer用例编译、fuzzer用例执行四步</p>
+    <h3 id="Fuzz简介"><a href="#Fuzz简介" class="headerlink" title="Fuzz简介"></a>Fuzz简介</h3><p>模糊测试（fuzzing test）是一种软件测试技术，其核心思想是将自动或半自动生成的随机数据输入到一个程序中，并监视程序异常，如崩溃，断言（assertion）失败，以发现可能的程序错误，比如内存泄漏，访问越界等。<br>Fuzzing测试框架使用了LLVM编译器框架中的libFuzzer作为Fuzzing引擎进行构建，libFuzzer是一个基于LLVM编译时路径插桩，可以对被测库API进行路径引导测试的Fuzzing引擎。<br>使用Fuzzing测试框架，需要完成fuzzer测试用例初始化、fuzzer用例编写、fuzzer用例编译、fuzzer用例执行四步</p>
 <h3 id="测试框架基础环境配置"><a href="#测试框架基础环境配置" class="headerlink" title="测试框架基础环境配置"></a>测试框架基础环境配置</h3><table>
 <thead>
 <tr>
@@ -294,7 +290,7 @@ Yume Shoka = 迩彧博客</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-12-01 16:25:13" itemprop="dateModified" datetime="2022-12-01T16:25:13+08:00">2022-12-01</time>
+    <time title="Modified: 2022-12-01 19:06:00" itemprop="dateModified" datetime="2022-12-01T19:06:00+08:00">2022-12-01</time>
   </span>
 </div>
 
@@ -325,7 +321,7 @@ Yume Shoka = 迩彧博客</title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/" title="">https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz安全测试/</a>
+    <a href="https://muxiaoximuxiaoxi.github.io/2022/06/29/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/" title="Fuzz安全测试">https://muxiaoximuxiaoxi.github.io/2022/06/29/fuzz安全测试/</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -344,14 +340,22 @@ Yume Shoka = 迩彧博客</title>
     <div class="item left">
       
 
-  <a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="display模块讲解">
+  <a href="/2022/06/29/framework--display/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0n457cj20zk0m8e81.jpg" title="framework - display">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
-  <h3>display模块讲解</h3>
+  <h3>framework - display</h3>
   </a>
 
     </div>
     <div class="item right">
+      
+
+  <a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciszlczyj20zk0m816d.jpg" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</h3>
+  </a>
+
     </div>
 </div>
 
@@ -371,6 +375,9 @@ Yume Shoka = 迩彧博客</title>
           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuzz%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Fuzz简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">测试框架基础环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%A3%80%E6%9F%A5"><span class="toc-number">2.1.</span> <span class="toc-text">安装环境检查</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E7%BC%96%E5%86%99"><span class="toc-number">3.</span> <span class="toc-text">测试用例初始化及编写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="toc-number">3.1.</span> <span class="toc-text">配置启动测试测试框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fuzz%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">Fuzz测试用例初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Fuzz%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%94%9F%E6%88%90"><span class="toc-number">3.2.1.</span> <span class="toc-text">Fuzz测试用例生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">3.2.2.</span> <span class="toc-text">命令参数说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%A5%97%E7%94%9F%E6%88%90"><span class="toc-number">3.2.3.</span> <span class="toc-text">测试套生成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuzz%E7%94%A8%E4%BE%8B%E7%BC%96%E5%86%99"><span class="toc-number">4.</span> <span class="toc-text">Fuzz用例编写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%A8%E8%BF%9B%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">跨进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E8%B0%83"><span class="toc-number">4.2.</span> <span class="toc-text">直调</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuzz%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C"><span class="toc-number">5.</span> <span class="toc-text">Fuzz测试用例执行</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="bookmark" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></li><li><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></li><li><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" rel="bookmark" title="蓝区上库">蓝区上库</a></li><li><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="bookmark" title="BackLight子系统">BackLight子系统</a></li><li><a href="/2022/06/29/framework--display/" rel="bookmark" title="framework - display">framework - display</a></li><li class="active"><a href="/2022/06/29/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/" rel="bookmark" title="Fuzz安全测试">Fuzz安全测试</a></li><li><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="bookmark" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></li><li><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" rel="bookmark" title="开发板测试">开发板测试</a></li><li><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="HDI-GEN使用指导">HDI-GEN使用指导</a></li><li><a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" rel="bookmark" title="display模块讲解">display模块讲解</a></li><li><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" rel="bookmark" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -414,10 +421,12 @@ Yume Shoka = 迩彧博客</title>
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/2022/06/29/framework--display/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -439,10 +448,40 @@ Yume Shoka = 迩彧博客</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" title="动态链接库（Dynamic Link Library）">动态链接库（Dynamic Link Library）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
 </div>
 
-    <span><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="蓝区上库">蓝区上库</a></span>
+    <span><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" title="开发板测试">开发板测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="HDI-GEN使用指导">HDI-GEN使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></span>
   </li>
 
       
@@ -453,66 +492,6 @@ Yume Shoka = 迩彧博客</title>
 </div>
 
     <span><a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="display模块讲解">display模块讲解</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
-</div>
-
-    <span><a href="/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
-</div>
-
-    <span><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
-</div>
-
-    <span><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
-</div>
-
-    <span><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="BackLight子系统">BackLight子系统</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
-</div>
-
-    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
-</div>
-
-    <span><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></span>
   </li>
 
       
@@ -532,7 +511,37 @@ Yume Shoka = 迩彧博客</title>
 <a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
 </div>
 
-    <span><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></span>
+    <span><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
   </li>
 
   </ul>
@@ -563,7 +572,7 @@ Yume Shoka = 迩彧博客</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2022/12/01/fuzz安全测试/',
+    path: '2022/06/29/fuzz安全测试/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
