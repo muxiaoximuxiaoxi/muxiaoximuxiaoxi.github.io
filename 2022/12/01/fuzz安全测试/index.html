@@ -1,0 +1,598 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/">
+
+
+
+  <title>
+ |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-12-01 16:22:23">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-01T16:22:23+08:00">2022-12-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <hr>
+<p>layout: _开源鸿蒙驱动子系统<br>title: Fuzz安全测试<br>date: 2022-06-29 20:42:18<br>categories: </p>
+<ul>
+<li>_开源鸿蒙驱动子系统<br>tags:</li>
+</ul>
+<hr>
+<h3 id="Fuzz简介"><a href="#Fuzz简介" class="headerlink" title="Fuzz简介"></a>Fuzz简介</h3><p>模糊测试（fuzzing test）是一种软件测试技术，其核心思想是将自动或半自动生成的随机数据输入到一个程序中，并监视程序异常，如崩溃，断言（assertion）失败，以发现可能的程序错误，比如内存泄漏，访问越界等。<br>Fuzzing测试框架使用了LLVM编译器框架中的libFuzzer作为Fuzzing引擎进行构建，libFuzzer是一个基于LLVM编译时路径插桩，可以对被测库API进行路径引导测试的Fuzzing引擎。<br>使用Fuzzing测试框架，需要完成fuzzer测试用例初始化、fuzzer用例编写、fuzzer用例编译、fuzzer用例执行四步</p>
+<h3 id="测试框架基础环境配置"><a href="#测试框架基础环境配置" class="headerlink" title="测试框架基础环境配置"></a>测试框架基础环境配置</h3><table>
+<thead>
+<tr>
+<th>环境依赖</th>
+<th>操作系统</th>
+<th>Linux系统扩展组件</th>
+<th>python</th>
+<th>python插件</th>
+<th>NFS Server</th>
+<th>HDC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>版本型号</td>
+<td>Ubuntu18.04及以上</td>
+<td>libreadline-dev</td>
+<td>3.7.5版本及以上</td>
+<td>pyserial 3.3及以上、paramiko2.7.1及以上、setuptools40.8.0及以上、rsa4.0及以上</td>
+<td>haneWIN NFS Server 1.2.50及以上或者NFS v4及以上</td>
+<td>1.1.0版本及以上</td>
+</tr>
+<tr>
+<td>详细说明</td>
+<td>代码编译环境</td>
+<td>命令行读取插件</td>
+<td>测试框架语言</td>
+<td>pyserial:支持pythom的串口通信；paramiko:支持python使用SSH协议;setuptools:支持python方便创建合分发python包；rsa：支持python rsa加密</td>
+<td>支持设备通过串口连接</td>
+<td>支持设备通过HDC连接</td>
+</tr>
+</tbody></table>
+<h4 id="安装环境检查"><a href="#安装环境检查" class="headerlink" title="安装环境检查"></a>安装环境检查</h4><table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>操作</th>
+<th>满足环境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检查python安装成功</td>
+<td>命令行窗口执行命令：pyhton –version</td>
+<td>版本不小于3.7.5即可</td>
+</tr>
+<tr>
+<td>检查python扩展插件安装成功</td>
+<td>打开test&#x2F;developertest目录，执行start.bat或start.sh</td>
+<td>可进入提示符 “&gt;&gt;&gt;” 界面即可</td>
+</tr>
+<tr>
+<td>检查NFS Server启动状态（被测设备仅支持串口检测）</td>
+<td>通过串口登录开发板，执行mount命令挂载NFS</td>
+<td>可正常挂载文件目录即可</td>
+</tr>
+<tr>
+<td>检查HDC安装成功</td>
+<td>命令行窗口执行命令：hdc_std -v</td>
+<td>版本不小于1.1.0即可</td>
+</tr>
+</tbody></table>
+<h3 id="测试用例初始化及编写"><a href="#测试用例初始化及编写" class="headerlink" title="测试用例初始化及编写"></a>测试用例初始化及编写</h3><h4 id="配置启动测试测试框架"><a href="#配置启动测试测试框架" class="headerlink" title="配置启动测试测试框架"></a>配置启动测试测试框架</h4><p>进入 test&#x2F;developertest 目录，执行该目录下的启动脚本<br>.&#x2F;start.sh  选择当前的测试产品<br><img data-src="https://img-blog.csdnimg.cn/aabac0e6981548e096e0aefea6264d34.png#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="Fuzz测试用例初始化"><a href="#Fuzz测试用例初始化" class="headerlink" title="Fuzz测试用例初始化"></a>Fuzz测试用例初始化</h4><h5 id="Fuzz测试用例生成"><a href="#Fuzz测试用例生成" class="headerlink" title="Fuzz测试用例生成"></a>Fuzz测试用例生成</h5><p>执行 gen 命令生成 Fuzzer测试套，包含 fuzzer 源文件、配置文件和 corpus 语料库</p>
+<p>parse_fuzzer&#x2F;<br>├── corpus<br>    └──init<br>|──BUILD.gn<br>├──parse_fuzzer.h<br>├──parse_fuzzer.cpp<br>└──project.xml</p>
+<h5 id="命令参数说明"><a href="#命令参数说明" class="headerlink" title="命令参数说明"></a>命令参数说明</h5><p>gen 命令 ：gen -t TESTTYPE -fn FUZZERNAME -dp DIRECTORYPATH</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-t</td>
+<td>testtype</td>
+<td>测试类型</td>
+<td>目前仅支持 “FUZZ”</td>
+</tr>
+<tr>
+<td>-fn</td>
+<td>fuzzername</td>
+<td>fuzzer名称</td>
+<td>未显式区分Fuzz用例，名称必须以 “fuzzer” 结尾</td>
+</tr>
+<tr>
+<td>-dp</td>
+<td>dirpath</td>
+<td>fuzzer生成路径</td>
+<td>路径不存在则自动创建目录</td>
+</tr>
+</tbody></table>
+<h5 id="测试套生成"><a href="#测试套生成" class="headerlink" title="测试套生成"></a>测试套生成</h5><p>gen 命令示例，-t、-fn和-dp均为必选项<br>gen -t FUZZ -fn display_device_fuzzer -dp<br>drivers&#x2F;peripheral&#x2F;display&#x2F;test&#x2F;fuzztest&#x2F;</p>
+<p>生成的测试套目录如下</p>
+<p>display_device_fuzzer&#x2F;<br>├── corpus<br>   └──init<br>├──BUILD.gn<br>├──display_device_fuzzer.h<br>├──display_device_fuzzer.cpp<br>└──project.xml</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sbHZtLm9yZy9kb2NzL0xpYkZ1enplci5odG1sI29wdGlvbnM=">测试套内的project.xml参数配置根据libFuzzer参数配置进行修改链接</span></p>
+<h3 id="Fuzz用例编写"><a href="#Fuzz用例编写" class="headerlink" title="Fuzz用例编写"></a>Fuzz用例编写</h3><h4 id="跨进程"><a href="#跨进程" class="headerlink" title="跨进程"></a>跨进程</h4><p>目录结构<br>display_allocmem_fuzzer&#x2F;<br>├── corpus<br>    └──init<br>├──BUILD.gn<br>├──display_allocmem_fuzzer.h<br>├──display_allocmem_fuzzer.cpp<br>└──project.xml</p>
+<p>上述文件 corpus&#x2F;init 和 project.xml 不需要修改</p>
+<p>BUILD.gn</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#固定包含无需修改</span><br><span class="line">import(&quot;//build/config/features.gni&quot;)</span><br><span class="line">import(&quot;//build/ohos.gni&quot;)</span><br><span class="line">import(&quot;//build/test.gni&quot;)</span><br><span class="line"></span><br><span class="line">#编出的 fuzz 用例输出目录</span><br><span class="line">module_output_path = &quot;drivers_peripheral_display/display&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># DisplayAllocmemFuzzTest fuzz 用例名称</span><br><span class="line">ohos_fuzztest(&quot;DisplayAllocmemFuzzTest&quot;) &#123;</span><br><span class="line">  module_out_path = module_output_path</span><br><span class="line"></span><br><span class="line">#fuzz 配置文件目录</span><br><span class="line">  fuzz_config_file =</span><br><span class="line">      &quot;//drivers/peripheral/display/test/fuzztest/display_allocmem_fuzzer&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#fuzz 依赖头文件目录</span><br><span class="line">  include_dirs = [</span><br><span class="line">    &quot;//drivers/peripheral/display/interfaces/include&quot;,</span><br><span class="line">    &quot;//drivers/peripheral/display/test/fuzztest/display_allocmem_fuzzer&quot;,</span><br><span class="line">    &quot;//drivers/peripheral/display/hdi_service/gralloc/include&quot;,</span><br><span class="line">    &quot;//drivers/peripheral/display/hdi_service/gralloc/server&quot;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">#fuzz 编译选项</span><br><span class="line">  cflags = [</span><br><span class="line">    &quot;-g&quot;,</span><br><span class="line">    &quot;-O0&quot;,</span><br><span class="line">    &quot;-Wno-unused-variable&quot;,</span><br><span class="line">    &quot;-fno-omit-frame-pointer&quot;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">#fuzz 源文件</span><br><span class="line">  sources = [ &quot;display_allocmem_fuzzer.cpp&quot; ]</span><br><span class="line"></span><br><span class="line">#fuzz 依赖的动态链接库的目录及动态链接库名</span><br><span class="line">  deps = [ &quot;//drivers/peripheral/display/hdi_service/gralloc/server:libhdi_display_gralloc_stub&quot; ]</span><br><span class="line"></span><br><span class="line">#fuzz 所需依赖部件</span><br><span class="line">  external_deps = [</span><br><span class="line">    &quot;c_utils:utils&quot;,</span><br><span class="line">    &quot;hdf_core:libhdf_utils&quot;,</span><br><span class="line">    &quot;hdf_core:libhdi&quot;,</span><br><span class="line">    &quot;hiviewdfx_hilog_native:libhilog&quot;,</span><br><span class="line">    &quot;ipc:ipc_single&quot;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#fuzz 组名</span><br><span class="line">group(&quot;fuzztest&quot;) &#123;</span><br><span class="line"></span><br><span class="line">#本组模块是否参与编译</span><br><span class="line">  testonly = true</span><br><span class="line">  deps = []</span><br><span class="line"></span><br><span class="line">#本组依赖的动态链接库的目录及动态链接库名</span><br><span class="line">  deps += [ &quot;:DisplayAllocmemFuzzTest&quot; ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>display_allocmem_fuzzer.h</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//测试用例名称</span><br><span class="line">#ifndef OHOS_DISPLAY_ALLOCMEM_FUZZER_H</span><br><span class="line">#define OHOS_DISPLAY_ALLOCMEM_FUZZER_H</span><br><span class="line"></span><br><span class="line">#define FUZZ_PROJECT_NAME &quot;display_allocmem_fuzzer&quot;</span><br><span class="line"></span><br><span class="line">#endif // OHOS_DISPLAY_ALLOCMEM_FUZZER_H</span><br></pre></td></tr></table></figure>
+
+<p>display_allocmem_fuzzer.cpp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstddef&gt;</span><br><span class="line">#include &lt;cstdint&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;servmgr_hdi.h&gt;</span><br><span class="line">#include &quot;allocator_service_impl.h&quot;</span><br><span class="line">#include &quot;hdf_log.h&quot;</span><br><span class="line"></span><br><span class="line">using namespace OHOS::HDI::Display::V1_0;</span><br><span class="line"></span><br><span class="line">namespace OHOS &#123;</span><br><span class="line">constexpr size_t THRESHOLD = 10;</span><br><span class="line">// 跨进程 token校验值</span><br><span class="line">const std::u16string DECLARE_INTERFACE_DESCRIPTOR = u&quot;ohos.hdi.display.v1_0.IAllocator&quot;;</span><br><span class="line"></span><br><span class="line">uint32_t Convert2Uint32(const uint8_t* ptr)</span><br><span class="line">&#123;</span><br><span class="line">    if (ptr == nullptr) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    // 将第0个数字左移24位，将第1个数字左移16位，将第2个数字左移8位，第3个数字不左移</span><br><span class="line">    return (ptr[0] &lt;&lt; 24) | (ptr[1] &lt;&lt; 16) | (ptr[2] &lt;&lt; 8) | (ptr[3]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool DoSomethingInterestingWithMyAPI(const uint8_t* rawData, size_t size)</span><br><span class="line">&#123;</span><br><span class="line">    if (rawData == nullptr) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">//AllocatorServiceStub::OnRemoteRequest 中目前只实现一个接口调用，且使用 switch进行选择</span><br><span class="line">    constexpr int32_t CMD_ALLOCATOR_ALLOCMEM = 0;</span><br><span class="line">    uint32_t code = CMD_ALLOCATOR_ALLOCMEM;</span><br><span class="line"></span><br><span class="line">//fuzz 传入数据值</span><br><span class="line">    MessageParcel data;</span><br><span class="line">//data 写入 token校验值</span><br><span class="line">    data.WriteInterfaceToken(DECLARE_INTERFACE_DESCRIPTOR);</span><br><span class="line">//data 写入 rawData的数据及大小</span><br><span class="line">    data.WriteBuffer(rawData, size);</span><br><span class="line">    data.RewindRead(0);</span><br><span class="line">    MessageParcel reply;</span><br><span class="line">    MessageOption option;</span><br><span class="line">//AllocatorService 以便调用 OnRemoteRequest 接口</span><br><span class="line">    sptr&lt;AllocatorService&gt; displayAllocatorInterface = new AllocatorService();</span><br><span class="line">    if (displayAllocatorInterface == nullptr) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%&#123;public&#125;s: new AllocatorService failed&quot;, __func__);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">//跨进程调用 OnRemoteRequest 接口</span><br><span class="line">    displayAllocatorInterface-&gt;OnRemoteRequest(code, data, reply, option);</span><br><span class="line"></span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// fuzz 测试框架入口函数</span><br><span class="line">extern &quot;C&quot; int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size)</span><br><span class="line">&#123;</span><br><span class="line">    if (size &lt; OHOS::THRESHOLD) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // fuzz具体执行某一接口函数</span><br><span class="line">    OHOS::DoSomethingInterestingWithMyAPI(data, size);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/a3a447e4847a42c3a5045b96162a5978.png#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="直调"><a href="#直调" class="headerlink" title="直调"></a>直调</h4><p>目录结构<br>display_layer_fuzzer&#x2F;<br>├── corpus<br>    └──init<br>├──BUILD.gn<br>├──display_layer_fuzzer.h<br>├──display_layer_fuzzer.cpp<br>└──project.xml</p>
+<p>上述文件 corpus&#x2F;init 和 project.xml 不需要修改</p>
+<p>BUILD.gn</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#固定包含无需修改</span><br><span class="line">import(&quot;//build/config/features.gni&quot;)</span><br><span class="line">import(&quot;//build/ohos.gni&quot;)</span><br><span class="line">import(&quot;//build/test.gni&quot;)</span><br><span class="line"></span><br><span class="line">#编出的 fuzz 用例输出目录</span><br><span class="line">module_output_path = &quot;drivers_peripheral_display/display&quot;</span><br><span class="line"></span><br><span class="line"># DisplayLayerFuzzTest fuzz 用例名称</span><br><span class="line">ohos_fuzztest(&quot;DisplayLayerFuzzTest&quot;) &#123;</span><br><span class="line">  module_out_path = module_output_path</span><br><span class="line"></span><br><span class="line">#fuzz 配置文件目录</span><br><span class="line">  fuzz_config_file =</span><br><span class="line">      &quot;//drivers/peripheral/display/test/fuzztest/display_layer_fuzzer&quot;</span><br><span class="line"></span><br><span class="line">#fuzz 依赖头文件目录</span><br><span class="line">  include_dirs = [</span><br><span class="line">    &quot;//drivers/peripheral/display/test/fuzztest/common&quot;,</span><br><span class="line">    &quot;//drivers/peripheral/display/test/fuzztest/display_layer_fuzzer&quot;,</span><br><span class="line">    &quot;//third_party/openmax/api/1.1.2&quot;,</span><br><span class="line">    &quot;//drivers/peripheral/display/interfaces/include&quot;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">#fuzz 编译选项</span><br><span class="line">  cflags = [</span><br><span class="line">    &quot;-g&quot;,</span><br><span class="line">    &quot;-O0&quot;,</span><br><span class="line">    &quot;-Wno-unused-variable&quot;,</span><br><span class="line">    &quot;-fno-omit-frame-pointer&quot;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">#fuzz 源文件</span><br><span class="line">  sources = [ &quot;display_layer_fuzzer.cpp&quot; ]</span><br><span class="line"></span><br><span class="line">#fuzz 依赖的动态链接库的目录及动态链接库名</span><br><span class="line">  deps = [ &quot;//device/soc/rockchip/rk3568/hardware/display:display_device&quot; ]</span><br><span class="line"></span><br><span class="line">#fuzz 所需依赖部件</span><br><span class="line">  external_deps = [</span><br><span class="line">    &quot;c_utils:utils&quot;,</span><br><span class="line">    &quot;hdf_core:libhdf_utils&quot;,</span><br><span class="line">    &quot;hdf_core:libhdi&quot;,</span><br><span class="line">    &quot;hiviewdfx_hilog_native:libhilog&quot;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#fuzz 组名</span><br><span class="line">group(&quot;fuzztest&quot;) &#123;</span><br><span class="line">#本组模块是否参与编译</span><br><span class="line">  testonly = true</span><br><span class="line">  deps = []</span><br><span class="line">#本组依赖的动态链接库的目录及动态链接库名</span><br><span class="line">  deps += [ &quot;:DisplayLayerFuzzTest&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>display_layer_fuzzer.h</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//测试用例名称</span><br><span class="line">#ifndef OHOS_DISPLAY_LAYER_FUZZER_H</span><br><span class="line">#define OHOS_DISPLAY_LAYER_FUZZER_H</span><br><span class="line"></span><br><span class="line">#define FUZZ_PROJECT_NAME &quot;display_layer_fuzzer&quot;</span><br><span class="line"></span><br><span class="line">#endif // OHOS_DISPLAY_LAYER_FUZZER_H</span><br></pre></td></tr></table></figure>
+
+<p>display_layer_fuzzer.cpp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;cstddef&gt;</span><br><span class="line">#include &lt;cstdint&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;servmgr_hdi.h&gt;</span><br><span class="line">#include &quot;hdf_log.h&quot;</span><br><span class="line">#include &quot;display_common_fuzzer.h&quot;</span><br><span class="line">#include &quot;display_layer.h&quot;</span><br><span class="line">#include &quot;display_layer_fuzzer.h&quot;</span><br><span class="line">#include &quot;display_type.h&quot;</span><br><span class="line">#include &quot;securec.h&quot;</span><br><span class="line"></span><br><span class="line">namespace OHOS &#123;</span><br><span class="line">constexpr size_t THRESHOLD = 10;</span><br><span class="line">constexpr int32_t OFFSET = 4;</span><br><span class="line"></span><br><span class="line">uint32_t Convert2Uint32(const uint8_t *ptr)</span><br><span class="line">&#123;</span><br><span class="line">    if (ptr == nullptr) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    // 将第0个数字左移24位，将第1个数字左移16位，将第2个数字左移8位，第3个数字不左移</span><br><span class="line">    return (ptr[0] &lt;&lt; 24) | (ptr[1] &lt;&lt; 16) | (ptr[2] &lt;&lt; 8) | (ptr[3]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int32_t TestSetLayerZorder(LayerFuncs *layerFuncs, uint8_t *data, size_t size)</span><br><span class="line">&#123;</span><br><span class="line">    size_t usedLen = sizeof(uint32_t) + sizeof(uint32_t) + sizeof(uint32_t);</span><br><span class="line">    if (usedLen &gt; size) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%&#123;public&#125;s: usedLen greater than size&quot;, __func__);</span><br><span class="line">        return DISPLAY_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    uint32_t param1 = reinterpret_cast&lt;uint32_t&gt;(ShiftPointer(data, 0));</span><br><span class="line">    uint32_t param2 = reinterpret_cast&lt;uint32_t&gt;(ShiftPointer(data, sizeof(param1)));</span><br><span class="line">    uint32_t param3 = reinterpret_cast&lt;uint32_t&gt;(ShiftPointer(data, sizeof(param1) + sizeof(param2)));</span><br><span class="line">    return layerFuncs-&gt;SetLayerZorder(param1, param2, param3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">typedef int32_t (*TestFuncs[])(LayerFuncs*, uint8_t*, size_t);</span><br><span class="line"></span><br><span class="line">TestFuncs g_testFuncs = &#123;</span><br><span class="line">    //本应有很多测试接口 但本次只为举例</span><br><span class="line">    TestSetLayerZorder,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bool DoSomethingInterestingWithMyAPI(const uint8_t *rawData, size_t size)</span><br><span class="line">&#123;</span><br><span class="line">    if (rawData == nullptr) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    // 使用 rawData 前四位数据 生成随机数 code</span><br><span class="line">    uint32_t code = Convert2Uint32(rawData);</span><br><span class="line">    // 确保随机性 rawData 向后偏移 4 位</span><br><span class="line">    rawData = rawData + OFFSET;</span><br><span class="line">    // rawDta 所对应 size 减小 4 位</span><br><span class="line">    size = size - OFFSET;</span><br><span class="line"></span><br><span class="line">    // rawData 为 const 数据 之后作为入参 需要去 const 操作</span><br><span class="line">    uint8_t *data = const_cast&lt;uint8_t *&gt;(rawData);</span><br><span class="line">    LayerFuncs *layerFuncs = nullptr;</span><br><span class="line">    // 初始化 LayerFuncs 类型的 layerFuncs指针</span><br><span class="line">    int32_t ret = LayerInitialize(&amp;layerFuncs);</span><br><span class="line">    if (ret != 0) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%&#123;public&#125;s: Failed to initialize gralloc&quot;, __func__);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取测试函数指针数组的长度 len</span><br><span class="line">    uint32_t len = GetLength(g_testFuncs);</span><br><span class="line">    if (len == 0) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%&#123;public&#125;s: The array length is equal to 0 &quot;, __func__);</span><br><span class="line">        LayerUninitialize(layerFuncs);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    // 通过测试函数的指针数组 去测试具体某个接口 且通过 code % len 确保每次测试都会执行某一接口 不会出现脱靶现象</span><br><span class="line">    ret = g_testFuncs[code % len](layerFuncs, data, size);</span><br><span class="line">    // 反初始化 LayerFuncs 类型的 layerFuncs指针</span><br><span class="line">    LayerUninitialize(layerFuncs);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// fuzz 测试框架入口函数</span><br><span class="line">extern &quot;C&quot; int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)</span><br><span class="line">&#123;</span><br><span class="line">    if (size &lt; OHOS::THRESHOLD) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // fuzz具体执行某一接口函数</span><br><span class="line">    OHOS::DoSomethingInterestingWithMyAPI(data, size);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/e55caf76b3594a7fbed675d318479ebf.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="Fuzz测试用例执行"><a href="#Fuzz测试用例执行" class="headerlink" title="Fuzz测试用例执行"></a>Fuzz测试用例执行</h3><p>hdc file send<br>将编好的fuzz可执行文件推到data目录下</p>
+<p>chmod +x fuzz可执行文件名</p>
+<p>在&#x2F;data&#x2F;test目录手动创建corpus文件夹，并将测试套内的init文件推送到该目录下。</p>
+<p>.&#x2F;DisplayGrallocFuzzTest corpus  -max_len&#x3D;1000 -max_total_time&#x3D;950 -rss_limit_mb&#x3D;2048<br>字符长度    执行次数   内存占用大小</p>
+<p>.&#x2F;DisplayDeviceFuzzTest corpus   -max_len&#x3D;1000 -max_total_time&#x3D;950 -rss_limit_mb&#x3D;2048</p>
+<p>.&#x2F;DisplayLayerFuzzTest corpus  -max_len&#x3D;1000 -max_total_time&#x3D;950 -rss_limit_mb&#x3D;2048</p>
+<p>.&#x2F;DisplayAllocmemFuzzTest corpus  -max_len&#x3D;1000 -max_total_time&#x3D;3000 -rss_limit_mb&#x3D;2048<br>这个是跨进程编成的fuzz</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-12-01 16:25:13" itemprop="dateModified" datetime="2022-12-01T16:25:13+08:00">2022-12-01</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/" title="">https://muxiaoximuxiaoxi.github.io/2022/12/01/fuzz安全测试/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetfk5zwj20zk0m8e81.jpg" title="display模块讲解">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>display模块讲解</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuzz%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Fuzz简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">测试框架基础环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E6%A3%80%E6%9F%A5"><span class="toc-number">2.1.</span> <span class="toc-text">安装环境检查</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E7%BC%96%E5%86%99"><span class="toc-number">3.</span> <span class="toc-text">测试用例初始化及编写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="toc-number">3.1.</span> <span class="toc-text">配置启动测试测试框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fuzz%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">Fuzz测试用例初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Fuzz%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%94%9F%E6%88%90"><span class="toc-number">3.2.1.</span> <span class="toc-text">Fuzz测试用例生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">3.2.2.</span> <span class="toc-text">命令参数说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%A5%97%E7%94%9F%E6%88%90"><span class="toc-number">3.2.3.</span> <span class="toc-text">测试套生成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuzz%E7%94%A8%E4%BE%8B%E7%BC%96%E5%86%99"><span class="toc-number">4.</span> <span class="toc-text">Fuzz用例编写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%A8%E8%BF%9B%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">跨进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E8%B0%83"><span class="toc-number">4.2.</span> <span class="toc-text">直调</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuzz%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C"><span class="toc-number">5.</span> <span class="toc-text">Fuzz测试用例执行</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">15</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" title="开发板测试">开发板测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="HDI-GEN使用指导">HDI-GEN使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="蓝区上库">蓝区上库</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/20/JAVA-native%E5%85%B3%E9%94%AE%E5%AD%97/" title="JAVA native关键字">JAVA native关键字</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/framework--display/" title="framework - display">framework - display</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/01/fuzz安全测试/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

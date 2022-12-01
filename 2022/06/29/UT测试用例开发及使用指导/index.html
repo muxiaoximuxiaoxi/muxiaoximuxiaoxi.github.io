@@ -1,0 +1,776 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/">
+
+
+
+  <title>
+UT平台驱动测试用例开发及使用指导 - _开源鸿蒙驱动子系统 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">UT平台驱动测试用例开发及使用指导
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-06-29 20:28:53">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-29T20:28:53+08:00">2022-06-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _开源鸿蒙驱动子系统"><span itemprop="name">_开源鸿蒙驱动子系统</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="UT平台驱动测试用例开发及使用指导"><a href="#UT平台驱动测试用例开发及使用指导" class="headerlink" title="UT平台驱动测试用例开发及使用指导"></a>UT平台驱动测试用例开发及使用指导</h1><h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><h2 id="1-编写adc-test-c以及adc-test-h"><a href="#1-编写adc-test-c以及adc-test-h" class="headerlink" title="1. 编写adc_test.c以及adc_test.h"></a>1. 编写adc_test.c以及adc_test.h</h2><p>在adc_test.h中声明结构体AdcTester，AdcTestConfig以及枚举类型AdcTestCmd、AdcTestConfig用于保存测试套的配置参数，当用一套测试套基于不同硬件测试一个模块时，若所需要的参数不同，则需要声明该结构体并在adc_driver_test.c中解析hcs中参数放入该结构体中，AdcTester继承父类AdcTestConfig并包含DevHandle类型的句柄，用于调用AdcOpen（）时获取ADC句柄，测试套中的每一个测试用例都对应AdcTestCmd中的一个枚举，通过枚举的cmd即可执行对应测试用例。</p>
+<p>adc_test.c中编写测试用例，例如AdcTestSetupAll（）、AdcTestTearDownAll（）测试模块功能的AdcTestRead（）测试可靠性的AdcTestReliability（）以及测试模块的线程性能得AdcTestMultiThread（）用例等。</p>
+<p>在adc_test.c中还要实例化一个全局的函数列表g_engry[],将AdcTestCmd的枚举与测试用例一一对应，以便于AdcTestExecute（）函数调用。</p>
+<pre><code>Static struct AdcTestEntry g_entry[] = &#123;
+&#123;ADC_TEST_CMD_READ,AdcTestRead,” AdcTestRead”&#125;,
+&#123;ADC_TEST_CMD_MULTI_THREAD,AdcTestMultiThread,” AdcTestMultiThread”&#125;,
+&#123;ADC_TEST_CMD_RELIABILITY,AdcTestReliability,” AdcTestReliability”&#125;,
+&#123;ADC_TEST_CMD_SET_ALL,AdcTestSetUpAll,” AdcTestSetUpAll”&#125;,
+&#123;ADC_TEST_CMD_TEARDOWN_ALL,AdcTestTearDownAll,” AdcTestTearDownAll”&#125;
+&#125;
+</code></pre>
+<h2 id="2-编写hdf-adc-entry-test-c以及hdf-adc-entry-test-h"><a href="#2-编写hdf-adc-entry-test-c以及hdf-adc-entry-test-h" class="headerlink" title="2. 编写hdf_adc_entry_test.c以及hdf_adc_entry_test.h"></a>2. 编写hdf_adc_entry_test.c以及hdf_adc_entry_test.h</h2><p>在hdf_adc_entry_test.c和hdf_adc_entry_test.h中主要声明和定义了用户态调用内核态测试用例入口。</p>
+<pre><code>int32_t HdfAdcTestEntry(HdfTestMsg *msg)
+&#123;
+    HDF_LOGE(&quot;%s: enter&quot;, __func__);
+    if (msg == NULL) &#123;
+        return HDF_FAILURE;
+    &#125;
+    msg-&gt;result = AdcTestExecute(msg-&gt;subCmd);
+    return HDF_SUCCESS;
+&#125;
+</code></pre>
+<h2 id="3-编写用户态测试程序-hdf-adc-test-cpp"><a href="#3-编写用户态测试程序-hdf-adc-test-cpp" class="headerlink" title="3. 编写用户态测试程序 hdf_adc_test.cpp"></a>3. 编写用户态测试程序 hdf_adc_test.cpp</h2><h3 id="3-1-按照测试用例目录规划，定义测试套文件"><a href="#3-1-按照测试用例目录规划，定义测试套文件" class="headerlink" title="3.1 按照测试用例目录规划，定义测试套文件"></a>3.1 按照测试用例目录规划，定义测试套文件</h3><p>测试套文件需要继承testing::Test类，命名以测试模块+test.cpp进行命名，来定义测试套文件。因此，开发一个外设用户态测试用例，可参考hdf_adc_test.cpp实现，新建hdf_xxx_test.cpp,实现自己模块的测试套。</p>
+<h3 id="3-2-定义测试套"><a href="#3-2-定义测试套" class="headerlink" title="3.2 定义测试套"></a>3.2 定义测试套</h3><p>实现测试套时需要先进行预处理和后处理操作（如下示例所示），（具体实现方法可参照hdf_adc_test.cpp文件），SetUpTestCase是针对该测试套下所有的用例执行前的预置处理；TearDownTestCase是针对该测试套下所有的用例执行后释放。</p>
+<h3 id="3-3-实现测试套具体的测试用例-包括用例注释和用例的逻辑实现，针对被测对象的特性编写测试用例，以hdf-adc-test-cpp文件为例说明"><a href="#3-3-实现测试套具体的测试用例-包括用例注释和用例的逻辑实现，针对被测对象的特性编写测试用例，以hdf-adc-test-cpp文件为例说明" class="headerlink" title="3.3 实现测试套具体的测试用例(包括用例注释和用例的逻辑实现，针对被测对象的特性编写测试用例，以hdf_adc_test.cpp文件为例说明)"></a>3.3 实现测试套具体的测试用例(包括用例注释和用例的逻辑实现，针对被测对象的特性编写测试用例，以hdf_adc_test.cpp文件为例说明)</h3><p>逻辑实现：调用测试套HWTEST_F编写测试用例（Gtest框架中常用的测试套种类及功能请参考<span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vb3Blbmhhcm1vbnkvZG9jcy9ibG9iL21hc3Rlci96aC1jbi9kZXZpY2UtZGV2L3N1YnN5c3RlbXMvc3Vic3lzLXRlc3RndWlkZS10ZXN0Lm1k">测试用例开发指导</span>的开发指导篇章中的接口说明章节），测试用例的预期结果必须要有对应的断言，来判断测试结果是否与预期结果一致，如ASSERT_NE、EXPECT_EQ。HWTEST_F测试套编写的用例具备独立性，执行过程相互之间不受影响。</p>
+<p>本例使用HWTEST_F宏，由于目前ADC框架仅支持内核态API,因此在用户态下进行测试，就要用到测试框架提供的服务，通过服务向内核发送msg，msg在hdf_adc_entry_test.c中被解析并调用对应的测试为例，测试内核态API的如下。</p>
+<pre><code>HWTEST_F(HdfliteAdcTest,AdcTestRead001,TestSize.Level1)&#123;
+Struct HdfTestMsg msg=&#123;TEST_PAL_ADC_TYPE,ADC_TEST_CMD_READ,-1&#125;;
+EXPECT_EQ(0,HdfTestSendMsgToService(&amp;msg)); 
+&#125;
+</code></pre>
+<p>若待测试框架支持用户态API，则该测试程序中要分别对用户态和内核态进行测试，示例如下：</p>
+<pre><code>HWTEST_F(HdfliteAdcTest,AdcTestRead001,TestSize.Level1)&#123;
+Struct HdfTestMsg msg=&#123;TEST_PAL_ADC_TYPE,ADC_TEST_CMD_READ,-1&#125;;
+EXPECT_EQ(0,HdfTestSendMsgToService(&amp;msg)); 
+printf(“%s:kernel test done,then for user\n”,__func__);
+EXPECT_EQ(0,AdcTestExecute(ADC_TEST_CMD_READ));
+Printf(“%s exit\n”,__func__);   
+&#125;
+</code></pre>
+<h2 id="4-修改hdf-main-test-c和hdf-main-test-h文件"><a href="#4-修改hdf-main-test-c和hdf-main-test-h文件" class="headerlink" title="4. 修改hdf_main_test.c和hdf_main_test.h文件"></a>4. 修改hdf_main_test.c和hdf_main_test.h文件</h2><h3 id="4-1-确认hdf-main-test-h的枚举类型HdfTestSubModuleCmd中有待测试模块（此处省略已有的其他模块）；"><a href="#4-1-确认hdf-main-test-h的枚举类型HdfTestSubModuleCmd中有待测试模块（此处省略已有的其他模块）；" class="headerlink" title="4.1 确认hdf_main_test.h的枚举类型HdfTestSubModuleCmd中有待测试模块（此处省略已有的其他模块）；"></a>4.1 确认hdf_main_test.h的枚举类型HdfTestSubModuleCmd中有待测试模块（此处省略已有的其他模块）；</h3><pre><code> typedef enum&#123;
+    // … 
+    TEST_PAL_ADC_TYPE = 20,
+    // … 
+&#125;HdfTestSubModuleCmd;
+</code></pre>
+<h3 id="4-2-修改hdf-main-test-c（包含头文件-hdf-adc-entry-test-h，并在函数列表中添加ADC测试用例的列表（该列表在adc-test-c中定义为static-struct-AdcTestEntry-g-entry-））"><a href="#4-2-修改hdf-main-test-c（包含头文件-hdf-adc-entry-test-h，并在函数列表中添加ADC测试用例的列表（该列表在adc-test-c中定义为static-struct-AdcTestEntry-g-entry-））" class="headerlink" title="4.2 修改hdf_main_test.c（包含头文件 hdf_adc_entry_test.h，并在函数列表中添加ADC测试用例的列表（该列表在adc_test.c中定义为static struct AdcTestEntry g_entry []））;"></a>4.2 修改hdf_main_test.c（包含头文件 hdf_adc_entry_test.h，并在函数列表中添加ADC测试用例的列表（该列表在adc_test.c中定义为static struct AdcTestEntry g_entry []））;</h3><pre><code>// add submodule entry
+HdfTestFuncList g_hdfTestFuncList[] = &#123;
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM) || defined(CONFIG_DRIVERS_HDF_PLATFORM)
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_GPIO) || defined(CONFIG_DRIVERS_HDF_PLATFORM_GPIO)
+    &#123; TEST_PAL_GPIO_TYPE, HdfGpioTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_I2C) || defined(CONFIG_DRIVERS_HDF_PLATFORM_I2C)
+    &#123; TEST_PAL_I2C_TYPE, HdfI2cTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_SPI) || defined(CONFIG_DRIVERS_HDF_PLATFORM_SPI)
+    &#123; TEST_PAL_SPI_TYPE, HdfSpiUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_UART) || defined(CONFIG_DRIVERS_HDF_PLATFORM_UART)
+    &#123; TEST_PAL_UART_TYPE, HdfUartUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_WATCHDOG) || defined(CONFIG_DRIVERS_HDF_PLATFORM_WATCHDOG)
+    &#123; TEST_PAL_WDT_TYPE, HdfWatchdogTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_RTC) || defined(CONFIG_DRIVERS_HDF_PLATFORM_RTC)
+    &#123; TEST_PAL_RTC_TYPE, HdfRtcEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_MIPI_DSI) || defined(CONFIG_DRIVERS_HDF_PLATFORM_MIPI_DSI)
+    &#123; TEST_PAL_MIPI_DSI_TYPE, HdfMipiDsiEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_SDIO) || defined(CONFIG_DRIVERS_HDF_PLATFORM_SDIO)
+    &#123; TEST_PAL_SDIO_TYPE, HdfSdioUnitTestEntry &#125;,
+#endif
+#if (defined(LOSCFG_STORAGE_EMMC) &amp;&amp; defined(LOSCFG_DRIVERS_HDF_PLATFORM_EMMC)) || \
+     defined(CONFIG_DRIVERS_HDF_PLATFORM_EMMC)
+    &#123; TEST_PAL_EMMC_TYPE, HdfEmmcUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_PWM) || defined(CONFIG_DRIVERS_HDF_PLATFORM_PWM)
+    &#123; TEST_PAL_PWM_TYPE, HdfPwmUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_ADC) || defined(CONFIG_DRIVERS_HDF_PLATFORM_ADC)
+    &#123; TEST_PAL_ADC_TYPE, HdfAdcTestEntry &#125;,
+#endif
+#endif
+    &#123; TEST_CONFIG_TYPE, HdfConfigEntry &#125;,
+    &#123; TEST_OSAL_ITEM, HdfOsalEntry &#125;,
+#if defined(LOSCFG_DRIVERS_HDF_WIFI) || defined(CONFIG_DRIVERS_HDF_WIFI)
+    &#123;TEST_WIFI_TYPE, HdfWifiEntry&#125;,
+#endif
+&#125;;
+</code></pre>
+<h2 id="5-解析测试用例配置参数（可选）"><a href="#5-解析测试用例配置参数（可选）" class="headerlink" title="5. 解析测试用例配置参数（可选）"></a>5. 解析测试用例配置参数（可选）</h2><p>若测试用例基于不同硬件执行时需要不同的参数，则需要将这些易变的参数放在hcs中，并通过adc_driver_test.c解析。</p>
+<h3 id="5-1-新增adc-test-config-hcs文件，写入易变参数："><a href="#5-1-新增adc-test-config-hcs文件，写入易变参数：" class="headerlink" title="5.1 新增adc_test_config.hcs文件，写入易变参数："></a>5.1 新增adc_test_config.hcs文件，写入易变参数：</h3><pre><code> root&#123;
+    module = &quot;adc&quot;;
+    adc_config&#123;
+        adc_controller_tester&#123;
+            match_attr = &quot;ADC_TEST&quot;;
+            devid = 0;
+            channel = 1;
+            maxchannel = 1;
+            activebit = 10;
+            rate = 20000;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="5-2-编写adc-driver-test-c文件，用于解析这些配置参数，入口如下："><a href="#5-2-编写adc-driver-test-c文件，用于解析这些配置参数，入口如下：" class="headerlink" title="5.2  编写adc_driver_test.c文件，用于解析这些配置参数，入口如下："></a>5.2  编写adc_driver_test.c文件，用于解析这些配置参数，入口如下：</h3><pre><code>struct HdfDriverEntry g_adcTestEntry = &#123;
+    .moduleVersion = 1,
+    .Bind = AdcTestBind,
+    .Init = AdcTestInit,
+    .Release = AdcTestRelease,
+    .moduleName = &quot;PLATFORM_ADC_TEST&quot;,
+&#125;;
+HDF_INIT(g_adcTestEntry);
+</code></pre>
+<p>可以在AdcTestBind()或者AdcTestRelease()中解析配置参数。</p>
+<p>编写一个AdcTestDisPatch()函数，并将其挂至service.Dispatch钩子上，这样既可在其他程序中调用AdcTestDisPatch()获取配置参数。</p>
+<pre><code>static int32_t AdcTestDispatch(struct HdfDeviceIoClient *client, int cmd, struct HdfSBuf *data, struct HdfSBuf *reply)
+&#123;
+    HDF_LOGD(&quot;%s: enter!&quot;, __func__);
+
+    if (cmd == 0) &#123;
+        if (reply == NULL) &#123;
+            HDF_LOGE(&quot;%s: reply is null!&quot;, __func__);
+            return HDF_ERR_INVALID_PARAM;
+        &#125;
+        if (!HdfSbufWriteBuffer(reply, &amp;g_config, sizeof(g_config))) &#123;
+            HDF_LOGE(&quot;%s: write reply failed&quot;, __func__);
+            return HDF_ERR_IO;
+        &#125;
+    &#125; else &#123;
+        return HDF_ERR_NOT_SUPPORT;
+    &#125;
+
+    return HDF_SUCCESS;
+&#125;
+</code></pre>
+<p>在AdcTestBind()中挂钩子：</p>
+<pre><code>Service.Dispatch = AdcTestDisPatch;
+Device-&gt;service = &amp;service;
+</code></pre>
+<h3 id="5-3-在device-info-hcs内添加用于解析参数的设备服务节点"><a href="#5-3-在device-info-hcs内添加用于解析参数的设备服务节点" class="headerlink" title="5.3  在device_info.hcs内添加用于解析参数的设备服务节点"></a>5.3  在device_info.hcs内添加用于解析参数的设备服务节点</h3><p>设备服务节点添加有两种方式，第一种是新建一个sample_host节点, 另一种方式在原有源码配置plaform节点中添加(此时添加认为新增的驱动跟platform中的设备是同类设备)我们采用的是后者的方式。</p>
+<pre><code>root&#123;
+     device_info&#123;
+         test_host::host&#123;\\\\
+             hostName = &quot;test_host&quot;;
+             priority = 180;
+             device_hdf_test::device&#123;
+                 //...
+             &#125;
+             device_platform_test::device&#123;
+                 //...
+                 /**********以下为新增内容************/
+                 adc_tester::deviceNode&#123;
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = &quot;PLATFORM_ADC_TEST&quot;;
+                    devicematchAttr = &quot;ADC_TEST&quot;;
+                    ServiceName = &quot;ADC_TEST&quot;;
+                 &#125;
+                 /**********以上为新增内容************/
+             &#125;
+         &#125;
+     &#125;
+ &#125;
+</code></pre>
+<p>其中”policy”字段为2，对外发布服务，” priority” 驱动启动优先级（0-200），值越大优先级越低, 优先级相同则不保证device的加载顺序,”moduleName”字段与adc_driver_test.c中的moduleName保持一致，” devicematchAtr”与adc_test_config.hcs中的”match_attr”保持一致。</p>
+<h2 id="6-编译"><a href="#6-编译" class="headerlink" title="6. 编译"></a>6. 编译</h2><h3 id="6-1-修改用户态编译脚本"><a href="#6-1-修改用户态编译脚本" class="headerlink" title="6.1 修改用户态编译脚本"></a>6.1 修改用户态编译脚本</h3><p>修改BUILD.gn，添加源文件：</p>
+<pre><code>if(board_name == &quot;hi3516dv300&quot; || board_name == &quot;hispark_taurus&quot;)&#123;
+    unittest(&quot;hdf_adapter_uhdf_test_platform&quot;)
+    #...
+    if(storage_type == &quot;emmc&quot;)&#123;
+        source +=[
+            &quot;//drivers/framework/support/platform/test/unittest/common/hdf_emmc_test.cpp&quot;,
+            &quot;//drivers/framework/support/platform/test/unittest/common/hdf_i2c_test.cpp&quot;,
+            &quot;//drivers/framework/support/platform/test/unittest/common/hdf_sdio_test.cpp&quot;,
+            &quot;//drivers/framework/unittest/common/i2c_test.c&quot;,
+            &quot;//drivers/framework/support/platform/test/unittest/common/hdf_adc_test.cpp&quot;,
+            &quot;//drivers/framework/unittest/common/adc_test.c&quot;
+        ]
+    &#125;
+    #...
+&#125;
+</code></pre>
+<h3 id="6-2-修改内核态编译脚本"><a href="#6-2-修改内核态编译脚本" class="headerlink" title="6.2 修改内核态编译脚本"></a>6.2 修改内核态编译脚本</h3><p>修改Makefile添加源文件</p>
+<pre><code>ifeq($(LOSCFG_DRIVER_HDF_PLATFORM),y)
+LOCAL_SRCS += $(HDF_TEST_FOMWORK_ROOT)/platform/common/platform_driver_test.c
+ifeq($(LOSCFG_DRIVERS_HDF_PLATFORM_ADC),y)
+LOCAL_SRCS += $(HDF_TEST_FRAMWORK_ROOT)/platform/common/adc_test.c
+LOCAL_SRCS += $(HDF_TEST_FRAMWORK_ROOT)/platform/common/adc_driver_test.c
+LOCAL_SRCS += $(HDF_TEST_FRAMWORK_ROOT)/platform/hdf_adc_entry_test.c
+endif
+endif
+</code></pre>
+<h3 id="6-3-启用宏"><a href="#6-3-启用宏" class="headerlink" title="6.3 启用宏"></a>6.3 启用宏</h3><p>本文以ADC为例介绍如何为一个新的测试用例配置宏，以及如何通过宏启用该测试用例。</p>
+<h4 id="6-3-1-修改drivers-x2F-adapter-x2F-khdf-x2F-liteos-x2F-kconfig-按照如下格式添加配置"><a href="#6-3-1-修改drivers-x2F-adapter-x2F-khdf-x2F-liteos-x2F-kconfig-按照如下格式添加配置" class="headerlink" title="6.3.1 修改drivers&#x2F;adapter&#x2F;khdf&#x2F;liteos&#x2F;kconfig,按照如下格式添加配置"></a>6.3.1 修改drivers&#x2F;adapter&#x2F;khdf&#x2F;liteos&#x2F;kconfig,按照如下格式添加配置</h4><pre><code>Config DRIVERS_HDF_PLATFORM_ADC
+Bool “Enable HDF platform adc driver”
+Default n
+Depends on DRIVERS_HDF_PLATFORM
+help
+Answer Y to enable HDF platform adc driver
+</code></pre>
+<h4 id="6-3-2-在drivers-x2F-framework-x2F-test-x2F-unittest-x2F-common-x2F-hdf-main-test-c中包含测试用例入口头文件hdf-adc-entry-test-h并为入口添加宏。"><a href="#6-3-2-在drivers-x2F-framework-x2F-test-x2F-unittest-x2F-common-x2F-hdf-main-test-c中包含测试用例入口头文件hdf-adc-entry-test-h并为入口添加宏。" class="headerlink" title="6.3.2 在drivers&#x2F;framework&#x2F;test&#x2F;unittest&#x2F;common&#x2F;hdf_main_test.c中包含测试用例入口头文件hdf_adc_entry_test.h并为入口添加宏。"></a>6.3.2 在drivers&#x2F;framework&#x2F;test&#x2F;unittest&#x2F;common&#x2F;hdf_main_test.c中包含测试用例入口头文件hdf_adc_entry_test.h并为入口添加宏。</h4><p>包含测试用例入口头文件：</p>
+<pre><code>#if defined（LOSCFG_DRIVERS_HDF_PLATFORM_ADC）||define（CONFIG_DRIVERS_HDF_PLATFORM_ADC）
+#include “hdf_adc_entry_test.h”
+#endif
+</code></pre>
+<p>在g_hdfTestFunList[]中新增内容：</p>
+<pre><code>// add submodule entry
+HdfTestFuncList g_hdfTestFuncList[] = &#123;
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM) || defined(CONFIG_DRIVERS_HDF_PLATFORM)
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_GPIO) || defined(CONFIG_DRIVERS_HDF_PLATFORM_GPIO)
+    &#123; TEST_PAL_GPIO_TYPE, HdfGpioTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_I2C) || defined(CONFIG_DRIVERS_HDF_PLATFORM_I2C)
+    &#123; TEST_PAL_I2C_TYPE, HdfI2cTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_SPI) || defined(CONFIG_DRIVERS_HDF_PLATFORM_SPI)
+    &#123; TEST_PAL_SPI_TYPE, HdfSpiUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_UART) || defined(CONFIG_DRIVERS_HDF_PLATFORM_UART)
+    &#123; TEST_PAL_UART_TYPE, HdfUartUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_WATCHDOG) || defined(CONFIG_DRIVERS_HDF_PLATFORM_WATCHDOG)
+    &#123; TEST_PAL_WDT_TYPE, HdfWatchdogTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_RTC) || defined(CONFIG_DRIVERS_HDF_PLATFORM_RTC)
+    &#123; TEST_PAL_RTC_TYPE, HdfRtcEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_MIPI_DSI) || defined(CONFIG_DRIVERS_HDF_PLATFORM_MIPI_DSI)
+    &#123; TEST_PAL_MIPI_DSI_TYPE, HdfMipiDsiEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_SDIO) || defined(CONFIG_DRIVERS_HDF_PLATFORM_SDIO)
+    &#123; TEST_PAL_SDIO_TYPE, HdfSdioUnitTestEntry &#125;,
+#endif
+#if (defined(LOSCFG_STORAGE_EMMC) &amp;&amp; defined(LOSCFG_DRIVERS_HDF_PLATFORM_EMMC)) || 
+     defined(CONFIG_DRIVERS_HDF_PLATFORM_EMMC)
+    &#123; TEST_PAL_EMMC_TYPE, HdfEmmcUnitTestEntry &#125;,
+#endif
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_PWM) || defined(CONFIG_DRIVERS_HDF_PLATFORM_PWM)
+    &#123; TEST_PAL_PWM_TYPE, HdfPwmUnitTestEntry &#125;,
+#endif
+/****************以下为新增内容****************/
+#if defined(LOSCFG_DRIVERS_HDF_PLATFORM_ADC) || defined(CONFIG_DRIVERS_HDF_PLATFORM_ADC)
+    &#123; TEST_PAL_ADC_TYPE, HdfAdcTestEntry &#125;,
+#endif
+/****************以上为新增内容*************/
+#endif
+    &#123; TEST_CONFIG_TYPE, HdfConfigEntry &#125;,
+    &#123; TEST_OSAL_ITEM, HdfOsalEntry &#125;,
+#if defined(LOSCFG_DRIVERS_HDF_WIFI) || defined(CONFIG_DRIVERS_HDF_WIFI)
+    &#123;TEST_WIFI_TYPE, HdfWifiEntry&#125;,
+#endif
+&#125;;
+</code></pre>
+<h4 id="6-3-3-启用ADC测试用例"><a href="#6-3-3-启用ADC测试用例" class="headerlink" title="6.3.3 启用ADC测试用例"></a>6.3.3 启用ADC测试用例</h4><p>在kernel&#x2F;liteos_a&#x2F;tools&#x2F;build&#x2F;config&#x2F;hispark_taurus_debug_shell.config文件中添加一行：</p>
+<pre><code>LOSCFG_DRIVERS_HDF_PLATFORM_ADC = y;
+</code></pre>
+<p>添加完成后需要重新编译代码.</p>
+<h3 id="6-4-编译"><a href="#6-4-编译" class="headerlink" title="6.4 编译"></a>6.4 编译</h3><p>执行  hb set</p>
+<p>输入</p>
+<p>选择”ipcamera_hispark_taurus_linux@hisilicon”</p>
+<p>执行hb build 进行编译</p>
+<h2 id="7-烧录"><a href="#7-烧录" class="headerlink" title="7. 烧录"></a>7. 烧录</h2><p>烧录参考：<span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vaGFpemhvdXlhbmcvb2hvc19wbGF0Zm9ybV9kb2NzL3RyZWUvbWFzdGVyL2JvYXJkL2hpc3BhcmtfdGF1cnVz">开发板烧写</span></p>
+<h2 id="8-挂载nfs"><a href="#8-挂载nfs" class="headerlink" title="8.挂载nfs"></a>8.挂载nfs</h2><img src alt="nfs_process" style />
+
+<h6 id="a-安装NFS服务器，右键以管理员身份运行："><a href="#a-安装NFS服务器，右键以管理员身份运行：" class="headerlink" title="a)安装NFS服务器，右键以管理员身份运行："></a>a)安装NFS服务器，右键以管理员身份运行：</h6><p><img data-src="/picture/nfs_service.png" alt="nfs\_service"></p>
+<p>做如下设置：<img src style /></p>
+<h6 id="b-NFS注册"><a href="#b-NFS注册" class="headerlink" title="b)NFS注册"></a>b)NFS注册</h6><p>点击注册输入序列号及姓名</p>
+<p><img data-src="/picture/register_account.png" alt="register\_account"></p>
+<h6 id="c-记事本输入以下内容并Ctrl-S保存"><a href="#c-记事本输入以下内容并Ctrl-S保存" class="headerlink" title="c) 记事本输入以下内容并Ctrl+S保存"></a>c) 记事本输入以下内容并Ctrl+S保存</h6><p>D:\nfs -public -name:nfs   （以个人创建nfs文件所在盘为准，注意-要手改防止-的格式被修改）</p>
+<p><img data-src="/picture/text.png" alt="text"></p>
+<h6 id="d-点击win，找到“重启所有服务”"><a href="#d-点击win，找到“重启所有服务”" class="headerlink" title="d) 点击win，找到“重启所有服务”"></a>d) 点击win，找到“重启所有服务”</h6><img src alt="set" style />
+
+<h6 id="e-右键打开文件所在位置，右键以管理员身份运行："><a href="#e-右键打开文件所在位置，右键以管理员身份运行：" class="headerlink" title="e) 右键打开文件所在位置，右键以管理员身份运行："></a>e) 右键打开文件所在位置，右键以管理员身份运行：</h6><p><img data-src="/picture/cmd_set.png" alt="cmd\_set"></p>
+<p>在D盘根目录创建nfs文件夹：</p>
+<p><img data-src="/picture/catalogue_nfs.png" alt="catalogue\_nfs"></p>
+<h6 id="f-开发板烧录镜像，上电开机，使用网线将PC和开发板连接，打开cmd，输入ipconfig查看开发板IP：（如：192-168-82-11）"><a href="#f-开发板烧录镜像，上电开机，使用网线将PC和开发板连接，打开cmd，输入ipconfig查看开发板IP：（如：192-168-82-11）" class="headerlink" title="f) 开发板烧录镜像，上电开机，使用网线将PC和开发板连接，打开cmd，输入ipconfig查看开发板IP：（如：192.168.82.11）"></a>f) 开发板烧录镜像，上电开机，使用网线将PC和开发板连接，打开cmd，输入ipconfig查看开发板IP：（如：192.168.82.11）</h6><h6 id="g-开发板使用ifconfig指令设置IP，掩码等，创建nfs目录，并通过mount指令挂载nfs服务器，指令见下方（开发板挂载指令）"><a href="#g-开发板使用ifconfig指令设置IP，掩码等，创建nfs目录，并通过mount指令挂载nfs服务器，指令见下方（开发板挂载指令）" class="headerlink" title="g) 开发板使用ifconfig指令设置IP，掩码等，创建nfs目录，并通过mount指令挂载nfs服务器，指令见下方（开发板挂载指令）"></a>g) 开发板使用ifconfig指令设置IP，掩码等，创建nfs目录，并通过mount指令挂载nfs服务器，指令见下方（开发板挂载指令）</h6><p>注意：ifconfig eth0 指令设置的IP必须与PC上显示的IP处于同一网段，（如：192.168.82.12）。若挂载失败，需关闭PC防火墙后重新挂载。</p>
+<h6 id="h-将测试用例的bin文件放在D-nfs文件夹内"><a href="#h-将测试用例的bin文件放在D-nfs文件夹内" class="headerlink" title="h) 将测试用例的bin文件放在D:\nfs文件夹内"></a>h) 将测试用例的bin文件放在D:\nfs文件夹内</h6><p>以下启动参数和开发板挂载命令复制后注意</p>
+<p><strong>LiteOS启动参数设置：</strong></p>
+<p>setenv bootargs consloe&#x3D;ttyAMA0,115200n8 root&#x3D;emmc fstype&#x3D;vfat rootaddr&#x3D;10M rootsize&#x3D;21M rw;saveenv</p>
+<p>setenv bootcmd fs probe 0;mmc read 0x0 0x80000000 0x800 0x4800;go 0x80000000;mw 0x12090000 0x001001e0;go 0x80000000;saveenv</p>
+<p><strong>LiteOS开发板挂载指令：</strong></p>
+<p>ifconfig eth0 169.254.83.11 netmask 255.255.0.0 gateway 169.254.1.1</p>
+<p>mkdir nfs</p>
+<p>mount 169.254.83.12:&#x2F;nfs &#x2F;nfs nfs</p>
+<p><strong>Linux启动参数设置：</strong></p>
+<p>setenv bootargs ‘mem&#x3D;128M console&#x3D;ttyAMA0,115200 root&#x3D;&#x2F;dev&#x2F;mmcblk0p3 rw rootfstype&#x3D;ext4 rootwait blkdevparts&#x3D;mmcblk0:1M(boot),9M(kernel),50M(rootfs),50M(userfs)’</p>
+<p>setenv bootcmd “mmc read 0x0 0x82000000 0x800 0x4800;bootm 0x82000000”; save; reset;</p>
+<p><strong>Linux开发板挂载指令：</strong></p>
+<p>ifconfig eth0 169.254.83.11 netmask 255.255.0.0</p>
+<p>mkdir -p &#x2F;nfs</p>
+<p>mount -t nfs -o nolock,addr&#x3D;169.254.83.12 169.254.83.12:&#x2F;nfs &#x2F;nfs</p>
+<h6 id="i-开发板输入cd-nfs进入nfs文件夹，ls即可找到测试用例文件，给测试用例权限-chmod-777-测试用例文件名（如可直接执行文件可忽略此步）"><a href="#i-开发板输入cd-nfs进入nfs文件夹，ls即可找到测试用例文件，给测试用例权限-chmod-777-测试用例文件名（如可直接执行文件可忽略此步）" class="headerlink" title="i)  开发板输入cd nfs进入nfs文件夹，ls即可找到测试用例文件，给测试用例权限  chmod 777 测试用例文件名（如可直接执行文件可忽略此步）"></a>i)  开发板输入cd nfs进入nfs文件夹，ls即可找到测试用例文件，给测试用例权限  chmod 777 测试用例文件名（如可直接执行文件可忽略此步）</h6><h6 id="j-执行测试用例"><a href="#j-执行测试用例" class="headerlink" title="j) 执行测试用例"></a>j) 执行测试用例</h6><p>.&#x2F;测试用例文件名</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-12-01 16:25:40" itemprop="dateModified" datetime="2022-12-01T16:25:40+08:00">2022-12-01</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="UT平台驱动测试用例开发及使用指导">https://muxiaoximuxiaoxi.github.io/2022/06/29/UT测试用例开发及使用指导/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetlbztpj20zk0m84qp.jpg" title="ubunt环境搭建及 OpenHarmony代码更新）">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>ubunt环境搭建及 OpenHarmony代码更新）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclga70tsj20zk0m84mr.jpg" title="蓝区上库">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>蓝区上库</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UT%E5%B9%B3%E5%8F%B0%E9%A9%B1%E5%8A%A8%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC"><span class="toc-number">1.</span> <span class="toc-text">UT平台驱动测试用例开发及使用指导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BC%96%E5%86%99adc-test-c%E4%BB%A5%E5%8F%8Aadc-test-h"><span class="toc-number">2.1.</span> <span class="toc-text">1. 编写adc_test.c以及adc_test.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BC%96%E5%86%99hdf-adc-entry-test-c%E4%BB%A5%E5%8F%8Ahdf-adc-entry-test-h"><span class="toc-number">2.2.</span> <span class="toc-text">2. 编写hdf_adc_entry_test.c以及hdf_adc_entry_test.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BC%96%E5%86%99%E7%94%A8%E6%88%B7%E6%80%81%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F-hdf-adc-test-cpp"><span class="toc-number">2.3.</span> <span class="toc-text">3. 编写用户态测试程序 hdf_adc_test.cpp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%8C%89%E7%85%A7%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9B%AE%E5%BD%95%E8%A7%84%E5%88%92%EF%BC%8C%E5%AE%9A%E4%B9%89%E6%B5%8B%E8%AF%95%E5%A5%97%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 按照测试用例目录规划，定义测试套文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%9A%E4%B9%89%E6%B5%8B%E8%AF%95%E5%A5%97"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 定义测试套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%AE%9E%E7%8E%B0%E6%B5%8B%E8%AF%95%E5%A5%97%E5%85%B7%E4%BD%93%E7%9A%84%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B-%E5%8C%85%E6%8B%AC%E7%94%A8%E4%BE%8B%E6%B3%A8%E9%87%8A%E5%92%8C%E7%94%A8%E4%BE%8B%E7%9A%84%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0%EF%BC%8C%E9%92%88%E5%AF%B9%E8%A2%AB%E6%B5%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E6%80%A7%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%EF%BC%8C%E4%BB%A5hdf-adc-test-cpp%E6%96%87%E4%BB%B6%E4%B8%BA%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3 实现测试套具体的测试用例(包括用例注释和用例的逻辑实现，针对被测对象的特性编写测试用例，以hdf_adc_test.cpp文件为例说明)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9hdf-main-test-c%E5%92%8Chdf-main-test-h%E6%96%87%E4%BB%B6"><span class="toc-number">2.4.</span> <span class="toc-text">4. 修改hdf_main_test.c和hdf_main_test.h文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E7%A1%AE%E8%AE%A4hdf-main-test-h%E7%9A%84%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8BHdfTestSubModuleCmd%E4%B8%AD%E6%9C%89%E5%BE%85%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97%EF%BC%88%E6%AD%A4%E5%A4%84%E7%9C%81%E7%95%A5%E5%B7%B2%E6%9C%89%E7%9A%84%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%EF%BC%89%EF%BC%9B"><span class="toc-number">2.4.1.</span> <span class="toc-text">4.1 确认hdf_main_test.h的枚举类型HdfTestSubModuleCmd中有待测试模块（此处省略已有的其他模块）；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%BF%AE%E6%94%B9hdf-main-test-c%EF%BC%88%E5%8C%85%E5%90%AB%E5%A4%B4%E6%96%87%E4%BB%B6-hdf-adc-entry-test-h%EF%BC%8C%E5%B9%B6%E5%9C%A8%E5%87%BD%E6%95%B0%E5%88%97%E8%A1%A8%E4%B8%AD%E6%B7%BB%E5%8A%A0ADC%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E5%88%97%E8%A1%A8%EF%BC%88%E8%AF%A5%E5%88%97%E8%A1%A8%E5%9C%A8adc-test-c%E4%B8%AD%E5%AE%9A%E4%B9%89%E4%B8%BAstatic-struct-AdcTestEntry-g-entry-%EF%BC%89%EF%BC%89"><span class="toc-number">2.4.2.</span> <span class="toc-text">4.2 修改hdf_main_test.c（包含头文件 hdf_adc_entry_test.h，并在函数列表中添加ADC测试用例的列表（该列表在adc_test.c中定义为static struct AdcTestEntry g_entry []））;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%A7%A3%E6%9E%90%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">5. 解析测试用例配置参数（可选）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%96%B0%E5%A2%9Eadc-test-config-hcs%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%99%E5%85%A5%E6%98%93%E5%8F%98%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="toc-number">2.5.1.</span> <span class="toc-text">5.1 新增adc_test_config.hcs文件，写入易变参数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E7%BC%96%E5%86%99adc-driver-test-c%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%A7%A3%E6%9E%90%E8%BF%99%E4%BA%9B%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%EF%BC%8C%E5%85%A5%E5%8F%A3%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">2.5.2.</span> <span class="toc-text">5.2  编写adc_driver_test.c文件，用于解析这些配置参数，入口如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%9C%A8device-info-hcs%E5%86%85%E6%B7%BB%E5%8A%A0%E7%94%A8%E4%BA%8E%E8%A7%A3%E6%9E%90%E5%8F%82%E6%95%B0%E7%9A%84%E8%AE%BE%E5%A4%87%E6%9C%8D%E5%8A%A1%E8%8A%82%E7%82%B9"><span class="toc-number">2.5.3.</span> <span class="toc-text">5.3  在device_info.hcs内添加用于解析参数的设备服务节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%BC%96%E8%AF%91"><span class="toc-number">2.6.</span> <span class="toc-text">6. 编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E6%80%81%E7%BC%96%E8%AF%91%E8%84%9A%E6%9C%AC"><span class="toc-number">2.6.1.</span> <span class="toc-text">6.1 修改用户态编译脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%BF%AE%E6%94%B9%E5%86%85%E6%A0%B8%E6%80%81%E7%BC%96%E8%AF%91%E8%84%9A%E6%9C%AC"><span class="toc-number">2.6.2.</span> <span class="toc-text">6.2 修改内核态编译脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%90%AF%E7%94%A8%E5%AE%8F"><span class="toc-number">2.6.3.</span> <span class="toc-text">6.3 启用宏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-1-%E4%BF%AE%E6%94%B9drivers-x2F-adapter-x2F-khdf-x2F-liteos-x2F-kconfig-%E6%8C%89%E7%85%A7%E5%A6%82%E4%B8%8B%E6%A0%BC%E5%BC%8F%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE"><span class="toc-number">2.6.3.1.</span> <span class="toc-text">6.3.1 修改drivers&#x2F;adapter&#x2F;khdf&#x2F;liteos&#x2F;kconfig,按照如下格式添加配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-2-%E5%9C%A8drivers-x2F-framework-x2F-test-x2F-unittest-x2F-common-x2F-hdf-main-test-c%E4%B8%AD%E5%8C%85%E5%90%AB%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%85%A5%E5%8F%A3%E5%A4%B4%E6%96%87%E4%BB%B6hdf-adc-entry-test-h%E5%B9%B6%E4%B8%BA%E5%85%A5%E5%8F%A3%E6%B7%BB%E5%8A%A0%E5%AE%8F%E3%80%82"><span class="toc-number">2.6.3.2.</span> <span class="toc-text">6.3.2 在drivers&#x2F;framework&#x2F;test&#x2F;unittest&#x2F;common&#x2F;hdf_main_test.c中包含测试用例入口头文件hdf_adc_entry_test.h并为入口添加宏。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-3-%E5%90%AF%E7%94%A8ADC%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">2.6.3.3.</span> <span class="toc-text">6.3.3 启用ADC测试用例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E7%BC%96%E8%AF%91"><span class="toc-number">2.6.4.</span> <span class="toc-text">6.4 编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%83%A7%E5%BD%95"><span class="toc-number">2.7.</span> <span class="toc-text">7. 烧录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%8C%82%E8%BD%BDnfs"><span class="toc-number">2.8.</span> <span class="toc-text">8.挂载nfs</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#a-%E5%AE%89%E8%A3%85NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%8F%B3%E9%94%AE%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C%EF%BC%9A"><span class="toc-number">2.8.0.0.0.1.</span> <span class="toc-text">a)安装NFS服务器，右键以管理员身份运行：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#b-NFS%E6%B3%A8%E5%86%8C"><span class="toc-number">2.8.0.0.0.2.</span> <span class="toc-text">b)NFS注册</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#c-%E8%AE%B0%E4%BA%8B%E6%9C%AC%E8%BE%93%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9%E5%B9%B6Ctrl-S%E4%BF%9D%E5%AD%98"><span class="toc-number">2.8.0.0.0.3.</span> <span class="toc-text">c) 记事本输入以下内容并Ctrl+S保存</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#d-%E7%82%B9%E5%87%BBwin%EF%BC%8C%E6%89%BE%E5%88%B0%E2%80%9C%E9%87%8D%E5%90%AF%E6%89%80%E6%9C%89%E6%9C%8D%E5%8A%A1%E2%80%9D"><span class="toc-number">2.8.0.0.0.4.</span> <span class="toc-text">d) 点击win，找到“重启所有服务”</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#e-%E5%8F%B3%E9%94%AE%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%8F%B3%E9%94%AE%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C%EF%BC%9A"><span class="toc-number">2.8.0.0.0.5.</span> <span class="toc-text">e) 右键打开文件所在位置，右键以管理员身份运行：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#f-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%83%A7%E5%BD%95%E9%95%9C%E5%83%8F%EF%BC%8C%E4%B8%8A%E7%94%B5%E5%BC%80%E6%9C%BA%EF%BC%8C%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BA%BF%E5%B0%86PC%E5%92%8C%E5%BC%80%E5%8F%91%E6%9D%BF%E8%BF%9E%E6%8E%A5%EF%BC%8C%E6%89%93%E5%BC%80cmd%EF%BC%8C%E8%BE%93%E5%85%A5ipconfig%E6%9F%A5%E7%9C%8B%E5%BC%80%E5%8F%91%E6%9D%BFIP%EF%BC%9A%EF%BC%88%E5%A6%82%EF%BC%9A192-168-82-11%EF%BC%89"><span class="toc-number">2.8.0.0.0.6.</span> <span class="toc-text">f) 开发板烧录镜像，上电开机，使用网线将PC和开发板连接，打开cmd，输入ipconfig查看开发板IP：（如：192.168.82.11）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#g-%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%BF%E7%94%A8ifconfig%E6%8C%87%E4%BB%A4%E8%AE%BE%E7%BD%AEIP%EF%BC%8C%E6%8E%A9%E7%A0%81%E7%AD%89%EF%BC%8C%E5%88%9B%E5%BB%BAnfs%E7%9B%AE%E5%BD%95%EF%BC%8C%E5%B9%B6%E9%80%9A%E8%BF%87mount%E6%8C%87%E4%BB%A4%E6%8C%82%E8%BD%BDnfs%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E6%8C%87%E4%BB%A4%E8%A7%81%E4%B8%8B%E6%96%B9%EF%BC%88%E5%BC%80%E5%8F%91%E6%9D%BF%E6%8C%82%E8%BD%BD%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">2.8.0.0.0.7.</span> <span class="toc-text">g) 开发板使用ifconfig指令设置IP，掩码等，创建nfs目录，并通过mount指令挂载nfs服务器，指令见下方（开发板挂载指令）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#h-%E5%B0%86%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84bin%E6%96%87%E4%BB%B6%E6%94%BE%E5%9C%A8D-nfs%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85"><span class="toc-number">2.8.0.0.0.8.</span> <span class="toc-text">h) 将测试用例的bin文件放在D:\nfs文件夹内</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#i-%E5%BC%80%E5%8F%91%E6%9D%BF%E8%BE%93%E5%85%A5cd-nfs%E8%BF%9B%E5%85%A5nfs%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8Cls%E5%8D%B3%E5%8F%AF%E6%89%BE%E5%88%B0%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%96%87%E4%BB%B6%EF%BC%8C%E7%BB%99%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%9D%83%E9%99%90-chmod-777-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%88%E5%A6%82%E5%8F%AF%E7%9B%B4%E6%8E%A5%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%8F%AF%E5%BF%BD%E7%95%A5%E6%AD%A4%E6%AD%A5%EF%BC%89"><span class="toc-number">2.8.0.0.0.9.</span> <span class="toc-text">i)  开发板输入cd nfs进入nfs文件夹，ls即可找到测试用例文件，给测试用例权限  chmod 777 测试用例文件名（如可直接执行文件可忽略此步）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#j-%E6%89%A7%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">2.8.0.0.0.10.</span> <span class="toc-text">j) 执行测试用例</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="bookmark" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></li><li class="active"><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></li><li><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" rel="bookmark" title="蓝区上库">蓝区上库</a></li><li><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="bookmark" title="BackLight子系统">BackLight子系统</a></li><li><a href="/2022/06/29/framework--display/" rel="bookmark" title="framework - display">framework - display</a></li><li><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="bookmark" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></li><li><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" rel="bookmark" title="开发板测试">开发板测试</a></li><li><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="HDI-GEN使用指导">HDI-GEN使用指导</a></li><li><a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" rel="bookmark" title="display模块讲解">display模块讲解</a></li><li><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" rel="bookmark" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">15</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/framework--display/" title="framework - display">framework - display</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/20/JAVA-native%E5%85%B3%E9%94%AE%E5%AD%97/" title="JAVA native关键字">JAVA native关键字</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" title="动态链接库（Dynamic Link Library）">动态链接库（Dynamic Link Library）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="蓝区上库">蓝区上库</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" title="开发板测试">开发板测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="HDI-GEN使用指导">HDI-GEN使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="BackLight子系统">BackLight子系统</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/29/UT测试用例开发及使用指导/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

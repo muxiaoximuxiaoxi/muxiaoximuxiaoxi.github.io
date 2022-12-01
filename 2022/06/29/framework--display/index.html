@@ -1,0 +1,506 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/framework--display/">
+
+
+
+  <title>
+framework - display - _开源鸿蒙驱动子系统 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">framework - display
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-06-29 20:42:15">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-29T20:42:15+08:00">2022-06-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _开源鸿蒙驱动子系统"><span itemprop="name">_开源鸿蒙驱动子系统</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2022/06/29/framework--display/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="一、目录结构"><a href="#一、目录结构" class="headerlink" title="一、目录结构"></a>一、目录结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">drivers\framework\model\display\driver</span><br><span class="line">Driver</span><br><span class="line">├── adapter_soc//适配目录</span><br><span class="line">├── backlight// 背光目录</span><br><span class="line">├── panel//  屏幕目录</span><br><span class="line">├── hdf_disp.c  // l1版本代码   </span><br><span class="line">├── hdf_disp.h          </span><br><span class="line">├── hdf_drm_panel.c  //实现panel和内核直接的交互     </span><br><span class="line">└── hdf_drm_panel.h  </span><br></pre></td></tr></table></figure>
+<h2 id="二、adapter-soc"><a href="#二、adapter-soc" class="headerlink" title="二、adapter_soc"></a>二、adapter_soc</h2><p>本模块负责适配跑通hi5xx板子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">static void LcdPinMuxCfg(uint32_t intf)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned long ioCfgBase;</span><br><span class="line"></span><br><span class="line">    ioCfgBase = (unsigned long)OsalIoRemap(IO_CFG2_BASE, IO_CFG_SIZE);</span><br><span class="line">    if (intf == MIPI_DSI) &#123;</span><br><span class="line">        MipiMuxCfg(ioCfgBase);</span><br><span class="line">    &#125; else if (intf == LCD_6BIT) &#123;</span><br><span class="line">        Lcd6BitMuxCfg(ioCfgBase);</span><br><span class="line">    &#125; else if (intf == LCD_8BIT) &#123;</span><br><span class="line">        Lcd8BitMuxCfg(ioCfgBase);</span><br><span class="line">    &#125; else if (intf == LCD_24BIT) &#123;</span><br><span class="line">        Lcd24BitMuxCfg(ioCfgBase);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s: not support intf: %d&quot;, __func__, intf);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int32_t MipiDsiInit(struct PanelInfo *info)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t ret;</span><br><span class="line">    DevHandle mipiHandle = NULL;</span><br><span class="line">    struct MipiCfg cfg;</span><br><span class="line"></span><br><span class="line">    mipiHandle = MipiDsiOpen(0);</span><br><span class="line">    if (mipiHandle == NULL) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s: MipiDsiOpen failed&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    cfg.lane = info-&gt;mipi.lane;</span><br><span class="line">    cfg.mode = info-&gt;mipi.mode;</span><br><span class="line">    cfg.format = info-&gt;mipi.format;</span><br><span class="line">    cfg.burstMode = info-&gt;mipi.burstMode;</span><br><span class="line">    cfg.timing.xPixels = info-&gt;width;</span><br><span class="line">    cfg.timing.hsaPixels = info-&gt;hsw;</span><br><span class="line">    cfg.timing.hbpPixels = info-&gt;hbp;</span><br><span class="line">    cfg.timing.hlinePixels = info-&gt;width + info-&gt;hbp + info-&gt;hfp + info-&gt;hsw;</span><br><span class="line">    cfg.timing.vsaLines = info-&gt;vsw;</span><br><span class="line">    cfg.timing.vbpLines = info-&gt;vbp;</span><br><span class="line">    cfg.timing.vfpLines = info-&gt;vfp;</span><br><span class="line">    cfg.timing.ylines = info-&gt;height;</span><br><span class="line">    /* 0 : no care */</span><br><span class="line">    cfg.timing.edpiCmdSize = 0;</span><br><span class="line">    cfg.pixelClk = CalcPixelClk(info);</span><br><span class="line">    cfg.phyDataRate = CalcDataRate(info);</span><br><span class="line">    /* config mipi device */</span><br><span class="line">    ret = MipiDsiSetCfg(mipiHandle, &amp;cfg);</span><br><span class="line">    if (ret != HDF_SUCCESS) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s:MipiDsiSetCfg failed&quot;, __func__);</span><br><span class="line">    &#125;</span><br><span class="line">    MipiDsiClose(mipiHandle);</span><br><span class="line">    HDF_LOGI(&quot;%s:pixelClk = %d, phyDataRate = %u&quot;, __func__, cfg.pixelClk, cfg.phyDataRate);</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int32_t Hi35xxHardWareInit(void)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t i;</span><br><span class="line">    int32_t ret;</span><br><span class="line">    struct PanelManager *panelManager = NULL;</span><br><span class="line">    struct PanelData *panel = NULL;</span><br><span class="line">    struct PanelInfo *info = NULL;</span><br><span class="line"></span><br><span class="line">    panelManager = GetPanelManager();</span><br><span class="line">    if (panelManager == NULL) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s: panelManager is null&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; panelManager-&gt;panelNum; i++) &#123;</span><br><span class="line">        panel = panelManager-&gt;panel[i];</span><br><span class="line">        info = panel-&gt;info;</span><br><span class="line">        if (info == NULL) &#123;</span><br><span class="line">            HDF_LOGE(&quot;%s:GetPanelInfo failed&quot;, __func__);</span><br><span class="line">            return HDF_FAILURE;</span><br><span class="line">        &#125;</span><br><span class="line">        if (info-&gt;blk.type == BLK_PWM) &#123;</span><br><span class="line">            PwmPinMuxCfg(info-&gt;pwm.dev);</span><br><span class="line">        &#125;</span><br><span class="line">        /* lcd pin mux config */</span><br><span class="line">        LcdPinMuxCfg(info-&gt;intfType);</span><br><span class="line">        if (info-&gt;intfType == MIPI_DSI) &#123;</span><br><span class="line">            /* mipi dsi init */</span><br><span class="line">            ret = MipiDsiInit(info);</span><br><span class="line">            if (ret) &#123;</span><br><span class="line">                HDF_LOGE(&quot;%s:MipiDsiInit failed&quot;, __func__);</span><br><span class="line">                return HDF_FAILURE;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (GetLcdIntfType(info-&gt;intfType, &amp;info-&gt;intfType) != HDF_SUCCESS) &#123;</span><br><span class="line">            HDF_LOGE(&quot;%s:GetLcdIntfType failed&quot;, __func__);</span><br><span class="line">            return HDF_FAILURE;</span><br><span class="line">        &#125;</span><br><span class="line">        if (panel-&gt;init != NULL) &#123;</span><br><span class="line">            if ((panel-&gt;init(panel)) != HDF_SUCCESS) &#123;</span><br><span class="line">                HDF_LOGE(&quot;%s:panel[%d] init failed&quot;, __func__, i);</span><br><span class="line">                return HDF_FAILURE;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三、Backlight"><a href="#三、Backlight" class="headerlink" title="三、Backlight"></a>三、Backlight</h2><p>本模块主要负责背景亮度，以便屏幕更好的显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">struct BacklightDev &#123;</span><br><span class="line">    char name[MAX_BL_NAME_LEN];</span><br><span class="line">    struct BacklightProperties props;//背景属性</span><br><span class="line">    struct BacklightOps *ops;</span><br><span class="line">    struct OsalMutex mutex;//互斥锁</span><br><span class="line">    bool isRegister;//是否注册</span><br><span class="line">    void *priv;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">static struct BacklightDev *BlDevInstance(const char *devName,</span><br><span class="line">    struct BacklightProperties *props, struct BacklightOps *ops)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t ret;</span><br><span class="line">    struct BacklightDev *blDev = NULL;</span><br><span class="line">    //分配内存</span><br><span class="line">    blDev = (struct BacklightDev *)OsalMemCalloc(sizeof(struct BacklightDev));</span><br><span class="line">    if (blDev == NULL) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s blDev malloc fail&quot;, __func__);</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    //简单的赋值</span><br><span class="line">    blDev-&gt;ops = ops;</span><br><span class="line">    //memcpy_s 内存拷贝</span><br><span class="line">    ret = memcpy_s(blDev-&gt;name, MAX_BL_NAME_LEN - 1, devName, strlen(devName) + 1);</span><br><span class="line">    if (ret != 0) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s blDev-&gt;name %s&quot;, __func__, blDev-&gt;name);</span><br><span class="line">        goto FAIL;</span><br><span class="line">    &#125;</span><br><span class="line">    ret = memcpy_s(&amp;blDev-&gt;props, sizeof(struct BacklightProperties),</span><br><span class="line">        props, sizeof(struct BacklightProperties));</span><br><span class="line">    if (ret != 0) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s props memcpy fail&quot;, __func__);</span><br><span class="line">        goto FAIL;</span><br><span class="line">    &#125;</span><br><span class="line">    return blDev;</span><br><span class="line">FAIL:</span><br><span class="line">    OsalMemFree(blDev);</span><br><span class="line">    return NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//更新背景亮度级别</span><br><span class="line">int32_t UpdateBrightness(struct BacklightDev *blDev, uint32_t brightness)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t ret = HDF_FAILURE;</span><br><span class="line"></span><br><span class="line">    if (blDev == NULL) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s blDev is null&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    if (brightness &gt; blDev-&gt;props.maxBrightness) &#123;</span><br><span class="line">        //保证最大值的数值</span><br><span class="line">        brightness = blDev-&gt;props.maxBrightness;</span><br><span class="line">    &#125;</span><br><span class="line">    if (brightness &lt; blDev-&gt;props.minBrightness) &#123;</span><br><span class="line">        //保证最小值的数值</span><br><span class="line">        brightness = blDev-&gt;props.minBrightness;</span><br><span class="line">    &#125;</span><br><span class="line">    OsalMutexLock(&amp;blDev-&gt;mutex);</span><br><span class="line">    if (brightness == blDev-&gt;props.brightness) &#123;</span><br><span class="line">        HDF_LOGI(&quot;%s brightness does not change&quot;, __func__);</span><br><span class="line">        OsalMutexUnlock(&amp;blDev-&gt;mutex);</span><br><span class="line">        return HDF_SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line">    if ((blDev-&gt;props.fbStatus == FB_POWER_STANDBY) ||</span><br><span class="line">        (blDev-&gt;props.fbStatus == FB_POWER_SUSPEND) ||</span><br><span class="line">        (blDev-&gt;props.fbStatus == FB_POWER_OFF)) &#123;</span><br><span class="line">        brightness = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if (blDev-&gt;ops != NULL &amp;&amp; blDev-&gt;ops-&gt;updateBrightness != NULL) &#123;</span><br><span class="line">        ret = blDev-&gt;ops-&gt;updateBrightness(blDev, brightness);</span><br><span class="line">        if (ret == HDF_SUCCESS) &#123;</span><br><span class="line">            blDev-&gt;props.brightness = brightness;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            HDF_LOGE(&quot;%s: fail&quot;, __func__);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    OsalMutexUnlock(&amp;blDev-&gt;mutex);</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct BacklightDev *RegisterBlDev(const char *name, struct BacklightProperties *props,</span><br><span class="line">    struct BacklightOps *ops, void *priv)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t devNum;</span><br><span class="line">    struct BacklightDev *blDev = NULL;</span><br><span class="line">    struct BlDevManager *blDevManager = NULL;</span><br><span class="line"></span><br><span class="line">    if ((name == NULL) || (ops == NULL) || (props == NULL)) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s: name , ops or props is null&quot;, __func__);</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    blDevManager = GetBlDevManager();</span><br><span class="line">    devNum = blDevManager-&gt;devNum;</span><br><span class="line">    if (devNum &gt;= MAX_BL_DEV) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s: number of backlight device registrations exceeded&quot;, __func__);</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int32_t i = 0; i &lt; devNum; i++) &#123;</span><br><span class="line">    //表示执行strcmp操作，若等于0，返回null，若不等于0，循环继续</span><br><span class="line">        if (strcmp(name, blDevManager-&gt;blDev[i]-&gt;name) == 0) &#123;</span><br><span class="line">            HDF_LOGE(&quot;%s: backlight name should be unique&quot;, __func__);</span><br><span class="line">            return NULL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    blDev = BlDevInstance(name, props, ops);</span><br><span class="line">    if (blDev == NULL) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s: BlDevInstance fail&quot;, __func__);</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    blDev-&gt;priv = priv;</span><br><span class="line">    blDevManager-&gt;blDev[devNum] = blDev;</span><br><span class="line">    blDevManager-&gt;devNum++;</span><br><span class="line">    OsalMutexInit(&amp;blDev-&gt;mutex);</span><br><span class="line">    HDF_LOGE(&quot;%s: success&quot;, __func__);</span><br><span class="line">    return blDev;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="四、Panel"><a href="#四、Panel" class="headerlink" title="四、Panel"></a>四、Panel</h2><p>本模块负责将硬件屏幕转换为软件层次的屏幕，从而实现对硬件屏幕的操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">static int Ili9881cBoeSendCmds(struct mipi_dsi_device *dsi,</span><br><span class="line">    const struct DsiCmdDesc *cmds, int size)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t i;</span><br><span class="line"></span><br><span class="line">    if (dsi == NULL) &#123;</span><br><span class="line">        return -EINVAL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (i = 0; i &lt; size; i++) &#123;</span><br><span class="line">        mipi_dsi_generic_write(dsi, cmds[i].payload, cmds[i].dataLen);</span><br><span class="line">        if (cmds[i].delay) &#123;</span><br><span class="line">            OsalMSleep(cmds[i].delay);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int32_t Ili9881cBoeOn(struct PanelData *panel)</span><br><span class="line">&#123;</span><br><span class="line">    int32_t ret;</span><br><span class="line">    struct Ili9881cBoeDev *ili9881cBoeDev = NULL;</span><br><span class="line"></span><br><span class="line">    HDF_LOGI(&quot;%s()&quot;, __func__);</span><br><span class="line">    ili9881cBoeDev = ToIli9881cBoeDev(panel);</span><br><span class="line">    ret = Ili9881cBoePrepare(ili9881cBoeDev);</span><br><span class="line">    if (ret != HDF_SUCCESS) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s Ili9881cBoePrepare failed&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    ret = Ili9881cBoeSendCmds(ili9881cBoeDev-&gt;dsiDev, g_panelOnCode,</span><br><span class="line">                              sizeof(g_panelOnCode) / sizeof(g_panelOnCode[0]));</span><br><span class="line">    if (ret != HDF_SUCCESS) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s Ili9881cBoeSendCmds failed&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="五、Hdf-disp"><a href="#五、Hdf-disp" class="headerlink" title="五、Hdf_disp"></a>五、Hdf_disp</h2><p>1、模块简介</p>
+<p>本模块为版本模块，主要为当前版本所实现的所以接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">PanelData就是抽象化的屏幕数据</span><br><span class="line"></span><br><span class="line">struct PanelData &#123;</span><br><span class="line">    struct HdfDeviceObject *object;  //</span><br><span class="line">    int32_t (*init)(struct PanelData *panel); //初始化</span><br><span class="line">    int32_t (*on)(struct PanelData *panel); //开</span><br><span class="line">    int32_t (*off)(struct PanelData *panel); //关</span><br><span class="line">    struct PanelInfo *info;  //屏幕信息</span><br><span class="line">    enum PowerStatus powerStatus; //状态</span><br><span class="line">    struct PanelEsd *esd; //防静电</span><br><span class="line">    struct BacklightDev *blDev; //背光设备</span><br><span class="line">    void *priv;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hdf_disp.c</span><br><span class="line">以几个接口为例</span><br><span class="line"></span><br><span class="line">struct DispManager *GetDispManager(void)</span><br><span class="line">&#123;</span><br><span class="line">    if (g_dispManager != NULL &amp;&amp; g_dispManager-&gt;initialzed) &#123;</span><br><span class="line">        return g_dispManager;</span><br><span class="line">    &#125;</span><br><span class="line">    return NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int32_t SetDispBacklight(uint32_t devId, uint32_t level) //设置背景信息</span><br><span class="line">&#123;</span><br><span class="line">    struct DispManager *disp = NULL;</span><br><span class="line">    struct PanelData *panel = NULL;</span><br><span class="line"></span><br><span class="line">    disp = GetDispManager();//获得disp信息</span><br><span class="line">    if (disp &amp;&amp; disp-&gt;panelManager &amp;&amp; devId &lt; disp-&gt;panelManager-&gt;panelNum) &#123;</span><br><span class="line">        panel = disp-&gt;panelManager-&gt;panel[devId]; //可以得到屏幕类型</span><br><span class="line">    &#125;</span><br><span class="line">    if ((panel == NULL) || (UpdateBrightness(panel-&gt;blDev, level) != HDF_SUCCESS)) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s:panel is null or UpdateBrightness failed&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    HDF_LOGI(&quot;%s:level = %u&quot;, __func__, level);</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static int32_t EsdResInit(struct DispEsd *esd, struct PanelData **panel)</span><br><span class="line">&#123;</span><br><span class="line">    uint32_t i;</span><br><span class="line">    int32_t ret;</span><br><span class="line"></span><br><span class="line">    for (i = 0; i &lt; esd-&gt;panelNum; i++) &#123;</span><br><span class="line">        if ((panel[i]-&gt;esd != NULL) &amp;&amp; panel[i]-&gt;esd-&gt;support) &#123;</span><br><span class="line">            esd-&gt;panelEsd[i] = panel[i]-&gt;esd;//获取防静电信息</span><br><span class="line">            esd-&gt;work[i] = (HdfWork *)OsalMemCalloc(sizeof(HdfWork));//申请work空间</span><br><span class="line">            if (esd-&gt;work[i] == NULL) &#123;</span><br><span class="line">                HDF_LOGE(&quot;%s work malloc fail&quot;, __func__);</span><br><span class="line">                EsdMemFree(esd);</span><br><span class="line">                return HDF_FAILURE;</span><br><span class="line">            &#125;</span><br><span class="line">            esd-&gt;timer[i] = (OsalTimer *)OsalMemCalloc(sizeof(OsalTimer));//申请timer空间</span><br><span class="line">            if (esd-&gt;timer[i] == NULL) &#123;</span><br><span class="line">                EsdMemFree(esd);</span><br><span class="line">                HDF_LOGE(&quot;%s timer malloc fail&quot;, __func__);</span><br><span class="line">                return HDF_FAILURE;</span><br><span class="line">            &#125;</span><br><span class="line">            if (esd-&gt;panelEsd[i]-&gt;interval &lt; ESD_DEFAULT_INTERVAL) &#123;</span><br><span class="line">                //令静电间隙等于ESD_DEFAULT_INTERVAL 5000</span><br><span class="line">                esd-&gt;panelEsd[i]-&gt;interval = ESD_DEFAULT_INTERVAL;</span><br><span class="line">            &#125;</span><br><span class="line">            ret = HdfWorkInit(esd-&gt;work[i], EsdWorkHandler, (void *)i);</span><br><span class="line">            if (ret != HDF_SUCCESS) &#123;</span><br><span class="line">                EsdMemFree(esd);</span><br><span class="line">                HDF_LOGE(&quot;%s HdfWorkInit fail&quot;, __func__);</span><br><span class="line">                return HDF_FAILURE;</span><br><span class="line">            &#125;</span><br><span class="line">            esd-&gt;workInit[i] = true;</span><br><span class="line">            esd-&gt;panelEsd[i]-&gt;state = ESD_READY;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、Hdf-drm-panel"><a href="#六、Hdf-drm-panel" class="headerlink" title="六、Hdf_drm_panel"></a>六、Hdf_drm_panel</h2><p>本模块负责实现与内核层的drm_panel进行交互，是实现 Hdf_disp 和 内核层交互的桥梁即媒介</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">struct HdfDrmPanel &#123;</span><br><span class="line">    struct drm_panel panel;</span><br><span class="line">    struct DispManager *manager;</span><br><span class="line">    struct drm_display_mode mode;</span><br><span class="line">    struct mipi_dsi_device *dsiDev;</span><br><span class="line">    uint32_t index;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">static int HdfDrmPanelEnable(struct drm_panel *panel)//亮屏操作</span><br><span class="line">&#123;</span><br><span class="line">    struct HdfDrmPanel *hdfDrmPanel = ToHdfDrmPanel(panel);</span><br><span class="line">    struct PanelData *panelData;</span><br><span class="line"></span><br><span class="line">    HDF_LOGD(&quot;%s line = %d\n&quot;, __func__, __LINE__);</span><br><span class="line">    panelData = hdfDrmPanel-&gt;manager-&gt;panelManager-&gt;panel[hdfDrmPanel-&gt;index];//获取屏幕类型</span><br><span class="line">    OsalMutexLock(&amp;hdfDrmPanel-&gt;manager-&gt;dispMutex);//上锁</span><br><span class="line">    panelData-&gt;on(panelData);//亮屏具体操作</span><br><span class="line">    OsalMutexUnlock(&amp;hdfDrmPanel-&gt;manager-&gt;dispMutex);//解锁</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//drm_panel类型---&gt;  HdfDrmPanel类型</span><br><span class="line">static inline struct HdfDrmPanel *ToHdfDrmPanel(const struct drm_panel *panel)</span><br><span class="line">&#123;</span><br><span class="line">    return container_of(panel, struct HdfDrmPanel, panel);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int32_t HdfDrmPanelEntryInit(struct HdfDeviceObject *object)</span><br><span class="line">&#123;</span><br><span class="line">    uint32_t ret;</span><br><span class="line">    uint32_t panelNum;</span><br><span class="line">    struct HdfDrmPanel *hdfDrmPanel = NULL;</span><br><span class="line">    struct mipi_dsi_device *dsiDev = NULL;</span><br><span class="line">    struct DispManager *manager = NULL;</span><br><span class="line"></span><br><span class="line">    manager = GetDispManager();//获取disp信息</span><br><span class="line">    if (manager == NULL) &#123;</span><br><span class="line">        HDF_LOGE(&quot;%s manager is null&quot;, __func__);</span><br><span class="line">        return HDF_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line">    panelNum = manager-&gt;panelManager-&gt;panelNum;//拿到屏幕类型下标</span><br><span class="line">    for (uint32_t i = 0; i &lt; panelNum; i++) &#123;</span><br><span class="line">        hdfDrmPanel = InstanceHdfDrmPanel(manager, i);//实例化hdfDrmPanel</span><br><span class="line">        if (hdfDrmPanel == NULL) &#123;</span><br><span class="line">            return HDF_FAILURE;</span><br><span class="line">        &#125;</span><br><span class="line">        //priv 是一个标识，标识是哪种屏幕</span><br><span class="line">        dsiDev = (struct mipi_dsi_device *)manager-&gt;panelManager-&gt;panel[i]-&gt;priv;</span><br><span class="line">        hdfDrmPanel-&gt;panel.dev = &amp;dsiDev-&gt;dev;</span><br><span class="line">        drm_panel_init(&amp;hdfDrmPanel-&gt;panel);</span><br><span class="line">        ret = drm_panel_add(&amp;hdfDrmPanel-&gt;panel);</span><br><span class="line">        if (ret) &#123;</span><br><span class="line">            HDF_LOGE(&quot;%s drm_panel_add() failed&quot;, __func__);</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">        ret = mipi_dsi_attach(dsiDev);</span><br><span class="line">        if (ret) &#123;</span><br><span class="line">            HDF_LOGE(&quot;%s mipi_dsi_attach failed&quot;, __func__);</span><br><span class="line">            drm_panel_remove(&amp;hdfDrmPanel-&gt;panel);</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">        mipi_dsi_set_drvdata(dsiDev, hdfDrmPanel);</span><br><span class="line">        for (uint32_t j = 0; j &lt; ATTR_NUM; j++) &#123;</span><br><span class="line">            if (device_create_file(&amp;dsiDev-&gt;dev, g_panelAttrs[j]) != 0) &#123;</span><br><span class="line">                HDF_LOGE(&quot;%s line = %d device_create_file fail&quot;, __func__, __LINE__);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        HDF_LOGI(&quot;%s panel[%d] registered success&quot;, i, __func__);</span><br><span class="line">    &#125;</span><br><span class="line">    HDF_LOGI(&quot;%s success&quot;, __func__);</span><br><span class="line">    return HDF_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-12-01 16:25:06" itemprop="dateModified" datetime="2022-12-01T16:25:06+08:00">2022-12-01</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2022/06/29/framework--display/" title="framework - display">https://muxiaoximuxiaoxi.github.io/2022/06/29/framework--display/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="BackLight子系统">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>BackLight子系统</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciub8ja1j20zk0m81ky.jpg" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _开源鸿蒙驱动子系统</span>
+  <h3>OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">一、目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81adapter-soc"><span class="toc-number">2.</span> <span class="toc-text">二、adapter_soc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Backlight"><span class="toc-number">3.</span> <span class="toc-text">三、Backlight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Panel"><span class="toc-number">4.</span> <span class="toc-text">四、Panel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Hdf-disp"><span class="toc-number">5.</span> <span class="toc-text">五、Hdf_disp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81Hdf-drm-panel"><span class="toc-number">6.</span> <span class="toc-text">六、Hdf_drm_panel</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="bookmark" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></li><li><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></li><li><a href="/2022/06/29/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" rel="bookmark" title="蓝区上库">蓝区上库</a></li><li><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="bookmark" title="BackLight子系统">BackLight子系统</a></li><li class="active"><a href="/2022/06/29/framework--display/" rel="bookmark" title="framework - display">framework - display</a></li><li><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="bookmark" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></li><li><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" rel="bookmark" title="开发板测试">开发板测试</a></li><li><a href="/2022/06/29/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="HDI-GEN使用指导">HDI-GEN使用指导</a></li><li><a href="/2022/06/29/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" rel="bookmark" title="display模块讲解">display模块讲解</a></li><li><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" rel="bookmark" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">15</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/rk3568%E6%B5%8B%E8%AF%95/" title="开发板测试">开发板测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/12/01/fuzz%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="OpenHarmony HDF 驱动框架介绍和驱动加载过程分析">OpenHarmony HDF 驱动框架介绍和驱动加载过程分析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/%E4%BB%A5HDF%E8%A7%86%E8%A7%92%EF%BC%8C%E5%88%86%E6%9E%90%E8%83%8C%E5%85%89%E6%A8%A1%E5%9D%97/" title="以HDF视角，分析背光模块">以HDF视角，分析背光模块</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/BackLight%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="BackLight子系统">BackLight子系统</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/22/GN%20%E7%BC%96%E8%AF%91/" title="GN编译">GN编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/UT%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%BC%80%E5%8F%91%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="UT平台驱动测试用例开发及使用指导">UT平台驱动测试用例开发及使用指导</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2022/02/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/framework--display/" title="framework - display">framework - display</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _开源鸿蒙驱动子系统">_开源鸿蒙驱动子系统</a>
+</div>
+
+    <span><a href="/2022/06/29/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="ubunt环境搭建及 OpenHarmony代码更新）">ubunt环境搭建及 OpenHarmony代码更新）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/29/framework--display/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
