@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">
 
 
 
   <title>
- |
+HDF驱动框架讲解 - _驱动子系统 |
 Yume Shoka = 迩彧博客</title>
 <meta name="generator" content="Hexo 6.0.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ Yume Shoka = 迩彧博客</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">HDF驱动框架讲解
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2024-10-20 12:09:38">
+  <span class="item" title="Created: 2024-04-28 21:04:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2024-10-20T12:09:38+08:00">2024-10-20</time>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T21:04:32+08:00">2024-04-28</time>
   </span>
 </div>
 
@@ -100,12 +100,12 @@ Yume Shoka = 迩彧博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,11 +130,13 @@ Yume Shoka = 迩彧博客</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _驱动子系统"><span itemprop="name">_驱动子系统</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -149,13 +151,7 @@ Yume Shoka = 迩彧博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <hr>
-<p>layout: _驱动子系统<br>title: HDF驱动框架讲解<br>date: 2022-02-28 21:04:32<br>categories:</p>
-<ul>
-<li>_驱动子系统<br>tags:</li>
-</ul>
-<hr>
-<h2 id="HDF驱动框架概述"><a href="#HDF驱动框架概述" class="headerlink" title="HDF驱动框架概述"></a>HDF驱动框架概述</h2><p>OpenAtom OpenHarmony（以下简称“OpenHarmony”）系统 HDF 驱动框架采用 C 语言面向对象编程模型构建，通过平台解耦、内核解耦，来达到兼容不同内核，统一平台底座的目的，从而帮助开发者实现驱动一次开发，多系统部署的效果。<br> <br>为了达成这个目标， OpenHarmony 系统 HDF 驱动框架提供了：</p>
+    <h2 id="HDF驱动框架概述"><a href="#HDF驱动框架概述" class="headerlink" title="HDF驱动框架概述"></a>HDF驱动框架概述</h2><p>OpenAtom OpenHarmony（以下简称“OpenHarmony”）系统 HDF 驱动框架采用 C 语言面向对象编程模型构建，通过平台解耦、内核解耦，来达到兼容不同内核，统一平台底座的目的，从而帮助开发者实现驱动一次开发，多系统部署的效果。<br> <br>为了达成这个目标， OpenHarmony 系统 HDF 驱动框架提供了：</p>
 <ul>
 <li><p><strong>操作系统适配层</strong>（OSAL，operatingsystem abstraction layer）：对内核操作相关接口进行统一封装，屏蔽不同系统操作接口。</p>
 </li>
@@ -267,7 +263,7 @@ Yume Shoka = 迩彧博客</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-10-20 12:17:16" itemprop="dateModified" datetime="2024-10-20T12:17:16+08:00">2024-10-20</time>
+    <time title="Modified: 2024-10-20 12:33:01" itemprop="dateModified" datetime="2024-10-20T12:33:01+08:00">2024-10-20</time>
   </span>
 </div>
 
@@ -298,7 +294,7 @@ Yume Shoka = 迩彧博客</title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://muxiaoximuxiaoxi.github.io/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="">https://muxiaoximuxiaoxi.github.io/2024/10/20/OpenHarmony HDF 驱动框架介绍和驱动加载过程分析/</a>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/04/28/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="HDF驱动框架讲解">https://muxiaoximuxiaoxi.github.io/2024/04/28/OpenHarmony HDF 驱动框架介绍和驱动加载过程分析/</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -317,20 +313,20 @@ Yume Shoka = 迩彧博客</title>
     <div class="item left">
       
 
-  <a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0n457cj20zk0m8e81.jpg" title="Untitled">
+  <a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="proxmox集群搭建">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Untitled</h3>
+  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
+  <h3>proxmox集群搭建</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew8gmvyj20zk0m87wh.jpg" title="Untitled">
+  <a href="/2024/04/28/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexoj0moj20zk0m8kgu.jpg" title="JNI">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Untitled</h3>
+  <span class="category"><i class="ic i-flag"></i> _tv子系统</span>
+  <h3>JNI</h3>
   </a>
 
     </div>
@@ -352,6 +348,9 @@ Yume Shoka = 迩彧博客</title>
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HDF%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">HDF驱动框架概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDF%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">HDF驱动框架介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenHarmony-%E7%B3%BB%E7%BB%9F-HDF-%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E7%BB%84%E6%88%90"><span class="toc-number">2.1.</span> <span class="toc-text">OpenHarmony 系统 HDF 驱动框架组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDF-%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">HDF 驱动框架工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E6%8E%A5%E5%8F%A3%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.</span> <span class="toc-text">驱动接口工作机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">驱动加载过程分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.1.</span> <span class="toc-text">实现驱动程序初始化接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3%E7%AC%A6%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">导出驱动程序入口符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87%E9%85%8D%E7%BD%AE"><span class="toc-number">3.3.</span> <span class="toc-text">添加设备配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">3.4.</span> <span class="toc-text">驱动启动过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%AE%BE%E5%A4%87%E5%88%97%E8%A1%A8"><span class="toc-number">3.5.</span> <span class="toc-text">获取设备列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">3.6.</span> <span class="toc-text">获取驱动程序列表</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/04/28/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" rel="bookmark" title="HDI-GEN使用指导">HDI-GEN使用指导</a></li><li class="active"><a href="/2024/04/28/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" rel="bookmark" title="HDF驱动框架讲解">HDF驱动框架讲解</a></li><li><a href="/2024/04/28/rk3568%E6%B5%8B%E8%AF%95/" rel="bookmark" title="rk3568测试">rk3568测试</a></li><li><a href="/2024/04/28/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="bookmark" title="ubunt环境搭建及 OpenHarmony代码更新">ubunt环境搭建及 OpenHarmony代码更新</a></li><li><a href="/2024/04/28/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" rel="bookmark" title="蓝区上库">蓝区上库</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,7 +369,7 @@ Yume Shoka = 迩彧博客</title>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">4</span>
+        <span class="count">6</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -395,12 +394,12 @@ Yume Shoka = 迩彧博客</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2024/04/28/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -422,39 +421,30 @@ Yume Shoka = 迩彧博客</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
-</div>
-
-    <span><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" title="VGPU">VGPU</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
 </div>
 
-    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+    <span><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">动态so的编译</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+<a href="/categories/%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _驱动子系统">_驱动子系统</a>
 </div>
 
-    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+    <span><a href="/2024/04/28/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="蓝区上库">蓝区上库</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _驱动子系统">_驱动子系统</a>
+</div>
+
+    <span><a href="/2024/04/28/rk3568%E6%B5%8B%E8%AF%95/" title="rk3568测试">rk3568测试</a></span>
   </li>
 
       
@@ -471,47 +461,59 @@ Yume Shoka = 迩彧博客</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDK/" title="In _视联SDK">_视联SDK</a>
+</div>
+
+    <span><a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" title="TVL格式">TVL格式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" title="DNS域名解析及bind9介绍">DNS域名解析及bind9介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
 
     <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
-</div>
-
-    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94SDk/" title="In _视联SDk">_视联SDk</a>
-</div>
-
-    <span><a href="/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/" title="交叉编译链接及其他">交叉编译链接及其他</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/10/20/rk3568%E6%B5%8B%E8%AF%95/" title="Untitled">Untitled</a></span>
   </li>
 
   </ul>
@@ -542,7 +544,7 @@ Yume Shoka = 迩彧博客</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2024/10/20/OpenHarmony HDF 驱动框架介绍和驱动加载过程分析/',
+    path: '2024/04/28/OpenHarmony HDF 驱动框架介绍和驱动加载过程分析/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

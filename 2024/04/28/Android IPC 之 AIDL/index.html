@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/">
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/Android%20IPC%20%E4%B9%8B%20AIDL/">
 
 
 
   <title>
- |
+Android IPC 之 AIDL - _tv子系统 |
 Yume Shoka = 迩彧博客</title>
 <meta name="generator" content="Hexo 6.0.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ Yume Shoka = 迩彧博客</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">Android IPC 之 AIDL
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2024-10-20 12:07:32">
+  <span class="item" title="Created: 2024-04-28 21:04:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2024-10-20T12:07:32+08:00">2024-10-20</time>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T21:04:32+08:00">2024-04-28</time>
   </span>
 </div>
 
@@ -100,12 +100,12 @@ Yume Shoka = 迩彧博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,11 +130,13 @@ Yume Shoka = 迩彧博客</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" itemprop="item" rel="index" title="In _tv子系统"><span itemprop="name">_tv子系统</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/Android%20IPC%20%E4%B9%8B%20AIDL/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -149,13 +151,7 @@ Yume Shoka = 迩彧博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <hr>
-<p>layout: _tv子系统<br>title: Android IPC 之 AIDL<br>date: 2022-01-28 21:04:32<br>categories:</p>
-<ul>
-<li>_tv子系统<br>tags:</li>
-</ul>
-<hr>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>AIDL(Android Interface Definition Language 即Android接口定义语言)，是一种描述服务端和客户端通信接口的语言，可用于生成IPC代码。从某种意义上说AIDL其实是一个模板，在使用过程中，真正起到作用的并不是AIDL文件，而且根据AIDL生成的Interface的实例代码。 </br></p>
+    <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>AIDL(Android Interface Definition Language 即Android接口定义语言)，是一种描述服务端和客户端通信接口的语言，可用于生成IPC代码。从某种意义上说AIDL其实是一个模板，在使用过程中，真正起到作用的并不是AIDL文件，而且根据AIDL生成的Interface的实例代码。 </br></p>
 <h4 id="设计AIDL的初衷，实现进程间通信"><a href="#设计AIDL的初衷，实现进程间通信" class="headerlink" title="设计AIDL的初衷，实现进程间通信"></a>设计AIDL的初衷，实现进程间通信</h4><p>在Android系统中，每个进程都运行在一块独立的内存中，在其中完成自己的各项活动，与其他进程分隔开来，但在某些场景下各应用间需要进行信息交互，比如说传递数据或者任务委托。AIDL就是为了满足这种需求而诞生的。<strong>通过AIDL，可以在一个进程中获取另一个进程的数据和调用其对外接口，从而实现进程间通信。通常将提高对外接口的应用称为服务端，调用这些对外接口的应用称为客户端，客户端通过绑定服务端的Service进行交互</strong></p>
 <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h4 id="AIDL文件以-aidl-为后缀名"><a href="#AIDL文件以-aidl-为后缀名" class="headerlink" title="AIDL文件以 .aidl 为后缀名"></a>AIDL文件以 .aidl 为后缀名</h4><h4 id="AIDL数据类型"><a href="#AIDL数据类型" class="headerlink" title="AIDL数据类型"></a>AIDL数据类型</h4><ul>
 <li>基础数据类型：byte、char、short、int、long、float、double、boolean</li>
@@ -533,7 +529,7 @@ public class AIDLActivity extends AppCompatActivity &#123;
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-10-20 12:16:45" itemprop="dateModified" datetime="2024-10-20T12:16:45+08:00">2024-10-20</time>
+    <time title="Modified: 2024-10-20 12:30:58" itemprop="dateModified" datetime="2024-10-20T12:30:58+08:00">2024-10-20</time>
   </span>
 </div>
 
@@ -564,7 +560,7 @@ public class AIDLActivity extends AppCompatActivity &#123;
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://muxiaoximuxiaoxi.github.io/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" title="">https://muxiaoximuxiaoxi.github.io/2024/10/20/Android IPC 之 AIDL/</a>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/04/28/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Android IPC 之 AIDL">https://muxiaoximuxiaoxi.github.io/2024/04/28/Android IPC 之 AIDL/</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -583,20 +579,20 @@ public class AIDLActivity extends AppCompatActivity &#123;
     <div class="item left">
       
 
-  <a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew28b65j20zk0m8hdt.jpg" title="打包发版">
+  <a href="/2024/04/28/GN%20%E7%BC%96%E8%AF%91/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuja1j1j20zk0m8kjl.jpg" title="GN编译">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
-  <h3>打包发版</h3>
+  <span class="category"><i class="ic i-flag"></i> _tv子系统</span>
+  <h3>GN编译</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexw3o58j20zk0m8e81.jpg" title="Untitled">
+  <a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuv80yoj20zk0m8kjl.jpg" title="打包发版">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Untitled</h3>
+  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
+  <h3>打包发版</h3>
   </a>
 
     </div>
@@ -618,6 +614,9 @@ public class AIDLActivity extends AppCompatActivity &#123;
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1AIDL%E7%9A%84%E5%88%9D%E8%A1%B7%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">设计AIDL的初衷，实现进程间通信</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AIDL%E6%96%87%E4%BB%B6%E4%BB%A5-aidl-%E4%B8%BA%E5%90%8E%E7%BC%80%E5%90%8D"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">AIDL文件以 .aidl 为后缀名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AIDL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">AIDL数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AIDL%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA%E4%B8%A4%E7%B1%BB"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">AIDL文件可以分为两类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%90%91Tag"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">定向Tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%8E%E7%A1%AE%E5%AF%BC%E5%8C%85"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">明确导包</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AIDL%E7%9A%84%E8%B7%A8%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-number">3.</span> <span class="toc-text">AIDL的跨进程通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%AE%9E%E7%8E%B0Parcelable%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.0.1.</span> <span class="toc-text">使用数据类实现Parcelable接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8%E8%87%AA%E5%B7%B1%E7%94%9F%E6%88%90"><span class="toc-number">3.0.1.1.</span> <span class="toc-text">编译器自己生成</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Book%E7%B1%BB%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.0.1.1.1.</span> <span class="toc-text">Book类示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#readFromParcel-%E6%96%B9%E6%B3%95%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.0.1.1.2.</span> <span class="toc-text">readFromParcel() 方法具体实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B"><span class="toc-number">3.0.1.1.3.</span> <span class="toc-text">完成代码如下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AIDL%E6%96%87%E4%BB%B6"><span class="toc-number">3.0.2.</span> <span class="toc-text">AIDL文件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A%E4%BF%AE%E6%94%B9build-gradle-%E6%96%87%E4%BB%B6%EF%BC%9A%E5%9C%A8-android-%E4%B8%AD%E9%97%B4%E5%8A%A0%E4%B8%8A%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="toc-number">3.0.2.0.0.1.</span> <span class="toc-text">解决方法：修改build.gradle 文件：在 android{} 中间加上下面的内容：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-number">3.0.3.</span> <span class="toc-text">服务端代码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8Manefest-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B3%A8%E5%86%8CService"><span class="toc-number">3.0.3.0.1.</span> <span class="toc-text">在Manefest 文件中注册Service</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-number">3.0.4.</span> <span class="toc-text">客户端代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1"><span class="toc-number">4.</span> <span class="toc-text">通信</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2024/04/28/Android%20IPC%20%E4%B9%8B%20AIDL/" rel="bookmark" title="Android IPC 之 AIDL">Android IPC 之 AIDL</a></li><li><a href="/2024/04/28/GN%20%E7%BC%96%E8%AF%91/" rel="bookmark" title="GN编译">GN编译</a></li><li><a href="/2024/04/28/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" rel="bookmark" title="JNI">JNI</a></li><li><a href="/2024/04/28/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" rel="bookmark" title="动态链接库">动态链接库</a></li><li><a href="/2024/04/28/%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B/" rel="bookmark" title="套接字">套接字</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -636,7 +635,7 @@ public class AIDLActivity extends AppCompatActivity &#123;
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">4</span>
+        <span class="count">6</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -661,12 +660,12 @@ public class AIDLActivity extends AppCompatActivity &#123;
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2024/04/28/GN%20%E7%BC%96%E8%AF%91/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -690,73 +689,7 @@ public class AIDLActivity extends AppCompatActivity &#123;
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/10/20/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94SDK/" title="In _视联SDK">_视联SDK</a>
-</div>
-
-    <span><a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" title="TVL格式">TVL格式</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" title="Untitled">Untitled</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
-</div>
-
-    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
-</div>
-
-    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="Untitled">Untitled</a></span>
   </li>
 
       
@@ -773,10 +706,80 @@ public class AIDLActivity extends AppCompatActivity &#123;
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _驱动子系统">_驱动子系统</a>
+</div>
+
+    <span><a href="/2024/04/28/rk3568%E6%B5%8B%E8%AF%95/" title="rk3568测试">rk3568测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2024/04/28/%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B/" title="套接字">套接字</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">动态so的编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" title="Jenkins自动化编译">Jenkins自动化编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
 </div>
 
     <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDK/" title="In _视联SDK">_视联SDK</a>
+</div>
+
+    <span><a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" title="TVL格式">TVL格式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%A9%B1%E5%8A%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _驱动子系统">_驱动子系统</a>
+</div>
+
+    <span><a href="/2024/04/28/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="蓝区上库">蓝区上库</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/tv%E5%AD%90%E7%B3%BB%E7%BB%9F/" title="In _tv子系统">_tv子系统</a>
+</div>
+
+    <span><a href="/2024/04/28/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="JNI">JNI</a></span>
   </li>
 
   </ul>
@@ -807,7 +810,7 @@ public class AIDLActivity extends AppCompatActivity &#123;
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2024/10/20/Android IPC 之 AIDL/',
+    path: '2024/04/28/Android IPC 之 AIDL/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
