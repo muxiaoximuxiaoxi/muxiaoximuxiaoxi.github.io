@@ -1,0 +1,506 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/">
+
+
+
+  <title>
+bind9关于视联网移植 - _视联浏览器 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">bind9关于视联网移植
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-02-23 22:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-23T22:04:32+08:00">2024-02-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="item" rel="index" title="In _视联浏览器"><span itemprop="name">_视联浏览器</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h4 id="入视联网"><a href="#入视联网" class="headerlink" title="入视联网"></a>入视联网</h4><h5 id="extern-int-v2v-start-const-char-mac"><a href="#extern-int-v2v-start-const-char-mac" class="headerlink" title="extern int v2v_start(const char *mac);"></a>extern int v2v_start(const char *mac);</h5><p>v2v_drv 提供的入视联网接口<br>参数：入参，视联网的虚拟mac<br>函数作用：根据提供的视联网的虚拟mac去与自治云通信，实现此视联网mac的入网</p>
+<h5 id="extern-int-v2v-checkin-is-ok-or-not"><a href="#extern-int-v2v-checkin-is-ok-or-not" class="headerlink" title="extern int v2v_checkin_is_ok_or_not();"></a>extern int v2v_checkin_is_ok_or_not();</h5><p>v2v_drv 提供的入视联网接口<br>参数：无参<br>函数作用：判断当前mac是否为入网状态，一般在收发视联包之前，都应调用此接口进行判断当前是否为入网状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include&lt;pthread.h&gt;</span><br><span class="line">#include &lt;isc/thread.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">extern int v2v_start(const char *mac);</span><br><span class="line">extern int v2v_checkin_is_ok_or_not();</span><br><span class="line"></span><br><span class="line">void one() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        fputs(&quot;start v2v_drv success!\n&quot;,file);</span><br><span class="line">        </span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void two() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        fputs(&quot;start v2v_drv fail!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void three() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        fputs(&quot;已入网!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void four() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        fputs(&quot;未入网!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void five() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        fputs(&quot;pthread_create failed!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//读取配置文件 netcfg.ini 获取视联网虚拟mac</span><br><span class="line">int GetIniKeyString(char *title,char *key,char *default_str,char *return_str,char *filename) </span><br><span class="line">&#123; </span><br><span class="line">	FILE *fp; </span><br><span class="line">	char szLine[1024];</span><br><span class="line">	char tmpstr[1024];</span><br><span class="line">	int rtnval;</span><br><span class="line">	int i = 0; </span><br><span class="line">	int flag = 0; </span><br><span class="line">	char *tmp;</span><br><span class="line">	if((fp = fopen(filename, &quot;r&quot;)) == NULL) </span><br><span class="line">	&#123; </span><br><span class="line">		printf(&quot;have   no   such   file \n&quot;);</span><br><span class="line">		memcpy(default_str,return_str,strlen(default_str));</span><br><span class="line">		return 0; </span><br><span class="line">	&#125;</span><br><span class="line">	while(!feof(fp)) </span><br><span class="line">	&#123; </span><br><span class="line">		rtnval = fgetc(fp); </span><br><span class="line">		if(rtnval == EOF) </span><br><span class="line">		&#123; </span><br><span class="line">			break; </span><br><span class="line">		&#125; </span><br><span class="line">		else </span><br><span class="line">		&#123; </span><br><span class="line">			szLine[i++] = rtnval; </span><br><span class="line">		&#125; </span><br><span class="line">		if(rtnval == &#x27;\n&#x27;) </span><br><span class="line">		&#123; 			</span><br><span class="line"></span><br><span class="line">			szLine[--i] = &#x27;\0&#x27;;</span><br><span class="line">			i = 0; </span><br><span class="line">			tmp = strchr(szLine, &#x27;=&#x27;); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			if(( tmp != NULL )&amp;&amp;(flag == 1)) </span><br><span class="line">			&#123; 				</span><br><span class="line">				if(strstr(szLine,key)!=NULL) </span><br><span class="line">				&#123; </span><br><span class="line">					if (&#x27;#&#x27; == szLine[0])</span><br><span class="line">					&#123;</span><br><span class="line">					&#125;</span><br><span class="line">                    else if (strcmp(szLine, &quot;//&quot;) == 0 &amp;&amp; szLine[1] == &#x27;/&#x27;)</span><br><span class="line">					&#123;</span><br><span class="line">						</span><br><span class="line">					&#125;</span><br><span class="line">					else</span><br><span class="line">					&#123;</span><br><span class="line">						strcpy(return_str,tmp+1); </span><br><span class="line">						fclose(fp);</span><br><span class="line">						return strlen(return_str); </span><br><span class="line">					&#125;</span><br><span class="line">				&#125; </span><br><span class="line">			&#125;</span><br><span class="line">			else </span><br><span class="line">			&#123; </span><br><span class="line">				strcpy(tmpstr,&quot;[&quot;); </span><br><span class="line">				strcat(tmpstr,title); </span><br><span class="line">				strcat(tmpstr,&quot;]&quot;);</span><br><span class="line">				if( strncmp(tmpstr,szLine,strlen(tmpstr)) == 0 ) </span><br><span class="line">				&#123;</span><br><span class="line">					flag = 1; </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fclose(fp); </span><br><span class="line">	memcpy(default_str,return_str,strlen(default_str));</span><br><span class="line">	return 0; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void func1_1()</span><br><span class="line">&#123;</span><br><span class="line">    //char mac[20]=&quot;60:f2:ef:03:02:86&quot;;</span><br><span class="line">    char mac[20]; </span><br><span class="line">                      </span><br><span class="line">    char netcfg[] = &quot;./netcfg.ini&quot;;</span><br><span class="line">                                        </span><br><span class="line">    if (0 != access(netcfg, 0))                 </span><br><span class="line">    &#123;                                   </span><br><span class="line">        system(&quot;touch netcfg.netcfg&quot;);  </span><br><span class="line">        printf(&quot;can not find the netcfg.ini file !\n&quot;);</span><br><span class="line">        return -1;                              </span><br><span class="line">    &#125;                                           </span><br><span class="line">    int ret;                                    </span><br><span class="line">                                        </span><br><span class="line">    ret = GetIniKeyString(&quot;mac_v2v&quot;, &quot;v2v_mac&quot;, &quot;ff:ff:ff:ff:ff:ff&quot;, mac, netcfg);</span><br><span class="line">    int r = v2v_start(mac);</span><br><span class="line">    if (r == 0)</span><br><span class="line">        &#123;</span><br><span class="line">            one();</span><br><span class="line">        &#125;</span><br><span class="line">    else</span><br><span class="line">        &#123;</span><br><span class="line">            two();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int loop_times = 0;</span><br><span class="line">        while (1)</span><br><span class="line">        &#123;</span><br><span class="line">            loop_times++;</span><br><span class="line">            sleep(1);</span><br><span class="line"></span><br><span class="line">            if (loop_times == 10)</span><br><span class="line">            &#123;</span><br><span class="line">                if (1 == v2v_checkin_is_ok_or_not())</span><br><span class="line">                &#123;</span><br><span class="line">                    three();</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    four();</span><br><span class="line">                &#125;</span><br><span class="line">                loop_times = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="收发视联包"><a href="#收发视联包" class="headerlink" title="收发视联包"></a>收发视联包</h4><h5 id="extern-int-v2v-checkin-is-ok-or-not-1"><a href="#extern-int-v2v-checkin-is-ok-or-not-1" class="headerlink" title="extern int v2v_checkin_is_ok_or_not();"></a>extern int v2v_checkin_is_ok_or_not();</h5><p>v2v_drv 提供的入视联网接口<br>参数：无参<br>函数作用：判断当前mac是否为入网状态，一般在收发视联包之前，都应调用此接口进行判断当前是否为入网状态</p>
+<h5 id="extern-int-v2v-sendto-const-char-dst-number-void-data-int-len-int-timeout"><a href="#extern-int-v2v-sendto-const-char-dst-number-void-data-int-len-int-timeout" class="headerlink" title="extern int v2v_sendto(const char *dst_number, void *data, int len, int timeout);"></a>extern int v2v_sendto(const char *dst_number, void *data, int len, int timeout);</h5><p>v2v_drv 提供的入视联网接口<br>参数：<br>dst_number : 入参 目标地址的20位号码<br>data : 入参 发送数据<br>len ：入参 发送数据长度<br>timeout ： 入参 超时时间 默认 100ms</p>
+<h5 id="extern-int-v2v-recvfrom-char-remote-number-int-remote-number-len-void-data-int-len-int-timeout"><a href="#extern-int-v2v-recvfrom-char-remote-number-int-remote-number-len-void-data-int-len-int-timeout" class="headerlink" title="extern int v2v_recvfrom(char *remote_number, int remote_number_len, void *data, int len, int timeout);"></a>extern int v2v_recvfrom(char *remote_number, int remote_number_len, void *data, int len, int timeout);</h5><p>v2v_drv 提供的入视联网接口<br>参数：<br>remote_number : 出参 源地址的20位号码<br>remote_number_len : 入参 源地址长度<br>data ：出参 收到视联包的数据<br>len ：入参 视联包的长度<br>timeout ： 入参 超时时间 默认 100ms</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">extern int v2v_checkin_is_ok_or_not();</span><br><span class="line">extern int v2v_sendto(const char *dst_number, void *data, int len, int timeout);</span><br><span class="line">static int first_time = 1;</span><br><span class="line">static pthread_mutex_t create_mutex = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void* chkv2vv(void* arg) &#123;</span><br><span class="line">	int bb_chkv2v;</span><br><span class="line">    while(1) &#123;</span><br><span class="line"></span><br><span class="line">		int bbrett;</span><br><span class="line">		//char bbchar[21] = &quot;00100003210267500000&quot;;</span><br><span class="line">		char bbchar[21] = &quot;00100003210258800000&quot;;</span><br><span class="line">		char bbname[] = &quot;www.tanggula.com&quot;;</span><br><span class="line">		</span><br><span class="line">		bbrett = v2v_sendto(bbchar, (char *)bbname, strlen(bbname), 5000);</span><br><span class="line">        </span><br><span class="line">        //sleep(30); </span><br><span class="line">        sleep(1); </span><br><span class="line">    &#125;</span><br><span class="line">    return NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">extern int v2v_recvfrom(char *remote_number, int remote_number_len, void *data, int len, int timeout);</span><br><span class="line">extern void func_demo_query_111();</span><br><span class="line"></span><br><span class="line">void* recv2vv(void* arg) &#123;</span><br><span class="line"></span><br><span class="line">    while(1) &#123;</span><br><span class="line">		int ret = 0;</span><br><span class="line">		char remote_number[64];</span><br><span class="line">		char data[969];</span><br><span class="line">		const char* prefix1 = &quot;www.gis.com&quot;;</span><br><span class="line">		const char* prefix2 = &quot;www.tanggula.com&quot;;</span><br><span class="line">		const char* prefix3 = &quot;x_v2v_dns_x&quot;;</span><br><span class="line">		</span><br><span class="line">		ret = v2v_recvfrom(remote_number, 64, data, 969, -1);</span><br><span class="line">		</span><br><span class="line">		char* pos;</span><br><span class="line">		/*</span><br><span class="line"> 		if ((pos = strstr(data, prefix1)) != NULL ||</span><br><span class="line">		    (pos = strstr(data, prefix2)) != NULL ||</span><br><span class="line">		    (pos = strstr(data, prefix3)) != NULL)</span><br><span class="line">*/</span><br><span class="line">		if (pos = strstr(data, prefix3) != NULL)</span><br><span class="line">                &#123;</span><br><span class="line">		    int bbrett;</span><br><span class="line">//                    char bbvdns[] = &quot;x_v2v_dns_x00100003210291300000&quot;;</span><br><span class="line">                    char domain_num[20];  </span><br><span class="line">                    char domain_name[969];		    </span><br><span class="line">                    strcpy(domain_name, data+11);                    </span><br><span class="line">                    char send_num[50]=&quot;x_v2v_dns_x&quot;;</span><br><span class="line">                    //strcat(send_num, domain_num); </span><br><span class="line">		    //bb_gettxt_zone((data+strlen(prefix3)),domain_num);</span><br><span class="line">		    bb_gettxt_zone(domain_name,domain_num);</span><br><span class="line">		    //bb_gettxt_zone(domain_name,send_num);</span><br><span class="line">		    strcat(send_num, domain_num);</span><br><span class="line">  </span><br><span class="line">		    bbrett = v2v_sendto(remote_number, (char *)send_num, strlen(send_num), 5000);</span><br><span class="line">		    //bbrett = v2v_sendto(remote_number, (char *)domain_num, strlen(domain_num), 5000);</span><br><span class="line">		    //bbrett = v2v_sendto(remote_number, (char *)bbvdns, strlen(bbvdns), 5000);</span><br><span class="line">//                 func_demo_query_111();   </span><br><span class="line">//                 func_demo_query_111();   </span><br><span class="line">		    char bbchar[21] = &quot;00100003210286300000&quot;;</span><br><span class="line">                    char bbname[] = &quot;www.tanggula-bind-9.16.43.com&quot;;</span><br><span class="line">                    bbrett = v2v_sendto(bbchar, (char *)bbname, strlen(bbname), 5000);</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">                    int bbrett;</span><br><span class="line">                    char bbchar[21] = &quot;00100003210286300000&quot;;</span><br><span class="line">                    char bbname[] = &quot;www.tanggula==NULL.com&quot;;</span><br><span class="line">                    bbrett = v2v_sendto(bbchar, (char *)bbname, strlen(bbname), 5000);</span><br><span class="line">		&#125;</span><br><span class="line">        //sleep(2); </span><br><span class="line">    &#125;</span><br><span class="line">    return NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static isc_result_t</span><br><span class="line">socket_create(isc_socketmgr_t *manager, int pf, isc_sockettype_t type,</span><br><span class="line">	      isc_socket_t **socketp, isc_socket_t *dup_socket) &#123;</span><br><span class="line">	isc_socket_t *sock = NULL;</span><br><span class="line">	isc__socketthread_t *thread;</span><br><span class="line">	isc_result_t result;</span><br><span class="line">	int lockid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    if (first_time) &#123;</span><br><span class="line">        first_time = 0; </span><br><span class="line">		char v2vname[32] = &quot;isc-net-v2va&quot;;</span><br><span class="line">		char v2vrevname[32] = &quot;isc-rev-v2va&quot;;</span><br><span class="line"></span><br><span class="line">		isc_thread_t chkv2vrev_thread;</span><br><span class="line">		isc_thread_create(recv2vv, NULL,&amp;chkv2vrev_thread);</span><br><span class="line">		isc_thread_setname(chkv2vrev_thread, v2vrevname);</span><br><span class="line"></span><br><span class="line">		isc_thread_t chkv2v_thread;</span><br><span class="line">		isc_thread_create(chkv2vv, NULL,&amp;chkv2v_thread);</span><br><span class="line">		isc_thread_setname(chkv2v_thread, v2vname);</span><br><span class="line">		</span><br><span class="line">//socket_create 函数的其他逻辑</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态域名解析"><a href="#动态域名解析" class="headerlink" title="动态域名解析"></a>动态域名解析</h3><h4 id="zone库"><a href="#zone库" class="headerlink" title="zone库"></a>zone库</h4><h6 id="实现方法：读取配置文件然后通过找到对应的zone库"><a href="#实现方法：读取配置文件然后通过找到对应的zone库" class="headerlink" title="实现方法：读取配置文件然后通过找到对应的zone库"></a>实现方法：读取配置文件然后通过找到对应的zone库</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;ctype.h&gt;</span><br><span class="line">#include &lt;netinet/in.h&gt;</span><br><span class="line">#include &lt;arpa/nameser.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line">#include &lt;resolv.h&gt;</span><br><span class="line"></span><br><span class="line">void bb_gettxt_zone(char* name,char* num_20) &#123;</span><br><span class="line">    const char *conf_file = &quot;/usr/local/test-bind/etc/named.conf&quot;;</span><br><span class="line"></span><br><span class="line">    const char *zone_name = name;</span><br><span class="line">    const char *domain_name = name;</span><br><span class="line"></span><br><span class="line">    char file_path[256];</span><br><span class="line">    if (!get_zone_file_path(conf_file, zone_name, file_path, sizeof(file_path))) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *zone_file = fopen(file_path, &quot;r&quot;);</span><br><span class="line">    if (zone_file == NULL) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    char line[256];</span><br><span class="line">    while (fgets(line, sizeof(line), zone_file)) &#123;</span><br><span class="line">        if (strstr(line, domain_name) &amp;&amp; strstr(line, &quot;TXT&quot;)) &#123;</span><br><span class="line">            char *txt = strchr(line, &#x27;&quot;&#x27;);</span><br><span class="line">            if (txt) &#123;</span><br><span class="line">                txt++;</span><br><span class="line">                char *end = strchr(txt, &#x27;&quot;&#x27;);</span><br><span class="line">                if (end) &#123;</span><br><span class="line">                    *end = &#x27;\0&#x27;;</span><br><span class="line"></span><br><span class="line">			    FILE *file = fopen(&quot;outputaa.txt&quot;, &quot;w&quot;);</span><br><span class="line">			    if (file != NULL) &#123;</span><br><span class="line">			        fprintf(file, txt);</span><br><span class="line">                    //strncpy(num_20, txt+1,20);</span><br><span class="line">                    strncpy(num_20, txt,20);</span><br><span class="line">			        fclose(file);</span><br><span class="line">			    	&#125;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fclose(zone_file);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int get_zone_file_path(const char *conf_file, const char *zone_name, char *file_path, size_t max_len) &#123;</span><br><span class="line">    FILE *conf = fopen(conf_file, &quot;r&quot;);</span><br><span class="line">    if (conf == NULL) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    char line[256];</span><br><span class="line">    int in_zone = 0;</span><br><span class="line">    while (fgets(line, sizeof(line), conf)) &#123;</span><br><span class="line">        if (strstr(line, &quot;zone \&quot;&quot;)) &#123;</span><br><span class="line">                        if (strstr(line, zone_name)) &#123;</span><br><span class="line">                                        in_zone = 1;</span><br><span class="line">                                        continue;</span><br><span class="line">                        &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (in_zone) &#123;</span><br><span class="line">            if (strstr(line, &quot;file&quot;)) &#123;</span><br><span class="line">                char *file = strchr(line, &#x27;&quot;&#x27;);</span><br><span class="line">                if (file) &#123;</span><br><span class="line">                    file++;</span><br><span class="line">                    char *end = strchr(file, &#x27;&quot;&#x27;);</span><br><span class="line">                    if (end) &#123;</span><br><span class="line">                        *end = &#x27;\0&#x27;;</span><br><span class="line">                        strncpy(file_path, file, max_len);</span><br><span class="line">                        fclose(conf);</span><br><span class="line">                        return 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else if (strstr(line, &quot;&#125;&quot;)) &#123;</span><br><span class="line">                in_zone = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fclose(conf);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译及调试"><a href="#编译及调试" class="headerlink" title="编译及调试"></a>编译及调试</h3><h4 id="编译指令"><a href="#编译指令" class="headerlink" title="编译指令"></a>编译指令</h4><p>.&#x2F;configure –prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;bind&#x2F; –with-libtest&#x3D;yes LDFLAGS&#x3D;”-L&#x2F;lib64&#x2F;“ LIBS&#x3D;”-ltest -lzme -lvvprotocol -lstdc++ -lgcc_s” &amp;&amp; make -j4 &amp;&amp; make install</p>
+<h4 id="调试dig"><a href="#调试dig" class="headerlink" title="调试dig"></a>调试dig</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">先启动 named </span><br><span class="line">gdb dig</span><br><span class="line">set args +short @192.168.113.201 vv.a.com TXT</span><br><span class="line"></span><br><span class="line">b dig_query_setup</span><br><span class="line"></span><br><span class="line">b dig_startup</span><br><span class="line"></span><br><span class="line">b printmessage</span><br><span class="line"></span><br><span class="line">b dns_message_sectiontotext</span><br><span class="line"></span><br><span class="line">b rdataset_totext</span><br><span class="line"></span><br><span class="line">p (char*)target-&gt;base</span><br><span class="line">x/s (char*)target-&gt;base</span><br><span class="line"></span><br><span class="line">x/2s (char*)target-&gt;base</span><br><span class="line"></span><br><span class="line">b dns_rdata_clone</span><br><span class="line"></span><br><span class="line">p target-&gt;data</span><br></pre></td></tr></table></figure>
+
+<h4 id="调试-query系列函数"><a href="#调试-query系列函数" class="headerlink" title="调试 query系列函数"></a>调试 query系列函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">gdb -p named进程号</span><br><span class="line"></span><br><span class="line">set  follow-fork-mode child</span><br><span class="line">set detach-on-fork off</span><br><span class="line"></span><br><span class="line">b dns_rdata_fromtext</span><br><span class="line">b recv2vv</span><br><span class="line">b get20num</span><br><span class="line">b load_text</span><br><span class="line">b query_gotanswer</span><br><span class="line">b query_checkrpz</span><br><span class="line">b rpz_rewrite</span><br><span class="line">b rpz_rewrite_ip_rrsets</span><br><span class="line">b rpz_rewrite_ip_rrset</span><br><span class="line">b rpz_get_zbits</span><br><span class="line">b rpz_rrset_find</span><br><span class="line"></span><br><span class="line">break query_send</span><br><span class="line">break ns_query_done</span><br><span class="line">continue</span><br><span class="line"></span><br><span class="line">在另一个窗口，使用dig @192.168.113.201 vv.a.com TXT 触发</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set  follow-fork-mode child</span><br><span class="line">set detach-on-fork off</span><br><span class="line">break ns_query_start</span><br><span class="line">break ns__client_request</span><br><span class="line">break ns__query_start</span><br><span class="line">break query_lookup</span><br><span class="line">break query_gotanswer</span><br><span class="line">break query_respond</span><br><span class="line"></span><br><span class="line">print bb_state</span><br><span class="line">break isc_nm_send</span><br><span class="line">info breakpoints</span><br><span class="line">break query_setup</span><br><span class="line">break udp_recv</span><br><span class="line">break tcp_recv</span><br><span class="line">break startrecv</span><br><span class="line">break isc__nm_udp_send</span><br><span class="line">break isc__nm_tcp_send</span><br><span class="line">info breakpoints</span><br><span class="line"></span><br><span class="line">break isc_socket_create</span><br><span class="line">break socket_create</span><br><span class="line">break open_socket</span><br><span class="line">break isc_socket_recv</span><br><span class="line">break allocate_socketevent</span><br><span class="line"></span><br><span class="line">break ns__client_request</span><br><span class="line">break query_respond</span><br><span class="line">break ns_client_send</span><br><span class="line"></span><br><span class="line">break isc_socket_sendto2</span><br><span class="line">break socket_send</span><br><span class="line">break nm_thread</span><br><span class="line">continue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">顺着 ns__client_request(isc_nmhandle_t *handle, isc_result_t eresult,</span><br><span class="line">捋 bind9 核心查询机制</span><br><span class="line"></span><br><span class="line">打印 client-&gt;message 的值</span><br><span class="line">result = dns_message_parse(client-&gt;message, buffer, 0);</span><br><span class="line">                |</span><br><span class="line">                V</span><br><span class="line">打印 msg 的值</span><br><span class="line">ret = getquestions(source, msg, &amp;dctx, options);</span><br><span class="line">                |</span><br><span class="line">                V</span><br><span class="line">打印 msg 的值</span><br><span class="line">result = getname(name, source, msg, dctx);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dig @192.168.113.201 vv.a.com TXT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set  follow-fork-mode child</span><br><span class="line">set detach-on-fork off</span><br><span class="line"></span><br><span class="line">b ns__client_request</span><br><span class="line">b dns_message_parse </span><br><span class="line">b getquestions</span><br><span class="line">b getname</span><br><span class="line"></span><br><span class="line">b ns_client_send</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="启动脚本"><a href="#启动脚本" class="headerlink" title="启动脚本"></a>启动脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">z_start_named.sh</span><br><span class="line"></span><br><span class="line">kill_named()</span><br><span class="line">&#123;</span><br><span class="line">    local pid=`ps -ef|grep named|grep -v grep|awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line"></span><br><span class="line">    [ ! -z &quot;$pid&quot; ] &amp;&amp; &#123; echo &quot;kill $pid&quot;; sudo kill -9 $pid; sleep 1; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">kill_v2v_drv()</span><br><span class="line">&#123;</span><br><span class="line">    local pid=`ps -ef|grep v2v_drv|grep -v grep|awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line"></span><br><span class="line">    [ ! -z &quot;$pid&quot; ] &amp;&amp; &#123; echo &quot;kill $pid&quot;; sudo kill -9 $pid; sleep 1; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start_named()</span><br><span class="line">&#123;</span><br><span class="line">/usr/local/shh_bind/sbin/named -u named -c /usr/local/shh_bind/etc/named.conf</span><br><span class="line">&#125;</span><br><span class="line">if [ $1 == &quot;start&quot; ];then</span><br><span class="line">    SERVICE_NAME1=named</span><br><span class="line">    if pgrep $SERVICE_NAME1 &gt;/dev/null; then</span><br><span class="line">                echo &quot;named is alive. stopping it now&quot;</span><br><span class="line">                kill_named</span><br><span class="line">    fi</span><br><span class="line">    SERVICE_NAME2=v2v_drv</span><br><span class="line">    if pgrep $SERVICE_NAME2 &gt;/dev/null; then</span><br><span class="line">                echo &quot;v2v_drv is alive. stopping it now&quot;</span><br><span class="line">                kill_v2v_drv</span><br><span class="line">    fi</span><br><span class="line">    echo &quot;start named now &quot;</span><br><span class="line">    #sleep 2</span><br><span class="line">    start_named</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ $1 == &quot;stop&quot; ];then</span><br><span class="line">    kill_named</span><br><span class="line">    kill_v2v_drv</span><br><span class="line">    sleep 1</span><br><span class="line">    echo &quot;end&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="bind9中关于ip的存储"><a href="#bind9中关于ip的存储" class="headerlink" title="bind9中关于ip的存储"></a>bind9中关于ip的存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">函数</span><br><span class="line">query_gotanswer(query_ctx_t *qctx, isc_result_t res)</span><br><span class="line">调用 result = query_checkrpz(qctx, result);</span><br><span class="line"></span><br><span class="line">函数</span><br><span class="line">query_checkrpz(query_ctx_t *qctx, isc_result_t result)</span><br><span class="line">调用语句 调用 rpz_rewrite</span><br><span class="line">rresult = rpz_rewrite(qctx-&gt;client, qctx-&gt;qtype, result, qctx-&gt;resuming,</span><br><span class="line"></span><br><span class="line">函数</span><br><span class="line">rpz_rewrite(ns_client_t *client, dns_rdatatype_t qtype, isc_result_t qresult,</span><br><span class="line">/*</span><br><span class="line"> * Check all IP addresses for this NS name.</span><br><span class="line"> * 检查此NS名称的所有IP地址</span><br><span class="line"> */</span><br><span class="line">result = rpz_rewrite_ip_rrsets(client, &amp;ns.name, qtype,</span><br><span class="line"></span><br><span class="line">函数</span><br><span class="line">rpz_rewrite_ip_rrsets(ns_client_t *client, dns_name_t *name,</span><br><span class="line">内部分为 ipv4调用 和ipv6调用 result = rpz_rewrite_ip_rrset(</span><br><span class="line"></span><br><span class="line">函数 </span><br><span class="line">rpz_rewrite_ip_rrset(ns_client_t *client, dns_name_t *name,</span><br><span class="line"></span><br><span class="line">调用语句 调用 rpz_get_zbits</span><br><span class="line">zbits = rpz_get_zbits(client, ip_type, rpz_type);</span><br><span class="line"></span><br><span class="line">函数</span><br><span class="line">static dns_rpz_zbits_t</span><br><span class="line">rpz_get_zbits(ns_client_t *client, dns_rdatatype_t ip_type,</span><br><span class="line">	      dns_rpz_type_t rpz_type) </span><br><span class="line"></span><br><span class="line">内部 关于各个ip信息赋值</span><br><span class="line">	switch (rpz_type) &#123;</span><br><span class="line">	case DNS_RPZ_TYPE_CLIENT_IP:</span><br><span class="line">		zbits = st-&gt;have.client_ip;</span><br><span class="line">		break;</span><br><span class="line">	case DNS_RPZ_TYPE_QNAME:</span><br><span class="line">		zbits = st-&gt;have.qname;</span><br><span class="line">		break;</span><br><span class="line">	case DNS_RPZ_TYPE_IP:</span><br><span class="line">		if (ip_type == dns_rdatatype_a) &#123;</span><br><span class="line">			zbits = st-&gt;have.ipv4;</span><br><span class="line">		&#125; else if (ip_type == dns_rdatatype_aaaa) &#123;</span><br><span class="line">			zbits = st-&gt;have.ipv6;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			zbits = st-&gt;have.ip;</span><br><span class="line">		&#125;</span><br><span class="line">		break;</span><br><span class="line">	case DNS_RPZ_TYPE_NSDNAME:</span><br><span class="line">		zbits = st-&gt;have.nsdname;</span><br><span class="line">		break;</span><br><span class="line">	case DNS_RPZ_TYPE_NSIP:</span><br><span class="line">		if (ip_type == dns_rdatatype_a) &#123;</span><br><span class="line">			zbits = st-&gt;have.nsipv4;</span><br><span class="line">		&#125; else if (ip_type == dns_rdatatype_aaaa) &#123;</span><br><span class="line">			zbits = st-&gt;have.nsipv6;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			zbits = st-&gt;have.nsip;</span><br><span class="line">		&#125;</span><br><span class="line">		break;</span><br><span class="line">	default:</span><br><span class="line">		UNREACHABLE();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="动态域名所尝试路径"><a href="#动态域名所尝试路径" class="headerlink" title="动态域名所尝试路径"></a>动态域名所尝试路径</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">动态域名解析</span><br><span class="line">1、捋清下述函数的调用关系 </span><br><span class="line"> ns_query_start ns__client_request ns__query_start query_lookup query_gotanswer query_respond</span><br><span class="line"> isc_nm_send query_setup udp_recv tcp_recv startrecv isc__nm_udp_send isc__nm_tcp_send</span><br><span class="line"> isc_socket_create socket_create open_socket isc_socket_recv allocate_socketevent</span><br><span class="line"> ns__client_request query_respond ns_client_send</span><br><span class="line"> isc_socket_sendto2 socket_send nm_thread</span><br><span class="line"> 在函数调用中打印 struct ns_client_t struct ns_query_t 等其他可能与动态域名解析相关的结构体或变量</span><br><span class="line"></span><br><span class="line">2、捋清下述函数的调用关系</span><br><span class="line"> query_gotanswer query_checkrpz rpz_rewrite rpz_rewrite_ip_rrsets rpz_rewrite_ip_rrset</span><br><span class="line"> rpz_get_zbits rpz_rrset_find</span><br><span class="line"> 在函数调用中打印 struct query_ctx_t struct dns_rpz_st_t 等其他可能与动态域名解析相关的结构体或变量</span><br><span class="line"></span><br><span class="line">3、捋清下述函数的调用关系</span><br><span class="line"> dig_setup(argc, argv); dig_query_setup(false, false, argc, argv); dig_startup(); dig_shutdown(); </span><br><span class="line"> printmessage received</span><br><span class="line"> 在函数调用中打印 struct dig_query_t struct dns_message_t 等其他可能与动态域名解析相关的结构体或变量</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4、捋清下述函数的调用关系</span><br><span class="line">dns_rdata_totext dns_rdata_fromtext</span><br><span class="line"> 在函数调用中打印 </span><br><span class="line"></span><br><span class="line">5 对dns_rdata_t *rdata以及ns_client_t *client等结构体参数含义进行梳理  </span><br><span class="line">6 部署能够返回字符串类型的bind服务器并配置成功</span><br><span class="line">7 梳理不同类型的比如：A AAAA 以及CMAKE TXT等类型返回值的流程以及对应的type宏</span><br><span class="line">8 书写demo调用dig等</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 12:02:50" itemprop="dateModified" datetime="2024-10-20T12:02:50+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9关于视联网移植/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexbei4hj20zk0m8npd.jpg" title="bind9 环境部署">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联浏览器</span>
+  <h3>bind9 环境部署</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipex2cdtbj20zk0m8x6p.jpg" title="动态so的编译">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联浏览器</span>
+  <h3>动态so的编译</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E8%A7%86%E8%81%94%E7%BD%91"><span class="toc-number">1.</span> <span class="toc-text">入视联网</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#extern-int-v2v-start-const-char-mac"><span class="toc-number">1.1.</span> <span class="toc-text">extern int v2v_start(const char *mac);</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#extern-int-v2v-checkin-is-ok-or-not"><span class="toc-number">1.2.</span> <span class="toc-text">extern int v2v_checkin_is_ok_or_not();</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B6%E5%8F%91%E8%A7%86%E8%81%94%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">收发视联包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#extern-int-v2v-checkin-is-ok-or-not-1"><span class="toc-number">2.1.</span> <span class="toc-text">extern int v2v_checkin_is_ok_or_not();</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#extern-int-v2v-sendto-const-char-dst-number-void-data-int-len-int-timeout"><span class="toc-number">2.2.</span> <span class="toc-text">extern int v2v_sendto(const char *dst_number, void *data, int len, int timeout);</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#extern-int-v2v-recvfrom-char-remote-number-int-remote-number-len-void-data-int-len-int-timeout"><span class="toc-number">2.3.</span> <span class="toc-text">extern int v2v_recvfrom(char *remote_number, int remote_number_len, void *data, int len, int timeout);</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number"></span> <span class="toc-text">动态域名解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#zone%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">zone库</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%84%B6%E5%90%8E%E9%80%9A%E8%BF%87%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84zone%E5%BA%93"><span class="toc-number">1.0.1.</span> <span class="toc-text">实现方法：读取配置文件然后通过找到对应的zone库</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%8F%8A%E8%B0%83%E8%AF%95"><span class="toc-number"></span> <span class="toc-text">编译及调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">编译指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E8%AF%95dig"><span class="toc-number">2.</span> <span class="toc-text">调试dig</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E8%AF%95-query%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">调试 query系列函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">4.</span> <span class="toc-text">启动脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bind9%E4%B8%AD%E5%85%B3%E4%BA%8Eip%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">5.</span> <span class="toc-text">bind9中关于ip的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%89%80%E5%B0%9D%E8%AF%95%E8%B7%AF%E5%BE%84"><span class="toc-number">6.</span> <span class="toc-text">动态域名所尝试路径</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" rel="bookmark" title="Jenkins自动化编译">Jenkins自动化编译</a></li><li><a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="DNS域名解析及bind9介绍">DNS域名解析及bind9介绍</a></li><li><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" rel="bookmark" title="bind9 环境部署">bind9 环境部署</a></li><li><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" rel="bookmark" title="视联浏览器双机热备">视联浏览器双机热备</a></li><li class="active"><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" rel="bookmark" title="bind9关于视联网移植">bind9关于视联网移植</a></li><li><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" rel="bookmark" title="动态so的编译">动态so的编译</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" title="VGPU">VGPU</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/rk3568%E6%B5%8B%E8%AF%95/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B/" title="Untitled">Untitled</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/02/23/bind9关于视联网移植/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

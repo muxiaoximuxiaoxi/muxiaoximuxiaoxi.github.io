@@ -1,0 +1,517 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/">
+
+
+
+  <title>
+动态so的编译 - _视联浏览器 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">动态so的编译
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-02-23 23:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-23T23:04:32+08:00">2024-02-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="item" rel="index" title="In _视联浏览器"><span itemprop="name">_视联浏览器</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="普通动态库-so的示例demo"><a href="#普通动态库-so的示例demo" class="headerlink" title="普通动态库 *.so的示例demo"></a>普通动态库 *.so的示例demo</h3><h4 id="1、动态库-so的编译"><a href="#1、动态库-so的编译" class="headerlink" title="1、动态库*.so的编译"></a>1、动态库*.so的编译</h4><p>这里我们用到4个文件，它们分别为：SoDemoTest.h、one.cpp、two.cpp、three.cpp。它们的内容如下：</p>
+<h5 id="SoDemoTest-h"><a href="#SoDemoTest-h" class="headerlink" title="SoDemoTest.h"></a>SoDemoTest.h</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#ifndef __SO_DEMO_TEST_HEADER__   </span><br><span class="line">#define __SO_DEMO_TEST_HEADER__   </span><br><span class="line">#include &lt;iostream&gt;   </span><br><span class="line">using namespace std;  </span><br><span class="line">void one();  </span><br><span class="line">void two();  </span><br><span class="line">void three();  </span><br><span class="line">#endif </span><br></pre></td></tr></table></figure>
+<h5 id="one-cpp"><a href="#one-cpp" class="headerlink" title="one.cpp"></a>one.cpp</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;SoDemoTest.h&quot;   </span><br><span class="line">void one()  </span><br><span class="line">&#123;  </span><br><span class="line">    cout &lt;&lt; &quot;call one() function.&quot; &lt;&lt; endl;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+
+<h5 id="two-cpp"><a href="#two-cpp" class="headerlink" title="two.cpp"></a>two.cpp</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;SoDemoTest.h&quot;   </span><br><span class="line">void two()  </span><br><span class="line">&#123;  </span><br><span class="line">    cout &lt;&lt; &quot;call two() function.&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="three-cpp"><a href="#three-cpp" class="headerlink" title="three.cpp"></a>three.cpp</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;SoDemoTest.h&quot;   </span><br><span class="line">void three()  </span><br><span class="line">&#123;  </span><br><span class="line">    cout &lt;&lt; &quot;call three() function.&quot; &lt;&lt; endl;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h5 id="将这几个文件编译成动态库-libtest-so-编译命令如下"><a href="#将这几个文件编译成动态库-libtest-so-编译命令如下" class="headerlink" title="将这几个文件编译成动态库 libtest.so  编译命令如下"></a>将这几个文件编译成动态库 libtest.so  编译命令如下</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ one.cpp two.cpp three.cpp -fPIC -shared -o libtest.so</span><br></pre></td></tr></table></figure>
+<h4 id="2、动态库的连接"><a href="#2、动态库的连接" class="headerlink" title="2、动态库的连接"></a>2、动态库的连接</h4><p>在上面的部分，我们已经生成了一个libtest.so的动态链接库，现在我们用一个程序来调用这个动态链接库。文件名为：main.cpp</p>
+<h5 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;SoDemoTest.h&quot;   </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    one();  </span><br><span class="line">    two();  </span><br><span class="line">    three();  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>将main.cpp与libtest.so链接成一个可执行文件main</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cpp -L. -ltest -o main</span><br></pre></td></tr></table></figure>
+<p>测试可执行程序main是否已经链接动态库 libtest.so  ,如果列出了 libtest.so ，那么就说明正常链接了。可以执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldd main</span><br></pre></td></tr></table></figure>
+
+<p>执行main可以看看main是否调用了动态链接库中的函数</p>
+<h4 id="3、编译参数"><a href="#3、编译参数" class="headerlink" title="3、编译参数"></a>3、编译参数</h4><ul>
+<li>-shared 该选项指定生成动态连接库（让连接器生成T类型的导出符号表，有时候也生成弱连接W类型的导出符号），不用该标志外部程序无法连接。相当于一个可执行文件</li>
+<li>-fPIC：表示编译为位置独立的代码，不用此选项的话编译后的代码是位置相关的所以动态载入时是通过代码拷贝的方式来满足不同进程的需要，而不能达到真正代码段共享的目的</li>
+<li>-L.：表示要连接的库在当前目录中</li>
+<li>-ltest：编译器查找动态连接库时有隐含的命名规则，即在给出的名字前面加上lib，后面加上.so来确定库的名称</li>
+<li>LD_LIBRARY_PATH：这个环境变量指示动态连接器可以装载动态库的路径</li>
+</ul>
+<h4 id="4、注意的问题"><a href="#4、注意的问题" class="headerlink" title="4、注意的问题"></a>4、注意的问题</h4><p>调用动态库的时候有几个问题会经常碰到，有时，明明已经将库的头文件所在目录 通过 “-I” include进来了，库所在文件通过 “-L”参数引导，并指定了“-l”的库名，<br>但通过ldd命令察看时，就是死活找不到你指定链接的so文件，这时你要作的就是通过修改 LD_LIBRARY_PATH或者&#x2F;etc&#x2F;ld.so.conf文件来指定动态库的目录。</p>
+<p>LD_LIBRARY_PATH: 动态库的查找路径<br>设置：<br>方法一： <strong>export LD_LIBRARY_PATH&#x3D;LD_LIBRARY_PATH:&#x2F;XXX 但是登出后就失效</strong></p>
+<p>方法二： <strong>修改<del>&#x2F;.bashrc或</del>&#x2F;.bash_profile或系统级别的&#x2F;etc&#x2F;profile</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 在其中添加例如export PATH=/opt/ActiveP/lib:$LD_LIBRARY_PATH</span><br><span class="line">2. source .bashrc  (Source命令也称为“点命令”，也就是一个点符号（.）。source命令通常用于重新执行刚修改的初始化文件，使之立即生效，而不必注销并重新登录)</span><br></pre></td></tr></table></figure>
+<p>方法三：<strong>这个没有修改LD_LIBRARY_PATH但是效果是一样的实现动态库的查找</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. /etc/ld.so.conf下面加一行/usr/local/mysql/lib</span><br><span class="line">2. 保存过后ldconfig一下（ldconfig 命令的用途,主要是在默认搜寻目录(/lib和/usr/lib)以及动态库配置文件/etc/ld.so.conf内所列的目录下,搜索出可共享的动态链接库(格式如前介绍,lib*.so*),进而创建出动态装入程序(ld.so)所需的连接和缓存文件.缓存文件默认为/etc/ld.so.cache,此文件保存已排好序的动态链接库名字列表.）</span><br></pre></td></tr></table></figure>
+<p>方法三设置稍微麻烦，好处是比较不受用户的限制。</p>
+<p>通常这样做就可以解决库无法链接的问题了</p>
+<h3 id="根据开源项目-增加-fpic-编成-so"><a href="#根据开源项目-增加-fpic-编成-so" class="headerlink" title="根据开源项目 增加 -fpic 编成 *so"></a>根据开源项目 增加 -fpic 编成 *so</h3><h4 id="cmake时添加-fPIC编译选项"><a href="#cmake时添加-fPIC编译选项" class="headerlink" title="cmake时添加-fPIC编译选项"></a>cmake时添加-fPIC编译选项</h4><h5 id="cmake-DCMAKE-POSITION-INDEPENDENT-CODE-x3D-ON"><a href="#cmake-DCMAKE-POSITION-INDEPENDENT-CODE-x3D-ON" class="headerlink" title="cmake -DCMAKE_POSITION_INDEPENDENT_CODE&#x3D;ON .."></a>cmake -DCMAKE_POSITION_INDEPENDENT_CODE&#x3D;ON ..</h5><p>以编译 lib-lwIP为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">echo start lwip building...</span><br><span class="line"></span><br><span class="line">mkdir temp</span><br><span class="line">cd temp</span><br><span class="line">#cmake ..</span><br><span class="line">cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..</span><br><span class="line">make lwipcore</span><br><span class="line">echo $PWD</span><br><span class="line">cp liblwipcore.a ../../../../../service_tvv/lib/</span><br><span class="line">cd ..</span><br><span class="line">rm -rf temp</span><br><span class="line">echo lwip build finished.</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看编成的-so-所含有函数"><a href="#查看编成的-so-所含有函数" class="headerlink" title="查看编成的 *.so 所含有函数"></a>查看编成的 *.so 所含有函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">nm *.so | grep 函数名</span><br><span class="line"></span><br><span class="line">[root@localhost 1]# nm libtest.so | grep shh_test</span><br><span class="line">0000000000348cd4 t _GLOBAL__sub_I_shh_test.cpp</span><br><span class="line">0000000000348c39 T _Z8shh_testv</span><br><span class="line"></span><br><span class="line">nm 无法区别 是函数还是文件又或者对象</span><br><span class="line">可以使用</span><br><span class="line"></span><br><span class="line">readelf -s *.so | grep 函数名</span><br><span class="line"></span><br><span class="line">[root@localhost 1]# readelf -s libtest.so | grep shh_test</span><br><span class="line">  6191: 0000000000348c39    82 FUNC    GLOBAL DEFAULT   11 _Z8shh_testv</span><br><span class="line">   858: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS shh_test.cpp</span><br><span class="line">   862: 0000000000348cd4    21 FUNC    LOCAL  DEFAULT   11 _GLOBAL__sub_I_shh_test.c</span><br><span class="line"> 24319: 0000000000348c39    82 FUNC    GLOBAL DEFAULT   11 _Z8shh_testv</span><br></pre></td></tr></table></figure>
+
+<h3 id="extern-函数-的方法进行调用-so"><a href="#extern-函数-的方法进行调用-so" class="headerlink" title="extern 函数 的方法进行调用 *.so"></a>extern 函数 的方法进行调用 *.so</h3><p>demo 示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">extern int v2v_start(const char *mac);</span><br><span class="line">extern int v2v_checkin_is_ok_or_not();</span><br><span class="line">extern int v2v_sendto(const char *dst_number, void *data, int len, int timeout);</span><br><span class="line"></span><br><span class="line">void one() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        time_t t = time(NULL);</span><br><span class="line">        char* time_str = ctime(&amp;t);</span><br><span class="line">        fprintf(file, &quot;start v2v_drv success! %s\n&quot;, time_str);</span><br><span class="line">        fputs(&quot;start v2v_drv success!\n&quot;,file);</span><br><span class="line">        </span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void two() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        time_t t = time(NULL);</span><br><span class="line">        char* time_str = ctime(&amp;t);</span><br><span class="line">        fprintf(file, &quot;start v2v_drv fail! %s\n&quot;, time_str);</span><br><span class="line">        fputs(&quot;start v2v_drv fail!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void three() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;checkin.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        time_t t = time(NULL);</span><br><span class="line">        char* time_str = ctime(&amp;t);</span><br><span class="line">        fprintf(file, &quot;yes 1 == v2v_checkin_is_ok_or_not()! %s\n&quot;, time_str);</span><br><span class="line">        fputs(&quot;yes 1 == v2v_checkin_is_ok_or_not() !\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void four() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;checkin.txt&quot;, &quot;w&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        time_t t = time(NULL);</span><br><span class="line">        char* time_str = ctime(&amp;t);</span><br><span class="line">        fprintf(file, &quot;no 1 != v2v_checkin_is_ok_or_not()! %s\n&quot;, time_str);</span><br><span class="line">        fputs(&quot;no 1 != v2v_checkin_is_ok_or_not()!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void five() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        time_t t = time(NULL);</span><br><span class="line">        char* time_str = ctime(&amp;t);</span><br><span class="line">        fprintf(file, &quot;v2v_sendto success! %s\n&quot;, time_str);</span><br><span class="line">        fputs(&quot;v2v_sendto success!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void six() &#123;</span><br><span class="line">    FILE *file = fopen(&quot;outputa.txt&quot;, &quot;a&quot;);</span><br><span class="line">    if (file != NULL) &#123;</span><br><span class="line">        time_t t = time(NULL);</span><br><span class="line">        char* time_str = ctime(&amp;t);</span><br><span class="line">        fprintf(file, &quot;v2v_sendto failed! %s\n&quot;, time_str);</span><br><span class="line">        fputs(&quot;v2v_sendto failed!\n&quot;,file);</span><br><span class="line">        fclose(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void* func1()</span><br><span class="line">&#123;</span><br><span class="line">    char mac[20]=&quot;60:f2:ef:03:02:86&quot;;</span><br><span class="line">    int r = v2v_start(mac);</span><br><span class="line">    if (r == 0)</span><br><span class="line">        &#123;</span><br><span class="line">            one();</span><br><span class="line">        &#125;</span><br><span class="line">    else</span><br><span class="line">        &#123;</span><br><span class="line">            two();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int loop_times = 0;</span><br><span class="line">        while (1)</span><br><span class="line">        &#123;</span><br><span class="line">            loop_times++;</span><br><span class="line">            sleep(1);</span><br><span class="line"></span><br><span class="line">            if (loop_times == 10)</span><br><span class="line">            &#123;</span><br><span class="line">                if (1 == v2v_checkin_is_ok_or_not())</span><br><span class="line">                &#123;</span><br><span class="line">                    three();</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    four();</span><br><span class="line">                &#125;</span><br><span class="line">                loop_times = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void func2()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    pthread_t pid;</span><br><span class="line">    int ret = -99;</span><br><span class="line">        ret = pthread_create(&amp;pid,NULL,func1,NULL);</span><br><span class="line">    if(ret&lt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;pthread_create&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pthread_join(pid,NULL);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void func3()</span><br><span class="line">&#123;</span><br><span class="line">    char dd[21] = &quot;00100003210267500000&quot;;</span><br><span class="line">    char name[] = &quot;www.tanggula.com&quot;;</span><br><span class="line"></span><br><span class="line">    int ret = v2v_sendto(dd, (char *)name, strlen(name), 5000 /*-1:infinit wait, 100ms*/);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        six();</span><br><span class="line">    &#125;else if (ret == 0)&#123;</span><br><span class="line">        five();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void func3_3()</span><br><span class="line">&#123;</span><br><span class="line">    char dd[21] = &quot;00100003210286300000&quot;;</span><br><span class="line">    char name[] = &quot;www.tanggula.com&quot;;</span><br><span class="line"></span><br><span class="line">    int ret = v2v_sendto(dd, (char *)name, strlen(name), 5000 );</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">//        six();</span><br><span class="line">    &#125;else if (ret == 0)&#123;</span><br><span class="line">  //      five();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void* func4()</span><br><span class="line">&#123;</span><br><span class="line">    int loop_times = 0;</span><br><span class="line">    while (1)</span><br><span class="line">    &#123;</span><br><span class="line">        loop_times++;</span><br><span class="line"></span><br><span class="line">        if (loop_times == 100)</span><br><span class="line">        &#123;</span><br><span class="line">            if (1 == v2v_checkin_is_ok_or_not())</span><br><span class="line">            &#123;</span><br><span class="line">                three();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                four();</span><br><span class="line">            &#125;</span><br><span class="line">            loop_times = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void func5()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    pthread_t pid;</span><br><span class="line">    int ret = -99;</span><br><span class="line">        ret = pthread_create(&amp;pid,NULL,func4,NULL);</span><br><span class="line">    if(ret&lt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;pthread_create&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pthread_join(pid,NULL);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void func6()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    pthread_t pid1;</span><br><span class="line">    pthread_t pid2;</span><br><span class="line">    int ret = -99;</span><br><span class="line"></span><br><span class="line">    ret = pthread_create(&amp;pid1,NULL,func1,NULL);</span><br><span class="line">    if(ret&lt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;pthread_create&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pthread_join(pid1,NULL);</span><br><span class="line">    </span><br><span class="line">     ret = pthread_create(&amp;pid2,NULL,func4,NULL);</span><br><span class="line">    if(ret&lt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;pthread_create&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pthread_join(pid2,NULL);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    func2();</span><br><span class="line">    func3();</span><br><span class="line">    func3_3();</span><br><span class="line">        while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        func3();</span><br><span class="line">        func3_3();</span><br><span class="line">	sleep(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="gcc-a-c-L-ltest-lpthread-o-a"><a href="#gcc-a-c-L-ltest-lpthread-o-a" class="headerlink" title="gcc a.c -L. -ltest -lpthread -o a"></a>gcc a.c -L. -ltest -lpthread -o a</h5><h6 id="gcc-是GNU编译器套件（GNU-Compiler-Collection）的命令行缩写。它用于编译C、C-等语言的源代码。"><a href="#gcc-是GNU编译器套件（GNU-Compiler-Collection）的命令行缩写。它用于编译C、C-等语言的源代码。" class="headerlink" title="gcc: 是GNU编译器套件（GNU Compiler Collection）的命令行缩写。它用于编译C、C++等语言的源代码。"></a>gcc: 是GNU编译器套件（GNU Compiler Collection）的命令行缩写。它用于编译C、C++等语言的源代码。</h6><h6 id="a-c-是你要编译的C源文件的名称。"><a href="#a-c-是你要编译的C源文件的名称。" class="headerlink" title="a.c: 是你要编译的C源文件的名称。"></a>a.c: 是你要编译的C源文件的名称。</h6><h6 id="L-是一个链接选项，告诉GCC在哪里查找库文件。-表示在当前目录中查找。"><a href="#L-是一个链接选项，告诉GCC在哪里查找库文件。-表示在当前目录中查找。" class="headerlink" title="-L.: 是一个链接选项，告诉GCC在哪里查找库文件。. 表示在当前目录中查找。"></a>-L.: 是一个链接选项，告诉GCC在哪里查找库文件。. 表示在当前目录中查找。</h6><h6 id="ltest-是一个链接选项，用于链接名为-libtest-so-（在Unix-like系统上）或test-lib（在Windows系统上）的库。这意味着你的代码中引用了这个库中的函数或变量。"><a href="#ltest-是一个链接选项，用于链接名为-libtest-so-（在Unix-like系统上）或test-lib（在Windows系统上）的库。这意味着你的代码中引用了这个库中的函数或变量。" class="headerlink" title="-ltest: 是一个链接选项，用于链接名为 libtest.so （在Unix-like系统上）或test.lib（在Windows系统上）的库。这意味着你的代码中引用了这个库中的函数或变量。"></a>-ltest: 是一个链接选项，用于链接名为 libtest.so （在Unix-like系统上）或test.lib（在Windows系统上）的库。这意味着你的代码中引用了这个库中的函数或变量。</h6><h6 id="lpthread-是一个链接选项，用于链接名为-libpthread-so-（在Unix-like系统上）或pthread-lib（在Windows系统上）的库。这是用于多线程编程的库。"><a href="#lpthread-是一个链接选项，用于链接名为-libpthread-so-（在Unix-like系统上）或pthread-lib（在Windows系统上）的库。这是用于多线程编程的库。" class="headerlink" title="-lpthread: 是一个链接选项，用于链接名为 libpthread.so （在Unix-like系统上）或pthread.lib（在Windows系统上）的库。这是用于多线程编程的库。"></a>-lpthread: 是一个链接选项，用于链接名为 libpthread.so （在Unix-like系统上）或pthread.lib（在Windows系统上）的库。这是用于多线程编程的库。</h6><h6 id="o-是输出选项，它指定编译后生成的可执行文件的名称。在此例中，GCC将生成一个名为a-out的可执行文件（在Unix-like系统上）或a-exe（在Windows系统上）。"><a href="#o-是输出选项，它指定编译后生成的可执行文件的名称。在此例中，GCC将生成一个名为a-out的可执行文件（在Unix-like系统上）或a-exe（在Windows系统上）。" class="headerlink" title="-o: 是输出选项，它指定编译后生成的可执行文件的名称。在此例中，GCC将生成一个名为a.out的可执行文件（在Unix-like系统上）或a.exe（在Windows系统上）。"></a>-o: 是输出选项，它指定编译后生成的可执行文件的名称。在此例中，GCC将生成一个名为a.out的可执行文件（在Unix-like系统上）或a.exe（在Windows系统上）。</h6>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 11:59:33" itemprop="dateModified" datetime="2024-10-20T11:59:33+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">https://muxiaoximuxiaoxi.github.io/2024/02/23/根据现有文件编译成so，并进行调用/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="bind9关于视联网移植">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联浏览器</span>
+  <h3>bind9关于视联网移植</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciub8ja1j20zk0m81ky.jpg" title="TVL格式">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联SDK</span>
+  <h3>TVL格式</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%8A%A8%E6%80%81%E5%BA%93-so%E7%9A%84%E7%A4%BA%E4%BE%8Bdemo"><span class="toc-number">1.</span> <span class="toc-text">普通动态库 *.so的示例demo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%8A%A8%E6%80%81%E5%BA%93-so%E7%9A%84%E7%BC%96%E8%AF%91"><span class="toc-number">1.1.</span> <span class="toc-text">1、动态库*.so的编译</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SoDemoTest-h"><span class="toc-number">1.1.1.</span> <span class="toc-text">SoDemoTest.h</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#one-cpp"><span class="toc-number">1.1.2.</span> <span class="toc-text">one.cpp</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#two-cpp"><span class="toc-number">1.1.3.</span> <span class="toc-text">two.cpp</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#three-cpp"><span class="toc-number">1.1.4.</span> <span class="toc-text">three.cpp</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E8%BF%99%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93-libtest-so-%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4%E5%A6%82%E4%B8%8B"><span class="toc-number">1.1.5.</span> <span class="toc-text">将这几个文件编译成动态库 libtest.so  编译命令如下</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%8A%A8%E6%80%81%E5%BA%93%E7%9A%84%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text">2、动态库的连接</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#main-cpp"><span class="toc-number">1.2.1.</span> <span class="toc-text">main.cpp</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">3、编译参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">4、注意的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE-%E5%A2%9E%E5%8A%A0-fpic-%E7%BC%96%E6%88%90-so"><span class="toc-number">2.</span> <span class="toc-text">根据开源项目 增加 -fpic 编成 *so</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cmake%E6%97%B6%E6%B7%BB%E5%8A%A0-fPIC%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9"><span class="toc-number">2.1.</span> <span class="toc-text">cmake时添加-fPIC编译选项</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#cmake-DCMAKE-POSITION-INDEPENDENT-CODE-x3D-ON"><span class="toc-number">2.1.1.</span> <span class="toc-text">cmake -DCMAKE_POSITION_INDEPENDENT_CODE&#x3D;ON ..</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BC%96%E6%88%90%E7%9A%84-so-%E6%89%80%E5%90%AB%E6%9C%89%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">查看编成的 *.so 所含有函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extern-%E5%87%BD%E6%95%B0-%E7%9A%84%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8-so"><span class="toc-number">4.</span> <span class="toc-text">extern 函数 的方法进行调用 *.so</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#gcc-a-c-L-ltest-lpthread-o-a"><span class="toc-number">4.0.1.</span> <span class="toc-text">gcc a.c -L. -ltest -lpthread -o a</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#gcc-%E6%98%AFGNU%E7%BC%96%E8%AF%91%E5%99%A8%E5%A5%97%E4%BB%B6%EF%BC%88GNU-Compiler-Collection%EF%BC%89%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%BC%A9%E5%86%99%E3%80%82%E5%AE%83%E7%94%A8%E4%BA%8E%E7%BC%96%E8%AF%91C%E3%80%81C-%E7%AD%89%E8%AF%AD%E8%A8%80%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E3%80%82"><span class="toc-number">4.0.1.1.</span> <span class="toc-text">gcc: 是GNU编译器套件（GNU Compiler Collection）的命令行缩写。它用于编译C、C++等语言的源代码。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#a-c-%E6%98%AF%E4%BD%A0%E8%A6%81%E7%BC%96%E8%AF%91%E7%9A%84C%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%8D%E7%A7%B0%E3%80%82"><span class="toc-number">4.0.1.2.</span> <span class="toc-text">a.c: 是你要编译的C源文件的名称。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#L-%E6%98%AF%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E9%80%89%E9%A1%B9%EF%BC%8C%E5%91%8A%E8%AF%89GCC%E5%9C%A8%E5%93%AA%E9%87%8C%E6%9F%A5%E6%89%BE%E5%BA%93%E6%96%87%E4%BB%B6%E3%80%82-%E8%A1%A8%E7%A4%BA%E5%9C%A8%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E4%B8%AD%E6%9F%A5%E6%89%BE%E3%80%82"><span class="toc-number">4.0.1.3.</span> <span class="toc-text">-L.: 是一个链接选项，告诉GCC在哪里查找库文件。. 表示在当前目录中查找。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ltest-%E6%98%AF%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E9%80%89%E9%A1%B9%EF%BC%8C%E7%94%A8%E4%BA%8E%E9%93%BE%E6%8E%A5%E5%90%8D%E4%B8%BA-libtest-so-%EF%BC%88%E5%9C%A8Unix-like%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%89%E6%88%96test-lib%EF%BC%88%E5%9C%A8Windows%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%89%E7%9A%84%E5%BA%93%E3%80%82%E8%BF%99%E6%84%8F%E5%91%B3%E7%9D%80%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%BC%95%E7%94%A8%E4%BA%86%E8%BF%99%E4%B8%AA%E5%BA%93%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%E6%88%96%E5%8F%98%E9%87%8F%E3%80%82"><span class="toc-number">4.0.1.4.</span> <span class="toc-text">-ltest: 是一个链接选项，用于链接名为 libtest.so （在Unix-like系统上）或test.lib（在Windows系统上）的库。这意味着你的代码中引用了这个库中的函数或变量。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#lpthread-%E6%98%AF%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E9%80%89%E9%A1%B9%EF%BC%8C%E7%94%A8%E4%BA%8E%E9%93%BE%E6%8E%A5%E5%90%8D%E4%B8%BA-libpthread-so-%EF%BC%88%E5%9C%A8Unix-like%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%89%E6%88%96pthread-lib%EF%BC%88%E5%9C%A8Windows%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%89%E7%9A%84%E5%BA%93%E3%80%82%E8%BF%99%E6%98%AF%E7%94%A8%E4%BA%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E7%9A%84%E5%BA%93%E3%80%82"><span class="toc-number">4.0.1.5.</span> <span class="toc-text">-lpthread: 是一个链接选项，用于链接名为 libpthread.so （在Unix-like系统上）或pthread.lib（在Windows系统上）的库。这是用于多线程编程的库。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#o-%E6%98%AF%E8%BE%93%E5%87%BA%E9%80%89%E9%A1%B9%EF%BC%8C%E5%AE%83%E6%8C%87%E5%AE%9A%E7%BC%96%E8%AF%91%E5%90%8E%E7%94%9F%E6%88%90%E7%9A%84%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%8D%E7%A7%B0%E3%80%82%E5%9C%A8%E6%AD%A4%E4%BE%8B%E4%B8%AD%EF%BC%8CGCC%E5%B0%86%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E5%90%8D%E4%B8%BAa-out%E7%9A%84%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%EF%BC%88%E5%9C%A8Unix-like%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%89%E6%88%96a-exe%EF%BC%88%E5%9C%A8Windows%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%89%E3%80%82"><span class="toc-number">4.0.1.6.</span> <span class="toc-text">-o: 是输出选项，它指定编译后生成的可执行文件的名称。在此例中，GCC将生成一个名为a.out的可执行文件（在Unix-like系统上）或a.exe（在Windows系统上）。</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" rel="bookmark" title="Jenkins自动化编译">Jenkins自动化编译</a></li><li><a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="DNS域名解析及bind9介绍">DNS域名解析及bind9介绍</a></li><li><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" rel="bookmark" title="bind9 环境部署">bind9 环境部署</a></li><li><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" rel="bookmark" title="视联浏览器双机热备">视联浏览器双机热备</a></li><li><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" rel="bookmark" title="bind9关于视联网移植">bind9关于视联网移植</a></li><li class="active"><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" rel="bookmark" title="动态so的编译">动态so的编译</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/OpenHarmony%20HDF%20%E9%A9%B1%E5%8A%A8%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A9%B1%E5%8A%A8%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">动态so的编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDk/" title="In _视联SDk">_视联SDk</a>
+</div>
+
+    <span><a href="/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/" title="交叉编译链接及其他">交叉编译链接及其他</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/rk3568%E6%B5%8B%E8%AF%95/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" title="VGPU">VGPU</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/02/23/根据现有文件编译成so，并进行调用/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

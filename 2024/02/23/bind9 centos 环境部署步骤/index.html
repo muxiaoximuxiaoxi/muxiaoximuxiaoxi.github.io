@@ -1,0 +1,743 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/">
+
+
+
+  <title>
+bind9 环境部署 - _视联浏览器 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">bind9 环境部署
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-02-23 21:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-23T21:04:32+08:00">2024-02-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="item" rel="index" title="In _视联浏览器"><span itemprop="name">_视联浏览器</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="1、基础环境安装"><a href="#1、基础环境安装" class="headerlink" title="1、基础环境安装"></a>1、基础环境安装</h4><p>yum -y install net-tools<br>yum -y install iptables-services<br>yum -y install vim<br>yum -y install gcc*<br>yum -y install tcpdump<br>yum -y install cmake<br>yum -y install bind-utils<br>yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel<br>yum -y install libffi-devel -y<br>yum -y install libxml*<br>yum -y install git<br>yum -y install wget<br>yum -y install libtool</p>
+<h4 id="2、pip-install-ply-安装-ply"><a href="#2、pip-install-ply-安装-ply" class="headerlink" title="2、pip install ply 安装 ply"></a>2、pip install ply 安装 ply</h4><p>执行<code>pip install ply</code>安装ply，安装前要确保此时setuptools和pip已经安装，如果未安装则需要单独安装。如果不安装ply模块，bind在编译时会报错如下</p>
+<p>configure: error: Python &gt;&#x3D; 2.7 or &gt;&#x3D; 3.2 and the PLY package are required for dnssec-keymgr and other Python-based tools.<br>PLY may be available from your OS package manager as python-ply or python3-ply; it can also be installed via pip. To build without Python&#x2F;PLY, use –without-python.</p>
+<h4 id="如果报错-pip-未找到-执行-yum-install-python3-pip"><a href="#如果报错-pip-未找到-执行-yum-install-python3-pip" class="headerlink" title="如果报错 pip 未找到 执行  yum install python3-pip"></a>如果报错 pip 未找到 执行  yum install python3-pip</h4><h4 id="3、安装-libuv"><a href="#3、安装-libuv" class="headerlink" title="3、安装 libuv"></a>3、安装 libuv</h4><p><code>yum install -y epel-release</code><br><code>yum install libuv</code><br><code>yum install libuv-devel</code><br>如果不安装libuv则在bind编译时会报错如下</p>
+<p>checking for libuv… checking for libuv &gt;&#x3D; 1.0.0… no<br>configure: error: libuv not found</p>
+<h4 id="4、安装-libtool"><a href="#4、安装-libtool" class="headerlink" title="4、安装 libtool"></a>4、安装 libtool</h4><p>如果bind编译过程中出现以下报错，说明libtool没有安装，请用yum安装libtool</p>
+<p>configure: error: sys&#x2F;capability.h header is required for Linux capabilities support. Either install libcap or use –disable-linux-caps.<br>yum install libcap-devel</p>
+<h4 id="5、创建named用户及相关目录"><a href="#5、创建named用户及相关目录" class="headerlink" title="5、创建named用户及相关目录"></a>5、创建named用户及相关目录</h4><p>使用53端口作为named组和named用户的ID号<br><code>groupadd -g 53 -r named</code><br><code>useradd -u 53 -s /sbin/nolgin -r named -g named</code></p>
+<h3 id="安装bind9"><a href="#安装bind9" class="headerlink" title="安装bind9"></a>安装bind9</h3><h4 id="1、下载网址及官方网站"><a href="#1、下载网址及官方网站" class="headerlink" title="1、下载网址及官方网站"></a>1、下载网址及官方网站</h4><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaXNjLm9yZy9iaW5kLw==">官方网站</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9mdHAuaXNjLm9yZy9pc2MvYmluZDkv">下载网址</span></p>
+<h4 id="2、解压并安装9-16-43版本"><a href="#2、解压并安装9-16-43版本" class="headerlink" title="2、解压并安装9.16.43版本"></a>2、解压并安装9.16.43版本</h4><p>将下载的版本，上传至  <code>/usr/local</code> 目录</p>
+<h6 id="tar-xvf-bind-9-16-43-tar-xz"><a href="#tar-xvf-bind-9-16-43-tar-xz" class="headerlink" title="tar -xvf bind-9.16.43.tar.xz"></a>tar -xvf bind-9.16.43.tar.xz</h6><h6 id="cd-bind-9-16-43"><a href="#cd-bind-9-16-43" class="headerlink" title="cd bind-9.16.43"></a>cd bind-9.16.43</h6><h6 id="x2F-configure-–prefix-x3D-x2F-usr-x2F-local-x2F-bind"><a href="#x2F-configure-–prefix-x3D-x2F-usr-x2F-local-x2F-bind" class="headerlink" title=".&#x2F;configure –prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;bind"></a>.&#x2F;configure –prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;bind</h6><h6 id="make-amp-amp-make-install"><a href="#make-amp-amp-make-install" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h6><h6 id="安装成功后-x2F-usr-x2F-local-x2F-bind目录中的内容如下"><a href="#安装成功后-x2F-usr-x2F-local-x2F-bind目录中的内容如下" class="headerlink" title="安装成功后 &#x2F;usr&#x2F;local&#x2F;bind目录中的内容如下"></a>安装成功后 &#x2F;usr&#x2F;local&#x2F;bind目录中的内容如下</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon bind]# ll</span><br><span class="line">总用量 16</span><br><span class="line">drwxr-xr-x.  2 named named 4096 8月  17 19:05 bin</span><br><span class="line">drwxr-xr-x.  2 named named  102 8月  17 19:11 etc</span><br><span class="line">drwxr-xr-x. 12 named named 4096 8月  17 19:05 include</span><br><span class="line">drwxr-xr-x.  4 named named 4096 8月  17 19:05 lib</span><br><span class="line">drwxr-xr-x.  2 named named 4096 8月  17 19:05 sbin</span><br><span class="line">drwxr-xr-x.  3 named named   16 8月  17 19:05 share</span><br><span class="line">drwxr-xr-x.  3 named named   16 8月  17 19:08 var</span><br><span class="line">[root@bogon bind]# </span><br><span class="line"></span><br><span class="line">注意 var 目录我当时并没有生成 是我手动创建的</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="bind初始化配置"><a href="#bind初始化配置" class="headerlink" title="bind初始化配置"></a>bind初始化配置</h3><h6 id="1、cd-x2F-usr-x2F-local-x2F-bind-x2F"><a href="#1、cd-x2F-usr-x2F-local-x2F-bind-x2F" class="headerlink" title="1、cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;"></a>1、cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;</h6><h6 id="2、-sbin-x2F-rndc-confgen-gt-etc-x2F-rndc-conf"><a href="#2、-sbin-x2F-rndc-confgen-gt-etc-x2F-rndc-conf" class="headerlink" title="2、 sbin&#x2F;rndc-confgen &gt; etc&#x2F;rndc.conf"></a>2、 sbin&#x2F;rndc-confgen &gt; etc&#x2F;rndc.conf</h6><p>注意：如果这里卡住不动可改用下面的命令<br>sbin&#x2F;rndc-confgen -r &#x2F;dev&#x2F;urandom &gt; etc&#x2F;rndc.conf</p>
+<h6 id="3、cd-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F"><a href="#3、cd-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F" class="headerlink" title="3、cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;"></a>3、cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;</h6><h6 id="4、tail-10-rndc-conf-head-9-sed-s-x2F-x2F-x2F-g-gt-named-conf"><a href="#4、tail-10-rndc-conf-head-9-sed-s-x2F-x2F-x2F-g-gt-named-conf" class="headerlink" title="4、tail -10 rndc.conf | head -9 | sed s&#x2F;#\ &#x2F;&#x2F;g &gt; named.conf"></a>4、tail -10 rndc.conf | head -9 | sed s&#x2F;#\ &#x2F;&#x2F;g &gt; named.conf</h6><pre><code>此时named.conf文件内容如下：
+
+key &quot;rndc-key&quot; &#123;
+    algorithm hmac-sha256;
+    secret &quot;+iYCFD1McR+nWVKiW3kE1CxkyLrCoGDlit4ahY+KWzA=&quot;;
+&#125;;
+
+controls &#123;
+    inet 127.0.0.1 port 953
+        allow &#123; 127.0.0.1; &#125; keys &#123; &quot;rndc-key&quot;; &#125;;
+&#125;;
+</code></pre>
+<h6 id="4、-编辑配置文件，在当前文件添加以下内容"><a href="#4、-编辑配置文件，在当前文件添加以下内容" class="headerlink" title="4、  编辑配置文件，在当前文件添加以下内容"></a>4、  编辑配置文件，在当前文件添加以下内容</h6><p><strong>vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">编辑之后 named.conf文件内容如下：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">include &quot;/usr/local/bind/etc/named.rfc1912.zones&quot;;</span><br><span class="line">options &#123;</span><br><span class="line">    listen-on port 53 &#123;127.0.0.1; &#125;;</span><br><span class="line">    listen-on-v6 port 53 &#123;::1;&#125;;</span><br><span class="line">    directory &quot;/usr/local/bind/var/run&quot;;</span><br><span class="line">    pid-file &quot;named.pid&quot;;</span><br><span class="line">    recursion yes;</span><br><span class="line">    querylog yes;</span><br><span class="line">    allow-query &#123; any; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">        channel query_log &#123;</span><br><span class="line">                file &quot;data/bind_query.log&quot; versions 3;</span><br><span class="line">                severity dynamic;</span><br><span class="line">                print-category yes;</span><br><span class="line">                print-time yes;</span><br><span class="line">                print-severity yes;</span><br><span class="line">        &#125;;</span><br><span class="line">        category queries &#123; query_log; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zone &quot;.&quot; IN&#123;</span><br><span class="line">         type hint;</span><br><span class="line">         file &quot;named.ca&quot;;</span><br><span class="line">   &#125;;</span><br><span class="line">key &quot;rndc-key&quot; &#123;</span><br><span class="line">	algorithm hmac-sha256;</span><br><span class="line">	secret &quot;+iYCFD1McR+nWVKiW3kE1CxkyLrCoGDlit4ahY+KWzA=&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">controls &#123;</span><br><span class="line">	inet 127.0.0.1 port 953</span><br><span class="line">		allow &#123; 127.0.0.1; &#125; keys &#123; &quot;rndc-key&quot;; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="5、-在-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run目录下创建一个data目录用来存放日志文件"><a href="#5、-在-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run目录下创建一个data目录用来存放日志文件" class="headerlink" title="5、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下创建一个data目录用来存放日志文件"></a>5、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下创建一个data目录用来存放日志文件</h6><p><strong>cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run&#x2F;</strong></p>
+<p><strong>mkdir data</strong></p>
+<p>如果没有相应目录，自行创建</p>
+<h6 id="6、-在-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run目录下生成named-ca数据文件"><a href="#6、-在-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run目录下生成named-ca数据文件" class="headerlink" title="6、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下生成named.ca数据文件"></a>6、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下生成named.ca数据文件</h6><p><strong>cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run&#x2F;</strong></p>
+<p><strong>dig -t NS . &gt;&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run&#x2F;named.ca</strong></p>
+<h6 id="7、-在-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-目录下创建named-rfc1912-zones文件，并添加以下内容"><a href="#7、-在-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-目录下创建named-rfc1912-zones文件，并添加以下内容" class="headerlink" title="7、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;目录下创建named.rfc1912.zones文件，并添加以下内容"></a>7、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;目录下创建named.rfc1912.zones文件，并添加以下内容</h6><p><strong>vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.rfc1912.zones</strong></p>
+<pre><code>编辑之后 named.rfc1912.zone 文件内容如下:
+
+zone &quot;localhost.localdomain&quot; IN &#123;
+
+        type master;
+
+        file &quot;named.localhost&quot;;
+
+        allow-update &#123; none; &#125;;
+
+&#125;;
+
+ 
+
+zone &quot;localhost&quot; IN &#123;
+
+        type master;
+
+        file &quot;named.localhost&quot;;
+
+        allow-update &#123; none; &#125;;
+
+&#125;;
+
+ 
+
+zone &quot;1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa&quot; IN &#123;
+
+        type master;
+
+        file &quot;named.loopback&quot;;
+
+        allow-update &#123; none; &#125;;
+
+&#125;;
+
+ 
+
+zone &quot;1.0.0.127.in-addr.arpa&quot; IN &#123;
+
+        type master;
+
+        file &quot;named.loopback&quot;;
+
+        allow-update &#123; none; &#125;;
+
+&#125;;
+
+ 
+
+zone &quot;0.in-addr.arpa&quot; IN &#123;
+
+        type master;
+
+        file &quot;named.empty&quot;;
+
+        allow-update &#123; none; &#125;;
+
+&#125;;
+</code></pre>
+<h6 id="8、-在-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run目录下创建对应数据文件"><a href="#8、-在-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run目录下创建对应数据文件" class="headerlink" title="8、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下创建对应数据文件"></a>8、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下创建对应数据文件</h6><p><strong>由named.rfc1912.zones文件可知有named.localhost、named.loopback、named.empty数据文件</strong></p>
+<p><strong>cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run&#x2F;</strong></p>
+<p><strong>vim named.localhost</strong></p>
+<pre><code>$TTL 1D
+
+@       IN SOA  @ rname.invalid. (
+
+                                        0       ; serial
+
+                                        1D      ; refresh
+
+                                        1H      ; retry
+
+                                        1W      ; expire
+
+                                        3H )    ; minimum
+
+        NS      @
+
+        A       127.0.0.1
+
+        AAAA    ::1
+</code></pre>
+<p><strong>vim named.loopback</strong></p>
+<pre><code>$TTL 1D
+
+@       IN SOA  @ rname.invalid. (
+
+                                        0       ; serial
+
+                                        1D      ; refresh
+
+                                        1H      ; retry
+
+                                        1W      ; expire
+
+                                        3H )    ; minimum
+
+        NS      @
+
+        A       127.0.0.1
+
+        AAAA    ::1
+
+        PTR     localhost.
+</code></pre>
+<p><strong>vim named.empty</strong></p>
+<pre><code>$TTL 3H
+
+@       IN SOA  @ rname.invalid. (
+
+                                        0       ; serial
+
+                                        1D      ; refresh
+
+                                        1H      ; retry
+
+                                        1W      ; expire
+
+                                        3H )    ; minimum
+
+        NS      @
+
+        A       127.0.0.1
+
+        AAAA    ::1
+</code></pre>
+<h6 id="9、chown-R-named-named-x2F-usr-x2F-local-x2F-bind"><a href="#9、chown-R-named-named-x2F-usr-x2F-local-x2F-bind" class="headerlink" title="9、chown -R named:named &#x2F;usr&#x2F;local&#x2F;bind"></a>9、chown -R named:named &#x2F;usr&#x2F;local&#x2F;bind</h6><h6 id="10、检查named-conf文件"><a href="#10、检查named-conf文件" class="headerlink" title="10、检查named.conf文件"></a>10、检查named.conf文件</h6><p><strong>cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin</strong>&#x2F;</p>
+<p><strong>.&#x2F;named-checkconf ..&#x2F;etc&#x2F;named.conf</strong></p>
+<h3 id="运行bind"><a href="#运行bind" class="headerlink" title="运行bind"></a>运行bind</h3><h4 id="1、-执行如下命令启动bind"><a href="#1、-执行如下命令启动bind" class="headerlink" title="1、  执行如下命令启动bind"></a>1、  执行如下命令启动bind</h4><h5 id="x2F-usr-x2F-local-x2F-bind-x2F-sbin-x2F-named-u-named-c-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf"><a href="#x2F-usr-x2F-local-x2F-bind-x2F-sbin-x2F-named-u-named-c-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf" class="headerlink" title="&#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin&#x2F;named -u named -c &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf"></a>&#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin&#x2F;named -u named -c &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</h5><h4 id="2、测试能正常解析"><a href="#2、测试能正常解析" class="headerlink" title="2、测试能正常解析"></a>2、测试能正常解析</h4><h5 id="ps-ef-grep-named"><a href="#ps-ef-grep-named" class="headerlink" title="ps -ef|grep named"></a>ps -ef|grep named</h5><h5 id="netstat-anp-grep-53"><a href="#netstat-anp-grep-53" class="headerlink" title="netstat -anp|grep 53"></a>netstat -anp|grep 53</h5><h5 id="dig-127-0-0-1-www-baidu-com"><a href="#dig-127-0-0-1-www-baidu-com" class="headerlink" title="dig @127.0.0.1 www.baidu.com"></a>dig @127.0.0.1 <span class="exturl" data-url="aHR0cDovL3d3dy5iYWlkdS5jb20v">www.baidu.com</span></h5><p>执行结果如下</p>
+<pre><code>[root@bogon etc]# ps -ef|grep named
+named    16549     1  0 8月17 ?       00:00:01 /usr/local/bind/sbin/named -u named -c /usr/local/bind/etc/named.conf
+root     17625 17531  0 10:21 pts/0    00:00:00 grep --color=auto named
+[root@bogon etc]# netstat -anp|grep 53
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      16549/named         
+tcp        0      0 127.0.0.1:953           0.0.0.0:*               LISTEN      16549/named         
+tcp        0     36 192.168.113.201:22      10.2.14.11:65531        ESTABLISHED 17527/sshd: root@pt 
+tcp6       0      0 ::1:53                  :::*                    LISTEN      16549/named         
+udp        0      0 127.0.0.1:53            0.0.0.0:*                           16549/named         
+udp        0      0 127.0.0.1:53            0.0.0.0:*                           16549/named         
+udp6       0      0 ::1:53                  :::*                                16549/named         
+udp6       0      0 ::1:53                  :::*                                16549/named         
+unix  2      [ ACC ]     STREAM     LISTENING     12533    1/systemd            /run/lvm/lvmpolld.socket
+unix  3      [ ]         STREAM     CONNECTED     15368    629/dbus-daemon      
+unix  3      [ ]         STREAM     CONNECTED     15383    629/dbus-daemon      /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     17539    956/python2          
+unix  2      [ ]         DGRAM                    15386    629/dbus-daemon      
+unix  3      [ ]         STREAM     CONNECTED     15381    629/dbus-daemon      
+unix  3      [ ]         STREAM     CONNECTED     15384    629/dbus-daemon      /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     18531    629/dbus-daemon      /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     15382    629/dbus-daemon      
+[root@bogon etc]# dig @127.0.0.1 www.baidu.com
+
+; &lt;&lt;&gt;&gt; DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.14 &lt;&lt;&gt;&gt; @127.0.0.1 www.baidu.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 31774
+;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;www.baidu.com.            IN    A
+
+;; ANSWER SECTION:
+www.baidu.com.        1200    IN    CNAME    www.a.shifen.com.
+www.a.shifen.com.    120    IN    A    182.61.200.7
+www.a.shifen.com.    120    IN    A    182.61.200.6
+
+;; Query time: 2166 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: 五 8月 18 10:21:35 CST 2023
+;; MSG SIZE  rcvd: 104
+
+[root@bogon etc]# 
+</code></pre>
+<h3 id="如果-status-SERVFAIL-错误"><a href="#如果-status-SERVFAIL-错误" class="headerlink" title="如果 status: SERVFAIL 错误"></a>如果 status: SERVFAIL 错误</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost sbin]# dig @127.0.0.1 www.baidu.com</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.14 &lt;&lt;&gt;&gt; @127.0.0.1 www.baidu.com</span><br><span class="line">; (1 server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">;; Got answer:</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 30511</span><br><span class="line">;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1</span><br><span class="line"></span><br><span class="line">;; OPT PSEUDOSECTION:</span><br><span class="line">; EDNS: version: 0, flags:; udp: 1232</span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;www.baidu.com.			IN	A</span><br><span class="line"></span><br><span class="line">;; Query time: 1030 msec</span><br><span class="line">;; SERVER: 127.0.0.1#53(127.0.0.1)</span><br><span class="line">;; WHEN: 一 8月 21 17:09:42 CST 2023</span><br><span class="line">;; MSG SIZE  rcvd: 42</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h3><h4 id="1-编辑-BIND-配置文件-named-conf："><a href="#1-编辑-BIND-配置文件-named-conf：" class="headerlink" title="1. 编辑 BIND 配置文件 named.conf："></a>1. 编辑 BIND 配置文件 named.conf：</h4><h6 id="sudo-vi-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf"><a href="#sudo-vi-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf" class="headerlink" title="sudo vi &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf"></a>sudo vi &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</h6><p>在文件中添加以下内容，用于配置一个简单的域区域（zone）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">    listen-on port 53 &#123; any; &#125;;</span><br><span class="line">    listen-on-v6 port 53 &#123; ::1; &#125;;</span><br><span class="line">    directory &quot;/usr/local/bind/var&quot;;</span><br><span class="line">    dump-file &quot;/usr/local/bind/var/data/cache_dump.db&quot;;</span><br><span class="line">    statistics-file &quot;/usr/local/bind/var/data/named_stats.txt&quot;;</span><br><span class="line">    memstatistics-file &quot;/usr/local/bind/var/data/named_mem_stats.txt&quot;;</span><br><span class="line">    recursing-file &quot;/usr/local/bind/var/data/named.recursing&quot;;</span><br><span class="line">    secroots-file &quot;/usr/local/bind/var/data/named.secroots&quot;;</span><br><span class="line">    allow-query &#123; any; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;example.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;forward.example.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;192.168.113.in-addr.arpa&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;reverse.example.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">ip 部分为自己ip的前三组ip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-创建域区域文件和反向区域文件："><a href="#2-创建域区域文件和反向区域文件：" class="headerlink" title="2 创建域区域文件和反向区域文件："></a>2 创建域区域文件和反向区域文件：</h4><p>mkdir var</p>
+<h6 id="sudo-vim-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-forward-example-com"><a href="#sudo-vim-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-forward-example-com" class="headerlink" title="sudo vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;forward.example.com"></a>sudo vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;forward.example.com</h6><h6 id="sudo-vim-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-reverse-example-com"><a href="#sudo-vim-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-reverse-example-com" class="headerlink" title="sudo vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;reverse.example.com"></a>sudo vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;reverse.example.com</h6><p><strong>如果没有 var 目录 自行创建</strong></p>
+<h4 id="3-编辑-forward-example-com-文件，添加以下内容（用你的实际域名和服务器-IP-替换）："><a href="#3-编辑-forward-example-com-文件，添加以下内容（用你的实际域名和服务器-IP-替换）：" class="headerlink" title="3 编辑 forward.example.com 文件，添加以下内容（用你的实际域名和服务器 IP 替换）："></a>3 编辑 forward.example.com 文件，添加以下内容（用你的实际域名和服务器 IP 替换）：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$TTL 86400</span><br><span class="line">@   IN  SOA ns1.example.com. admin.example.com. (</span><br><span class="line">        2023082101 ; Serial</span><br><span class="line">        3600       ; Refresh</span><br><span class="line">        1800       ; Retry</span><br><span class="line">        604800     ; Expire</span><br><span class="line">        86400      ; Minimum TTL</span><br><span class="line">)</span><br><span class="line">@   IN  NS  ns1.example.com.</span><br><span class="line">@   IN  A   192.168.113.201</span><br><span class="line">ns1 IN  A   192.168.113.201</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="配置文件-示意如下"><a href="#配置文件-示意如下" class="headerlink" title="配置文件 示意如下"></a>配置文件 示意如下</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$TTL 86400 设置该zone中所有记录的默认生存期（TTL）为86400秒，即一天</span><br><span class="line">@   IN  SOA ns1.tanggula.com. admin.tanggula.com. (</span><br><span class="line">        2023082101 ; Serial </span><br><span class="line">        序列号（Serial）：当zone文件被修改时，序列号会增加，通知其他DNS服务器该zone文件已经发生改变</span><br><span class="line">        3600       ; Refresh</span><br><span class="line">        刷新间隔（Refresh）：当主DNS服务器收到SOA的序列号更新后，在多久时间内检查新的zone文件</span><br><span class="line">        1800       ; Retry</span><br><span class="line">        重新尝试间隔（Retry）：当主DNS服务器尝试获取新的zone文件失败后，多久再次尝试</span><br><span class="line">        604800     ; Expire</span><br><span class="line">        过期时间（Expire）：在获取新的zone文件之前，客户端如果在这个时间内没有得到新的zone文件，</span><br><span class="line">        那么会使用本地缓存的数据</span><br><span class="line">        86400      ; Minimum TTL</span><br><span class="line">        最小TTL（Minimum TTL）：所有返回的记录的TTL至少是这个值</span><br><span class="line">);</span><br><span class="line">@   IN  NS  ns1.tanggula.com.</span><br><span class="line">定义了该zone的名称服务器（NS），即这个zone的数据由哪个DNS服务器管理</span><br><span class="line">@   IN  A   192.168.113.66</span><br><span class="line">定义了主机名@对应的IPv4地址为192.168.113.66</span><br><span class="line">vv.tanggula.com. IN  TXT   &quot;00100003210291300000&quot;</span><br><span class="line">定义了主机名vv.tanggula.com.对应的TXT记录这个记录存储的是一个二进制数据，通常用于特定的应用例如，如果你在DNS查询中使用dig vv.tanggula.com TXT，可能会得到同样的结果</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-编辑-reverse-example-com-文件，添加以下内容（用你的实际-IP-地址替换）："><a href="#4-编辑-reverse-example-com-文件，添加以下内容（用你的实际-IP-地址替换）：" class="headerlink" title="4 编辑 reverse.example.com 文件，添加以下内容（用你的实际 IP 地址替换）："></a>4 编辑 reverse.example.com 文件，添加以下内容（用你的实际 IP 地址替换）：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$TTL 86400</span><br><span class="line">@   IN  SOA ns1.example.com. admin.example.com. (</span><br><span class="line">        2023082101 ; Serial</span><br><span class="line">        3600       ; Refresh</span><br><span class="line">        1800       ; Retry</span><br><span class="line">        604800     ; Expire</span><br><span class="line">        86400      ; Minimum TTL</span><br><span class="line">)</span><br><span class="line">@   IN  NS  ns1.example.com.</span><br><span class="line">@   IN  PTR ns1.example.com.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-启动和配置-BIND-服务器"><a href="#5-启动和配置-BIND-服务器" class="headerlink" title="5 启动和配置 BIND 服务器"></a>5 启动和配置 BIND 服务器</h4><h6 id="x2F-usr-x2F-local-x2F-bind-x2F-sbin-x2F-named-u-named-c-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf-1"><a href="#x2F-usr-x2F-local-x2F-bind-x2F-sbin-x2F-named-u-named-c-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf-1" class="headerlink" title="&#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin&#x2F;named -u named -c &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf"></a>&#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin&#x2F;named -u named -c &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</h6><h6 id="ps-ef-grep-named-1"><a href="#ps-ef-grep-named-1" class="headerlink" title="ps -ef|grep named"></a>ps -ef|grep named</h6><h6 id="netstat-anp-grep-53-1"><a href="#netstat-anp-grep-53-1" class="headerlink" title="netstat -anp|grep 53"></a>netstat -anp|grep 53</h6><h4 id="6-dig-192-168-113-201-example-com"><a href="#6-dig-192-168-113-201-example-com" class="headerlink" title="6. dig @192.168.113.201 example.com"></a>6. dig @192.168.113.201 example.com</h4><p>输出结果</p>
+<pre><code>[root@localhost etc]# dig @192.168.113.201 example.com
+
+; &lt;&lt;&gt;&gt; DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.14 &lt;&lt;&gt;&gt; @192.168.113.201 example.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 17585
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;example.com.            IN    A
+
+;; ANSWER SECTION:
+example.com.        86400    IN    A    192.168.113.201
+
+;; Query time: 0 msec
+;; SERVER: 192.168.113.201#53(192.168.113.201)
+;; WHEN: 一 8月 21 17:12:53 CST 2023
+;; MSG SIZE  rcvd: 56
+
+[root@localhost etc]# 
+</code></pre>
+<h4 id="配置-TXT-记录的域名及字符串配置"><a href="#配置-TXT-记录的域名及字符串配置" class="headerlink" title="配置 TXT 记录的域名及字符串配置"></a>配置 TXT 记录的域名及字符串配置</h4><h5 id="bind-x2F-var-目录"><a href="#bind-x2F-var-目录" class="headerlink" title="bind&#x2F;var 目录"></a>bind&#x2F;var 目录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">forward.a.com</span><br><span class="line">$TTL 86400</span><br><span class="line">@   IN  SOA ns1.a.com. admin.a.com. (</span><br><span class="line">        2023082101 ; Serial</span><br><span class="line">        3600       ; Refresh</span><br><span class="line">        1800       ; Retry</span><br><span class="line">        604800     ; Expire</span><br><span class="line">        86400      ; Minimum TTL</span><br><span class="line">);</span><br><span class="line">@   IN  NS  ns1.a.com.</span><br><span class="line">@   IN  A   192.168.113.222</span><br><span class="line">vv.a.com.       IN      TXT     &quot;01234567890123456789&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="bind-x2F-etc-目录"><a href="#bind-x2F-etc-目录" class="headerlink" title="bind&#x2F;etc 目录"></a>bind&#x2F;etc 目录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">key &quot;rndc-key&quot; &#123;</span><br><span class="line">	algorithm hmac-sha256;</span><br><span class="line">	secret &quot;3wbszk8eHOOc92s/lKrrEvcm13TTqh2OAOR8h719OZg=&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">controls &#123;</span><br><span class="line">	inet 127.0.0.1 port 953</span><br><span class="line">		allow &#123; 127.0.0.1; &#125; keys &#123; &quot;rndc-key&quot;; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">options &#123;</span><br><span class="line">    listen-on port 53 &#123; any; &#125;;</span><br><span class="line">    listen-on-v6 port 53 &#123; ::1; &#125;;</span><br><span class="line">    directory &quot;/usr/local/shh_bind/sbin&quot;;</span><br><span class="line">    dump-file &quot;/usr/local/shh_bind/sbin/data/cache_dump.db&quot;;</span><br><span class="line">    statistics-file &quot;/usr/local/shh_bind/sbin/data/named_stats.txt&quot;;</span><br><span class="line">    memstatistics-file &quot;/usr/local/shh_bind/sbin/data/named_mem_stats.txt&quot;;</span><br><span class="line">    recursing-file &quot;/usr/local/shh_bind/sbin/data/named.recursing&quot;;</span><br><span class="line">    secroots-file &quot;/usr/local/bind/sbin/data/named.secroots&quot;;</span><br><span class="line">    allow-query &#123; any; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zone &quot;vv.tanggula.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;/usr/local/bind/var/forward.tanggula.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;vv.a.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;/usr/local/bind/var/forward.a.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;vv.bb.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;/usr/local/bind/var/forward.bb.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;vv.cc.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;/usr/local/bind/var/forward.cc.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;vv.dd.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;/usr/local/bind/var/forward.dd.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;vv.zz.com&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;/usr/local/bind/var/forward.vv.zz.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;192.168.113.in-addr.arpa&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;reverse.example.com&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 11:58:43" itemprop="dateModified" datetime="2024-10-20T11:58:43+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">https://muxiaoximuxiaoxi.github.io/2024/02/23/bind9 centos 环境部署步骤/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljgocqbj20zk0m8e81.jpg" title="视联浏览器双机热备">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联浏览器</span>
+  <h3>视联浏览器双机热备</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="bind9关于视联网移植">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联浏览器</span>
+  <h3>bind9关于视联网移植</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">1、基础环境安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81pip-install-ply-%E5%AE%89%E8%A3%85-ply"><span class="toc-number">1.2.</span> <span class="toc-text">2、pip install ply 安装 ply</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%8A%A5%E9%94%99-pip-%E6%9C%AA%E6%89%BE%E5%88%B0-%E6%89%A7%E8%A1%8C-yum-install-python3-pip"><span class="toc-number">1.3.</span> <span class="toc-text">如果报错 pip 未找到 执行  yum install python3-pip</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85-libuv"><span class="toc-number">1.4.</span> <span class="toc-text">3、安装 libuv</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%AE%89%E8%A3%85-libtool"><span class="toc-number">1.5.</span> <span class="toc-text">4、安装 libtool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E5%88%9B%E5%BB%BAnamed%E7%94%A8%E6%88%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95"><span class="toc-number">1.6.</span> <span class="toc-text">5、创建named用户及相关目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85bind9"><span class="toc-number">2.</span> <span class="toc-text">安装bind9</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E5%8F%8A%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99"><span class="toc-number">2.1.</span> <span class="toc-text">1、下载网址及官方网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E5%8E%8B%E5%B9%B6%E5%AE%89%E8%A3%859-16-43%E7%89%88%E6%9C%AC"><span class="toc-number">2.2.</span> <span class="toc-text">2、解压并安装9.16.43版本</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#tar-xvf-bind-9-16-43-tar-xz"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">tar -xvf bind-9.16.43.tar.xz</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#cd-bind-9-16-43"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">cd bind-9.16.43</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#x2F-configure-%E2%80%93prefix-x3D-x2F-usr-x2F-local-x2F-bind"><span class="toc-number">2.2.0.3.</span> <span class="toc-text">.&#x2F;configure –prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;bind</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#make-amp-amp-make-install"><span class="toc-number">2.2.0.4.</span> <span class="toc-text">make &amp;&amp; make install</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E5%90%8E-x2F-usr-x2F-local-x2F-bind%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E5%A6%82%E4%B8%8B"><span class="toc-number">2.2.0.5.</span> <span class="toc-text">安装成功后 &#x2F;usr&#x2F;local&#x2F;bind目录中的内容如下</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bind%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">bind初始化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81cd-x2F-usr-x2F-local-x2F-bind-x2F"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">1、cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81-sbin-x2F-rndc-confgen-gt-etc-x2F-rndc-conf"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">2、 sbin&#x2F;rndc-confgen &gt; etc&#x2F;rndc.conf</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81cd-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F"><span class="toc-number">3.0.0.3.</span> <span class="toc-text">3、cd &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81tail-10-rndc-conf-head-9-sed-s-x2F-x2F-x2F-g-gt-named-conf"><span class="toc-number">3.0.0.4.</span> <span class="toc-text">4、tail -10 rndc.conf | head -9 | sed s&#x2F;#\ &#x2F;&#x2F;g &gt; named.conf</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81-%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E5%9C%A8%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="toc-number">3.0.0.5.</span> <span class="toc-text">4、  编辑配置文件，在当前文件添加以下内容</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%E3%80%81-%E5%9C%A8-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAdata%E7%9B%AE%E5%BD%95%E7%94%A8%E6%9D%A5%E5%AD%98%E6%94%BE%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-number">3.0.0.6.</span> <span class="toc-text">5、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下创建一个data目录用来存放日志文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6%E3%80%81-%E5%9C%A8-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%94%9F%E6%88%90named-ca%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.0.0.7.</span> <span class="toc-text">6、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下生成named.ca数据文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7%E3%80%81-%E5%9C%A8-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BAnamed-rfc1912-zones%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B9%B6%E6%B7%BB%E5%8A%A0%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="toc-number">3.0.0.8.</span> <span class="toc-text">7、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;目录下创建named.rfc1912.zones文件，并添加以下内容</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8%E3%80%81-%E5%9C%A8-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-run%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.0.0.9.</span> <span class="toc-text">8、  在&#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;run目录下创建对应数据文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9%E3%80%81chown-R-named-named-x2F-usr-x2F-local-x2F-bind"><span class="toc-number">3.0.0.10.</span> <span class="toc-text">9、chown -R named:named &#x2F;usr&#x2F;local&#x2F;bind</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10%E3%80%81%E6%A3%80%E6%9F%A5named-conf%E6%96%87%E4%BB%B6"><span class="toc-number">3.0.0.11.</span> <span class="toc-text">10、检查named.conf文件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Cbind"><span class="toc-number">4.</span> <span class="toc-text">运行bind</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81-%E6%89%A7%E8%A1%8C%E5%A6%82%E4%B8%8B%E5%91%BD%E4%BB%A4%E5%90%AF%E5%8A%A8bind"><span class="toc-number">4.1.</span> <span class="toc-text">1、  执行如下命令启动bind</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#x2F-usr-x2F-local-x2F-bind-x2F-sbin-x2F-named-u-named-c-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf"><span class="toc-number">4.1.1.</span> <span class="toc-text">&#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin&#x2F;named -u named -c &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%B5%8B%E8%AF%95%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%A7%A3%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">2、测试能正常解析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ps-ef-grep-named"><span class="toc-number">4.2.1.</span> <span class="toc-text">ps -ef|grep named</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#netstat-anp-grep-53"><span class="toc-number">4.2.2.</span> <span class="toc-text">netstat -anp|grep 53</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dig-127-0-0-1-www-baidu-com"><span class="toc-number">4.2.3.</span> <span class="toc-text">dig @127.0.0.1 www.baidu.com</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C-status-SERVFAIL-%E9%94%99%E8%AF%AF"><span class="toc-number">5.</span> <span class="toc-text">如果 status: SERVFAIL 错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4"><span class="toc-number">6.</span> <span class="toc-text">解决步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BC%96%E8%BE%91-BIND-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-named-conf%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">1. 编辑 BIND 配置文件 named.conf：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#sudo-vi-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf"><span class="toc-number">6.1.0.1.</span> <span class="toc-text">sudo vi &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%9F%9F%E5%8C%BA%E5%9F%9F%E6%96%87%E4%BB%B6%E5%92%8C%E5%8F%8D%E5%90%91%E5%8C%BA%E5%9F%9F%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">2 创建域区域文件和反向区域文件：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#sudo-vim-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-forward-example-com"><span class="toc-number">6.2.0.1.</span> <span class="toc-text">sudo vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;forward.example.com</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#sudo-vim-x2F-usr-x2F-local-x2F-bind-x2F-var-x2F-reverse-example-com"><span class="toc-number">6.2.0.2.</span> <span class="toc-text">sudo vim &#x2F;usr&#x2F;local&#x2F;bind&#x2F;var&#x2F;reverse.example.com</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BC%96%E8%BE%91-forward-example-com-%E6%96%87%E4%BB%B6%EF%BC%8C%E6%B7%BB%E5%8A%A0%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%88%E7%94%A8%E4%BD%A0%E7%9A%84%E5%AE%9E%E9%99%85%E5%9F%9F%E5%90%8D%E5%92%8C%E6%9C%8D%E5%8A%A1%E5%99%A8-IP-%E6%9B%BF%E6%8D%A2%EF%BC%89%EF%BC%9A"><span class="toc-number">6.3.</span> <span class="toc-text">3 编辑 forward.example.com 文件，添加以下内容（用你的实际域名和服务器 IP 替换）：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E7%A4%BA%E6%84%8F%E5%A6%82%E4%B8%8B"><span class="toc-number">6.3.1.</span> <span class="toc-text">配置文件 示意如下</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%BC%96%E8%BE%91-reverse-example-com-%E6%96%87%E4%BB%B6%EF%BC%8C%E6%B7%BB%E5%8A%A0%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%88%E7%94%A8%E4%BD%A0%E7%9A%84%E5%AE%9E%E9%99%85-IP-%E5%9C%B0%E5%9D%80%E6%9B%BF%E6%8D%A2%EF%BC%89%EF%BC%9A"><span class="toc-number">6.4.</span> <span class="toc-text">4 编辑 reverse.example.com 文件，添加以下内容（用你的实际 IP 地址替换）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%90%AF%E5%8A%A8%E5%92%8C%E9%85%8D%E7%BD%AE-BIND-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">6.5.</span> <span class="toc-text">5 启动和配置 BIND 服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#x2F-usr-x2F-local-x2F-bind-x2F-sbin-x2F-named-u-named-c-x2F-usr-x2F-local-x2F-bind-x2F-etc-x2F-named-conf-1"><span class="toc-number">6.5.0.1.</span> <span class="toc-text">&#x2F;usr&#x2F;local&#x2F;bind&#x2F;sbin&#x2F;named -u named -c &#x2F;usr&#x2F;local&#x2F;bind&#x2F;etc&#x2F;named.conf</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#ps-ef-grep-named-1"><span class="toc-number">6.5.0.2.</span> <span class="toc-text">ps -ef|grep named</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#netstat-anp-grep-53-1"><span class="toc-number">6.5.0.3.</span> <span class="toc-text">netstat -anp|grep 53</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-dig-192-168-113-201-example-com"><span class="toc-number">6.6.</span> <span class="toc-text">6. dig @192.168.113.201 example.com</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-TXT-%E8%AE%B0%E5%BD%95%E7%9A%84%E5%9F%9F%E5%90%8D%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%85%8D%E7%BD%AE"><span class="toc-number">6.7.</span> <span class="toc-text">配置 TXT 记录的域名及字符串配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bind-x2F-var-%E7%9B%AE%E5%BD%95"><span class="toc-number">6.7.1.</span> <span class="toc-text">bind&#x2F;var 目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#bind-x2F-etc-%E7%9B%AE%E5%BD%95"><span class="toc-number">6.7.2.</span> <span class="toc-text">bind&#x2F;etc 目录</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" rel="bookmark" title="Jenkins自动化编译">Jenkins自动化编译</a></li><li><a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="DNS域名解析及bind9介绍">DNS域名解析及bind9介绍</a></li><li class="active"><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" rel="bookmark" title="bind9 环境部署">bind9 环境部署</a></li><li><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" rel="bookmark" title="视联浏览器双机热备">视联浏览器双机热备</a></li><li><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" rel="bookmark" title="bind9关于视联网移植">bind9关于视联网移植</a></li><li><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" rel="bookmark" title="动态so的编译">动态so的编译</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/rk3568%E6%B5%8B%E8%AF%95/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" title="Jenkins自动化编译">Jenkins自动化编译</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/02/23/bind9 centos 环境部署步骤/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

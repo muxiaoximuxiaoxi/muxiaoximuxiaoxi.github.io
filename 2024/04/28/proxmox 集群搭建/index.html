@@ -1,0 +1,772 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
+
+
+
+  <title>
+proxmox集群搭建 - _视联云桌面 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">proxmox集群搭建
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-04-28 21:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T21:04:32+08:00">2024-04-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" itemprop="item" rel="index" title="In _视联云桌面"><span itemprop="name">_视联云桌面</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>v####</p>
+<h3 id="PVE安装"><a href="#PVE安装" class="headerlink" title="PVE安装"></a>PVE安装</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cucHJveG1veC5jb20vZW4vZG93bmxvYWRzL3Byb3htb3gtdmlydHVhbC1lbnZpcm9ubWVudC9pc28vcHJveG1veC12ZS03LTQtaXNvLWluc3RhbGxlcg==">Proxmox VE 7.4 ISO</span></p>
+<h5 id="创建虚拟机的基本信息"><a href="#创建虚拟机的基本信息" class="headerlink" title="创建虚拟机的基本信息"></a>创建虚拟机的基本信息</h5><p><img data-src="https://img-blog.csdnimg.cn/direct/73ad4daf195240f6ac603e5578bed0f0.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="安装PVE"><a href="#安装PVE" class="headerlink" title="安装PVE"></a>安装PVE</h5><p>选择红框中的选项，敲回车键，安装PVE<br><img data-src="https://img-blog.csdnimg.cn/direct/c95e445277174709a8e7cdb2e10da1e6.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="选择，同意协议"><a href="#选择，同意协议" class="headerlink" title="选择，同意协议"></a>选择，同意协议</h5><p><img data-src="https://img-blog.csdnimg.cn/direct/d974978e40d14221a5bb0cfb926f2c58.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="选择系统盘"><a href="#选择系统盘" class="headerlink" title="选择系统盘"></a>选择系统盘</h5><p>一般选择默认盘即可</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/af6a5d7e1a2548f2a28a58cae60ad8e2.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="配置国家和地区信息"><a href="#配置国家和地区信息" class="headerlink" title="配置国家和地区信息"></a>配置国家和地区信息</h5><p>国家选择“China”，时区选择“亚洲&#x2F;上海”</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/09b7d1c0865b4479bb5da7a94bc68511.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="配置密码和邮箱信息"><a href="#配置密码和邮箱信息" class="headerlink" title="配置密码和邮箱信息"></a>配置密码和邮箱信息</h5><p>这里的密码是“123456”权限的密码，邮箱只需要是合法的都没问题，不需要验证邮箱。</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/ca127a5518f34139bbb467b077c6a9e4.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="配置网卡、主机名、IP地址、DNS等信息"><a href="#配置网卡、主机名、IP地址、DNS等信息" class="headerlink" title="配置网卡、主机名、IP地址、DNS等信息"></a>配置网卡、主机名、IP地址、DNS等信息</h5><p>其中，选择默认网卡。主机名称“root1”。IP地址和DNS等信息可配置也可不配置，留待稍后配置也可以，但是最好是配置IP地址，如果需要修改，可以使用Web UI进行修改，这样比较简单。</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/ed0b565a934344c8ae96b19ff710faac.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="检查核对信息，确定无误后点击安装"><a href="#检查核对信息，确定无误后点击安装" class="headerlink" title="检查核对信息，确定无误后点击安装"></a>检查核对信息，确定无误后点击安装</h5><p><img data-src="https://img-blog.csdnimg.cn/direct/ae1e7bce460b44d488a705bebb183d36.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="安装结束之后，出现界面证明安装成功。默认用户名为root，密码为安装时设置的密码。进入之后使用-ip-addr-查看当前ip地址"><a href="#安装结束之后，出现界面证明安装成功。默认用户名为root，密码为安装时设置的密码。进入之后使用-ip-addr-查看当前ip地址" class="headerlink" title="安装结束之后，出现界面证明安装成功。默认用户名为root，密码为安装时设置的密码。进入之后使用 ip addr 查看当前ip地址"></a>安装结束之后，出现界面证明安装成功。默认用户名为root，密码为安装时设置的密码。进入之后使用 ip addr 查看当前ip地址</h5><p><img data-src="https://img-blog.csdnimg.cn/direct/6647501c1e414402b62554cf2ac86922.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="通过浏览器访问-ip-8006，即可进入PVE的web页面"><a href="#通过浏览器访问-ip-8006，即可进入PVE的web页面" class="headerlink" title="通过浏览器访问 ip:8006，即可进入PVE的web页面"></a>通过浏览器访问 ip:8006，即可进入PVE的web页面</h5><p>输入用户、密码并选择页面语言，即可登录至web页面<br><img data-src="https://img-blog.csdnimg.cn/direct/8e8582d78a1a4dbf9eaee115d64e873f.png#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h4><h6 id="注：proxmox-一般是多个节点才需要搭建集群，否则没有意义，本次是以3个节点为例，具体节点个数根据用户的实际情况确定，故，后续节点2、节点3的创建过程，重复上述的PVE安装步骤"><a href="#注：proxmox-一般是多个节点才需要搭建集群，否则没有意义，本次是以3个节点为例，具体节点个数根据用户的实际情况确定，故，后续节点2、节点3的创建过程，重复上述的PVE安装步骤" class="headerlink" title="注：proxmox 一般是多个节点才需要搭建集群，否则没有意义，本次是以3个节点为例，具体节点个数根据用户的实际情况确定，故，后续节点2、节点3的创建过程，重复上述的PVE安装步骤"></a>注：proxmox 一般是多个节点才需要搭建集群，否则没有意义，本次是以3个节点为例，具体节点个数根据用户的实际情况确定，故，后续节点2、节点3的创建过程，重复上述的PVE安装步骤</h6><h5 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h5><p>在节点1的数据中心处进行创建集群</p>
+<p>数据中心—&gt;集群—&gt;创建集群<br><img data-src="https://img-blog.csdnimg.cn/direct/d72908c50b904b379dd9ec8832b3b497.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="加入信息"><a href="#加入信息" class="headerlink" title="加入信息"></a>加入信息</h5><p>在节点1的数据中心的加入信息，复制刚新建集群的加入信息</p>
+<p>数据中心—&gt;集群—&gt;加入信息<br><img data-src="https://img-blog.csdnimg.cn/direct/e800dd537332472892352bb7b2f84f33.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="加入集群"><a href="#加入集群" class="headerlink" title="加入集群"></a>加入集群</h5><p>在节点2（节点3）的数据中心的加入集群，粘贴刚复制的集群信息，并输入节点1的密码，加入集群</p>
+<p>数据中心—&gt;集群—&gt;加入集群</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/1c7a4d4ab01e42fa900d74e5704c5f3f.png#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="ceph安装及配置"><a href="#ceph安装及配置" class="headerlink" title="ceph安装及配置"></a>ceph安装及配置</h4><h6 id="注：集群的每个节点均需要进行以下ceph操作"><a href="#注：集群的每个节点均需要进行以下ceph操作" class="headerlink" title="注：集群的每个节点均需要进行以下ceph操作"></a>注：集群的每个节点均需要进行以下ceph操作</h6><h5 id="ceph安装"><a href="#ceph安装" class="headerlink" title="ceph安装"></a>ceph安装</h5><p><span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMU4tUEQxNU5Yd01xVGM4MGZjTHh4b0E=">提取码：uis8</span></p>
+<p>将此zip文件下载到并解压到本地，然后通过sftp将整个apt文件复制拷贝至 &#x2F;var&#x2F;cache</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd /var/cache/apt/archives</span><br><span class="line"></span><br><span class="line">dpkg –i ./*.deb</span><br></pre></td></tr></table></figure>
+
+<p>安装成功之后刷新web页面<br><img data-src="https://img-blog.csdnimg.cn/direct/d16a7f5ee12e48b78afefe57aab9b88b.png#pic_center" alt="在这里插入图片描述"></p>
+<p>root1—&gt;Ceph—&gt;配置</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/680bdb0e4f2347c2bd0a5ea40d5e5fce.png#pic_center" alt="在这里插入图片描述"></p>
+<p>CRUSH map 是 Ceph 存储集群的一种数据分布和存储方式，它有四个主要的部分：rules 规则、devices 设备、buckets（桶，也就是节点）、 types 类型</p>
+<h6 id="crush-map一般ceph都会根据用户增加配置之后，自动生成，当然用户也可以先自主配置，然后根据crush-map的配置在去添加相应配置"><a href="#crush-map一般ceph都会根据用户增加配置之后，自动生成，当然用户也可以先自主配置，然后根据crush-map的配置在去添加相应配置" class="headerlink" title="crush map一般ceph都会根据用户增加配置之后，自动生成，当然用户也可以先自主配置，然后根据crush map的配置在去添加相应配置"></a>crush map一般ceph都会根据用户增加配置之后，自动生成，当然用户也可以先自主配置，然后根据crush map的配置在去添加相应配置</h6><p>以下是一个crush map 的逐行解读</p>
+<pre><code># Tunable：这些是 CRUSH 算法的一些调整参数，改变这些值可以微调数据分布
+# 但一般情况下，不需要更改，当然如有需要，用户可自行更改
+# begin crush map
+tunable choose_local_tries 0
+tunable choose_local_fallback_tries 0
+tunable choose_total_tries 50
+tunable chooseleaf_descend_once 1
+tunable chooseleaf_vary_r 1
+tunable chooseleaf_stable 1
+tunable straw_calc_version 1
+tunable allowed_bucket_algs 54
+
+
+# Devices：这部分列出了集群的所有存储设备
+# 本例 map 上有9个硬盘设备（osd.0 到 osd.8），都被分类在“hdd”类别下面
+# devices
+device 0 osd.0 class hdd
+device 1 osd.1 class hdd
+device 2 osd.2 class hdd
+device 3 osd.3 class hdd
+device 4 osd.4 class hdd
+device 5 osd.5 class hdd
+device 6 osd.6 class hdd
+device 7 osd.7 class hdd
+device 8 osd.8 class hdd
+
+
+# Types：这是一个对象类型的层级列表。
+# 本例列表里包含了从 osd 到 root 的所有对象类型。
+# types
+type 0 osd
+type 1 host
+type 2 chassis
+type 3 rack
+type 4 row
+type 5 pdu
+type 6 pod
+type 7 room
+type 8 datacenter
+type 9 zone
+type 10 region
+type 11 root
+
+
+# Buckets：这部分描述了你的存储设备是如何组织的。
+# 本例 map 上有三个主机（vds2, vds3, vds4），每个主机有三个设备
+# 每个主机和总体的 root 都被设置了权重，并使用了 straw2 算法来平衡存储负载
+
+# buckets
+host vds3 &#123;
+    id -3        # do not change unnecessarily
+    # 这个存储桶的ID是-3。ID通常用于唯一标识一个存储桶，这里标记为“不要随意更改
+    id -4 class hdd        # do not change unnecessarily
+    # ID是-4，并且这个存储桶被标记为hdd类别。表示这个存储桶包含的是HDD（机械硬盘）类型的存储设备
+    # weight 5.807
+    # 这里有一个被注释掉的权重值，表示这个存储桶的权重原为5.807。权重用于在数据分布时确定存储桶的相对优先级
+    # osd 的权重 ceph会根据磁盘自动生成，当然用户也可以自己设置
+    alg straw2
+    hash 0    # rjenkins1 
+    # 使用hash函数0，注释表示这是rjenkins1哈希函数。哈希函数用于将数据键转化为存储桶的索
+    item osd.2 weight 1.936
+    # 在这个存储桶中，有一个名为osd.2的项，其权重为1.936。这表示在数据分布策略中，这个项（可能是一个OSD，即对象存储设备）具有相对权重
+    item osd.0 weight 1.936
+    # 在这个存储桶中，有一个名为osd.0的项，其权重为1.936。这表示在数据分布策略中，这个项（可能是一个OSD，即对象存储设备）具有相对权重
+    item osd.1 weight 1.936
+    # 在这个存储桶中，有一个名为osd.1的项，其权重为1.936。这表示在数据分布策略中，这个项（可能是一个OSD，即对象存储设备）具有相对权重
+&#125;
+host vds4 &#123;
+    id -5        # do not change unnecessarily
+    id -6 class hdd        # do not change unnecessarily
+    # weight 5.807
+    alg straw2
+    hash 0    # rjenkins1
+    item osd.4 weight 1.936
+    item osd.5 weight 1.936
+    item osd.3 weight 1.936
+&#125;
+host vds2 &#123;
+    id -7        # do not change unnecessarily
+    id -8 class hdd        # do not change unnecessarily
+    # weight 5.807
+    alg straw2
+    hash 0    # rjenkins1
+    item osd.6 weight 1.936
+    item osd.8 weight 1.936
+    item osd.7 weight 1.936
+&#125;
+root default &#123;
+    id -1        # do not change unnecessarily
+    id -2 class hdd        # do not change unnecessarily
+    # weight 17.422
+    alg straw2
+    hash 0    # rjenkins1
+    item vds3 weight 5.807
+    item vds4 weight 5.807
+    item vds2 weight 5.807
+&#125;
+
+
+# Rules：这些规则描述了数据应该如何在集群中分布。
+# 本例的四条规则都是复制类型的，分别决定了不同的存储和复制策略：
+#     replicated_rule：允许数据在所有 osd 类型设备中选择复制
+#     cluster_rule： 允许数据在主机级别复制
+#     ssd_db_rule： 只在 vds4 的 osd 类型设备中复制数据
+#     hdd_rule： 只在 vds3 的 osd 类型设备中复制数据
+
+
+# rules
+rule replicated_rule &#123;
+    id 0
+    # 给这个规则分配一个唯一的ID，这里是0
+    type replicated
+    # 指定这是一个复制类型的规则，即数据会被复制到多个节点上以提供冗余和可用性
+    min_size 1
+    # 设置最小的副本数量为1，即至少有一个副本
+    max_size 10
+    # 设置最大的副本数量为10，即最多可以有10个副本
+    step take default
+    # 这是第一个步骤，take default意味着使用默认的权重和优先级来选择存储节点
+    step chooseleaf firstn 0 type osd
+    # 这是第二个步骤，用于选择一个叶子节点来放置副本。这里使用firstn 0来选择第一个匹配的叶子节点，类型为OSD
+    step emit
+    # 这是最后一个步骤，表示规则执行完成，可以放置副本了
+&#125;
+rule cluster_rule &#123;
+    id 1
+    type replicated
+    min_size 1
+    max_size 10
+    step take default
+    step chooseleaf firstn 0 type host
+    step emit
+&#125;
+rule ssd_db_rule &#123;
+    id 2
+    type replicated
+    min_size 1
+    max_size 10
+    step take vds4
+    step choose firstn 0 type osd
+    step emit
+&#125;
+rule hdd_rule &#123;
+    id 3
+    type replicated
+    min_size 1
+    max_size 10
+    step take vds3
+    step choose firstn 0 type osd
+    step emit
+&#125;
+
+# end crush map
+</code></pre>
+<ol>
+<li>先创建 pool 选择压缩（带 C 为压缩，不带C为不压缩）</li>
+<li>选择rule，设置最大、最小副本数</li>
+<li>设置rule的step 具体规则中如何去执行</li>
+</ol>
+<p>关于上述的 buckets 算法补充</p>
+<pre><code>目前有 5 种算法来实现节点的选择， 包括 Uniform、 List、 Tree、 Straw、 Straw2
+
+Uniform:
+简单随机选择。每个节点被选中的概率是相同的。
+优点：简单、公平。
+缺点：在大规模数据集上可能效率不高。
+
+
+List:
+按照某种顺序（如顺序访问）选择节点。
+优点：实现简单，适用于顺序处理或某些特定场景。
+缺点：缺乏随机性可能导致某些节点过度使用。
+
+
+Tree:
+基于某种树形结构（如B树或红黑树）选择节点。
+优点：树形结构有助于减少I/O操作，提高查询效率。
+缺点：实现复杂度较高，并且不适用于所有场景。
+
+
+Straw:
+基于概率的随机选择，给每个节点分配一个权重，根据权重随机选择节点。
+优点：能够根据节点的性能或其他属性进行选择性访问，提高效率。
+缺点：需要维护节点的权重，实现稍复杂。
+
+
+Straw2:
+Straw算法的改进版本，可能考虑了更多的因素或优化了某些部分。
+优点：在某些情况下可能比Straw算法更高效。
+缺点：实现可能更复杂，具体取决于与Straw相比做了哪些改进。
+每种算法都有其适用的场景和限制，选择哪种算法取决于具体的需求和场景。在实际应用中，通常会根据数据的规模、结构、访问模式以及性能要求等因素来选择最合适的算法。
+</code></pre>
+<p>关于上述的 rule 算法补充</p>
+<pre><code>Replicated rule：这是最常见的规则，它将数据复制在不同的设备或组（例如主机，机架，数据中心等）上以提供容错能力
+
+Erasure coding rule：Erasure coding 是一种数据保护技术，可以在损失一定数量的 OSD 时仍然能恢复数据。这个规则需要更复杂的设置，并需要你定义如何分割和分发各个数据的片段
+
+Tiering rule：这个规则类型用于管理多层存储系统。比如，你可能会创建一个规则，将热数据存储在 SSD 上，然后将冷数据迁移到硬盘驱动器上
+
+Device class rule：这个规则允许你根据存储设备的类型（例如 SSD、HDD）来定制数据的分布模式
+</code></pre>
+<p>root1—&gt;Ceph—&gt;监视器<br><img data-src="https://img-blog.csdnimg.cn/direct/101ca8c61e9b4728a4f91f734afb037d.png#pic_center" alt="在这里插入图片描述"></p>
+<p>root1—&gt;Ceph—&gt;OSD<br><img data-src="https://img-blog.csdnimg.cn/direct/80e68fe8186e42a09187b4db0e82515c.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="在创建磁盘时，数据库磁盘可选择为当前创建磁盘，也可选择为其他可选的ssd可用分区（具体分区设置可通过linux指令进行创建）"><a href="#在创建磁盘时，数据库磁盘可选择为当前创建磁盘，也可选择为其他可选的ssd可用分区（具体分区设置可通过linux指令进行创建）" class="headerlink" title="在创建磁盘时，数据库磁盘可选择为当前创建磁盘，也可选择为其他可选的ssd可用分区（具体分区设置可通过linux指令进行创建）"></a>在创建磁盘时，数据库磁盘可选择为当前创建磁盘，也可选择为其他可选的ssd可用分区（具体分区设置可通过linux指令进行创建）</h6><p>选择当前磁盘，表示安装当前磁盘的格式进行读写数据，即当前磁盘为hdd就按hdd的方式读写，为ssd就按ssd的方式读写<br>选择其他分区，可实现使用sdd可用分区给当前的hdd磁盘读取数据，即相当于给hdd赋予ssd的读写速率</p>
+<p>OSD status<br>up 表示 该磁盘为运行状态或者可用状态<br>down 表示 该磁盘为未运行状态或者不可用状态<br>in 表示 在ceph中<br>out 表示 在ceph外</p>
+<p>root1—&gt;Ceph—&gt;CephFS<br><img data-src="https://img-blog.csdnimg.cn/direct/ee07993c86d7409a91c737e60660c93a.png#pic_center" alt="在这里插入图片描述"></p>
+<p>root1—&gt;Ceph—&gt;Pools<br><img data-src="https://img-blog.csdnimg.cn/direct/80c702e081114ce89d00fa3cf4830c48.png#pic_center" alt="在这里插入图片描述"><br>上图中，名称设为a，会报名称不合理，可以设为 abc 具体名称用户自己定义</p>
+<h4 id="集群删除节点"><a href="#集群删除节点" class="headerlink" title="集群删除节点"></a>集群删除节点</h4><pre><code>1、查看当前节点信息
+ls /etc/pve/nodes 
+
+2、停止节点上的corosync和pve集群服务
+
+systemctl stop pve-cluster
+systemctl stop corosync
+
+
+3、在本地模式下再次启动群集文件系统
+
+pmxcfs -l
+
+4、删除corosync配置文件
+
+rm /etc/pve/corosync.conf
+rm -r /etc/corosync/*
+
+5、将文件系统作为正常服务重新启动
+
+killall pmxcfs
+systemctl start pve-cluster
+
+此时刷新删除节点的web页面，会发现集群信息
+
+6、节点现在与集群分离。可以使用以下命令将其从集群的任何剩余节点中删除
+
+pvecm delnode oldNodeName
+
+
+7、如果由于剩余节点中的仲裁丢失而导致命令失败，可以将 expected 设置为1作为解决方法，然后重复pvecm-delnode命令。
+
+pvecm expected 1
+pvecm delnode oldNodeName
+ 
+ 
+ 8、现在切换回分离的节点并删除其上所有剩余的集群文件。这确保了该节点可以毫无问题地再次添加到另一个集群中。如果其他节点的配置文件仍在集群文件系统中，那么可能也需要清理这些文件。在确保具有正确的节点名称后，您可以简单地从 /etc/pve/nodes/NODENAME 递归地删除整个目录。
+
+rm /var/lib/corosync/*
+ls /etc/pve/nodes  # 打印出节点名称
+pvecm delnode nodeName
+rm -rf /etc/pve/nodes/nodeName
+</code></pre>
+<h4 id="PVE网卡配置"><a href="#PVE网卡配置" class="headerlink" title="PVE网卡配置"></a>PVE网卡配置</h4><p>root1—&gt;系统—&gt;网络—&gt;创建—&gt;Linux VLAN<br><img data-src="https://img-blog.csdnimg.cn/direct/44da8eacc5044453bc9c721b37f38798.png#pic_center" alt="在这里插入图片描述"></p>
+<p>root1—&gt;系统—&gt;网络—&gt;创建—&gt;Linux Bridge</p>
+<p><img data-src="https://img-blog.csdnimg.cn/direct/9aecf63d91cb469e8ca5c816af487b62.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="注：由于本例服务器没有多余的网卡、VLAN交换机，所以没有创建多个VLAN，Bridge，但尽可能的还是需要多个ip，以下图为例并进行说明"><a href="#注：由于本例服务器没有多余的网卡、VLAN交换机，所以没有创建多个VLAN，Bridge，但尽可能的还是需要多个ip，以下图为例并进行说明" class="headerlink" title="注：由于本例服务器没有多余的网卡、VLAN交换机，所以没有创建多个VLAN，Bridge，但尽可能的还是需要多个ip，以下图为例并进行说明"></a>注：由于本例服务器没有多余的网卡、VLAN交换机，所以没有创建多个VLAN，Bridge，但尽可能的还是需要多个ip，以下图为例并进行说明</h6><p><img data-src="https://img-blog.csdnimg.cn/direct/e7ea2354140a41e4923829aca7177aee.png#pic_center" alt="在这里插入图片描述"></p>
+<p>分析如下</p>
+<pre><code>四张网卡：eno1、eno2、ens5f0、ens5f1
+三个VLAN： ens5f1.1628、ens5f1.254、ens5f1.255
+vmbr0：proxmox 对外公布的ip
+vmbr1：节点的虚拟机的ip网卡
+vmbr2：节点的虚拟机的v2v网卡
+vmbr3：集群网卡
+vmbr4：ceph public network 主要是处理客户端请求和monitor通信
+vmbr5：ceph cluster network 主要用于ceph内部各节点、虚拟机的信息同步等
+</code></pre>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 11:59:48" itemprop="dateModified" datetime="2024-10-20T11:59:48+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" title="proxmox集群搭建">https://muxiaoximuxiaoxi.github.io/2024/04/28/proxmox 集群搭建/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="VGPU">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
+  <h3>VGPU</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="打包发版">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
+  <h3>打包发版</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PVE%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">PVE安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.0.1.</span> <span class="toc-text">创建虚拟机的基本信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85PVE"><span class="toc-number">1.0.2.</span> <span class="toc-text">安装PVE</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%EF%BC%8C%E5%90%8C%E6%84%8F%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.0.3.</span> <span class="toc-text">选择，同意协议</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%B3%BB%E7%BB%9F%E7%9B%98"><span class="toc-number">1.0.4.</span> <span class="toc-text">选择系统盘</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%AE%B6%E5%92%8C%E5%9C%B0%E5%8C%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">1.0.5.</span> <span class="toc-text">配置国家和地区信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E5%92%8C%E9%82%AE%E7%AE%B1%E4%BF%A1%E6%81%AF"><span class="toc-number">1.0.6.</span> <span class="toc-text">配置密码和邮箱信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E5%8D%A1%E3%80%81%E4%B8%BB%E6%9C%BA%E5%90%8D%E3%80%81IP%E5%9C%B0%E5%9D%80%E3%80%81DNS%E7%AD%89%E4%BF%A1%E6%81%AF"><span class="toc-number">1.0.7.</span> <span class="toc-text">配置网卡、主机名、IP地址、DNS等信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%A0%B8%E5%AF%B9%E4%BF%A1%E6%81%AF%EF%BC%8C%E7%A1%AE%E5%AE%9A%E6%97%A0%E8%AF%AF%E5%90%8E%E7%82%B9%E5%87%BB%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.8.</span> <span class="toc-text">检查核对信息，确定无误后点击安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%BB%93%E6%9D%9F%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%95%8C%E9%9D%A2%E8%AF%81%E6%98%8E%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E3%80%82%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%E5%90%8D%E4%B8%BAroot%EF%BC%8C%E5%AF%86%E7%A0%81%E4%B8%BA%E5%AE%89%E8%A3%85%E6%97%B6%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%AF%86%E7%A0%81%E3%80%82%E8%BF%9B%E5%85%A5%E4%B9%8B%E5%90%8E%E4%BD%BF%E7%94%A8-ip-addr-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8Dip%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.9.</span> <span class="toc-text">安装结束之后，出现界面证明安装成功。默认用户名为root，密码为安装时设置的密码。进入之后使用 ip addr 查看当前ip地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE-ip-8006%EF%BC%8C%E5%8D%B3%E5%8F%AF%E8%BF%9B%E5%85%A5PVE%E7%9A%84web%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.0.10.</span> <span class="toc-text">通过浏览器访问 ip:8006，即可进入PVE的web页面</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">集群配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9Aproxmox-%E4%B8%80%E8%88%AC%E6%98%AF%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E6%89%8D%E9%9C%80%E8%A6%81%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4%EF%BC%8C%E5%90%A6%E5%88%99%E6%B2%A1%E6%9C%89%E6%84%8F%E4%B9%89%EF%BC%8C%E6%9C%AC%E6%AC%A1%E6%98%AF%E4%BB%A53%E4%B8%AA%E8%8A%82%E7%82%B9%E4%B8%BA%E4%BE%8B%EF%BC%8C%E5%85%B7%E4%BD%93%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0%E6%A0%B9%E6%8D%AE%E7%94%A8%E6%88%B7%E7%9A%84%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5%E7%A1%AE%E5%AE%9A%EF%BC%8C%E6%95%85%EF%BC%8C%E5%90%8E%E7%BB%AD%E8%8A%82%E7%82%B92%E3%80%81%E8%8A%82%E7%82%B93%E7%9A%84%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%8C%E9%87%8D%E5%A4%8D%E4%B8%8A%E8%BF%B0%E7%9A%84PVE%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">注：proxmox 一般是多个节点才需要搭建集群，否则没有意义，本次是以3个节点为例，具体节点个数根据用户的实际情况确定，故，后续节点2、节点3的创建过程，重复上述的PVE安装步骤</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text">创建集群</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">加入信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E9%9B%86%E7%BE%A4"><span class="toc-number">1.1.3.</span> <span class="toc-text">加入集群</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ceph%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">ceph安装及配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9A%E9%9B%86%E7%BE%A4%E7%9A%84%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E5%9D%87%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E4%BB%A5%E4%B8%8Bceph%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">注：集群的每个节点均需要进行以下ceph操作</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ceph%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">ceph安装</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#crush-map%E4%B8%80%E8%88%ACceph%E9%83%BD%E4%BC%9A%E6%A0%B9%E6%8D%AE%E7%94%A8%E6%88%B7%E5%A2%9E%E5%8A%A0%E9%85%8D%E7%BD%AE%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%EF%BC%8C%E5%BD%93%E7%84%B6%E7%94%A8%E6%88%B7%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%85%88%E8%87%AA%E4%B8%BB%E9%85%8D%E7%BD%AE%EF%BC%8C%E7%84%B6%E5%90%8E%E6%A0%B9%E6%8D%AEcrush-map%E7%9A%84%E9%85%8D%E7%BD%AE%E5%9C%A8%E5%8E%BB%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%BA%94%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">crush map一般ceph都会根据用户增加配置之后，自动生成，当然用户也可以先自主配置，然后根据crush map的配置在去添加相应配置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9C%A8%E5%88%9B%E5%BB%BA%E7%A3%81%E7%9B%98%E6%97%B6%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%A3%81%E7%9B%98%E5%8F%AF%E9%80%89%E6%8B%A9%E4%B8%BA%E5%BD%93%E5%89%8D%E5%88%9B%E5%BB%BA%E7%A3%81%E7%9B%98%EF%BC%8C%E4%B9%9F%E5%8F%AF%E9%80%89%E6%8B%A9%E4%B8%BA%E5%85%B6%E4%BB%96%E5%8F%AF%E9%80%89%E7%9A%84ssd%E5%8F%AF%E7%94%A8%E5%88%86%E5%8C%BA%EF%BC%88%E5%85%B7%E4%BD%93%E5%88%86%E5%8C%BA%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%9A%E8%BF%87linux%E6%8C%87%E4%BB%A4%E8%BF%9B%E8%A1%8C%E5%88%9B%E5%BB%BA%EF%BC%89"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">在创建磁盘时，数据库磁盘可选择为当前创建磁盘，也可选择为其他可选的ssd可用分区（具体分区设置可通过linux指令进行创建）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">集群删除节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PVE%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">PVE网卡配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9A%E7%94%B1%E4%BA%8E%E6%9C%AC%E4%BE%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B2%A1%E6%9C%89%E5%A4%9A%E4%BD%99%E7%9A%84%E7%BD%91%E5%8D%A1%E3%80%81VLAN%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E6%89%80%E4%BB%A5%E6%B2%A1%E6%9C%89%E5%88%9B%E5%BB%BA%E5%A4%9A%E4%B8%AAVLAN%EF%BC%8CBridge%EF%BC%8C%E4%BD%86%E5%B0%BD%E5%8F%AF%E8%83%BD%E7%9A%84%E8%BF%98%E6%98%AF%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AAip%EF%BC%8C%E4%BB%A5%E4%B8%8B%E5%9B%BE%E4%B8%BA%E4%BE%8B%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">注：由于本例服务器没有多余的网卡、VLAN交换机，所以没有创建多个VLAN，Bridge，但尽可能的还是需要多个ip，以下图为例并进行说明</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="bookmark" title="proxmox集群搭建">proxmox集群搭建</a></li><li><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" rel="bookmark" title="VGPU">VGPU</a></li><li><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" rel="bookmark" title="打包发版">打包发版</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">动态so的编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDK/" title="In _视联SDK">_视联SDK</a>
+</div>
+
+    <span><a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" title="TVL格式">TVL格式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" title="VGPU">VGPU</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/28/proxmox 集群搭建/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

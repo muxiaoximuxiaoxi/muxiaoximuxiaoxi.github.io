@@ -1,0 +1,850 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/">
+
+
+
+  <title>
+Jenkins自动化编译 - _视联浏览器 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Jenkins自动化编译
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-02-21 21:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-21T21:04:32+08:00">2024-02-21</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="item" rel="index" title="In _视联浏览器"><span itemprop="name">_视联浏览器</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="视联浏览器自动化编译"><a href="#视联浏览器自动化编译" class="headerlink" title="视联浏览器自动化编译"></a>视联浏览器自动化编译</h1><h4 id="1、Windows-客户端的自动化编译"><a href="#1、Windows-客户端的自动化编译" class="headerlink" title="1、Windows 客户端的自动化编译"></a>1、Windows 客户端的自动化编译</h4><h4 id="2、Windows-服务端的自动化编译"><a href="#2、Windows-服务端的自动化编译" class="headerlink" title="2、Windows 服务端的自动化编译"></a>2、Windows 服务端的自动化编译</h4><h4 id="3、Linux-服务端的自动化编译"><a href="#3、Linux-服务端的自动化编译" class="headerlink" title="3、Linux 服务端的自动化编译"></a>3、Linux 服务端的自动化编译</h4><h2 id="Windows-客户端的自动化编译"><a href="#Windows-客户端的自动化编译" class="headerlink" title="Windows 客户端的自动化编译"></a>Windows 客户端的自动化编译</h2><h3 id="配置节点"><a href="#配置节点" class="headerlink" title="配置节点"></a>配置节点</h3><h5 id="Windows-需要通过-Java-Web-启动-Jenkins节点的代理"><a href="#Windows-需要通过-Java-Web-启动-Jenkins节点的代理" class="headerlink" title="Windows 需要通过 Java Web 启动 Jenkins节点的代理"></a>Windows 需要通过 Java Web 启动 Jenkins节点的代理</h5><h5 id="下载安装-Java-工具-并配置环境变量"><a href="#下载安装-Java-工具-并配置环境变量" class="headerlink" title="下载安装 Java 工具 并配置环境变量"></a>下载安装 Java 工具 并配置环境变量</h5><p><span class="exturl" data-url="aHR0cHM6Ly9kb3dubG9hZC5vcmFjbGUuY29tL2phdmEvMTcvbGF0ZXN0L2pkay0xN193aW5kb3dzLXg2NF9iaW4uemlw">jdk17官方下载</span></p>
+<h6 id="下载之后-一路默认安装或者自定义安装-但需要记下安装路径"><a href="#下载之后-一路默认安装或者自定义安装-但需要记下安装路径" class="headerlink" title="下载之后, 一路默认安装或者自定义安装, 但需要记下安装路径"></a>下载之后, 一路默认安装或者自定义安装, 但需要记下安装路径</h6><p><img data-src="https://img-blog.csdnimg.cn/881e54863cc94c9096a4138b21c2c910.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="根据节点提示信息-在目标Windows用cmd命令行执行命令"><a href="#根据节点提示信息-在目标Windows用cmd命令行执行命令" class="headerlink" title="根据节点提示信息, 在目标Windows用cmd命令行执行命令"></a>根据节点提示信息, 在目标Windows用cmd命令行执行命令</h5><pre><code>curl -sO http://10.2.14.48:8080/jnlpJars/agent.jar
+
+java -jar agent.jar -jnlpUrl http://10.2.14.48:8080/manage/computer/dzp%2Dwindows/jenkins-agent.jnlp -secret acde60bc0235357b78b0a5fa47111e6a73e8ae8a5d5bf46c1f37c25bec31d59d -workDir &quot;D:\jenkins&quot;
+</code></pre>
+<h3 id="Windows-系统配置节点开机自启动"><a href="#Windows-系统配置节点开机自启动" class="headerlink" title="Windows 系统配置节点开机自启动"></a>Windows 系统配置节点开机自启动</h3><h5 id="配置-vbs文件"><a href="#配置-vbs文件" class="headerlink" title="配置 .vbs文件"></a>配置 .vbs文件</h5><pre><code>rem wscript是一个脚本宿主文件, 提供了解析以上语句的功能, 也叫脚本解析引擎
+rem 这句话的意思就是说, 创建一个脚本命令窗口
+set ws=WScript.CreateObject(&quot;WScript.Shell&quot;) 
+ws.Run &quot;D:\svn_code_shh\run.bat /start&quot;,0
+</code></pre>
+<h5 id="配置-bat脚本，内容如下"><a href="#配置-bat脚本，内容如下" class="headerlink" title="配置 .bat脚本，内容如下"></a>配置 .bat脚本，内容如下</h5><pre><code>rem 由于是使用 bat 脚本打开cmd，执行多条语句时，需要使用 &quot;&quot; 及 &amp;&amp;
+rem cmd /k 表示用cmd运行命令后不关闭。
+rem 切换到指定目录 且 执行 相应的java语句 (Jenkins 相应节点配置提示信息)
+
+cmd /k &quot;cd /d D:\svn_code_shh&amp;&amp;java -jar agent.jar -jnlpUrl http://10.2.14.48:8080/computer/shh%%2Dwindows/jenkins-agent.jnlp -secret @secret-file -workDir &quot;D:\svn_code_shh&quot;&quot;
+</code></pre>
+<h5 id="将-vbs文件放到C-ProgramData-Microsoft-Windows-Start-Menu-Programs-StartUp目录下，开机会自动运行-vbs文件"><a href="#将-vbs文件放到C-ProgramData-Microsoft-Windows-Start-Menu-Programs-StartUp目录下，开机会自动运行-vbs文件" class="headerlink" title="将.vbs文件放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp目录下，开机会自动运行.vbs文件"></a>将.vbs文件放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp目录下，开机会自动运行.vbs文件</h5><p><img data-src="https://img-blog.csdnimg.cn/e022d071345444f7b7c04eac33ec111d.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="将-bat文件放到配置的路径下，重启测试。"><a href="#将-bat文件放到配置的路径下，重启测试。" class="headerlink" title="将.bat文件放到配置的路径下，重启测试。"></a>将.bat文件放到配置的路径下，重启测试。</h5><p><img data-src="https://img-blog.csdnimg.cn/baaf43d6372d4d5da825ebfc54ec0359.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="Windows-SSH-服务端及客户端安装"><a href="#Windows-SSH-服务端及客户端安装" class="headerlink" title="Windows SSH 服务端及客户端安装"></a>Windows SSH 服务端及客户端安装</h3><h6 id="Windows设置—–-gt-应用-—–-gt-可选功能—–-gt-添加功能-—–-gt-SSH—–-gt-安装OpenSSH服务端-—–-gt-安装OpenSSH客户端"><a href="#Windows设置—–-gt-应用-—–-gt-可选功能—–-gt-添加功能-—–-gt-SSH—–-gt-安装OpenSSH服务端-—–-gt-安装OpenSSH客户端" class="headerlink" title="Windows设置—–&gt; 应用   —–&gt; 可选功能—–&gt; 添加功能   —–&gt;SSH—–&gt;安装OpenSSH服务端   —–&gt;安装OpenSSH客户端"></a>Windows设置—–&gt; 应用   —–&gt; 可选功能—–&gt; 添加功能   —–&gt;SSH—–&gt;安装OpenSSH服务端   —–&gt;安装OpenSSH客户端</h6><p><img data-src="https://img-blog.csdnimg.cn/40df39b6beb1448eb172b6b705063b30.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="注：此cmd窗口需要以管理员身份运行"><a href="#注：此cmd窗口需要以管理员身份运行" class="headerlink" title="注：此cmd窗口需要以管理员身份运行"></a>注：此cmd窗口需要以管理员身份运行</h5><p>[配置开机自启sshd服务]<br>sc config sshd start&#x3D; auto</p>
+<p>[启动OpenSSH服务]<br>net start sshd</p>
+<p>[SSH连接]<br>ssh 用户@ip地址<br>输入用户密码<br><img data-src="https://img-blog.csdnimg.cn/faab9957e3da4829bba0de74837c86d2.png#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="通过预置密钥对，开启免密登录"><a href="#通过预置密钥对，开启免密登录" class="headerlink" title="通过预置密钥对，开启免密登录"></a>通过预置密钥对，开启免密登录</h4><p>ssh出于安全考虑，每次连接都会提示输入密码，为了避免麻烦，就要配置密钥对。</p>
+<h6 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a>生成密钥对</h6><p>ssh-keygen -t rsa<br><img data-src="https://img-blog.csdnimg.cn/73dc680946874fb2afe8c6d1f7778565.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="将公钥-id-rsa-pub-传到远程主机"><a href="#将公钥-id-rsa-pub-传到远程主机" class="headerlink" title="将公钥(id_rsa.pub)传到远程主机"></a>将公钥(id_rsa.pub)传到远程主机</h6><p>使用Xshell的Xftp进行远程传输<br><img data-src="https://img-blog.csdnimg.cn/03d78989456a4b2eade6f3d7d9562c39.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="将公钥-id-rsa-pub-复制到远程主机的-x2F-ssh目录下，并重命名文件名为authorized-keys"><a href="#将公钥-id-rsa-pub-复制到远程主机的-x2F-ssh目录下，并重命名文件名为authorized-keys" class="headerlink" title="将公钥(id_rsa.pub)复制到远程主机的~&#x2F;.ssh目录下，并重命名文件名为authorized_keys"></a>将公钥(id_rsa.pub)复制到远程主机的~&#x2F;.ssh目录下，并重命名文件名为authorized_keys</h6><p><img data-src="https://img-blog.csdnimg.cn/af85f2b50f554021b9080517e5d5c165.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="修改远程主机sshd-config配置"><a href="#修改远程主机sshd-config配置" class="headerlink" title="修改远程主机sshd_config配置"></a>修改远程主机sshd_config配置</h6><p>vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config<br>PubkeyAuthentication yes<br>StrictModes no<br><img data-src="https://img-blog.csdnimg.cn/6204a0cd1cf545508e5ad73699303cf7.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="重启sshd服务"><a href="#重启sshd服务" class="headerlink" title="重启sshd服务"></a>重启sshd服务</h6><p>systemctl restart sshd<br><img data-src="https://img-blog.csdnimg.cn/ab52808305714de69edc2949e79dcad2.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="cmd连接远程主机"><a href="#cmd连接远程主机" class="headerlink" title="cmd连接远程主机"></a>cmd连接远程主机</h6><p>ssh 用户@ip地址<br><img data-src="https://img-blog.csdnimg.cn/d32f67b5242d4c12be6cab1a28482534.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="Jenkins搭建"><a href="#Jenkins搭建" class="headerlink" title="Jenkins搭建"></a>Jenkins搭建</h3><h4 id="新建节点"><a href="#新建节点" class="headerlink" title="新建节点"></a>新建节点</h4><h6 id="打开Jenkins-—–-gt-系统管理-—–-gt-节点管理"><a href="#打开Jenkins-—–-gt-系统管理-—–-gt-节点管理" class="headerlink" title="打开Jenkins —–&gt; 系统管理   —–&gt; 节点管理"></a>打开Jenkins —–&gt; 系统管理   —–&gt; 节点管理</h6><p><img data-src="https://img-blog.csdnimg.cn/911ddf6d39ba40c3974404115bc9421b.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="新建节点-—–-gt-节点名称-—–-gt-固定节点-—–-gt-Create"><a href="#新建节点-—–-gt-节点名称-—–-gt-固定节点-—–-gt-Create" class="headerlink" title="新建节点 —–&gt; 节点名称   —–&gt; 固定节点  —–&gt; Create"></a>新建节点 —–&gt; 节点名称   —–&gt; 固定节点  —–&gt; Create</h6><p><img data-src="https://img-blog.csdnimg.cn/b1ca9df058674b32ac8bab832e0698fb.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="配置从节点-—–-gt-名称-—–-gt-远程工作目录-—–-gt-用法"><a href="#配置从节点-—–-gt-名称-—–-gt-远程工作目录-—–-gt-用法" class="headerlink" title="配置从节点 —–&gt; 名称   —–&gt; 远程工作目录  —–&gt; 用法"></a>配置从节点 —–&gt; 名称   —–&gt; 远程工作目录  —–&gt; 用法</h6><p><img data-src="https://img-blog.csdnimg.cn/a991a19339a34da7a4639eadf53b72ee.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="启动方式-—–-gt-可用性"><a href="#启动方式-—–-gt-可用性" class="headerlink" title="启动方式 —–&gt;可用性"></a>启动方式 —–&gt;可用性</h6><p><img data-src="https://img-blog.csdnimg.cn/50f6ab9f3e324e159ed9f1cedfe1ce83.png#pic_center" alt="在这里插入图片描述"></p>
+<h4 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h4><h6 id="Jenkins首页-—–-gt-新增任务"><a href="#Jenkins首页-—–-gt-新增任务" class="headerlink" title="Jenkins首页 —–&gt;新增任务"></a>Jenkins首页 —–&gt;新增任务</h6><p><img data-src="https://img-blog.csdnimg.cn/4d370809970d490fa77f344d3236a898.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="任务名称-—–-gt-构建自由风格-—–-gt-确定"><a href="#任务名称-—–-gt-构建自由风格-—–-gt-确定" class="headerlink" title="任务名称 —–&gt; 构建自由风格   —–&gt; 确定"></a>任务名称 —–&gt; 构建自由风格   —–&gt; 确定</h6><p><img data-src="https://img-blog.csdnimg.cn/cd5cb566aac34cf5914452510c4a9250.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="General-—–-gt-限制项目的运行节点-（填写刚刚创建的节点或者你想要此任务运行的节点）"><a href="#General-—–-gt-限制项目的运行节点-（填写刚刚创建的节点或者你想要此任务运行的节点）" class="headerlink" title="General —–&gt; 限制项目的运行节点 （填写刚刚创建的节点或者你想要此任务运行的节点）"></a>General —–&gt; 限制项目的运行节点 （填写刚刚创建的节点或者你想要此任务运行的节点）</h6><p><img data-src="https://img-blog.csdnimg.cn/0c5f0558bcfc4ccda815238650bc35b9.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="源码管理-—–-gt-Subversion-（svn）-—–-gt-Repository-URL-（svn-URL）-—–-gt-Credentials-（svn用户及密码，没有添加即可）-—–-gt-Repository-depth"><a href="#源码管理-—–-gt-Subversion-（svn）-—–-gt-Repository-URL-（svn-URL）-—–-gt-Credentials-（svn用户及密码，没有添加即可）-—–-gt-Repository-depth" class="headerlink" title="源码管理 —–&gt; Subversion （svn）  —–&gt; Repository URL （svn URL） —–&gt; Credentials （svn用户及密码，没有添加即可） —–&gt; Repository depth"></a>源码管理 —–&gt; Subversion （svn）  —–&gt; Repository URL （svn URL） —–&gt; Credentials （svn用户及密码，没有添加即可） —–&gt; Repository depth</h6><p><img data-src="https://img-blog.csdnimg.cn/3136fb06a226487282f0fceb1e75174b.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="添加svn用户密码"><a href="#添加svn用户密码" class="headerlink" title="添加svn用户密码"></a>添加svn用户密码</h6><p><img data-src="https://img-blog.csdnimg.cn/fcfbc09f18164c5ba145818bec420772.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="源码管理-—–-gt-Quiet-check-out"><a href="#源码管理-—–-gt-Quiet-check-out" class="headerlink" title="源码管理 —–&gt;Quiet check-out"></a>源码管理 —–&gt;Quiet check-out</h6><p><img data-src="https://img-blog.csdnimg.cn/a8796067b78b4b65be2cca3c2ea09c7d.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="构建触发器-—–-gt-轮询-SCM-日程表"><a href="#构建触发器-—–-gt-轮询-SCM-日程表" class="headerlink" title="构建触发器 —–&gt; 轮询 SCM-日程表"></a>构建触发器 —–&gt; 轮询 SCM-日程表</h6><p><img data-src="https://img-blog.csdnimg.cn/3b10bda03dac44389f05ef759dd0ddac.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="轮询规则表"><a href="#轮询规则表" class="headerlink" title="轮询规则表"></a>轮询规则表</h6><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>*</th>
+<th>*</th>
+<th>*</th>
+<th>*</th>
+<th>*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>分钟</td>
+<td>小时</td>
+<td>日期</td>
+<td>月份</td>
+<td>星期</td>
+</tr>
+<tr>
+<td>取值范围</td>
+<td>0~59</td>
+<td>0~23</td>
+<td>1~31</td>
+<td>1~12</td>
+<td>0~7</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>每隔15分钟执行一次</td>
+<td>H&#x2F;15</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>每隔2个小时执行一次</td>
+<td>H</td>
+<td>H&#x2F;2</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>每隔3天执行一次</td>
+<td>H</td>
+<td>H</td>
+<td>H&#x2F;3</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>每隔3天执行一次（每月的1~15号）</td>
+<td>H</td>
+<td>H</td>
+<td>1-15&#x2F;3</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>每周1,3,5执行一次</td>
+<td>H</td>
+<td>H</td>
+<td>*</td>
+<td>*</td>
+<td>1,3,5</td>
+</tr>
+</tbody></table>
+<h6 id="Build-Steps-—–-gt-执行-Windows-批处理命令-—–-gt-Send-files-or-execute-commands-over-SSH-—–-gt-SSH-Server-Name-—–-gt-Transfer-Set-Source-files-（远程根目录）"><a href="#Build-Steps-—–-gt-执行-Windows-批处理命令-—–-gt-Send-files-or-execute-commands-over-SSH-—–-gt-SSH-Server-Name-—–-gt-Transfer-Set-Source-files-（远程根目录）" class="headerlink" title="Build Steps —–&gt; 执行 Windows 批处理命令   —–&gt; Send files or execute commands over SSH  —–&gt; SSH Server-Name —–&gt; Transfer Set-Source files  （远程根目录）"></a>Build Steps —–&gt; 执行 Windows 批处理命令   —–&gt; Send files or execute commands over SSH  —–&gt; SSH Server-Name —–&gt; Transfer Set-Source files  （远程根目录）</h6><p><img data-src="https://img-blog.csdnimg.cn/fa57a4524c9444f39f289f7099464d67.png#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><span class="line">cd /d C:\svn_code\workspace\Browser-Jenkins-Node-Windows-Client\build\windows\x64</span><br><span class="line">切换 至C盘相关目录</span><br><span class="line">pack.bat</span><br><span class="line">执行pack.bat脚本</span><br><span class="line"></span><br><span class="line">pack.bat内容如下</span><br><span class="line"></span><br><span class="line">rem 更改当前目录为批处理本身的目录</span><br><span class="line">cd /D %~dp0</span><br><span class="line"></span><br><span class="line">rem ％0 －％9表示命令行参数, %0表示bat文件名本身, ％1－％9表示其后的参数</span><br><span class="line">rem 比如在cmd输入命令 : test.bat 1 2。</span><br><span class="line">rem ％0就表示test.bat, ％1表示test.bat的第一个参数“1”, %2表示&quot;2&quot;</span><br><span class="line"></span><br><span class="line">if &quot;%1&quot;==&quot;&quot; (</span><br><span class="line">echo 未传入参数，默认为debug模式</span><br><span class="line"></span><br><span class="line">rem 将 Debug 赋值给变量 ComplileMode</span><br><span class="line">set ComplileMode=Debug</span><br><span class="line">)else (</span><br><span class="line">set ComplileMode=%1</span><br><span class="line">)</span><br><span class="line">echo ComplileMode = %ComplileMode%</span><br><span class="line"></span><br><span class="line">rem 记录编译时间</span><br><span class="line">echo *************************************************版本构建开始时间: %date% %time%***********************************************  &gt;&gt;build.log</span><br><span class="line">rem 设置编译器进程名</span><br><span class="line">set DstProgram=msbuild.exe</span><br><span class="line">rem 搜索目标进程以及其目录</span><br><span class="line">echo 正在搜索&quot;%DstProgram%&quot;, 请稍候...</span><br><span class="line"></span><br><span class="line">rem for %%a in (dgoa bmmail mail) do (</span><br><span class="line">rem for /f &quot;delims=&quot; %%b in (&#x27;dir</span><br><span class="line">rem /s/b/a-d &quot;%%a\*.*&quot;&#x27;) do ......</span><br><span class="line"></span><br><span class="line">rem 上面批处理的意思 :</span><br><span class="line">rem 首先将(dgoa bmmail mail)里面的dgoa赋予给%%a, 此时%%a的值就是dgoa, 然后执行下面的for /f 语句</span><br><span class="line">rem &#x27;dir /s/b/a-d &quot;%%a\*.*&quot;&#x27;, 这句的意思 : 列出dgoa文件夹下所有的文件, 包括子文件夹下的文件， 用单引号是因为在for /f语句中 () 括号里面如果是命令, 必须用单引号把命令括起来 : &#x27;dir /s/b/a-d &quot;%%a\*.*&quot;是命令, 所以用单引号括起来</span><br><span class="line">rem 上面的批处理合起来的意思就是 : 先把dgoa赋予给%%a, 然后执行for /f语句 : 列出dgoa文件夹下的文件, 每个都赋予给%%b, 执行do后面的命令; 执行完后, 在将bmmail赋予%%a, 在执行和上面一样的步骤, 最后在将mail赋予%%a, 重复上面的步骤</span><br><span class="line"></span><br><span class="line">for %%a in (&quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319&quot;) do for /f &quot;delims=&quot; %%b in (&#x27;dir /a-d/b/s %%a\%DstProgram%&#x27;) do (</span><br><span class="line">    set &quot;ProgramPath=%%~dpb&quot;</span><br><span class="line">)</span><br><span class="line">if &quot;%ProgramPath%&quot; == &quot;&quot; (</span><br><span class="line">    echo 没有找到目标程序, 请安装&quot;%DstProgram%&quot;后重试...</span><br><span class="line">    pause</span><br><span class="line">    exit</span><br><span class="line">)</span><br><span class="line">echo 找到目标：&quot;%ProgramPath%%DstProgram%&quot;</span><br><span class="line">echo 添加路径&quot;%ProgramPath%&quot;到环境变量：%path%</span><br><span class="line">path=%path%;%ProgramPath%</span><br><span class="line"></span><br><span class="line">rem 设置编译器配置脚本名</span><br><span class="line">set DstVarsBat=VsDevCmd.bat</span><br><span class="line">rem 搜索目标编译器配置脚本以及其目录</span><br><span class="line">echo 正在搜索&quot;%DstVarsBat%&quot;，请稍候...</span><br><span class="line">for %%a in (&quot;C:\Program Files (x86)\Microsoft Visual Studio\2017\&quot;, &quot;C:\Program Files\Microsoft Visual Studio\2017\&quot;, &quot;D:\Program Files (x86)\Microsoft Visual Studio\2017\&quot;, &quot;D:\Program Files\Microsoft Visual Studio\2017\&quot;) do for /f &quot;delims=&quot; %%b in (&#x27;dir /a-d/b/s %%a\%DstVarsBat%&#x27;) do (</span><br><span class="line">    set &quot;VarsBatPath=%%~dpb&quot;</span><br><span class="line">)</span><br><span class="line">if &quot;%VarsBatPath%&quot; == &quot;&quot; (</span><br><span class="line">    echo 没有找到目标脚本, 请安装&quot;%DstVarsBat%&quot;后重试...</span><br><span class="line">    pause</span><br><span class="line">    exit</span><br><span class="line">)</span><br><span class="line">echo 找到目标脚本：&quot;%VarsBatPath%%DstVarsBat%&quot;</span><br><span class="line">echo 添加路径&quot;%VarsBatPath%&quot;到环境变量：%path%</span><br><span class="line">path=%path%;%VarsBatPath%</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rem 编译环境配置</span><br><span class="line"></span><br><span class="line">call %DstVarsBat%</span><br><span class="line"></span><br><span class="line">rem @echo off 的意思是在批处理运行命令的时候不会一条一条的显示执行的命令, 与之相匹配的还有 @echo on</span><br><span class="line">rem @echo off 与 @echo on 前者为关闭回显, 后者为打开回显</span><br><span class="line">@echo off</span><br><span class="line">set &quot;buildfolder=../v2vbrowser.sln&quot;</span><br><span class="line">set &quot;folder=%ComplileMode%&quot;</span><br><span class="line">echo folder=%folder%</span><br><span class="line">rem 编译执行</span><br><span class="line">echo 正在执行编译指令：&quot;%DstProgram% %buildfolder% %build_config% /out build.log&quot;, 请稍后...</span><br><span class="line">%DstProgram% %buildfolder% /t:Clean /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8</span><br><span class="line">%DstProgram% %buildfolder% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8</span><br><span class="line">rem 是否存在 qtvars_x64_Debug.props 文件</span><br><span class="line">rem 存在 将除 &lt;Qt_RUNTIME_&gt;MultiThreadedDebugDLL&lt;/Qt_RUNTIME_&gt; 的所有语句 写入 到 temp_qtvars_x64_Debug.txt</span><br><span class="line">if exist ..\..\..\ui\browserui\build\x64\Debug\qmake\qtvars_x64_Debug.props (</span><br><span class="line">    findstr /v &quot;&lt;Qt_RUNTIME_&gt;MultiThreadedDebugDLL&lt;/Qt_RUNTIME_&gt;&quot; ..\..\..\ui\browserui\build\x64\Debug\qmake\qtvars_x64_Debug.props &gt; temp_qtvars_x64_Debug.txt</span><br><span class="line"></span><br><span class="line">    rem 将 temp_qtvars_x64_Debug.txt 的内容拷贝到 qtvars_x64_Debug.props 文件中</span><br><span class="line">    copy temp_qtvars_x64_Debug.txt ..\..\..\ui\browserui\build\x64\Debug\qmake\qtvars_x64_Debug.props</span><br><span class="line">    rem 删除 temp_qtvars_x64_Debug.txt 文件</span><br><span class="line">    del temp_qtvars_x64_Debug.txt</span><br><span class="line">)</span><br><span class="line">rem msbuild.exe ../v2vbrowser.sln Debug x64 /m:8</span><br><span class="line">%DstProgram% %buildfolder% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8</span><br><span class="line"></span><br><span class="line">echo *************************************************版本构建结束时间: %date% %time%***********************************************  &gt;&gt;build.log</span><br><span class="line"></span><br><span class="line">rem 将编译生成的指定文件, 拷贝复制到目标目录</span><br><span class="line"></span><br><span class="line">copy %ComplileMode%\browserui.exe pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\vvsock.dll pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\vvconfig.dll pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\widgets.qm pack\%ComplileMode%\</span><br><span class="line">if %ComplileMode% == Debug (</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\v2v_drv.exe ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\*.dll ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\vvp.xml ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\edmodule\*.dll ..\..\..\build\windows\x64\%ComplileMode%\edmodule\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\edsmd\*.dll ..\..\..\build\windows\x64\%ComplileMode%\edsmd\</span><br><span class="line">    copy ..\..\..\thirdparty\v2vsdk\SDK_WIN_DEBUG_64\zpcap.dll pack\%ComplileMode%\</span><br><span class="line">    copy %ComplileMode%\vvprotocol.dll pack\%ComplileMode%\</span><br><span class="line">    copy %ComplileMode%\zme.dll pack\%ComplileMode%\    </span><br><span class="line">    copy %ComplileMode%\edsmd\vvp64.dll pack\%ComplileMode%\edsmd\</span><br><span class="line">    copy %ComplileMode%\edmodule\vvp64.dll pack\%ComplileMode%\edmodule\</span><br><span class="line">    copy %ComplileMode%\libcef.dll pack\%ComplileMode%\    </span><br><span class="line">    copy ..\..\..\thirdparty\v2vsdk\SDK_WIN_DEBUG_64\vvservice_d.dll pack\%ComplileMode%\</span><br><span class="line"></span><br><span class="line">) else (</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\v2v_drv.exe ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\v2v_drv.pdb ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\*.dll ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\vvp.xml ..\..\..\build\windows\x64\%ComplileMode%\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\edmodule\*.dll ..\..\..\build\windows\x64\%ComplileMode%\edmodule\</span><br><span class="line">    copy ..\..\..\thirdparty\v2v_drv\release_x64\edsmd\*.dll ..\..\..\build\windows\x64\%ComplileMode%\edsmd\</span><br><span class="line">    </span><br><span class="line">    copy %ComplileMode%\zme.dll pack\%ComplileMode%\</span><br><span class="line">    copy %ComplileMode%\vvprotocol.dll pack\%ComplileMode%\</span><br><span class="line">    copy %ComplileMode%\edsmd\vvp64.dll pack\%ComplileMode%\edsmd\</span><br><span class="line">    copy %ComplileMode%\edmodule\vvp64.dll pack\%ComplileMode%\edmodule\</span><br><span class="line">    copy %ComplileMode%\libcef.dll pack\%ComplileMode%\    </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">copy %ComplileMode%\v2v_drv.exe pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\v2v_drv.pdb pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\vvp.xml pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\net.cfg pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\netcfg.ini pack\%ComplileMode%\</span><br><span class="line">copy %ComplileMode%\config.xml pack\%ComplileMode%\</span><br><span class="line">copy ..\..\..\ui\browserui\build\test.xml pack\%ComplileMode%\</span><br><span class="line">copy C:\Windows\System32\ucrtbased.dll pack\%ComplileMode%\</span><br><span class="line">copy C:\Windows\System32\wpcap.dll pack\%ComplileMode%\</span><br><span class="line">copy C:\Windows\System32\packet.dll pack\%ComplileMode%\</span><br><span class="line"></span><br><span class="line">copy ..\..\..\build\windows\x64\pack\Release\msvcp140.dll pack\%ComplileMode%\</span><br><span class="line">copy ..\..\..\build\windows\x64\pack\Release\vcruntime140.dll pack\%ComplileMode%\</span><br><span class="line"></span><br><span class="line">if %ComplileMode% == Debug (</span><br><span class="line">    windeployqt pack\%ComplileMode%\browserui.exe</span><br><span class="line">) else (</span><br><span class="line">    windeployqt pack\%ComplileMode%\browserui.exe --release</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">rem 删除原有的软件包</span><br><span class="line">del  &quot;.\%folder%.zip&quot;</span><br><span class="line"></span><br><span class="line">rem 设置打包程序</span><br><span class="line">set Pack=WinRAR.exe</span><br><span class="line">rem 搜索目标打包程序以及其目录</span><br><span class="line">echo 正在搜索&quot;%Pack%&quot;，请稍候...</span><br><span class="line">for %%a in (&quot;C:\Program Files (x86)\&quot;, &quot;C:\Program Files\&quot;, &quot;D:\Program Files (x86)\&quot;, &quot;D:\Program Files\&quot;,&quot;F:\Program Files\WinRAR\&quot;) do for /f &quot;delims=&quot; %%b in (&#x27;dir /a-d/b/s %%a\%Pack%&#x27;) do (</span><br><span class="line">    set &quot;PackPath=%%~dpb&quot;</span><br><span class="line">)</span><br><span class="line">if &quot;%PackPath%&quot; == &quot;&quot; (</span><br><span class="line">    echo 没有找&quot;%Pack%&quot;, 请安装&quot;%Pack%&quot;后重试...</span><br><span class="line">    pause</span><br><span class="line">    exit</span><br><span class="line">)</span><br><span class="line">echo 找到目标脚本：&quot;%PackPath%%Pack%&quot;</span><br><span class="line"></span><br><span class="line">set &quot;winrar=%PackPath%%Pack%&quot;</span><br><span class="line"> </span><br><span class="line">echo;压缩&quot;.\pack\%folder%\&quot; --^&gt; &quot;.\%folder%.zip&quot;</span><br><span class="line">&quot;%winrar%&quot; a -ep1 -o+ -inul -r  -iback -afzip &quot;%folder%.zip&quot; &quot;.\pack\%folder%&quot;</span><br><span class="line"></span><br><span class="line">rem 判断指定目录下是否存在 Debug.zip 文件, 若存在 删除 </span><br><span class="line">rem 将 Debug.zip 拷贝到指定目录</span><br><span class="line"></span><br><span class="line">if exist ..\..\..\Debug.zip del ..\..\..\Debug.zip</span><br><span class="line">copy .\Debug.zip  ..\..\..\</span><br><span class="line"></span><br><span class="line">pause</span><br><span class="line">exit</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="Build-Steps-—–-gt-Exec-command-（在远程执行的脚本命令）"><a href="#Build-Steps-—–-gt-Exec-command-（在远程执行的脚本命令）" class="headerlink" title="Build Steps —–&gt;  Exec command （在远程执行的脚本命令）"></a>Build Steps —–&gt;  Exec command （在远程执行的脚本命令）</h6><p><img data-src="https://img-blog.csdnimg.cn/ea5c5d08b171453b9f3850720897ff38.png#pic_center" alt="在这里插入图片描述"></p>
+<pre><code>cd /home/vvcloud/shh/shh_temp
+切换到指定目录
+sh copy.sh
+执行 copy.sh 
+
+copy.sh 内容如下
+
+#!/bin/bash
+# 设置 变量 DATE、FILE的值
+DATE=`date +%Y%m%d_%H%M%S`
+FILE=`date +%Y.%m.%d-%H_%M_%S`
+
+# 切换到指定目录
+cd /home/vvcloud/shh/file/latest_build
+
+# 删除原来的文件，因为文件名均是带DATE的，所以2*可以删除所有2023.xx.xx-xx_xx_xx的目录或文件
+rm -rf 2*
+
+# 新建 FILE 目录
+mkdir $FILE
+# 将相关文件 强制拷贝到 指定目录
+cp -rf /home/vvcloud/shh/shh_temp/WindowServer.zip $FILE/Browser_Windows_Server_1.1.0-$DATE.zip
+cp -rf /home/vvcloud/shh/shh_temp/Debug.zip $FILE/Browser_Windows_Client_1.1.0-$DATE.zip
+cp -rf /home/vvcloud/shh/shh_temp/Debug.zip latest/
+cp -rf /home/vvcloud/shh/shh_temp/LinuxServer.zip $FILE/Browser_Linux_Client_1.1.0-$DATE.zip
+</code></pre>
+<h4 id="新增ssh"><a href="#新增ssh" class="headerlink" title="新增ssh"></a>新增ssh</h4><h6 id="Jenkins首页-—–-gt-系统管理-—–-gt-Configure-System-—–-gt-新增-—–-gt-SSH-Server-Name-—–-gt-Configure-System-（系统配置）-—–-gt-Hostname-（主机号）-—–-gt-Username-（用户名）—–-gt-Remote-Directory（远程目录）-—–-gt-高级"><a href="#Jenkins首页-—–-gt-系统管理-—–-gt-Configure-System-—–-gt-新增-—–-gt-SSH-Server-Name-—–-gt-Configure-System-（系统配置）-—–-gt-Hostname-（主机号）-—–-gt-Username-（用户名）—–-gt-Remote-Directory（远程目录）-—–-gt-高级" class="headerlink" title="Jenkins首页 —–&gt; 系统管理   —–&gt; Configure System  —–&gt;新增 —–&gt; SSH Server-Name  —–&gt; Configure System （系统配置）  —–&gt;Hostname （主机号） —–&gt;Username （用户名）—–&gt;Remote Directory（远程目录） —–&gt; 高级"></a>Jenkins首页 —–&gt; 系统管理   —–&gt; Configure System  —–&gt;新增 —–&gt; SSH Server-Name  —–&gt; Configure System （系统配置）  —–&gt;Hostname （主机号） —–&gt;Username （用户名）—–&gt;Remote Directory（远程目录） —–&gt; 高级</h6><p><img data-src="https://img-blog.csdnimg.cn/b825cdedfdd74ac3b7451656d3f74a82.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="输入主机号对应用户的密码"><a href="#输入主机号对应用户的密码" class="headerlink" title="输入主机号对应用户的密码"></a>输入主机号对应用户的密码</h6><p><img data-src="https://img-blog.csdnimg.cn/6bd3ce5decd146d58e6c73321b2a84a3.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="简易文件目录http服务搭建"><a href="#简易文件目录http服务搭建" class="headerlink" title="简易文件目录http服务搭建"></a>简易文件目录http服务搭建</h3><h4 id="命令及解释"><a href="#命令及解释" class="headerlink" title="命令及解释"></a>命令及解释</h4><p>nohup python3 -m http.server 8080 &amp;</p>
+<p>nohup(no hang up)：不挂起，该命令的一般形式为：nohup command &amp;<br>python3 -m http.server 8080 ：python3搭建http服务器命令<br>8080为端口号，填一个没有用到的就行</p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>1、要显示哪个目录就在哪里执行上述命令</p>
+<p>2、服务地址：目录所在机器的IP+端口号，例：127.0.0.1:8888</p>
+<p><img data-src="https://img-blog.csdnimg.cn/cf08b574037c4381b20e424ac1a5f48a.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="演示环境自动获取最新"><a href="#演示环境自动获取最新" class="headerlink" title="演示环境自动获取最新"></a>演示环境自动获取最新</h3><h4 id="Windows-任务计划程序"><a href="#Windows-任务计划程序" class="headerlink" title="Windows 任务计划程序"></a>Windows 任务计划程序</h4><h6 id="Windows搜索栏-—–-gt-任务计划程序-—–-gt-常规—–-gt-名称-—–-gt-描述—–-gt-安全选项"><a href="#Windows搜索栏-—–-gt-任务计划程序-—–-gt-常规—–-gt-名称-—–-gt-描述—–-gt-安全选项" class="headerlink" title="Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 常规—–&gt; 名称   —–&gt; 描述—–&gt; 安全选项"></a>Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 常规—–&gt; 名称   —–&gt; 描述—–&gt; 安全选项</h6><p><img data-src="https://img-blog.csdnimg.cn/157bf8479fc24d9286c9879573ae0fa5.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="Windows搜索栏-—–-gt-任务计划程序-—–-gt-触发器—–-gt-设置—–-gt-高级设置"><a href="#Windows搜索栏-—–-gt-任务计划程序-—–-gt-触发器—–-gt-设置—–-gt-高级设置" class="headerlink" title="Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 触发器—–&gt; 设置—–&gt; 高级设置"></a>Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 触发器—–&gt; 设置—–&gt; 高级设置</h6><p><img data-src="https://img-blog.csdnimg.cn/9a14db6f80ec4eda8d54c916ad844ed3.png#pic_center" alt="在这里插入图片描述"></p>
+<h6 id="Windows搜索栏-—–-gt-任务计划程序-—–-gt-操作—–-gt-启动程序—–-gt-程序或脚本—–-gt-浏览（选择想要执行的脚本）"><a href="#Windows搜索栏-—–-gt-任务计划程序-—–-gt-操作—–-gt-启动程序—–-gt-程序或脚本—–-gt-浏览（选择想要执行的脚本）" class="headerlink" title="Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 操作—–&gt; 启动程序—–&gt; 程序或脚本—–&gt; 浏览（选择想要执行的脚本）"></a>Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 操作—–&gt; 启动程序—–&gt; 程序或脚本—–&gt; 浏览（选择想要执行的脚本）</h6><p><img data-src="https://img-blog.csdnimg.cn/5d2804019f5b49bfb937c8500723016c.png#pic_center" alt="在这里插入图片描述"><br>Browser_Windows_Client_Pull_Code.bat 内容讲解如下</p>
+<pre><code>Browser_Windows_Client_Pull_Code.bat 内容如下
+
+rem 判断指定目录下是否存在 Debug.zip 若存在 删除
+if exist D:\vBrowser_latest_auto_update\Debug.zip (del D:\vBrowser_latest_auto_update\Debug.zip)
+
+rem 切换至指定目录 (使用 Windows 任务计划程序 默认路径为 C:\Windows\System32)
+
+cd /d D:\vBrowser_latest_auto_update\
+
+rem 下载指定ip地址的文件
+
+curl -O http://10.2.14.255:8080/latest_build/latest/Debug.zip
+
+rem 判断指定目录下是否存在 Debug 目录
+rem 若存在 切换至相应目录先删除 Debug 目录, 后解压 Debug.zip
+rem 若不存在 切换至指定目录 直接解压 Debug.zip
+if exist D:\vBrowser_latest_auto_update\Debug (cmd /c &quot;cd /d D:\vBrowser_latest_auto_update\&amp;&amp;rd /s /q Debug&amp;&amp;unzip Debug.zip&quot;) else (cmd /c &quot;cd /d D:\vBrowser_latest_auto_update\&amp;&amp;unzip Debug.zip&quot;)
+
+rem 将浏览器页面配置写入 config.xml
+echo ^&lt;root^&gt; ^&lt;Configs^&gt; ^&lt;ConfigInfo Id=&quot;&#123;6796a2b4-d499-4407-b4cc-204c2ad6718b&#125;&quot; Name=&quot;五合一&quot; IconPath=&quot;&quot; Platform=&quot;6&quot; V2vAddress=&quot;00399003660101700000&quot; V2vPort=&quot;3000&quot; Http=&quot;https&quot; /^&gt; ^&lt;ConfigInfo Id=&quot;&#123;ea44c70d-58f2-4d45-8dcd-00ff9668ed5b&#125;&quot; Name=&quot;tgl&quot; IconPath=&quot;&quot; Platform=&quot;0&quot; V2vAddress=&quot;00399003660101700000&quot; V2vPort=&quot;8010&quot; Http=&quot;http&quot; /^&gt; ^&lt;ConfigInfo Id=&quot;&#123;d41532ff-c319-4eb1-9457-35bcc0b0bdbf&#125;&quot; Name=&quot;存储服务&quot; IconPath=&quot;&quot; Platform=&quot;3&quot; V2vAddress=&quot;00399003660101700000&quot; V2vPort=&quot;8080/cms/userManagement/login.do&quot; Http=&quot;http&quot; /^&gt; ^&lt;ConfigInfo Id=&quot;&#123;0047f44d-784b-4ea9-b8c0-7e91facb35ab&#125;&quot; Name=&quot;管控&quot; IconPath=&quot;&quot; Platform=&quot;7&quot; V2vAddress=&quot;00399003660101700000&quot; V2vPort=&quot;8081/login.html&quot; Http=&quot;http&quot; /^&gt; ^&lt;/Configs^&gt; ^&lt;DnsConfigs^&gt; ^&lt;DnsConfig V2vNumber=&quot;&quot; Ip=&quot;&quot; /^&gt; ^&lt;/DnsConfigs^&gt; ^&lt;KeyValues^&gt; ^&lt;MacConfig mac=&quot;&quot; /^&gt; ^&lt;/KeyValues^&gt; ^&lt;/root^&gt; &gt; D:\vBrowser_latest_auto_update\Debug\config.xml
+
+rem 将浏览器 mac 信息写入 netcfg.ini
+echo [mac_v2v] &gt; D:\vBrowser_latest_auto_update\Debug\netcfg.ini
+echo net_mac=00:0e:c6:c9:09:69 &gt;&gt; D:\vBrowser_latest_auto_update\Debug\netcfg.ini
+echo v2v_mac=60:F2:EF:00:00:32 &gt;&gt; D:\vBrowser_latest_auto_update\Debug\netcfg.ini
+echo [dns_v2v] &gt;&gt; D:\vBrowser_latest_auto_update\Debug\netcfg.ini
+echo dns=300000000 &gt;&gt; D:\vBrowser_latest_auto_update\Debug\netcfg.ini
+</code></pre>
+<h2 id="Windows-服务端的自动化编译"><a href="#Windows-服务端的自动化编译" class="headerlink" title="Windows 服务端的自动化编译"></a>Windows 服务端的自动化编译</h2><p>新建任务 —–&gt;Configuration （配置） —–&gt;Build Steps（构建步骤）  —–&gt;执行 Windows 批处理命令 —–&gt;Transfer Set-Source files（远程发送的源文件）<br><img data-src="https://img-blog.csdnimg.cn/eb6f6eb18110485b9655c4476b3f4e0b.png#pic_center" alt="在这里插入图片描述"><br>其余均配置与Windows客户端一模一样</p>
+<pre><code>cd /d C:\svn_code\workspace\shh_WindowServer\build\windows\x64
+切换至指定目录
+window_server.bat
+
+window_server.bat 内容如下
+
+rem 更改当前目录为批处理本身的目录
+
+cd /d %~dp0
+
+rem @echo off 的意思是在批处理运行命令的时候不会一条一条的显示执行的命令, 与之相匹配的还有 @echo on
+rem @echo off 与 @echo on 前者为关闭回显, 后者为打开回显
+
+@echo off
+echo dp0 = %~dp0
+
+rem ％0 －％9表示命令行参数, %0表示bat文件名本身, ％1－％9表示其后的参数
+rem 比如在cmd输入命令 : test.bat 1 2。
+rem ％0就表示test.bat, ％1表示test.bat的第一个参数“1”, %2表示&quot;2&quot;
+
+if &quot;%1&quot;==&quot;&quot; (
+echo 未传入参数，默认为debug模式
+rem 程序编译选项Debug或Release
+rem 将 Release 赋值给变量 ComplileMode
+set ComplileMode=Release
+rem 从哪个目录拷贝
+set CopyForm=Server
+rem 生成程序的文件及打包名称
+set CompileFileName=WindowServer
+)else (
+set ComplileMode=%1
+)
+echo ComplileMode = %ComplileMode%
+
+rem 记录编译时间
+echo *************************************************版本构建开始时间: %date% %time%***********************************************  &gt;&gt;build.log
+rem 设置编译器进程名
+set DstProgram=msbuild.exe
+rem 搜索目标进程以及其目录
+echo 正在搜索&quot;%DstProgram%&quot;, 请稍候...
+
+rem for %%a in (dgoa bmmail mail) do (
+rem for /f &quot;delims=&quot; %%b in (&#39;dir
+rem /s/b/a-d &quot;%%a\*.*&quot;&#39;) do ......
+
+rem 上面批处理的意思 :
+rem 首先将(dgoa bmmail mail)里面的dgoa赋予给%%a, 此时%%a的值就是dgoa, 然后执行下面的for /f 语句
+rem &#39;dir /s/b/a-d &quot;%%a\*.*&quot;&#39;, 这句的意思 : 列出dgoa文件夹下所有的文件, 包括子文件夹下的文件， 用单引号是因为在for /f语句中 () 括号里面如果是命令, 必须用单引号把命令括起来 : &#39;dir /s/b/a-d &quot;%%a\*.*&quot;是命令, 所以用单引号括起来
+rem 上面的批处理合起来的意思就是 : 先把dgoa赋予给%%a, 然后执行for /f语句 : 列出dgoa文件夹下的文件, 每个都赋予给%%b, 执行do后面的命令; 执行完后, 在将bmmail赋予%%a, 在执行和上面一样的步骤, 最后在将mail赋予%%a, 重复上面的步骤
+
+for %%a in (&quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319&quot;) do for /f &quot;delims=&quot; %%b in (&#39;dir /a-d/b/s %%a\%DstProgram%&#39;) do (
+    set &quot;ProgramPath=%%~dpb&quot;
+)
+if &quot;%ProgramPath%&quot; == &quot;&quot; (
+    echo 没有找到目标程序, 请安装&quot;%DstProgram%&quot;后重试...
+    pause
+    exit
+)
+echo 找到目标：&quot;%ProgramPath%%DstProgram%&quot;
+echo 添加路径&quot;%ProgramPath%&quot;到环境变量：%path%
+path=%path%;%ProgramPath%
+
+rem 设置编译器配置脚本名
+set DstVarsBat=VsDevCmd.bat
+rem 搜索目标编译器配置脚本以及其目录
+echo 正在搜索&quot;%DstVarsBat%&quot;，请稍候...
+for %%a in (&quot;C:\Program Files (x86)\Microsoft Visual Studio\2017\&quot;, &quot;C:\Program Files\Microsoft Visual Studio\2017\&quot;, &quot;D:\Program Files (x86)\Microsoft Visual Studio\2017\&quot;, &quot;D:\Program Files\Microsoft Visual Studio\2017\&quot;) do for /f &quot;delims=&quot; %%b in (&#39;dir /a-d/b/s %%a\%DstVarsBat%&#39;) do (
+    set &quot;VarsBatPath=%%~dpb&quot;
+)
+if &quot;%VarsBatPath%&quot; == &quot;&quot; (
+    echo 没有找到目标脚本, 请安装&quot;%DstVarsBat%&quot;后重试...
+    pause
+    exit
+)
+echo 找到目标脚本：&quot;%VarsBatPath%%DstVarsBat%&quot;
+echo 添加路径&quot;%VarsBatPath%&quot;到环境变量：%path%
+path=%path%;%VarsBatPath%
+
+
+rem 编译环境配置
+
+call %DstVarsBat%
+
+@echo off
+set &quot;buildfolder=../v2vbrowser.sln&quot;
+set &quot;servertvvpath=..\..\..\service_tvv\service_tvv\service_tvv.vcxproj&quot;
+set &quot;channelv2vpath=..\..\..\channel\v2v\v2v.vcxproj&quot;
+set &quot;lwipcorepath=..\..\..\tcpip\lib-lwIP\build\windows\lwipcore.vcxproj&quot;
+set &quot;vblogpath=..\..\..\vb_log\build\vb_log.vcxproj&quot;
+set &quot;jkwglogpath=..\..\..\service_tvv\jkwg_log\jkwg_log.vcxproj&quot;
+
+set &quot;folder=%CompileFileName%&quot;
+echo folder=%CompileFileName%
+rem 编译执行
+echo 正在执行编译指令：&quot;%DstProgram% %buildfolder% %build_config% /out build.log&quot;, 请稍后...
+rem 编译channel_v2v
+%DstProgram% %channelv2vpath% /t:Clean /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+%DstProgram% %channelv2vpath% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+rem channel_v2v生成后需要拷贝到..\..\build\windows\x64\Release\目录，编译server_tvv时需要使用此库
+copy ..\..\..\channel\v2v\x64\Release\channel_v2v.lib ..\..\..\build\windows\x64\%ComplileMode%\
+
+rem 编译lwipcore
+%DstProgram% %lwipcorepath% /t:Clean /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+%DstProgram% %lwipcorepath% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+rem 生成后需要拷贝到..\..\build\windows\x64\Release\目录，编译server_tvv时需要使用此库
+copy ..\..\..\tcpip\lib-lwIP\build\windows\x64\Release\lwipcore.lib ..\..\..\build\windows\x64\%ComplileMode%\
+
+rem 编译vb_log
+%DstProgram% %vblogpath% /t:Clean /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+%DstProgram% %vblogpath% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+rem 生成后需要拷贝到..\..\build\windows\x64\Release\目录，编译server_tvv时需要使用此库
+copy ..\..\..\vb_log\build\x64\Release\vb_log.lib ..\..\..\build\windows\x64\%ComplileMode%\
+
+rem 编译jkwg_log
+%DstProgram% %jkwglogpath% /t:Clean /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+%DstProgram% %jkwglogpath% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+rem 生成后需要拷贝到..\..\build\windows\x64\Release\目录，编译server_tvv时需要使用此库
+copy ..\..\..\service_tvv\jkwg_log\x64\Release\jkwg_log.lib ..\..\..\build\windows\x64\%ComplileMode%\
+copy ..\..\..\service_tvv\jkwg_log\x64\Release\jkwg_log.dll ..\..\..\build\windows\x64\%ComplileMode%\
+
+rem 编译server_tvv
+%DstProgram% %servertvvpath% /t:Clean /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+%DstProgram% %servertvvpath% /p:Configuration=%ComplileMode% /p:Platform=x64 /m:8
+
+echo *************************************************版本构建结束时间: %date% %time%***********************************************  &gt;&gt;build.log
+
+rem 拷贝thirdparty目录下资源
+copy ..\..\..\thirdparty\v2v_drv\release_x64\v2v_drv.exe ..\..\..\build\windows\x64\pack\%CompileFileName%\
+copy ..\..\..\thirdparty\v2v_drv\release_x64\*.dll ..\..\..\build\windows\x64\pack\%CompileFileName%\
+copy ..\..\..\thirdparty\v2v_drv\release_x64\vvp.xml ..\..\..\build\windows\x64\pack\%CompileFileName%\
+copy ..\..\..\thirdparty\v2v_drv\release_x64\edmodule\*.dll ..\..\..\build\windows\x64\pack\%CompileFileName%\edmodule\
+copy ..\..\..\thirdparty\v2v_drv\release_x64\edsmd\*.dll ..\..\..\build\windows\x64\pack\%CompileFileName%\edsmd\
+copy ..\..\..\thirdparty\v2vsdk\SDK_WIN_RELEASE_64\zpcap.dll pack\%CompileFileName%\
+copy ..\..\..\thirdparty\v2vsdk\SDK_WIN_RELEASE_64\vvservice.dll pack\%CompileFileName%\
+rem 拷贝service_tvv相关
+copy ..\..\..\service_tvv\service_tvv\x64\%ComplileMode%\*.* pack\%CompileFileName%\
+
+rem 拷贝中间件相关
+rem 创建log目录
+md .\pack\%CompileFileName%\log
+rem 拷贝日志相关
+copy %ComplileMode%\jkwg_log.dll pack\%CompileFileName%\
+rem 拷贝winPcap相关
+copy %CopyForm%\WinPcap_4.1.3.exe pack\%CompileFileName%\
+rem 拷贝配置文件相关
+copy %CopyForm%\net.cfg pack\%CompileFileName%\
+copy %CopyForm%\netcfg.ini pack\%CompileFileName%\
+copy %CopyForm%\config.xml pack\%CompileFileName%\
+
+rem 删除原有的软件包
+del  &quot;.\%folder%.zip&quot;
+
+rem 设置打包程序
+set Pack=WinRAR.exe
+rem 搜索目标打包程序以及其目录
+echo 正在搜索&quot;%Pack%&quot;，请稍候...
+for %%a in (&quot;C:\Program Files (x86)\&quot;, &quot;C:\Program Files\&quot;, &quot;D:\Program Files (x86)\&quot;, &quot;D:\Program Files\&quot;,&quot;C:\soft\&quot;,&quot;D:\soft\&quot;,&quot;F:\Program Files\WinRAR\&quot;) do for /f &quot;delims=&quot; %%b in (&#39;dir /a-d/b/s %%a\%Pack%&#39;) do (
+    set &quot;PackPath=%%~dpb&quot;
+)
+if &quot;%PackPath%&quot; == &quot;&quot; (
+    echo 没有找&quot;%Pack%&quot;, 请安装&quot;%Pack%&quot;后重试...
+    pause
+    exit
+)
+echo 找到目标脚本：&quot;%PackPath%%Pack%&quot;
+
+set &quot;winrar=%PackPath%%Pack%&quot;
+ 
+echo;压缩&quot;.\pack\%folder%\&quot; --^&gt; &quot;.\%folder%.zip&quot;
+&quot;%winrar%&quot; a -ep1 -o+ -inul -r  -iback -afzip &quot;%folder%.zip&quot; &quot;.\pack\%folder%&quot;
+
+rem 判断指定目录下是否存在 WindowServer.zip 文件, 若存在 删除 
+rem 将 WindowServer.zip 拷贝到指定目录
+
+if exist ..\..\..\WindowServer.zip del ..\..\..\WindowServer.zip
+copy .\WindowServer.zip  ..\..\..\
+
+pause
+exit
+</code></pre>
+<h2 id="Linux-服务端的自动化编译"><a href="#Linux-服务端的自动化编译" class="headerlink" title="Linux 服务端的自动化编译"></a>Linux 服务端的自动化编译</h2><h3 id="新建Linux节点"><a href="#新建Linux节点" class="headerlink" title="新建Linux节点"></a>新建Linux节点</h3><p>由于此为LInux服务端部分，故需要新建节点用于LInux</p>
+<p>新建节点 —–&gt;配置从节点 —–&gt;名称  —–&gt;描述 —–&gt;远程工作目录 —–&gt;用法—–&gt;启动方式—-&gt;主机</p>
+<p><img data-src="https://img-blog.csdnimg.cn/4ad2733460cf4d8bb6a71716021eade4.png#pic_center" alt="在这里插入图片描述"><br>Credentials （凭证即该主机的用户名密码，如没有则点击新增进行添加）</p>
+<p><img data-src="https://img-blog.csdnimg.cn/0b13c03a77094321bfade167a910f113.png#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="新建Linux任务"><a href="#新建Linux任务" class="headerlink" title="新建Linux任务"></a>新建Linux任务</h3><p>新建任务 —–&gt;配置—-&gt;General—–&gt;限制项目的运行节点（填写刚刚创建的节点或者你想要此任务运行的节点）<br><img data-src="https://img-blog.csdnimg.cn/8a0d19402bef49cd8d2f2909a8ff8c79.png#pic_center" alt="在这里插入图片描述"></p>
+<p>源码管理 —–&gt; Subversion （svn） —–&gt; Repository URL （svn URL） —–&gt; Credentials （svn用户及密码，没有添加即可） —–&gt; Repository depth<br><img data-src="https://img-blog.csdnimg.cn/3403e847af0449849b814e2b07a3ed56.png#pic_center" alt="在这里插入图片描述"><br>源码管理 —–&gt;Quiet check-out —–&gt;构建触发器 —–&gt; 轮询 SCM-日程表</p>
+<p><img data-src="https://img-blog.csdnimg.cn/c58e575c920f4c02a841d2ac53259393.png#pic_center" alt="在这里插入图片描述"></p>
+<p>Build Steps—-&gt;执行 shell<br><img data-src="https://img-blog.csdnimg.cn/f2276bcb333b4b51ac0a37a919a4d9b0.png#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd /home/vvcloud/workspace/shh_LinuxServer/build/linux</span><br><span class="line">切换 至指定目录</span><br><span class="line"></span><br><span class="line">sh linux_server.sh</span><br><span class="line">执行 linux_server.sh脚本</span><br><span class="line"></span><br><span class="line">cp -rf /home/vvcloud/workspace/shh_LinuxServer/build/linux/LinuxServer.zip /home/vvcloud/shh/shh_temp</span><br><span class="line">强制拷贝 LinuxServer.zip 文件至指定目录</span><br><span class="line"></span><br><span class="line">cd /home/vvcloud/shh/shh_temp</span><br><span class="line">切换 至指定目录</span><br><span class="line"></span><br><span class="line">sh copy.sh</span><br><span class="line">执行 copy.sh 脚本</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>linux_server.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">linux_server.sh</span><br><span class="line"></span><br><span class="line"># 执行lwip的编译脚本</span><br><span class="line">sh ../../tcpip/lib-lwIP/build/linux/build.sh</span><br><span class="line"># 执行server_tvv编译脚本</span><br><span class="line">cd ../../service_tvv/service_tvv</span><br><span class="line">#sh ../../service_tvv/service_tvv/linux_service_tvv_build.sh</span><br><span class="line">sh linux_service_tvv_build.sh</span><br><span class="line"># 拷贝v2vdrv生成后文件</span><br><span class="line">cp ../../thirdparty/v2v_drv/linux/edmodule/*.so ../../build/linux/LinuxServer/edmodule</span><br><span class="line">cp ../../thirdparty/v2v_drv/linux/edsmd/*.so ../../build/linux/LinuxServer/edsmd/</span><br><span class="line">cp ../../thirdparty/v2v_drv/linux/*.* ../../build/linux/LinuxServer/</span><br><span class="line"># 拷贝server_tvv的shell脚本</span><br><span class="line">cp ../../service_tvv/shell/*.sh ../../build/linux/LinuxServer/</span><br><span class="line"># 拷贝netcfg.ini</span><br><span class="line">cp ../../build/windows/x64/Release/netcfg.ini ../../build/linux/LinuxServer/</span><br><span class="line">echo &quot;linux server build success&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">build.sh</span><br><span class="line"></span><br><span class="line"># 打印 开始 lwip 构建</span><br><span class="line">echo start lwip building...</span><br><span class="line"></span><br><span class="line"># 创建 temp 目录</span><br><span class="line">mkdir temp</span><br><span class="line"># 切换至 temp 目录</span><br><span class="line">cd temp</span><br><span class="line"></span><br><span class="line"># cmake temp 目录的上级目录</span><br><span class="line">cmake ..</span><br><span class="line"></span><br><span class="line"># 编译 lwipcore</span><br><span class="line">make lwipcore</span><br><span class="line">echo $PWD</span><br><span class="line"># 拷贝 liblwipcore.a 至指定目录</span><br><span class="line">cp liblwipcore.a ../../../../../service_tvv/lib/</span><br><span class="line"></span><br><span class="line"># 切换至 temp 目录的上级目录</span><br><span class="line">cd ..</span><br><span class="line"># 删除 temp 目录</span><br><span class="line">rm -rf temp</span><br><span class="line"># 打印 Lwip构建完成</span><br><span class="line">echo lwip build finished.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">linux_service_tvv_build.sh 内容如下</span><br><span class="line"></span><br><span class="line"># 打印 开始编译service_tvv脚本</span><br><span class="line">echo --- start compiling the service_tvv script ---</span><br><span class="line"></span><br><span class="line"># 设置版本号</span><br><span class="line">VERSION=&quot;1.0.15&quot;</span><br><span class="line">LDSO=&quot;ld-2.27.so&quot;</span><br><span class="line"></span><br><span class="line"># -static 会将所以有用到的外部库全部以静态的方式链接</span><br><span class="line"># -static-libstdc++ 静态链接 c++ 库</span><br><span class="line"># -std=c++11，支持C++11标准</span><br><span class="line"># -static-libgcc 静态链接 gcc 库</span><br><span class="line"># -Dlinux 相当于在头文件中加上 #define LINUX</span><br><span class="line">CCFLAGS=&quot;-static-libstdc++ -std=c++11 -static-libgcc -Dlinux&quot;</span><br><span class="line"></span><br><span class="line"># 编译所需头文件</span><br><span class="line"># -I 参数是用来指定头文件所在目录</span><br><span class="line">INCLUDES=&quot;-I../jkwg_log -I./ -I../include/lwip_in  -I../../thirdparty/v2v_drv&quot;</span><br><span class="line"></span><br><span class="line"># -L 参数跟着的是库文件所在的目录</span><br><span class="line"># -l, 指定所使用到的函数库</span><br><span class="line"># -W 打印一些额外的警告信息</span><br><span class="line"># -w 禁止显示所有警告信息</span><br><span class="line"># -c：生成名为source_file.o的目标文件</span><br><span class="line"></span><br><span class="line">LDFLAGS=&quot;-L ../../thirdparty/v2v_drv/linux -L../jkwg_log -L../lib \</span><br><span class="line">         -Wl,-Bstatic -llwipcore -ljkwg_log -lv2vdrv_proxy -Wl,-Bdynamic -lpcap \</span><br><span class="line">         -Wl,--dynamic-linker=/usr/local/lib/ld-2.27/$LDSO -Wl,-rpath ./ \</span><br><span class="line">         -ldl -lpthread -lrt -lc&quot;</span><br><span class="line"></span><br><span class="line"># 编译的源文件</span><br><span class="line">SRC_V2VDRV=&quot;ether-capture.cpp impl_config.cpp  impl_lwip.cpp  _public.cpp  read_ini.cpp  service_tvv.cpp  web_svr_connect.cpp  web_svr.cpp&quot;</span><br><span class="line"></span><br><span class="line"># 将 $CCFLAGS $INCLUDES $SRC_V2VDRV $LDFLAGS 编译成名为 server_tvv 可执行文件</span><br><span class="line">g++ $CCFLAGS $INCLUDES $SRC_V2VDRV $LDFLAGS -o server_tvv</span><br><span class="line"></span><br><span class="line"># 打印 service_tvv 完成</span><br><span class="line">echo --------  the service_tvv is completed  -------  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="当ip改变时，导致发送失败"><a href="#当ip改变时，导致发送失败" class="headerlink" title="当ip改变时，导致发送失败"></a>当ip改变时，导致发送失败</h4><h6 id="Dashboard-—–-gt-系统管理-—–-gt-Configure-System-—–-gt-SSH-Server-Name-—–-gt-Hostname-（主机号）"><a href="#Dashboard-—–-gt-系统管理-—–-gt-Configure-System-—–-gt-SSH-Server-Name-—–-gt-Hostname-（主机号）" class="headerlink" title="Dashboard —–&gt; 系统管理   —–&gt; Configure System  —–&gt; SSH Server-Name  —–&gt; Hostname （主机号）"></a>Dashboard —–&gt; 系统管理   —–&gt; Configure System  —–&gt; SSH Server-Name  —–&gt; Hostname （主机号）</h6><p><img data-src="https://img-blog.csdnimg.cn/f1a834abdd704fb69ea4779fd68b9cd9.png#pic_center" alt="在这里插入图片描述"></p>
+<p>修改之后，如果还是不行，修改一下账号密码即可</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 11:57:17" itemprop="dateModified" datetime="2024-10-20T11:57:17+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" title="Jenkins自动化编译">https://muxiaoximuxiaoxi.github.io/2024/02/21/视联浏览器 Jenkins 自动化编译/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="DNS域名解析及bind9介绍">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联浏览器</span>
+  <h3>DNS域名解析及bind9介绍</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.</span> <span class="toc-text">视联浏览器自动化编译</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Windows-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1、Windows 客户端的自动化编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81Windows-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2、Windows 服务端的自动化编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81Linux-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">3、Linux 服务端的自动化编译</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.1.</span> <span class="toc-text">Windows 客户端的自动化编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">配置节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows-%E9%9C%80%E8%A6%81%E9%80%9A%E8%BF%87-Java-Web-%E5%90%AF%E5%8A%A8-Jenkins%E8%8A%82%E7%82%B9%E7%9A%84%E4%BB%A3%E7%90%86"><span class="toc-number">1.1.1.0.1.</span> <span class="toc-text">Windows 需要通过 Java Web 启动 Jenkins节点的代理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85-Java-%E5%B7%A5%E5%85%B7-%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.1.0.2.</span> <span class="toc-text">下载安装 Java 工具 并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B9%8B%E5%90%8E-%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E6%88%96%E8%80%85%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%89%E8%A3%85-%E4%BD%86%E9%9C%80%E8%A6%81%E8%AE%B0%E4%B8%8B%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-number">1.1.1.0.2.1.</span> <span class="toc-text">下载之后, 一路默认安装或者自定义安装, 但需要记下安装路径</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E8%8A%82%E7%82%B9%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF-%E5%9C%A8%E7%9B%AE%E6%A0%87Windows%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.1.0.3.</span> <span class="toc-text">根据节点提示信息, 在目标Windows用cmd命令行执行命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E8%8A%82%E7%82%B9%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">Windows 系统配置节点开机自启动</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-vbs%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.2.0.1.</span> <span class="toc-text">配置 .vbs文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-bat%E8%84%9A%E6%9C%AC%EF%BC%8C%E5%86%85%E5%AE%B9%E5%A6%82%E4%B8%8B"><span class="toc-number">1.1.2.0.2.</span> <span class="toc-text">配置 .bat脚本，内容如下</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86-vbs%E6%96%87%E4%BB%B6%E6%94%BE%E5%88%B0C-ProgramData-Microsoft-Windows-Start-Menu-Programs-StartUp%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E5%BC%80%E6%9C%BA%E4%BC%9A%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C-vbs%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.2.0.3.</span> <span class="toc-text">将.vbs文件放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp目录下，开机会自动运行.vbs文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86-bat%E6%96%87%E4%BB%B6%E6%94%BE%E5%88%B0%E9%85%8D%E7%BD%AE%E7%9A%84%E8%B7%AF%E5%BE%84%E4%B8%8B%EF%BC%8C%E9%87%8D%E5%90%AF%E6%B5%8B%E8%AF%95%E3%80%82"><span class="toc-number">1.1.2.0.4.</span> <span class="toc-text">将.bat文件放到配置的路径下，重启测试。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-SSH-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.3.</span> <span class="toc-text">Windows SSH 服务端及客户端安装</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Windows%E8%AE%BE%E7%BD%AE%E2%80%94%E2%80%93-gt-%E5%BA%94%E7%94%A8-%E2%80%94%E2%80%93-gt-%E5%8F%AF%E9%80%89%E5%8A%9F%E8%83%BD%E2%80%94%E2%80%93-gt-%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD-%E2%80%94%E2%80%93-gt-SSH%E2%80%94%E2%80%93-gt-%E5%AE%89%E8%A3%85OpenSSH%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E2%80%94%E2%80%93-gt-%E5%AE%89%E8%A3%85OpenSSH%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.1.3.0.0.1.</span> <span class="toc-text">Windows设置—–&gt; 应用   —–&gt; 可选功能—–&gt; 添加功能   —–&gt;SSH—–&gt;安装OpenSSH服务端   —–&gt;安装OpenSSH客户端</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9A%E6%AD%A4cmd%E7%AA%97%E5%8F%A3%E9%9C%80%E8%A6%81%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C"><span class="toc-number">1.1.3.0.1.</span> <span class="toc-text">注：此cmd窗口需要以管理员身份运行</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%A2%84%E7%BD%AE%E5%AF%86%E9%92%A5%E5%AF%B9%EF%BC%8C%E5%BC%80%E5%90%AF%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">通过预置密钥对，开启免密登录</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="toc-number">1.1.3.1.0.1.</span> <span class="toc-text">生成密钥对</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%B0%86%E5%85%AC%E9%92%A5-id-rsa-pub-%E4%BC%A0%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="toc-number">1.1.3.1.0.2.</span> <span class="toc-text">将公钥(id_rsa.pub)传到远程主机</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%B0%86%E5%85%AC%E9%92%A5-id-rsa-pub-%E5%A4%8D%E5%88%B6%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA%E7%9A%84-x2F-ssh%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E5%B9%B6%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%BAauthorized-keys"><span class="toc-number">1.1.3.1.0.3.</span> <span class="toc-text">将公钥(id_rsa.pub)复制到远程主机的~&#x2F;.ssh目录下，并重命名文件名为authorized_keys</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BAsshd-config%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.3.1.0.4.</span> <span class="toc-text">修改远程主机sshd_config配置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%87%8D%E5%90%AFsshd%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.3.1.0.5.</span> <span class="toc-text">重启sshd服务</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#cmd%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA"><span class="toc-number">1.1.3.1.0.6.</span> <span class="toc-text">cmd连接远程主机</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins%E6%90%AD%E5%BB%BA"><span class="toc-number">1.1.4.</span> <span class="toc-text">Jenkins搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">新建节点</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%89%93%E5%BC%80Jenkins-%E2%80%94%E2%80%93-gt-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E2%80%94%E2%80%93-gt-%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.4.1.0.1.</span> <span class="toc-text">打开Jenkins —–&gt; 系统管理   —–&gt; 节点管理</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E8%8A%82%E7%82%B9-%E2%80%94%E2%80%93-gt-%E8%8A%82%E7%82%B9%E5%90%8D%E7%A7%B0-%E2%80%94%E2%80%93-gt-%E5%9B%BA%E5%AE%9A%E8%8A%82%E7%82%B9-%E2%80%94%E2%80%93-gt-Create"><span class="toc-number">1.1.4.1.0.2.</span> <span class="toc-text">新建节点 —–&gt; 节点名称   —–&gt; 固定节点  —–&gt; Create</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%8E%E8%8A%82%E7%82%B9-%E2%80%94%E2%80%93-gt-%E5%90%8D%E7%A7%B0-%E2%80%94%E2%80%93-gt-%E8%BF%9C%E7%A8%8B%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95-%E2%80%94%E2%80%93-gt-%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.4.1.0.3.</span> <span class="toc-text">配置从节点 —–&gt; 名称   —–&gt; 远程工作目录  —–&gt; 用法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F-%E2%80%94%E2%80%93-gt-%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="toc-number">1.1.4.1.0.4.</span> <span class="toc-text">启动方式 —–&gt;可用性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">新建任务</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Jenkins%E9%A6%96%E9%A1%B5-%E2%80%94%E2%80%93-gt-%E6%96%B0%E5%A2%9E%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.4.2.0.1.</span> <span class="toc-text">Jenkins首页 —–&gt;新增任务</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%90%8D%E7%A7%B0-%E2%80%94%E2%80%93-gt-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%B1%E9%A3%8E%E6%A0%BC-%E2%80%94%E2%80%93-gt-%E7%A1%AE%E5%AE%9A"><span class="toc-number">1.1.4.2.0.2.</span> <span class="toc-text">任务名称 —–&gt; 构建自由风格   —–&gt; 确定</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#General-%E2%80%94%E2%80%93-gt-%E9%99%90%E5%88%B6%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%BF%90%E8%A1%8C%E8%8A%82%E7%82%B9-%EF%BC%88%E5%A1%AB%E5%86%99%E5%88%9A%E5%88%9A%E5%88%9B%E5%BB%BA%E7%9A%84%E8%8A%82%E7%82%B9%E6%88%96%E8%80%85%E4%BD%A0%E6%83%B3%E8%A6%81%E6%AD%A4%E4%BB%BB%E5%8A%A1%E8%BF%90%E8%A1%8C%E7%9A%84%E8%8A%82%E7%82%B9%EF%BC%89"><span class="toc-number">1.1.4.2.0.3.</span> <span class="toc-text">General —–&gt; 限制项目的运行节点 （填写刚刚创建的节点或者你想要此任务运行的节点）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86-%E2%80%94%E2%80%93-gt-Subversion-%EF%BC%88svn%EF%BC%89-%E2%80%94%E2%80%93-gt-Repository-URL-%EF%BC%88svn-URL%EF%BC%89-%E2%80%94%E2%80%93-gt-Credentials-%EF%BC%88svn%E7%94%A8%E6%88%B7%E5%8F%8A%E5%AF%86%E7%A0%81%EF%BC%8C%E6%B2%A1%E6%9C%89%E6%B7%BB%E5%8A%A0%E5%8D%B3%E5%8F%AF%EF%BC%89-%E2%80%94%E2%80%93-gt-Repository-depth"><span class="toc-number">1.1.4.2.0.4.</span> <span class="toc-text">源码管理 —–&gt; Subversion （svn）  —–&gt; Repository URL （svn URL） —–&gt; Credentials （svn用户及密码，没有添加即可） —–&gt; Repository depth</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0svn%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.4.2.0.5.</span> <span class="toc-text">添加svn用户密码</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86-%E2%80%94%E2%80%93-gt-Quiet-check-out"><span class="toc-number">1.1.4.2.0.6.</span> <span class="toc-text">源码管理 —–&gt;Quiet check-out</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8-%E2%80%94%E2%80%93-gt-%E8%BD%AE%E8%AF%A2-SCM-%E6%97%A5%E7%A8%8B%E8%A1%A8"><span class="toc-number">1.1.4.2.0.7.</span> <span class="toc-text">构建触发器 —–&gt; 轮询 SCM-日程表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2%E8%A7%84%E5%88%99%E8%A1%A8"><span class="toc-number">1.1.4.2.0.8.</span> <span class="toc-text">轮询规则表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Build-Steps-%E2%80%94%E2%80%93-gt-%E6%89%A7%E8%A1%8C-Windows-%E6%89%B9%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4-%E2%80%94%E2%80%93-gt-Send-files-or-execute-commands-over-SSH-%E2%80%94%E2%80%93-gt-SSH-Server-Name-%E2%80%94%E2%80%93-gt-Transfer-Set-Source-files-%EF%BC%88%E8%BF%9C%E7%A8%8B%E6%A0%B9%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-number">1.1.4.2.0.9.</span> <span class="toc-text">Build Steps —–&gt; 执行 Windows 批处理命令   —–&gt; Send files or execute commands over SSH  —–&gt; SSH Server-Name —–&gt; Transfer Set-Source files  （远程根目录）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Build-Steps-%E2%80%94%E2%80%93-gt-Exec-command-%EF%BC%88%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C%E7%9A%84%E8%84%9A%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-number">1.1.4.2.0.10.</span> <span class="toc-text">Build Steps —–&gt;  Exec command （在远程执行的脚本命令）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9Essh"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">新增ssh</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Jenkins%E9%A6%96%E9%A1%B5-%E2%80%94%E2%80%93-gt-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E2%80%94%E2%80%93-gt-Configure-System-%E2%80%94%E2%80%93-gt-%E6%96%B0%E5%A2%9E-%E2%80%94%E2%80%93-gt-SSH-Server-Name-%E2%80%94%E2%80%93-gt-Configure-System-%EF%BC%88%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%EF%BC%89-%E2%80%94%E2%80%93-gt-Hostname-%EF%BC%88%E4%B8%BB%E6%9C%BA%E5%8F%B7%EF%BC%89-%E2%80%94%E2%80%93-gt-Username-%EF%BC%88%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%89%E2%80%94%E2%80%93-gt-Remote-Directory%EF%BC%88%E8%BF%9C%E7%A8%8B%E7%9B%AE%E5%BD%95%EF%BC%89-%E2%80%94%E2%80%93-gt-%E9%AB%98%E7%BA%A7"><span class="toc-number">1.1.4.3.0.1.</span> <span class="toc-text">Jenkins首页 —–&gt; 系统管理   —–&gt; Configure System  —–&gt;新增 —–&gt; SSH Server-Name  —–&gt; Configure System （系统配置）  —–&gt;Hostname （主机号） —–&gt;Username （用户名）—–&gt;Remote Directory（远程目录） —–&gt; 高级</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E4%B8%BB%E6%9C%BA%E5%8F%B7%E5%AF%B9%E5%BA%94%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.4.3.0.2.</span> <span class="toc-text">输入主机号对应用户的密码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95http%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA"><span class="toc-number">1.1.5.</span> <span class="toc-text">简易文件目录http服务搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%8F%8A%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">命令及解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0"><span class="toc-number">1.1.6.</span> <span class="toc-text">演示环境自动获取最新</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">Windows 任务计划程序</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Windows%E6%90%9C%E7%B4%A2%E6%A0%8F-%E2%80%94%E2%80%93-gt-%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92%E7%A8%8B%E5%BA%8F-%E2%80%94%E2%80%93-gt-%E5%B8%B8%E8%A7%84%E2%80%94%E2%80%93-gt-%E5%90%8D%E7%A7%B0-%E2%80%94%E2%80%93-gt-%E6%8F%8F%E8%BF%B0%E2%80%94%E2%80%93-gt-%E5%AE%89%E5%85%A8%E9%80%89%E9%A1%B9"><span class="toc-number">1.1.6.1.0.1.</span> <span class="toc-text">Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 常规—–&gt; 名称   —–&gt; 描述—–&gt; 安全选项</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Windows%E6%90%9C%E7%B4%A2%E6%A0%8F-%E2%80%94%E2%80%93-gt-%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92%E7%A8%8B%E5%BA%8F-%E2%80%94%E2%80%93-gt-%E8%A7%A6%E5%8F%91%E5%99%A8%E2%80%94%E2%80%93-gt-%E8%AE%BE%E7%BD%AE%E2%80%94%E2%80%93-gt-%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.1.6.1.0.2.</span> <span class="toc-text">Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 触发器—–&gt; 设置—–&gt; 高级设置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Windows%E6%90%9C%E7%B4%A2%E6%A0%8F-%E2%80%94%E2%80%93-gt-%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92%E7%A8%8B%E5%BA%8F-%E2%80%94%E2%80%93-gt-%E6%93%8D%E4%BD%9C%E2%80%94%E2%80%93-gt-%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F%E2%80%94%E2%80%93-gt-%E7%A8%8B%E5%BA%8F%E6%88%96%E8%84%9A%E6%9C%AC%E2%80%94%E2%80%93-gt-%E6%B5%8F%E8%A7%88%EF%BC%88%E9%80%89%E6%8B%A9%E6%83%B3%E8%A6%81%E6%89%A7%E8%A1%8C%E7%9A%84%E8%84%9A%E6%9C%AC%EF%BC%89"><span class="toc-number">1.1.6.1.0.3.</span> <span class="toc-text">Windows搜索栏 —–&gt; 任务计划程序   —–&gt; 操作—–&gt; 启动程序—–&gt; 程序或脚本—–&gt; 浏览（选择想要执行的脚本）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.2.</span> <span class="toc-text">Windows 服务端的自动化编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91"><span class="toc-number">1.3.</span> <span class="toc-text">Linux 服务端的自动化编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BALinux%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">新建Linux节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BALinux%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">新建Linux任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93ip%E6%94%B9%E5%8F%98%E6%97%B6%EF%BC%8C%E5%AF%BC%E8%87%B4%E5%8F%91%E9%80%81%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">当ip改变时，导致发送失败</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Dashboard-%E2%80%94%E2%80%93-gt-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86-%E2%80%94%E2%80%93-gt-Configure-System-%E2%80%94%E2%80%93-gt-SSH-Server-Name-%E2%80%94%E2%80%93-gt-Hostname-%EF%BC%88%E4%B8%BB%E6%9C%BA%E5%8F%B7%EF%BC%89"><span class="toc-number">1.3.2.1.0.1.</span> <span class="toc-text">Dashboard —–&gt; 系统管理   —–&gt; Configure System  —–&gt; SSH Server-Name  —–&gt; Hostname （主机号）</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" rel="bookmark" title="Jenkins自动化编译">Jenkins自动化编译</a></li><li><a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" rel="bookmark" title="DNS域名解析及bind9介绍">DNS域名解析及bind9介绍</a></li><li><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" rel="bookmark" title="bind9 环境部署">bind9 环境部署</a></li><li><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" rel="bookmark" title="视联浏览器双机热备">视联浏览器双机热备</a></li><li><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" rel="bookmark" title="bind9关于视联网移植">bind9关于视联网移植</a></li><li><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" rel="bookmark" title="动态so的编译">动态so的编译</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">动态so的编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/02/21/视联浏览器 Jenkins 自动化编译/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

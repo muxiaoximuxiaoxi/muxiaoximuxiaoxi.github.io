@@ -1,0 +1,506 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/">
+
+
+
+  <title>
+打包发版 - _视联云桌面 |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">打包发版
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-04-28 22:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T22:04:32+08:00">2024-04-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" itemprop="item" rel="index" title="In _视联云桌面"><span itemprop="name">_视联云桌面</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="客户端编译"><a href="#客户端编译" class="headerlink" title="客户端编译"></a>客户端编译</h3><p>客户端 根据不同编译版本需要要对应 CMakeLists.txt 文件中选择对应的设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">本例 以 x86为，由于 CMakeLists.txt 文件默认编译为 x86 故无需修改 CMakeLists.txt</span><br><span class="line"></span><br><span class="line">编译 v2v_drv</span><br><span class="line">cd v2v_drv 所在目录</span><br><span class="line">mkdir m_build</span><br><span class="line">cd m_build</span><br><span class="line">cmake ../</span><br><span class="line">make -j 8</span><br><span class="line">make install\</span><br><span class="line"></span><br><span class="line">编译 v2v_L4</span><br><span class="line">cd /v2v_L4 所在目录</span><br><span class="line">mkdir m_build</span><br><span class="line">cd m_build</span><br><span class="line">cmake ../</span><br><span class="line">make -j 8</span><br><span class="line">make install\</span><br><span class="line"></span><br><span class="line">编译 vvdesktop</span><br><span class="line">cd /vvdesktop 所在目录</span><br><span class="line">mkdir m_build</span><br><span class="line">cd m_build</span><br><span class="line">cmake ../</span><br><span class="line">make -j 8</span><br><span class="line">make package</span><br><span class="line"></span><br><span class="line">最后在 m_build 目录生成 类似 vvdesktop-v2v-0.1.0-r7486M-x86-installer.deb 这样的 dep 包</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="服务端编译"><a href="#服务端编译" class="headerlink" title="服务端编译"></a>服务端编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">服务端</span><br><span class="line"></span><br><span class="line">编译 v2v_drv </span><br><span class="line">cd v2v_drv/build/linux</span><br><span class="line">bash linux_v2vdrv_product_build.sh</span><br><span class="line">cd v2v_drv/build/product/linux </span><br><span class="line">cp -r ./* v2v_L4/vvnetcard/lib</span><br><span class="line"></span><br><span class="line">cd /v2v_L4/vvnetcard/build</span><br><span class="line">bash vnetcard.sh</span><br><span class="line">拷贝 /v2v_L4/vvnetcard/build 目录下除 libv2vdrv_proxy.a vnetcard.sh 之外的所有文件至 vvnet 文件夹中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="上传ftp"><a href="#上传ftp" class="headerlink" title="上传ftp"></a>上传ftp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ftp地址 ： 192.168.113.170 </span><br><span class="line">账号变更为 yanfabu </span><br><span class="line">密码 OcLQmL9JYkYX</span><br><span class="line"></span><br><span class="line">客户端版本下载地址：</span><br><span class="line"></span><br><span class="line">  Ftp地址:  192.168.113.170:/sftp/v2v/test/终端产品线/V2V云桌面/V1.0.0.7.2/client/</span><br><span class="line"></span><br><span class="line">服务端版本下载地址：</span><br><span class="line"></span><br><span class="line">  Ftp地址:  192.168.113.170:/sftp/v2v/test/终端产品线/V2V云桌面/V1.0.0.7.2/server/</span><br><span class="line">  </span><br><span class="line">  每次只需在 192.168.113.170:/sftp/v2v/test/终端产品线/V2V云桌面/ 目录下 创建新版本号命名的文件夹</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="邮件编写"><a href="#邮件编写" class="headerlink" title="邮件编写"></a>邮件编写</h3><p>邮件主要分为 版本信息、提测范围、相关程序下载路径即ftp地址、服务端ftp地址、客户端ftp地址、项目代码svn地址及svn版本号</p>
+<p>其中重点是，提测范围，由于需要把bugfree中的bug列表变成具体的提测范围，可借助wps自带的vb编译器，写一套自动化脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line">Sub RunFunctionsInOrder()</span><br><span class="line">    &#x27;按顺序执行函数1和函数2</span><br><span class="line">    Call Function1</span><br><span class="line">    Call Function2</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">&#x27;Function1 作用 删除创建</span><br><span class="line">Sub Function1()</span><br><span class="line">    &#x27;定义变量</span><br><span class="line">    Dim ws As Worksheet</span><br><span class="line">    Dim lastRow As Long</span><br><span class="line">    Dim i As Long</span><br><span class="line"></span><br><span class="line">    &#x27;选择工作表 即新表</span><br><span class="line">    Set ws = ThisWorkbook.Worksheets(&quot;t2&quot;)</span><br><span class="line">    &#x27;获取最后一行</span><br><span class="line">    lastRow = ws.Range(&quot;A&quot; &amp; ws.Rows.Count).End(xlUp).Row</span><br><span class="line"></span><br><span class="line">    &#x27;删除 除 id 严重程度 bug标题 解决方案 列</span><br><span class="line">    </span><br><span class="line">    ws.Columns(&quot;C&quot;).Delete</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;D:F&quot;).Delete</span><br><span class="line">    ws.Range(&quot;E:H&quot;).Delete</span><br><span class="line">    </span><br><span class="line">    ws.Columns(&quot;A:A&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;A1&quot;).Value = &quot;严重级别&quot;</span><br><span class="line">    ws.Range(&quot;A2:A&quot; &amp; lastRow).Value = ws.Range(&quot;C2:C&quot; &amp; lastRow).Value</span><br><span class="line">    </span><br><span class="line">    &#x27;删除 原来的严重程度 列</span><br><span class="line">    ws.Columns(&quot;C&quot;).Delete</span><br><span class="line">    </span><br><span class="line">    &#x27;在第三行上方新建12行</span><br><span class="line">    ws.Rows(&quot;2:8&quot;).Insert Shift:=xlDown</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;A2:A8&quot;).Value = &quot;/&quot;</span><br><span class="line"></span><br><span class="line">    &#x27;给新增 4 行 即 第 3 行至第 7 行 填充数据</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;B2&quot;).Value = &quot;Feature:PD500N:001:用户登录&quot;</span><br><span class="line">    ws.Range(&quot;B3&quot;).Value = &quot;Feature:PD500N:002:指标检测&quot;</span><br><span class="line">    ws.Range(&quot;B4&quot;).Value = &quot;Feature:PD500N:003:云桌面管理&quot;</span><br><span class="line">    ws.Range(&quot;B5&quot;).Value = &quot;Feature:PD500N:004:云桌面用户管理&quot;</span><br><span class="line">    ws.Range(&quot;B6&quot;).Value = &quot;Feature:PD500N:005:模板管理&quot;</span><br><span class="line">    ws.Range(&quot;B7&quot;).Value = &quot;Feature:PD500N:006:云桌面客户端用户登录&quot;</span><br><span class="line">    ws.Range(&quot;B8&quot;).Value = &quot;Feature:PD500N:007:云桌面功&quot;</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;C2&quot;).Value = &quot;用户登录&quot;</span><br><span class="line">    ws.Range(&quot;C3&quot;).Value = &quot;指标检测&quot;</span><br><span class="line">    ws.Range(&quot;C4&quot;).Value = &quot;云桌面管理&quot;</span><br><span class="line">    ws.Range(&quot;C5&quot;).Value = &quot;云桌面用户管理&quot;</span><br><span class="line">    ws.Range(&quot;C6&quot;).Value = &quot;视联云桌面&quot;</span><br><span class="line">    ws.Range(&quot;C7&quot;).Value = &quot;云桌面客户端用户登录&quot;</span><br><span class="line">    ws.Range(&quot;C8&quot;).Value = &quot;视联云桌面&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x27;获取最后一行</span><br><span class="line">    lastRow = ws.Range(&quot;A&quot; &amp; ws.Rows.Count).End(xlUp).Row</span><br><span class="line">    </span><br><span class="line">    &#x27;新建 C 列 C1 填充为 项目 之后填充为 中</span><br><span class="line">    ws.Columns(&quot;D:D&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;D1&quot;).Value = &quot;复现频率&quot;</span><br><span class="line">    ws.Range(&quot;D2:D&quot; &amp; lastRow).Value = &quot;高频&quot;</span><br><span class="line">    </span><br><span class="line">    &#x27;新建 D 列 D1 填充为 项目类型 之后填充为 VP</span><br><span class="line">    ws.Columns(&quot;E:E&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;E1&quot;).Value = &quot;主责产品&quot;</span><br><span class="line">    ws.Range(&quot;E2:E&quot; &amp; lastRow).Value = &quot;视联云桌面&quot;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    ws.Columns(&quot;G:G&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;G1&quot;).Value = &quot;归属项目&quot;</span><br><span class="line">    ws.Range(&quot;G2:G&quot; &amp; lastRow).Value = &quot; 视联云桌面&quot;</span><br><span class="line"></span><br><span class="line">    ws.Columns(&quot;H:H&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;H1&quot;).Value = &quot;项目优先级&quot;</span><br><span class="line">    ws.Range(&quot;H2:H&quot; &amp; lastRow).Value = &quot;31&quot;</span><br><span class="line"></span><br><span class="line">    ws.Columns(&quot;I:I&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;I1&quot;).Value = &quot;项目类型&quot;</span><br><span class="line">    ws.Range(&quot;I2:I&quot; &amp; lastRow).Value = &quot;VP&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Columns(&quot;J:J&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;J1&quot;).Value = &quot;测试结果&quot;</span><br><span class="line">    </span><br><span class="line">    &#x27;最上方新增一行</span><br><span class="line">    ws.Rows(1).Insert Shift:=xlDown</span><br><span class="line"></span><br><span class="line">    &#x27;设置A1和A2单元格的内容</span><br><span class="line">    ws.Range(&quot;A1&quot;).Value = &quot;严重&quot;</span><br><span class="line">    ws.Range(&quot;A2&quot;).Value = &quot;级别&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;B1&quot;).Value = &quot;需求/bug编号&quot;</span><br><span class="line">    ws.Range(&quot;B2:B1&quot;).Merge</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;C1&quot;).Value = &quot;需求/bug描述&quot;</span><br><span class="line">    ws.Range(&quot;C2:C1&quot;).Merge</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;D1&quot;).Value = &quot;复现&quot;</span><br><span class="line">    ws.Range(&quot;D2&quot;).Value = &quot;频率&quot;</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;E2:E1&quot;).Merge</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;F1&quot;).Value = &quot;修改&quot;</span><br><span class="line">    ws.Range(&quot;F2&quot;).Value = &quot;方式&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;G1&quot;).Value = &quot;归属&quot;</span><br><span class="line">    ws.Range(&quot;G2&quot;).Value = &quot;项目&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;H1&quot;).Value = &quot;项目&quot;</span><br><span class="line">    ws.Range(&quot;H2&quot;).Value = &quot;优先级&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;I1&quot;).Value = &quot;项目&quot;</span><br><span class="line">    ws.Range(&quot;I2&quot;).Value = &quot;类型&quot;</span><br><span class="line"></span><br><span class="line">    ws.Range(&quot;J1&quot;).Value = &quot;测试&quot;</span><br><span class="line">    ws.Range(&quot;J2&quot;).Value = &quot;结果&quot;</span><br><span class="line">    </span><br><span class="line">     ws.Range(&quot;A3:A9&quot;).Value = &quot;/&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;D3:D9&quot;).Value = &quot;/&quot;</span><br><span class="line">    </span><br><span class="line">    ws.Range(&quot;F3:F9&quot;).Value = &quot;新增&quot;</span><br><span class="line">    </span><br><span class="line">    &#x27;获取最后一行</span><br><span class="line">    lastRow = ws.Range(&quot;A&quot; &amp; ws.Rows.Count).End(xlUp).Row</span><br><span class="line"></span><br><span class="line">    ws.Columns(&quot;A:A&quot;).Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove</span><br><span class="line">    ws.Range(&quot;A1&quot;).Value = &quot;序号&quot;</span><br><span class="line">    ws.Range(&quot;A2:A1&quot;).Merge</span><br><span class="line">    ws.Range(&quot;A3:A&quot; &amp; lastRow).Value = &quot;=ROW()-2&quot;</span><br><span class="line"></span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">&#x27;Function2 作用 格式整合函数</span><br><span class="line"></span><br><span class="line">Sub Function2()</span><br><span class="line">    &#x27;选择工作表1</span><br><span class="line">    Dim ws1 As Worksheet</span><br><span class="line">    Set ws1 = ThisWorkbook.Worksheets(&quot;t1&quot;)</span><br><span class="line"></span><br><span class="line">    &#x27;选择工作表2</span><br><span class="line">    Dim ws2 As Worksheet</span><br><span class="line">    Set ws2 = ThisWorkbook.Worksheets(&quot;t2&quot;)</span><br><span class="line"></span><br><span class="line">    ws2.Range(&quot;A1:J2&quot;).Font.Name = ws1.Range(&quot;A1:J2&quot;).Font.Name</span><br><span class="line">    ws2.Range(&quot;A1:J2&quot;).Font.Color = ws1.Range(&quot;A1:J2&quot;).Font.Color</span><br><span class="line">    ws2.Range(&quot;A1:J2&quot;).Interior.Color = ws1.Range(&quot;A1:J2&quot;).Interior.Color</span><br><span class="line">    ws2.Range(&quot;A1:J2&quot;).Borders.LineStyle = ws1.Range(&quot;A1:J2&quot;).Borders.LineStyle</span><br><span class="line">       </span><br><span class="line">    ws2.Range(&quot;K1:K2&quot;).Font.Name = ws1.Range(&quot;K1:K2&quot;).Font.Name</span><br><span class="line">    ws2.Range(&quot;K1:K2&quot;).Font.Color = ws1.Range(&quot;K1:K2&quot;).Font.Color</span><br><span class="line">    ws2.Range(&quot;K1:K2&quot;).Interior.Color = ws1.Range(&quot;K1:K2&quot;).Interior.Color</span><br><span class="line">    ws2.Range(&quot;K1:K2&quot;).Borders.LineStyle = ws1.Range(&quot;K1:K2&quot;).Borders.LineStyle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    lastRow1 = ws1.Range(&quot;B&quot; &amp; ws1.Rows.Count).End(xlUp).Row</span><br><span class="line">    lastRow2 = ws2.Range(&quot;B&quot; &amp; ws2.Rows.Count).End(xlUp).Row</span><br><span class="line"></span><br><span class="line">    ws2.Range(&quot;A3:J&quot; &amp; lastRow2).Font.Name = ws1.Range(&quot;A3:J&quot; &amp; lastRow1).Font.Name</span><br><span class="line">    ws2.Range(&quot;A3:J&quot; &amp; lastRow2).Font.Color = ws1.Range(&quot;A3:J&quot; &amp; lastRow1).Font.Color</span><br><span class="line">    ws2.Range(&quot;A3:J&quot; &amp; lastRow2).Interior.Color = ws1.Range(&quot;A3:J&quot; &amp; lastRow1).Interior.Color</span><br><span class="line">    ws2.Range(&quot;A3:J&quot; &amp; lastRow2).Borders.LineStyle = ws1.Range(&quot;A3:J&quot; &amp; lastRow1).Borders.LineStyle</span><br><span class="line"></span><br><span class="line">    ws2.Range(&quot;K3:K&quot; &amp; lastRow2).Font.Name = ws1.Range(&quot;K3:K&quot; &amp; lastRow1).Font.Name</span><br><span class="line">    ws2.Range(&quot;K3:K&quot; &amp; lastRow2).Font.Color = ws1.Range(&quot;K3:K&quot; &amp; lastRow1).Font.Color</span><br><span class="line">    ws2.Range(&quot;K3:K&quot; &amp; lastRow2).Interior.Color = ws1.Range(&quot;K3:K&quot; &amp; lastRow1).Interior.Color</span><br><span class="line">    ws2.Range(&quot;K3:K&quot; &amp; lastRow2).Borders.LineStyle = ws1.Range(&quot;K3:K&quot; &amp; lastRow1).Borders.LineStyle</span><br><span class="line"></span><br><span class="line">    ws2.Range(&quot;A1:K&quot; &amp; lastRow2).HorizontalAlignment = xlCenter</span><br><span class="line">    ws2.Range(&quot;A1:K&quot; &amp; lastRow2).VerticalAlignment = xlCenter</span><br><span class="line">    ws2.Range(&quot;A1:K&quot; &amp; lastRow2).WrapText = True</span><br><span class="line">    </span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 11:59:43" itemprop="dateModified" datetime="2024-10-20T11:59:43+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">https://muxiaoximuxiaoxi.github.io/2024/04/28/打包发版/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="proxmox集群搭建">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
+  <h3>proxmox集群搭建</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeubcbajj20zk0m8h1h.jpg" title="Untitled">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Untitled</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%96%E8%AF%91"><span class="toc-number">1.</span> <span class="toc-text">客户端编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BC%96%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">服务端编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0ftp"><span class="toc-number">3.</span> <span class="toc-text">上传ftp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%AE%E4%BB%B6%E7%BC%96%E5%86%99"><span class="toc-number">4.</span> <span class="toc-text">邮件编写</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="bookmark" title="proxmox集群搭建">proxmox集群搭建</a></li><li><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" rel="bookmark" title="VGPU">VGPU</a></li><li class="active"><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" rel="bookmark" title="打包发版">打包发版</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/proxmox%20%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" title="proxmox集群搭建">proxmox集群搭建</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDK/" title="In _视联SDK">_视联SDK</a>
+</div>
+
+    <span><a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" title="TVL格式">TVL格式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" title="VGPU">VGPU</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/DNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%8F%8Abind9%E4%BB%8B%E7%BB%8D/" title="DNS域名解析及bind9介绍">DNS域名解析及bind9介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDk/" title="In _视联SDk">_视联SDk</a>
+</div>
+
+    <span><a href="/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/" title="交叉编译链接及其他">交叉编译链接及其他</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/21/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%20Jenkins%20%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91/" title="Jenkins自动化编译">Jenkins自动化编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/Android%20IPC%20%E4%B9%8B%20AIDL/" title="Untitled">Untitled</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/28/打包发版/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

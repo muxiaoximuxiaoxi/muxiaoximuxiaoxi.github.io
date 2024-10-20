@@ -1,0 +1,512 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+
+
+  <title>
+ |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-10-20 12:07:40">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-10-20T12:07:40+08:00">2024-10-20</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <hr>
+<p>layout: _tv子系统<br>title: JNI<br>date: 2022-01-28 21:04:32<br>categories:</p>
+<ul>
+<li>_tv子系统<br>tags:</li>
+</ul>
+<hr>
+<h1 id="一、JNI-JAVA-Native-Interface"><a href="#一、JNI-JAVA-Native-Interface" class="headerlink" title="一、JNI (JAVA Native Interface)"></a>一、JNI (JAVA Native Interface)</h1><p>由于native关键字是JNI的一部分，所以需要先介绍JNI。</p>
+<p>在某些大型项目中会因为种种原因导致需要JAVA程序调用C&#x2F;Cpp程序从而提高整体程序的效率，毕竟在某些时候C&#x2F;Cpp的效率高于JAVA效率，或者因为JAVA程序需要调用C&#x2F;Cpp已经实现的某些类库，在这些类似的场景下，就需要用到JNI。</p>
+<p><strong>JNI就是为了实现JAVA代码调用不同语言编写的代码，也可以肤浅的理解为，JNI就是实现JAVA代码调用C&#x2F;Cppc代码</strong>，JNI允许JAVA代码和其他语言写的代码进行交互。JNI一开始就是为了本地已编译语言，尤其是C和Cpp而设计的，但是并不妨碍大家使用其他语言，只要调用约定受支持就可以。</p>
+<p>JAVA与本地已编译代码交互时，通常会丧失平台可移植性，但是有些情况下必须得这样做，ege:使用一些旧的库，与硬件、操作系统进行交互，或者为了提高程序的性能。JNI标准至少保证本地代码能在任何JVM下正常运行。</p>
+<p><img data-src="https://img-blog.csdnimg.cn/0b7d342a5df44c52bd108051d53eee86.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5pyo5a2d5rqq,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">这里在说一下JAVA代码到底是怎么实现库平台的，为什么使用JNI会导致JAVA的可移植性丧失</span><br><span class="line"></span><br><span class="line">为什么说JAVA语言是跨平台的</span><br><span class="line">因为JAVA代码在编译之后，在不同的操作系统都可以运行，Windows、Linux、Mac都可以，</span><br><span class="line">但Cpp就不具备跨平台执行，对于cpp来说Windows和linux下的运行都不同，</span><br><span class="line">比如说默认函数栈的大小或者vector的扩容方式都是不同的。</span><br><span class="line"></span><br><span class="line">JAVA实现跨平台的原理</span><br><span class="line">JAVA本身是不能跨平台的，真正实现跨平台的是JVM，也就是JAVA虚拟机。</span><br><span class="line">1、JAVA源文件通过javac命令编译生成class文件</span><br><span class="line">2、JVM对class文件进行执行生成机器语言</span><br><span class="line">3、机器语言在平台中操作</span><br><span class="line">在上述操作中最重要的就是JVM，JAVA在不同平台下都有与之最适应的JVM且不止一个版本，这些JVM可以识别字节码文件，所以实现JAVA的跨平台。</span><br><span class="line">JAVA就是凭借可以在不同平台找到与之最对应的JVM，也就是因为这些JVM，只要报JAVA软件装到操作者的操作系统上，JVM就可以帮操作者执行写好的JAVA程序。</span><br><span class="line"></span><br><span class="line">JAVA跨平台带来的好处</span><br><span class="line"></span><br><span class="line">write once ，run anywhere！ 一次编译，皆可运行</span><br><span class="line"></span><br><span class="line">一般的高级语言如果要在不同平台上运行，至少需要编译成不同的目标代码。</span><br><span class="line">ege：Cpp代码，在Windows需要生成exe文件，在Linux需要生成.o文件</span><br><span class="line">而JAVA语言在不同平台上运行时不需要重新编译，JAVA语言使用JVM屏蔽了与具体平台相关信息，</span><br><span class="line">使得JAVA语言编译程序只需要生成在JVM运行的目标代码(字节码)即可，</span><br><span class="line">这样就可以在不同平台上运行，只需JVM在执行目标代码(字节码)时，将目标代码(字节码)解释成具体平台上的机器指令执行。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>由于JNI调用了本地接口，这就导致，使用JNI之后的JAVA程序失去了跨平台这一优点。那么JNI还有哪些缺点</p>
+<p>JNI缺点</p>
+<ol>
+<li>程序不在跨平台，除非在不同系统环境下重新编译调用的本地语言部分</li>
+<li>本地代码不当使用会导致整个程序崩溃。(尽量把本地方法集中到几个类中，降低JAVA和调用语言间的耦合性)</li>
+</ol>
+<h1 id="二、实现一个简单的JAVA调用C的程序"><a href="#二、实现一个简单的JAVA调用C的程序" class="headerlink" title="二、实现一个简单的JAVA调用C的程序"></a>二、实现一个简单的JAVA调用C的程序</h1><p>1、创建JAVA类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class HelloNative</span><br><span class="line">&#123;</span><br><span class="line">    static</span><br><span class="line">    &#123;</span><br><span class="line">        System.loadLibrary(&quot;HelloNative&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    public static native void sayHello();</span><br><span class="line">     </span><br><span class="line">    @SuppressWarnings(&quot;static-access&quot;)</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        new HelloNative().sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、运行javah，得到包含该方法的C声明头文件.h</p>
+<p>&amp;emsp;&amp;emsp;将HelloNative.java ，简单地 javac javah<br><br/><br>&amp;emsp;&amp;emsp;就得到了下面的 HelloNative.h文件 ：<br><br/></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/* DO NOT EDIT THIS FILE - it is machine generated */</span><br><span class="line">#include &lt;jni.h&gt;</span><br><span class="line">/* Header for class HelloNative */</span><br><span class="line"> </span><br><span class="line">#ifndef _Included_HelloNative</span><br><span class="line">#define _Included_HelloNative</span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;</span><br><span class="line">#endif</span><br><span class="line">/*</span><br><span class="line"> * Class:     HelloNative</span><br><span class="line"> * Method:    sayHello</span><br><span class="line"> * Signature: ()V</span><br><span class="line"> */</span><br><span class="line">JNIEXPORT void JNICALL Java_HelloNative_sayHello</span><br><span class="line">  (JNIEnv *, jclass);</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>3、根据头文件，写C实现本地方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;HelloNative.h&quot;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"> </span><br><span class="line">JNIEXPORT void JNICALL Java_HelloNative_sayHello</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;Hello，JNI&quot;);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、生成dll共享库，然后Java程序load库，调用即可。</p>
+<p>&amp;emsp;&amp;emsp;在Windows上，MinGW GCC 运行如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m64  -Wl,--add-stdcall-alias -I&quot;C:\Program Files\Java\jdk1.7.0_71\include&quot; -I&quot;C:\Program Files\Java\jdk1.7.0_71\include\include\win32&quot; -shared -o HelloNative.dll HelloNative.c</span><br></pre></td></tr></table></figure>
+<p>&amp;emsp;&amp;emsp;-m64表示生成dll库是64位的。然后运行 HelloNative：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java HelloNative</span><br></pre></td></tr></table></figure>
+<p>&amp;emsp;&amp;emsp;终于成功地可以看到控制台打印如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello，JNI</span><br></pre></td></tr></table></figure>
+
+<h5 id="JAVA调用底层步骤："><a href="#JAVA调用底层步骤：" class="headerlink" title="JAVA调用底层步骤："></a>JAVA调用底层步骤：</h5><h6 id="1、在JAVA中声明native-方法，然后编译"><a href="#1、在JAVA中声明native-方法，然后编译" class="headerlink" title="1、在JAVA中声明native()方法，然后编译"></a>1、在JAVA中声明native()方法，然后编译</h6><h6 id="2、用javah产生一个-h文件"><a href="#2、用javah产生一个-h文件" class="headerlink" title="2、用javah产生一个.h文件"></a>2、用javah产生一个.h文件</h6><h6 id="3、实现-h文件对应的-c或者-cpp文件"><a href="#3、实现-h文件对应的-c或者-cpp文件" class="headerlink" title="3、实现.h文件对应的.c或者.cpp文件"></a>3、实现.h文件对应的.c或者.cpp文件</h6><h6 id="4、将第三步的-cpp文件编译成DLL文件"><a href="#4、将第三步的-cpp文件编译成DLL文件" class="headerlink" title="4、将第三步的.cpp文件编译成DLL文件"></a>4、将第三步的.cpp文件编译成DLL文件</h6><h6 id="5、在JAVA中用System-loadLibrary-方法加载第四步产生的动态链接库文件"><a href="#5、在JAVA中用System-loadLibrary-方法加载第四步产生的动态链接库文件" class="headerlink" title="5、在JAVA中用System.loadLibrary()方法加载第四步产生的动态链接库文件"></a>5、在JAVA中用System.loadLibrary()方法加载第四步产生的动态链接库文件</h6><p>JAVA本地方法适用的情况</p>
+<p>1.为了使用底层的主机平台的某个特性，而这个特性不能通过JAVA API访问</p>
+<p>2.为了访问一个老的系统或者使用一个已有的库，而这个系统或这个库不是用JAVA编写的</p>
+<p>3.为了加快程序的性能，而将一段时间敏感的代码作为本地方法实现<br>&amp;emsp;&amp;emsp;<br></br></p>
+<h1 id="三、JNI调用C流程图"><a href="#三、JNI调用C流程图" class="headerlink" title="三、JNI调用C流程图"></a>三、JNI调用C流程图</h1><p><img data-src="https://img-blog.csdnimg.cn/77bf1105887a45118058f3aca67ae9d3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5pyo5a2d5rqq,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="四、native关键字"><a href="#四、native关键字" class="headerlink" title="四、native关键字"></a>四、native关键字</h1><p>native是与C&#x2F;Cpp联合开发的时候用的，使用native关键字说明该方法是使用C&#x2F;Cpp语言实现的，并且被编译成了DLL(动态链接库)，由JAVA去调用。</br><br>调用过程：</br><br>1、JAVA代码需要使用某些功能，将该功能名字或者需求告诉操作系统</br><br>2、操作系统根据已知条件去调用相应的东西（如果没有，那就去实现），调用之后，返还给java结果</br><br>native的意思就是通知操作系统，JAVA需调用的函数操作系统必须得实现（若未实现，操作系统自己去想办法实现），然后将调用之后的结果返还给JAVA即可。</br></p>
+<p>JAVA是跨平台语言，为了实现跨平台，必然会牺牲一些对底层的控制，而JAVA要实现对底层的控制，就需要其他语言的帮助，这就是native的作用。</br></p>
+<p>&amp;emsp;&amp;emsp;<br></br></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 12:16:41" itemprop="dateModified" datetime="2024-10-20T12:16:41+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="">https://muxiaoximuxiaoxi.github.io/2024/10/20/JAVA native关键字/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/10/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyvx1d4j20zk0m8hdt.jpg" title="Untitled">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Untitled</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph47e9vtj20zk0m8x6l.jpg" title="Untitled">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Untitled</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81JNI-JAVA-Native-Interface"><span class="toc-number">1.</span> <span class="toc-text">一、JNI (JAVA Native Interface)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84JAVA%E8%B0%83%E7%94%A8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">二、实现一个简单的JAVA调用C的程序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#JAVA%E8%B0%83%E7%94%A8%E5%BA%95%E5%B1%82%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">JAVA调用底层步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%E3%80%81%E5%9C%A8JAVA%E4%B8%AD%E5%A3%B0%E6%98%8Enative-%E6%96%B9%E6%B3%95%EF%BC%8C%E7%84%B6%E5%90%8E%E7%BC%96%E8%AF%91"><span class="toc-number">2.0.0.0.1.1.</span> <span class="toc-text">1、在JAVA中声明native()方法，然后编译</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%E3%80%81%E7%94%A8javah%E4%BA%A7%E7%94%9F%E4%B8%80%E4%B8%AA-h%E6%96%87%E4%BB%B6"><span class="toc-number">2.0.0.0.1.2.</span> <span class="toc-text">2、用javah产生一个.h文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E7%8E%B0-h%E6%96%87%E4%BB%B6%E5%AF%B9%E5%BA%94%E7%9A%84-c%E6%88%96%E8%80%85-cpp%E6%96%87%E4%BB%B6"><span class="toc-number">2.0.0.0.1.3.</span> <span class="toc-text">3、实现.h文件对应的.c或者.cpp文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%E3%80%81%E5%B0%86%E7%AC%AC%E4%B8%89%E6%AD%A5%E7%9A%84-cpp%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90DLL%E6%96%87%E4%BB%B6"><span class="toc-number">2.0.0.0.1.4.</span> <span class="toc-text">4、将第三步的.cpp文件编译成DLL文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%E3%80%81%E5%9C%A8JAVA%E4%B8%AD%E7%94%A8System-loadLibrary-%E6%96%B9%E6%B3%95%E5%8A%A0%E8%BD%BD%E7%AC%AC%E5%9B%9B%E6%AD%A5%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E6%96%87%E4%BB%B6"><span class="toc-number">2.0.0.0.1.5.</span> <span class="toc-text">5、在JAVA中用System.loadLibrary()方法加载第四步产生的动态链接库文件</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81JNI%E8%B0%83%E7%94%A8C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">三、JNI调用C流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81native%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">4.</span> <span class="toc-text">四、native关键字</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/10/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E6%88%90so%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8/" title="动态so的编译">动态so的编译</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/ubunt%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%20OpenHarmony%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%96%B0/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/JAVA%20native%E5%85%B3%E9%94%AE%E5%AD%97/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E8%93%9D%E5%8C%BA%E4%B8%8A%E5%BA%93/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="Untitled">Untitled</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/10/20/JAVA native关键字/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

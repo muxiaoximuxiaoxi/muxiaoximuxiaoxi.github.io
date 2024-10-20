@@ -1,0 +1,485 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="迩彧博客" href="https://muxiaoximuxiaoxi.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://muxiaoximuxiaoxi.github.io/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/">
+
+
+
+  <title>
+交叉编译链接及其他 - _视联SDk |
+Yume Shoka = 迩彧博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">交叉编译链接及其他
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-03-28 21:04:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-03-28T21:04:32+08:00">2024-03-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%A7%86%E8%81%94SDk/" itemprop="item" rel="index" title="In _视联SDk"><span itemprop="name">_视联SDk</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://muxiaoximuxiaoxi.github.io/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="迩彧">
+    <meta itemprop="description" content=", 与其临渊羡鱼，不如退而结网">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="迩彧博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h4 id="设置-Linux-编译链接库的步骤"><a href="#设置-Linux-编译链接库的步骤" class="headerlink" title="设置 Linux 编译链接库的步骤"></a>设置 Linux 编译链接库的步骤</h4><p>1、拿到相应的连接包<br>2、解压到 &#x2F;opt 目录下<br>3、设置 PATH 路径 具体操作如下：<br>vi &#x2F;etc&#x2F;profile<br>export PATH&#x3D;”&#x2F;opt&#x2F;arm-hisiv200-linux&#x2F;target&#x2F;bin:$PATH”<br>source  &#x2F;etc&#x2F;profile<br>4、通过 echo $PATH 查看PATH添加是否成功<br>5、在根目录下的 CMakeLists.txt 增加相应编译链接指令<br>ELSEIF (CROSS_COMPILE_PLATFORM MATCHES “QM2”)<br>    SET(CMAKE_C_COMPILER   arm-hisiv200-linux-gcc)<br>    SET(CMAKE_CXX_COMPILER arm-hisiv200-linux-g++)<br>    MESSAGE(“– Current Platform: ${CROSS_COMPILE_PLATFORM}”)<br>    MESSAGE(“– Current QM2_CMAKE_C_COMPILER: ${CMAKE_C_COMPILER}”)<br>    MESSAGE(“– Current QM2_CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}”)<br>6、 Linux 可能需要额外安装一些包<br>yum -y install zlib.i686 zlib<br>如果还缺少某些包，直接网上搜就行，按照教程安装即可</p>
+<h4 id="设置-安卓-编译链接库的步骤"><a href="#设置-安卓-编译链接库的步骤" class="headerlink" title="设置 安卓 编译链接库的步骤"></a>设置 安卓 编译链接库的步骤</h4><p>以 android-ndk-r10e-linux-x86_64.bin 为例<br>1、拿到相应的连接包<br>2、解压到 &#x2F;opt 目录下<br>3、chmod 777 android-ndk-r10e-linux-x86_64.bin<br>4、.&#x2F;android-ndk-r10e-linux-x86_64.bin<br>   得到 android-ndk-r10e 目录<br>5、设置 PATH 路径 具体操作如下：<br>vi &#x2F;etc&#x2F;profile<br>export PATH&#x3D;”&#x2F;opt&#x2F;android-ndk-r10e:$PATH”<br>source  &#x2F;etc&#x2F;profile<br>6、通过 echo $PATH 查看PATH添加是否成功<br>7、.&#x2F;make_all.sh -shared QM3 使用 sdk 编译脚本进行验证</p>
+<h4 id="sdk-新环境"><a href="#sdk-新环境" class="headerlink" title="sdk 新环境"></a>sdk 新环境</h4><p>1、安装 gcc g++ cmake<br>2、Ubuntu :<br>      apt-get install build-essential<br>   Centos :<br>      yum groupinstall “Development Tools” </p>
+<h4 id="sdk-demo-添加-ipv4-地址-指令"><a href="#sdk-demo-添加-ipv4-地址-指令" class="headerlink" title="sdk demo 添加 ipv4 地址 指令"></a>sdk demo 添加 ipv4 地址 指令</h4><p>ifconfig vmbr1:0 192.168.3.99 netmask 255.255.255.0<br>ip addr add 192.168.2.99&#x2F;24 dev ens18:0</p>
+<h4 id="启明3-操作步骤"><a href="#启明3-操作步骤" class="headerlink" title="启明3 操作步骤"></a>启明3 操作步骤</h4><p>1、.\adb.exe connect 4.25.10.252<br>2、 .\adb.exe push C:\Users\mxx95\Desktop\tmp\telephone\libvvp64.so &#x2F;data&#x2F;vv</p>
+<h4 id="socket-设置-vlan-属性"><a href="#socket-设置-vlan-属性" class="headerlink" title="socket 设置 vlan 属性"></a>socket 设置 vlan 属性</h4><p>socket 中 vlan 为一种属性 不同于 发给用户的数据 所以需要再发给用户前 把 vlan 属性给设置回去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//设置终端获取vlan id标签数据</span><br><span class="line">int one = 1;</span><br><span class="line"> err = setsockopt( *sock_fd, SOL_PACKET,PACKET_AUXDATA,(char *)&amp;one, sizeof(one));</span><br><span class="line">    if(err&lt;0)&#123;</span><br><span class="line">          printf(&quot;setsockopt( *sock_fd, SOL_PACKET,  PACKET_AUXDATA,(char *)&amp;rcv_buf_len, sizeof(int)) err 3333\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>socket 接收之后 扔给用户之前 在把 vlan 属性设置回去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">   ssize_t read_bytes;</span><br><span class="line">   struct iovec iov = &#123; .iov_base = buffer, .iov_len = length &#125;;</span><br><span class="line">   struct cmsghdr *cmsg_ptr;</span><br><span class="line">   union</span><br><span class="line">   &#123;</span><br><span class="line">       struct cmsghdr  cmsg;</span><br><span class="line">       char buf[CMSG_SPACE(sizeof(struct tpacket_auxdata))];</span><br><span class="line">   &#125;cmsg_buf;</span><br><span class="line">   </span><br><span class="line">   struct msghdr msg = &#123; .msg_iov = &amp;iov, .msg_iovlen = 1, .msg_control = &amp;cmsg_buf, .msg_controllen = sizeof(cmsg_buf) &#125;;</span><br><span class="line">   struct tpacket_auxdata *aux_ptr = NULL;</span><br><span class="line"></span><br><span class="line">   read_bytes = recvmsg(fd, &amp;msg, 0);</span><br><span class="line">//printf(&quot;========0=======read_bytes %d======================\n&quot;,read_bytes);</span><br><span class="line">   for(cmsg_ptr = CMSG_FIRSTHDR(&amp;msg); cmsg_ptr; cmsg_ptr = CMSG_NXTHDR( &amp;msg, cmsg_ptr))</span><br><span class="line">   &#123;</span><br><span class="line">   	printf(&quot;========000=======read_bytes %d======================\n&quot;,read_bytes);</span><br><span class="line">       aux_ptr = (struct tpacket_auxdata *)CMSG_DATA(cmsg_ptr);</span><br><span class="line">       if (aux_ptr-&gt;tp_vlan_tci!=0)</span><br><span class="line">           break;</span><br><span class="line">   &#125;</span><br><span class="line">//printf(&quot;========1=======read_bytes %d======================\n&quot;,read_bytes);</span><br><span class="line">   if(aux_ptr != NULL&amp;&amp;aux_ptr-&gt;tp_vlan_tci != 0 )</span><br><span class="line">   &#123;</span><br><span class="line">   	printf(&quot;=======2========read_bytes %d======================\n&quot;,read_bytes);</span><br><span class="line">       VLAN_TAG *tag;</span><br><span class="line">	if(access(&quot;/mnt/socket1&quot;, 0) == 0)</span><br><span class="line">       	memmove(buffer+MAC_HEADER_LEN+VLAN_TAG_LEN, buffer+MAC_HEADER_LEN, read_bytes-MAC_HEADER_LEN);</span><br><span class="line">	printf(&quot;=======3========read_bytes %d======================\n&quot;,read_bytes);</span><br><span class="line">	if(access(&quot;/mnt/socket2&quot;, 0) == 0)</span><br><span class="line">	&#123;</span><br><span class="line">        tag = (struct vlan_tag *)(buffer + MAC_HEADER_LEN);         //insert vlan id of packet</span><br><span class="line">        printf(&quot;=======4========read_bytes %d======================\n&quot;,read_bytes);</span><br><span class="line">        tag-&gt;vlan_tpid = htons(aux_ptr-&gt;tp_vlan_tpid);</span><br><span class="line">        tag-&gt;vlan_tci = htons(aux_ptr-&gt;tp_vlan_tci);</span><br><span class="line">		read_bytes += VLAN_TAG_LEN;       //packet len + vlan_tag(4 Btye)</span><br><span class="line">	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-20 11:59:26" itemprop="dateModified" datetime="2024-10-20T11:59:26+08:00">2024-10-20</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="迩彧 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="迩彧 Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>迩彧 <i class="ic i-at"><em>@</em></i>迩彧博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://muxiaoximuxiaoxi.github.io/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/" title="交叉编译链接及其他">https://muxiaoximuxiaoxi.github.io/2024/03/28/交叉编译链及其他相关/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesng5oej20zk0m87d4.jpg" title="TVL格式">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联SDK</span>
+  <h3>TVL格式</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitzannuj20zk0m8b29.jpg" title="VGPU">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> _视联云桌面</span>
+  <h3>VGPU</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-Linux-%E7%BC%96%E8%AF%91%E9%93%BE%E6%8E%A5%E5%BA%93%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">设置 Linux 编译链接库的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-%E5%AE%89%E5%8D%93-%E7%BC%96%E8%AF%91%E9%93%BE%E6%8E%A5%E5%BA%93%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">设置 安卓 编译链接库的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sdk-%E6%96%B0%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">sdk 新环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sdk-demo-%E6%B7%BB%E5%8A%A0-ipv4-%E5%9C%B0%E5%9D%80-%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">sdk demo 添加 ipv4 地址 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E6%98%8E3-%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.</span> <span class="toc-text">启明3 操作步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#socket-%E8%AE%BE%E7%BD%AE-vlan-%E5%B1%9E%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text">socket 设置 vlan 属性</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2024/03/28/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E9%93%BE%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/" rel="bookmark" title="交叉编译链接及其他">交叉编译链接及其他</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="迩彧"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">迩彧</p>
+  <div class="description" itemprop="description">与其临渊羡鱼，不如退而结网</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/04/28/%E5%BC%80%E5%90%AFNVIDIA%20RTX%202060%E6%98%BE%E5%8D%A1%E8%99%9A%E6%8B%9F%E5%8C%96(vGPU)-PVE%207.4/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94SDK/" title="In _视联SDK">_视联SDK</a>
+</div>
+
+    <span><a href="/2024/03/22/TVL%E6%A0%BC%E5%BC%8F/" title="TVL格式">TVL格式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/GN%20%E7%BC%96%E8%AF%91/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E4%BA%91%E6%A1%8C%E9%9D%A2/" title="In _视联云桌面">_视联云桌面</a>
+</div>
+
+    <span><a href="/2024/04/28/%E6%89%93%E5%8C%85%E5%8F%91%E7%89%88/" title="打包发版">打包发版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%20centos%20%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4/" title="bind9 环境部署">bind9 环境部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/bind9%E5%85%B3%E4%BA%8E%E8%A7%86%E8%81%94%E7%BD%91%E7%A7%BB%E6%A4%8D/" title="bind9关于视联网移植">bind9关于视联网移植</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8/" title="In _视联浏览器">_视联浏览器</a>
+</div>
+
+    <span><a href="/2024/02/23/%E8%A7%86%E8%81%94%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87/" title="视联浏览器双机热备">视联浏览器双机热备</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%EF%BC%88Dynamic%20Link%20Library%EF%BC%89/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/HDI-GEN%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC/" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/20/display%E6%A8%A1%E5%9D%97%E8%AE%B2%E8%A7%A3/" title="Untitled">Untitled</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">迩彧 @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/03/28/交叉编译链及其他相关/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
